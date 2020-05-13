@@ -5,71 +5,119 @@ Plug 'roxma/nvim-yarp'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+"Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
+Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'Yggdroot/indentLine'
+Plug 'dense-analysis/ale'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'thoughtbot/vim-rspec'
-"Plug 'sainnhe/edge'
-"Plug 'jdsimcoe/abstract.vim'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'sheerun/vim-polyglot'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'rakr/vim-one'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rhubarb'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'tomasr/molokai'
+"Plug 'terryma/vim-multiple-cursors'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+end
 call plug#end()
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+" Use smartcase.
+call deoplete#custom#option('smart_case', v:true)
 
 " NERDTree config
 " autocmd vimenter * NERDTree
-nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <Leader>t :NERDTreeToggle<Enter>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeChDirMode=1
-let g:airline_theme = 'onedark'
-let g:airline_powerline_fonts = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeAutoDeleteBuffer = 1
+
+nnoremap <Tab> <C-I>
+nnoremap <S-Tab> <C-O>
+" Prefer Neovim terminal insert mode to normal mode.
+autocmd BufEnter term://* startinsert
+
+" map \ f to search for files
+nnoremap <Leader>f :FZF<Enter>
+
+
 "" COLORS and Fonts
-" Sahne/edge colorthene
 " important!!
 set termguicolors
-" for dark version
-"set background=dark
+set background=dark
+colorscheme molokai
 
-" for light version
-" set background=light
+let g:airline_theme = 'molokai'
+"let g:airline_powerline_fonts = 1
+let g:rehash256 = 1
+" ALE setting the linters
+" Set specific linters
+let g:ale_linters = {
+\ 'javascript': ['eslint'],
+\ 'ruby': ['rubocop'],
+\}
 
-" the configuration options should be placed before `colorscheme edge`
-" let g:edge_style = 'default'
-" let g:edge_disable_italic_comment = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop']
+\}
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+" only show linter errors in the airline
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+" Disable ALE auto highlights
+let g:ale_set_highlights = 1
 
-" colorscheme onedark options
-let g:onedark_hide_endofbuffer=1
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
 
 syntax on
-colorscheme onedark
 set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\:h14
 set number
 
 set tabstop=2
-set softtabstop=2
+set softtabstop=0
 set shiftwidth=2
+set autoindent
 set expandtab
 set smarttab
 set relativenumber
 set encoding=utf-8 nobomb
 scriptencoding utf-8
 set binary
-set noeol
+"set noeol
 set clipboard=unnamedplus
 "" powerline
 set rtp+=/usr/local/lib/python3.6/site-packages/powerline/bindings/vim
 
-set autoindent
 set showcmd
 set cursorline
 set colorcolumn=100
@@ -79,11 +127,11 @@ set lazyredraw
 set showmatch       " highlight matching [{()}]
 set list
 " Highlight searches
-set hlsearch
+set incsearch hlsearch
 " Ignore case of searches
-set ignorecase
+set ignorecase smartcase
 " Highlight dynamically as pattern is typed
-set incsearch
+"set incsearch
 " Always show status line
 set laststatus=2
 set foldenable      " enable folding
@@ -110,10 +158,38 @@ autocmd VimResized * wincmd =
 nnoremap <C-Left> gt<CR>
 nnoremap <C-Right> gT<CR>
 
+" RSpec.vim mappings
 let g:rspec_runner = "os_x_iterm"
+let g:rspec_command = "!bundle exec rspec {spec}"
+map <Leader>r :call RunCurrentSpecFile()<CR>
+map <Leader>e :call RunNearestSpec()<CR>
+map <Leader>q :call RunLastSpec()<CR>
+map <Leader>w :call RunAllSpecs()<CR>
+
 
 " easy navigation between splits
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+"substitute the word under the cursor with
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+"search for word under the cursor with
+nnoremap <Leader>d /<C-r><C-w>
+
+" map Ack to \a
+noremap <Leader>a :Ack! <cword><cr>
+
+" syntatic settings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+" ctags settings
+set tags=tags
+set statusline+=%{gutentags#statusline()}
