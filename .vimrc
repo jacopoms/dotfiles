@@ -207,9 +207,6 @@ noremap <leader>o :sp<CR>
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 
-" CoC Settings
-
-
 " ctags settings
 "
 "let g:gutentags_trace = 0
