@@ -8,10 +8,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rake', { 'for': 'ruby' }
+Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 "Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
-Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -28,21 +29,27 @@ Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'rakr/vim-one'
+Plug 'jparise/vim-graphql'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rhubarb'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'tomasr/molokai'
+Plug 'rainerborene/vim-reek'
 "Plug 'terryma/vim-multiple-cursors'
+"Plug 'tomasr/molokai'
+"Plug 'ErichDonGubler/vim-sublime-monokai'
+Plug 'rakr/vim-one'
+"Plug 'patstockwell/vim-monokai-tasty'
+"Plug 'KeitaNakamura/neodark.vim'
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+	Plug 'Shougo/deoplete.nvim'
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
 end
 call plug#end()
+
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -51,31 +58,36 @@ call deoplete#custom#option('smart_case', v:true)
 
 " NERDTree config
 " autocmd vimenter * NERDTree
-nnoremap <Leader>t :NERDTreeToggle<Enter>
+nnoremap <Leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-let NERDTreeChDirMode=1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeAutoDeleteBuffer = 1
+
+nnoremap <Leader>n :tabnew<CR>
 
 nnoremap <Tab> <C-I>
 nnoremap <S-Tab> <C-O>
+
 " Prefer Neovim terminal insert mode to normal mode.
 autocmd BufEnter term://* startinsert
 
 " map \ f to search for files
-nnoremap <Leader>f :FZF<Enter>
+nnoremap <Leader>f :Files<CR>
 
 
 "" COLORS and Fonts
 " important!!
 set termguicolors
+"let g:vim_monokai_tasty_italic = 1
 set background=dark
-colorscheme molokai
+colorscheme one
 
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'light'
 "let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
+"let g:neodark#background = '#070b0e' "'#202020'
+"let g:neodark#use_256color = 0
+"let g:neodark#solid_vertsplit = 1
+let g:one_allow_italics = 1
+
 " ALE setting the linters
 " Set specific linters
 let g:ale_linters = {
@@ -88,6 +100,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop']
 \}
+
 " Only run linters named in ale_linters settings.
 let g:ale_linters_explicit = 1
 " only show linter errors in the airline
@@ -159,8 +172,8 @@ nnoremap <C-Left> gt<CR>
 nnoremap <C-Right> gT<CR>
 
 " RSpec.vim mappings
-let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = "!bundle exec rspec {spec}"
+"let g:rspec_runner = "os_x_iterm"
+let g:rspec_command = "!bundle exec rspec --color {spec}"
 map <Leader>r :call RunCurrentSpecFile()<CR>
 map <Leader>e :call RunNearestSpec()<CR>
 map <Leader>q :call RunLastSpec()<CR>
@@ -179,10 +192,13 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <Leader>d /<C-r><C-w>
 
 " map Ack to \a
-noremap <Leader>a :Ack! <cword><cr>
+noremap <Leader>z :Ack! <cword><CR>
+vnoremap <Leader>z y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
-" syntatic settings
-"set statusline+=%#warningmsg#
+noremap <leader>p :vsp<CR>
+noremap <leader>o :sp<CR>
+" SYNTATIC SETTINGS
+"SET STATUSLINE+=%#WARNINGMSG#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
@@ -190,6 +206,12 @@ noremap <Leader>a :Ack! <cword><cr>
 "let g:syntastic_auto_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
+
+" CoC Settings
+
+
 " ctags settings
+"
+"let g:gutentags_trace = 0
 set tags=tags
 set statusline+=%{gutentags#statusline()}
