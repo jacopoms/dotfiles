@@ -42,11 +42,11 @@ Plug 'rakr/vim-one'
 "Plug 'patstockwell/vim-monokai-tasty'
 "Plug 'KeitaNakamura/neodark.vim'
 if has('nvim')
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-	Plug 'Shougo/deoplete.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 end
 call plug#end()
 
@@ -80,12 +80,9 @@ set termguicolors
 set background=dark
 colorscheme one
 
-let g:airline_theme = 'light'
+let g:airline_theme = 'dark'
 "let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
-"let g:neodark#background = '#070b0e' "'#202020'
-"let g:neodark#use_256color = 0
-"let g:neodark#solid_vertsplit = 1
 let g:one_allow_italics = 1
 
 " ALE setting the linters
@@ -115,18 +112,13 @@ let g:ale_fix_on_save = 1
 syntax on
 set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\:h14
 set number
-
-set tabstop=2
-set softtabstop=0
-set shiftwidth=2
+set title
 set autoindent
-set expandtab
-set smarttab
 set relativenumber
 set encoding=utf-8 nobomb
 scriptencoding utf-8
 set binary
-"set noeol
+set noeol
 set clipboard=unnamedplus
 "" powerline
 set rtp+=/usr/local/lib/python3.6/site-packages/powerline/bindings/vim
@@ -191,21 +183,20 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 "search for word under the cursor with
 nnoremap <Leader>d /<C-r><C-w>
 
-" map Ack to \a
+" map Ack to \z
 noremap <Leader>z :Ack! <cword><CR>
 vnoremap <Leader>z y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
+" split vertically
 noremap <leader>p :vsp<CR>
+" split horizontally
 noremap <leader>o :sp<CR>
-" SYNTATIC SETTINGS
-"SET STATUSLINE+=%#WARNINGMSG#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+" tabs to 2 spaces
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 
 " ctags settings
 "
