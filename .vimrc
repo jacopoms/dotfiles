@@ -2,8 +2,8 @@
 call plug#begin()
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippetsd'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -27,25 +27,47 @@ Plug 'jparise/vim-graphql'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rhubarb'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'rstacruz/vim-closer'
+"Plug 'lukhio/vim-mapping-conflicts'
+" Colorscheme
+Plug 'mhartington/oceanic-next'
+" Icons
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'rainerborene/vim-reek'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'tomasr/molokai'
 "Plug 'ErichDonGubler/vim-sublime-monokai'
-Plug 'rakr/vim-one'
+"Plug 'rakr/vim-one'
 "Plug 'patstockwell/vim-monokai-tasty'
 "Plug 'KeitaNakamura/neodark.vim'
 call plug#end()
 
+" Remap leader key to ,
+let g:mapleader=','
 
-" NERDTree config
-" autocmd vimenter * NERDTree
-nmap <Leader>t :CocCommand explorer<CR>
+
+" === Nerdtree shorcuts === "
+"  <leader>n - Toggle NERDTree on/off
+"  <leader>f - Opens current file location in NERDTree
+"autocmd vimenter * NERDTree
+nmap <leader>t :NERDTreeToggle<CR>
+nmap <leader>tf :NERDTreeFind<CR>
+
+" CoC Explorer config
+nmap <Leader>te :CocCommand explorer<CR>
+
 nnoremap <Leader>n :tabnew<CR>
 
-nnoremap <Tab> <C-I>
-nnoremap <S-Tab> <C-O>
+"nnoremap <Tab> <C-I>
+"nnoremap <S-Tab> <C-O>
 
 " Prefer Neovim terminal insert mode to normal mode.
 autocmd BufEnter term://* startinsert
@@ -59,8 +81,8 @@ nnoremap <Leader>f :Files<CR>
 set termguicolors
 "let g:vim_monokai_tasty_italic = 1
 set background=dark
-colorscheme one
-
+"colorscheme on
+colorscheme OceanicNext
 let g:airline_theme = 'dark'
 let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
@@ -148,8 +170,23 @@ vnoremap <Leader>z y:Ack! <C-r>=fnameescape(@")<CR><CR>
 noremap <leader>p :vsp<CR>
 " split horizontally
 noremap <leader>o :sp<CR>
+
+" === vim-better-whitespace === "
+"   <leader>y - Automatically remove trailing whitespace
+nmap <leader>y :StripWhitespace<CR>
+
 " TextEdit might fail if hidden is not set.
 set hidden
+
+" Solargraph conf
+
+let g:LanguageClient_serverCommands = {
+  \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+  \ }
+
+nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Some servers have issues with backup files, see #649.
 set nobackup
