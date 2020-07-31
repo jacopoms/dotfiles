@@ -3,13 +3,14 @@ call plug#begin()
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 "Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippetsd'
+"Plug 'honza/vim-snippetsd'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-fugitive',
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
@@ -36,7 +37,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'rainerborene/vim-reek'
+"Plug 'rainerborene/vim-reek'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -149,7 +150,6 @@ map <Leader>r :call RunCurrentSpecFile()<CR>
 map <Leader>e :call RunNearestSpec()<CR>
 map <Leader>q :call RunLastSpec()<CR>
 map <Leader>w :call RunAllSpecs()<CR>
-
 
 " easy navigation between splits
 nnoremap <C-J> <C-W><C-J>
