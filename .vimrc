@@ -8,10 +8,10 @@ endif
 " Remap leader key to ,
 let g:mapleader=','
 
-
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Show hidden files in NERDtree
@@ -161,8 +161,6 @@ noremap <Leader>z :Ack! <cword><CR>
 vnoremap <Leader>z y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
 
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake', { 'for': 'ruby' }
