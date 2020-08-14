@@ -1,8 +1,8 @@
 "Autoinstall VimPlug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Remap leader key to ,
@@ -26,8 +26,8 @@ nmap <leader>tf :NERDTreeFind<CR>
 
 " Closes NERDTree when it is the only window left open
 augroup CloseNERDTreeIfOnlyBuffer
-  autocmd!
-  autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	autocmd!
+	autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -61,14 +61,14 @@ Plug 'justinmk/vim-sneak'
 let g:sneak#label = 1
 
 " Installing colorscheme with dark mode enabled
-Plug 'mhartington/oceanic-next'
-"Plug 'tyrannicaltoucan/vim-quantum'
-"let g:quantum_black = 1
+"Plug 'mhartington/oceanic-next'
+Plug 'tyrannicaltoucan/vim-quantum'
+let g:quantum_black = 1
 
 " Airline plugin
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme = 'dark'
+let g:airline_theme = 'quantum'
 let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
 let g:one_allow_italics = 1
@@ -79,28 +79,26 @@ Plug 'machakann/vim-highlightedyank'
 " Code Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+			\ 'branch': 'next',
+			\ 'do': 'bash install.sh',
+			\ }
 " future extensions: coc-yank, coc-sql, coc-terminal, coc-docker
 
 let g:coc_global_extensions = ['coc-solargraph', 'coc-pairs']
 let g:LanguageClient_serverCommands = {
-  \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-  \ }
+			\ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+			\ }
 
 nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -109,6 +107,20 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -120,11 +132,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -202,13 +214,13 @@ set background=dark
 set termguicolors
 
 " Set up quantum as colorscheme in silent mode due to fresh installs
-colorscheme OceanicNext " quantum
+colorscheme quantum "OceanicNext
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
 augroup EscToNormalModeOnTerminalUnlessFZF
-  autocmd!
-  autocmd TermOpen * if !exists("b:fzf") | tnoremap <buffer> <Esc> <C-\><C-n> | endif
+	autocmd!
+	autocmd TermOpen * if !exists("b:fzf") | tnoremap <buffer> <Esc> <C-\><C-n> | endif
 augroup END
 
 " Enable highlighting and previewing substitutions
@@ -229,6 +241,13 @@ nnoremap <Leader>d /<C-r><C-w>
 noremap <leader>p :vsp<CR>
 " split horizontally
 noremap <leader>o :sp<CR>
+
+" new tab
+nnoremap <Leader>n :tabnew<CR>
+
+" Auto indent the whole file
+map <F7> gg=G<C-o><C-o>
+
 
 set title
 set autoindent
@@ -266,7 +285,7 @@ set foldmethod=indent
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-  set undodir=~/.vim/undo
+	set undodir=~/.vim/undo
 endif
 
 let g:vim_markdown_conceal = 2
@@ -283,12 +302,12 @@ nnoremap <C-Right> gT<CR>
 
 " Run a alt command from a given path to return the test file.
 function! AltCommand(path, vim_command)
-  let l:alternate = system("alt " . a:path)
-  if empty(l:alternate)
-    echo "No alternate file for " . a:path . " exists!"
-  else
-    exec a:vim_command . " " . l:alternate
-  endif
+	let l:alternate = system("alt " . a:path)
+	if empty(l:alternate)
+		echo "No alternate file for " . a:path . " exists!"
+	else
+		exec a:vim_command . " " . l:alternate
+	endif
 endfunction
 
 " Find the alternate file for the current path and open it
@@ -299,18 +318,18 @@ set grepprg=rg\ --smart-case\ --vimgrep
 
 " Strips any kind of carriage when copy/pasting. Ex: ^M
 if !empty($WAYLAND_DISPLAY)
-  let g:clipboard = {
-        \   'name': 'wayland-strip-carriage',
-        \   'copy': {
-        \      '+': 'wl-copy --foreground --type text/plain',
-        \      '*': 'wl-copy --foreground --type text/plain --primary',
-        \    },
-        \   'paste': {
-        \      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
-        \      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
-        \   },
-        \   'cache_enabled': 1,
-        \ }
+	let g:clipboard = {
+				\   'name': 'wayland-strip-carriage',
+				\   'copy': {
+				\      '+': 'wl-copy --foreground --type text/plain',
+				\      '*': 'wl-copy --foreground --type text/plain --primary',
+				\    },
+				\   'paste': {
+				\      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
+				\      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
+				\   },
+				\   'cache_enabled': 1,
+				\ }
 endif
 
 " ctags settings
