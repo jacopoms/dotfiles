@@ -35,6 +35,21 @@ Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
+" remapping the coors for the preview
+"let g:fzf_colors =
+"\ { 'fg':      ['fg', 'Normal'],
+  "\ 'bg':      ['bg', 'Normal'],
+  "\ 'hl':      ['fg', 'Comment'],
+  "\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  "\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  "\ 'hl+':     ['fg', 'Statement'],
+  "\ 'info':    ['fg', 'PreProc'],
+  "\ 'border':  ['fg', 'Ignore'],
+  "\ 'prompt':  ['fg', 'Conditional'],
+  "\ 'pointer': ['fg', 'Exception'],
+  "\ 'marker':  ['fg', 'Keyword'],
+  "\ 'spinner': ['fg', 'Label'],
+  "\ 'header':  ['fg', 'Comment'] }
 
 " Plug 'liuchengxu/vim-clap'
 " let g:clap_provider_grep_delay = 0
@@ -61,17 +76,23 @@ Plug 'justinmk/vim-sneak'
 let g:sneak#label = 1
 
 " Installing colorscheme with dark mode enabled
-"Plug 'mhartington/oceanic-next'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'mhartington/oceanic-next'
 Plug 'tyrannicaltoucan/vim-quantum'
-let g:quantum_black = 1
-
+Plug 'cormacrelf/vim-colors-github'
+"let g:quantum_black = 1
+Plug 'patstockwell/vim-monokai-tasty'
 " Airline plugin
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme = 'quantum'
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
-let g:one_allow_italics = 1
+"let g:one_allow_italics = 1
+let g:github_colors_soft = 1
+let g:github_colors_block_diffmark = 0
+
+
 
 " Highligh yanks
 Plug 'machakann/vim-highlightedyank'
@@ -99,6 +120,8 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Search for input.
+nnoremap <silent><space>a :CocSearch
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -148,8 +171,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
-set statusline+=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
+"set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline+=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
 autocmd User CocGitStatusChange {command}
 
 " Add more text object to operate(|, [, {, etc)
@@ -160,8 +183,9 @@ Plug 'mbbill/undotree'
 nnoremap <Leader>u :UndotreeToggle<CR>
 
 " Linter
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 
+" Git
 Plug 'tpope/vim-fugitive'
 
 " Ack plugin
@@ -214,7 +238,8 @@ set background=dark
 set termguicolors
 
 " Set up quantum as colorscheme in silent mode due to fresh installs
-colorscheme quantum "OceanicNext
+"let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
+colorscheme quantum "monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
@@ -285,7 +310,7 @@ set foldmethod=indent
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-	set undodir=~/.vim/undo
+  set undodir=~/.vim/undo
 endif
 
 let g:vim_markdown_conceal = 2
@@ -336,4 +361,4 @@ endif
 "
 "let g:gutentags_trace = 0
 set tags=tags
-set statusline+=%{gutentags#statusline()}
+"set statusline+=%{gutentags#statusline()}
