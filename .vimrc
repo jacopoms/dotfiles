@@ -85,7 +85,7 @@ Plug 'patstockwell/vim-monokai-tasty'
 " Airline plugin
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme = 'quantum'
+let g:airline_theme = 'monokai_tasty'
 "let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
 "let g:one_allow_italics = 1
@@ -110,10 +110,13 @@ let g:LanguageClient_serverCommands = {
 			\ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
 			\ }
 
-nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
+nmap <F5> <Plug>(lcn-menu)
+"nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
+nmap <silent>H <Plug>(lcn-hover)
+"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nmap <silent> gd <Plug>(lcn-definition)
+"nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nmap <silent> <F2> <Plug>(lcn-rename)
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
@@ -210,6 +213,8 @@ Plug 'tpope/vim-surround'
 Plug 'jparise/vim-graphql'
 Plug 'rstacruz/vim-closer'
 Plug 'thoughtbot/vim-rspec'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'lukhio/vim-mapping-conflicts'
 " RSpec.vim mappings
 "let g:rspec_runner = "os_x_iterm"
 let g:rspec_command = "!bundle exec rspec --color {spec}"
@@ -239,7 +244,7 @@ set termguicolors
 
 " Set up quantum as colorscheme in silent mode due to fresh installs
 "let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
-colorscheme quantum "monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
+colorscheme monokai " onedark/monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
@@ -361,4 +366,4 @@ endif
 "
 "let g:gutentags_trace = 0
 set tags=tags
-"set statusline+=%{gutentags#statusline()}
+set statusline+=%{gutentags#statusline()}
