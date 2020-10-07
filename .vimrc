@@ -281,7 +281,7 @@ map <F7> gg=G<C-o><C-o>
 
 set title
 set autoindent
-set relativenumber
+set norelativenumber
 set encoding=utf-8 nobomb
 scriptencoding utf-8
 set binary
