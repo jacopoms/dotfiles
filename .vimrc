@@ -230,6 +230,7 @@ set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
 " Turn on line numbers
 set number
+set norelativenumber
 
 " Ignore case on patterns unless specified
 set ignorecase
@@ -281,7 +282,6 @@ map <F7> gg=G<C-o><C-o>
 
 set title
 set autoindent
-set norelativenumber
 set encoding=utf-8 nobomb
 scriptencoding utf-8
 set binary
