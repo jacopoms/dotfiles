@@ -30,26 +30,28 @@ augroup CloseNERDTreeIfOnlyBuffer
 	autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
+let g:fzf_layout = { 'down': '40%' }
+let g:fzf_preview_window = 'right:60%'
 " remapping the coors for the preview
-"let g:fzf_colors =
-"\ { 'fg':      ['fg', 'Normal'],
-  "\ 'bg':      ['bg', 'Normal'],
-  "\ 'hl':      ['fg', 'Comment'],
-  "\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  "\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  "\ 'hl+':     ['fg', 'Statement'],
-  "\ 'info':    ['fg', 'PreProc'],
-  "\ 'border':  ['fg', 'Ignore'],
-  "\ 'prompt':  ['fg', 'Conditional'],
-  "\ 'pointer': ['fg', 'Exception'],
-  "\ 'marker':  ['fg', 'Keyword'],
-  "\ 'spinner': ['fg', 'Label'],
-  "\ 'header':  ['fg', 'Comment'] }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+	\ 'bg':      ['bg', 'Normal'],
+	\ 'hl':      ['fg', 'Comment'],
+	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+	\ 'hl+':     ['fg', 'Statement'],
+	\ 'info':    ['fg', 'PreProc'],
+	\ 'border':  ['fg', 'Ignore'],
+	\ 'prompt':  ['fg', 'Conditional'],
+	\ 'pointer': ['fg', 'Exception'],
+	\ 'marker':  ['fg', 'Keyword'],
+	\ 'spinner': ['fg', 'Label'],
+	\ 'header':  ['fg', 'Comment'] }
 
 " Plug 'liuchengxu/vim-clap'
 " let g:clap_provider_grep_delay = 0
@@ -85,7 +87,7 @@ Plug 'patstockwell/vim-monokai-tasty'
 " Airline plugin
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme = 'monokai_tasty'
+let g:airline_theme = 'onedark'
 "let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
 "let g:one_allow_italics = 1
@@ -191,13 +193,9 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 " Git
 Plug 'tpope/vim-fugitive'
 
-" Ack plugin
-
-Plug 'mileszs/ack.vim'
-
-" map Ack to \z
-noremap <Leader>z :Ack! <cword><CR>
-vnoremap <Leader>z y:Ack! <C-r>=fnameescape(@")<CR><CR>
+" map Ag to \z
+noremap <Leader>a :Ag <cword><CR>
+vnoremap <Leader>a y:Ag <C-r>=fnameescape(@")<CR><CR>
 
 
 Plug 'vim-ruby/vim-ruby'
@@ -229,8 +227,7 @@ call plug#end()
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
 " Turn on line numbers
-set number
-set norelativenumber
+set number norelativenumber
 
 " Ignore case on patterns unless specified
 set ignorecase
@@ -245,7 +242,7 @@ set termguicolors
 
 " Set up quantum as colorscheme in silent mode due to fresh installs
 "let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
-colorscheme monokai " onedark/monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
+colorscheme  onedark  "monokai/monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
@@ -288,7 +285,7 @@ set binary
 set noeol
 set clipboard=unnamedplus
 "" powerline
-set rtp+=/usr/local/lib/python3.6/site-packages/powerline/bindings/vim
+"set rtp+=/usr/local/lib/python3.6/site-packages/powerline/bindings/vim
 
 set showcmd
 set cursorline
