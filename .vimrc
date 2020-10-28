@@ -4,7 +4,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 " Remap leader key to ,
 let g:mapleader=','
 
@@ -18,8 +17,8 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 let NERDTreeShowHidden=1
 
 " === Nerdtree shorcuts === "
-"  <leader>n - Toggle NERDTree on/off
-"  <leader>f - Opens current file location in NERDTree
+"  <leader>t - Toggle NERDTree on/off
+"  <leader>tf - Opens current file location in NERDTree
 "autocmd vimenter * NERDTree
 nmap <leader>t :NERDTreeToggle<CR>
 nmap <leader>tf :NERDTreeFind<CR>
@@ -30,9 +29,11 @@ augroup CloseNERDTreeIfOnlyBuffer
 	autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
-Plug 'junegunn/fzf.vim'
+" FZF Plugin settings
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 let g:fzf_layout = { 'down': '40%' }
@@ -87,7 +88,8 @@ Plug 'patstockwell/vim-monokai-tasty'
 " Airline plugin
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme = 'onedark'
+Plug 'rakr/vim-one'
+let g:airline_theme = 'onedark' "/onedark/one
 "let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
 "let g:one_allow_italics = 1
@@ -108,9 +110,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 " future extensions: coc-yank, coc-sql, coc-terminal, coc-docker
 
 let g:coc_global_extensions = ['coc-solargraph', 'coc-pairs']
-let g:LanguageClient_serverCommands = {
-			\ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-			\ }
+"let g:LanguageClient_serverCommands = {
+			"\ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+			"\ }
 
 nmap <F5> <Plug>(lcn-menu)
 "nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
@@ -242,7 +244,7 @@ set termguicolors
 
 " Set up quantum as colorscheme in silent mode due to fresh installs
 "let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
-colorscheme  onedark  "monokai/monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
+colorscheme  onedark "one/onedark/monokai/monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
