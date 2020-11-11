@@ -9,19 +9,21 @@ let g:mapleader=','
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_startify = 1
 " Show hidden files in NERDtree
-let NERDTreeShowHidden=1
+"let NERDTreeShowHidden=1
 
 " === Nerdtree shorcuts === "
 "  <leader>t - Toggle NERDTree on/off
 "  <leader>tf - Opens current file location in NERDTree
 "autocmd vimenter * NERDTree
-nmap <leader>t :NERDTreeToggle<CR>
-nmap <leader>tf :NERDTreeFind<CR>
+"nmap <leader>t :NERDTreeToggle<CR>
+"nmap <leader>tf :NERDTreeFind<CR>
 
 " Closes NERDTree when it is the only window left open
 augroup CloseNERDTreeIfOnlyBuffer
@@ -36,7 +38,10 @@ Plug 'junegunn/fzf.vim'
 
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
-let g:fzf_layout = { 'down': '40%' }
+nnoremap <Leader>g :GFiles<CR>
+nnoremap <Leader>l :GFiles?<CR>
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 let g:fzf_preview_window = 'right:60%'
 " remapping the coors for the preview
 let g:fzf_colors =
@@ -109,7 +114,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 			\ }
 " future extensions: coc-yank, coc-sql, coc-terminal, coc-docker
 
-let g:coc_global_extensions = ['coc-solargraph', 'coc-pairs']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-pairs', 'coc-json', 'coc-explorer']
 "let g:LanguageClient_serverCommands = {
 			"\ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
 			"\ }
@@ -129,6 +134,8 @@ nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Search for input.
 nnoremap <silent><space>a :CocSearch
+" Open explorer
+nnoremap <leader>t :CocCommand explorer<cr>
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -195,7 +202,7 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 " Git
 Plug 'tpope/vim-fugitive'
 
-" map Ag to \z
+" map Ag to ,a
 noremap <Leader>a :Ag <cword><CR>
 vnoremap <Leader>a y:Ag <C-r>=fnameescape(@")<CR><CR>
 
@@ -215,8 +222,9 @@ Plug 'rstacruz/vim-closer'
 Plug 'thoughtbot/vim-rspec'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lukhio/vim-mapping-conflicts'
+Plug 'mhinz/vim-startify'
 " RSpec.vim mappings
-"let g:rspec_runner = "os_x_iterm"
+let g:rspec_runner = "os_x_iterm"
 let g:rspec_command = "!bundle exec rspec --color {spec}"
 map <Leader>r :call RunCurrentSpecFile()<CR>
 map <Leader>e :call RunNearestSpec()<CR>
@@ -328,6 +336,8 @@ autocmd VimResized * wincmd =
 nnoremap <C-Left> gt<CR>
 nnoremap <C-Right> gT<CR>
 
+noremap <leader>wk :windo wincmd K<CR>
+noremap <leader>wh :windo wincmd H<CR>
 
 " Run a alt command from a given path to return the test file.
 function! AltCommand(path, vim_command)
