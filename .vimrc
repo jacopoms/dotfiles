@@ -115,9 +115,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 " future extensions: coc-yank, coc-sql, coc-terminal, coc-docker
 
 let g:coc_global_extensions = ['coc-solargraph', 'coc-pairs', 'coc-json', 'coc-explorer']
-"let g:LanguageClient_serverCommands = {
-			"\ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-			"\ }
+let g:LanguageClient_serverCommands = {
+			\ 'ruby': ['~/.rbenv/shims/solargraph', 'socket'],
+			\ }
 
 nmap <F5> <Plug>(lcn-menu)
 "nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
@@ -201,7 +201,9 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
+" Ag - the silver searcher
 " map Ag to ,a
 noremap <Leader>a :Ag <cword><CR>
 vnoremap <Leader>a y:Ag <C-r>=fnameescape(@")<CR><CR>
@@ -219,18 +221,9 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
 Plug 'jparise/vim-graphql'
 Plug 'rstacruz/vim-closer'
-Plug 'thoughtbot/vim-rspec'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'mhinz/vim-startify'
-" RSpec.vim mappings
-let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = "!bundle exec rspec --color {spec}"
-map <Leader>r :call RunCurrentSpecFile()<CR>
-map <Leader>e :call RunNearestSpec()<CR>
-map <Leader>q :call RunLastSpec()<CR>
-map <Leader>w :call RunAllSpecs()<CR>
-
 call plug#end()
 
 " Tab properties
