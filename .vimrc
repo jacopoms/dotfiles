@@ -89,20 +89,25 @@ Plug 'mhartington/oceanic-next'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'cormacrelf/vim-colors-github'
 "let g:quantum_black = 1
+Plug 'altercation/vim-colors-solarized'
 Plug 'patstockwell/vim-monokai-tasty'
+Plug 'KeitaNakamura/neodark.vim'
 " Airline plugin
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rakr/vim-one'
-let g:airline_theme = 'onedark' "/onedark/one
+Plug 'srcery-colors/srcery-vim'
+let g:airline_theme =  'neodark' "github/onedark/one
 "let g:airline_powerline_fonts = 1
 let g:rehash256 = 1
 "let g:one_allow_italics = 1
 let g:github_colors_soft = 1
 let g:github_colors_block_diffmark = 0
-
-
-
+let g:neodark#background = '#202020'
+let g:neodark#use_256color = 1
+let g:neodark#terminal_transparent = 1
+let g:neodark#solid_vertsplit = 1
+let g:neodark#use_custom_terminal_theme = 1
 " Highligh yanks
 Plug 'machakann/vim-highlightedyank'
 
@@ -189,6 +194,9 @@ nmap <leader>rn <Plug>(coc-rename)
 "set statusline+=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
 autocmd User CocGitStatusChange {command}
 
+" Tabnine plugin
+Plug 'codota/tabnine-vim'
+
 " Add more text object to operate(|, [, {, etc)
 Plug 'wellle/targets.vim'
 
@@ -204,12 +212,29 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Ag - the silver searcher
-" map Ag to ,a
-noremap <Leader>a :Ag <cword><CR>
-vnoremap <Leader>a y:Ag <C-r>=fnameescape(@")<CR><CR>
+" map Ag to ,h
+noremap <Leader>h :Ag<space>
+
+Plug 'mileszs/ack.vim'
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+"noremap <Leader>a :Ack! <cword><CR>
+vnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
 
+Plug 'terryma/vim-multiple-cursors'
+
+" Ruby specific settings
 Plug 'vim-ruby/vim-ruby'
+set nocompatible      " We're running Vim, not Vi!
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
@@ -224,6 +249,13 @@ Plug 'rstacruz/vim-closer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'mhinz/vim-startify'
+Plug 'voldikss/vim-skylight'
+" Sky Preview Configuration
+nnoremap <silent> go :SkylightJumpTo<CR>
+nnoremap <silent> gp :SkylightPreview<CR>
+
+nnoremap <silent><expr> <C-f> skylight#float#has_scroll() ? skylight#float#scroll(1) : "\<C-f>"
+nnoremap <silent><expr> <C-b> skylight#float#has_scroll() ? skylight#float#scroll(0) : "\<C-b>"
 call plug#end()
 
 " Tab properties
@@ -239,13 +271,13 @@ set smartcase
 " Turn on syntax
 syntax on
 
-" Turn on dark brackground and true color
+" Turn on dark/light brackground and true color
 set background=dark
 set termguicolors
-
+" set t_Co=256  " make use of 256 terminal colors only for summerfruit256
 " Set up quantum as colorscheme in silent mode due to fresh installs
 "let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
-colorscheme  onedark "one/onedark/monokai/monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
+colorscheme  neodark "onedark/summerfruit256/onedark/one/onedark/monokai/monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
