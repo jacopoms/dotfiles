@@ -195,7 +195,7 @@ nmap <leader>rn <Plug>(coc-rename)
 autocmd User CocGitStatusChange {command}
 
 " Tabnine plugin
-Plug 'codota/tabnine-vim'
+"Plug 'codota/tabnine-vim'
 
 " Add more text object to operate(|, [, {, etc)
 Plug 'wellle/targets.vim'
@@ -256,6 +256,11 @@ nnoremap <silent> gp :SkylightPreview<CR>
 
 nnoremap <silent><expr> <C-f> skylight#float#has_scroll() ? skylight#float#scroll(1) : "\<C-f>"
 nnoremap <silent><expr> <C-b> skylight#float#has_scroll() ? skylight#float#scroll(0) : "\<C-b>"
+
+" Elixir configuration
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
+let g:mix_format_on_save = 1
 call plug#end()
 
 " Tab properties
