@@ -5,8 +5,8 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " Remap leader key to ,
-let g:mapleader=','
-
+let g:mapleader=' '
+nnoremap <SPACE> <Nop>
 call plug#begin('~/.local/share/nvim/plugged')
 
 "Plug 'scrooloose/nerdtree'
@@ -93,8 +93,12 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'patstockwell/vim-monokai-tasty'
 Plug 'KeitaNakamura/neodark.vim'
 " Airline plugin
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+
 Plug 'rakr/vim-one'
 Plug 'srcery-colors/srcery-vim'
 let g:airline_theme =  'neodark' "github/onedark/one
@@ -119,7 +123,12 @@ Plug 'autozimu/LanguageClient-neovim', {
 			\ }
 " future extensions: coc-yank, coc-sql, coc-terminal, coc-docker
 
-let g:coc_global_extensions = ['coc-solargraph', 'coc-pairs', 'coc-json', 'coc-explorer']
+let g:coc_global_extensions = [
+	\ 'coc-solargraph',
+	\ 'coc-pairs',
+	\ 'coc-json',
+  \ 'coc-explorer'
+	\ ]
 let g:LanguageClient_serverCommands = {
 			\ 'ruby': ['~/.rbenv/shims/solargraph', 'socket'],
 			\ }
@@ -132,13 +141,13 @@ nmap <silent> gd <Plug>(lcn-definition)
 "nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nmap <silent> <F2> <Plug>(lcn-rename)
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <leader>k  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>i  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>w  :<C-u>CocList -I symbols<cr>
 " Search for input.
-nnoremap <silent><space>a :CocSearch
+nnoremap <silent><leader>S :CocSearch<space>
 " Open explorer
 nnoremap <leader>t :CocCommand explorer<cr>
 
@@ -248,14 +257,8 @@ Plug 'jparise/vim-graphql'
 Plug 'rstacruz/vim-closer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lukhio/vim-mapping-conflicts'
-Plug 'mhinz/vim-startify'
-Plug 'voldikss/vim-skylight'
-" Sky Preview Configuration
-nnoremap <silent> go :SkylightJumpTo<CR>
-nnoremap <silent> gp :SkylightPreview<CR>
+Plug 'tpope/vim-sleuth'
 
-nnoremap <silent><expr> <C-f> skylight#float#has_scroll() ? skylight#float#scroll(1) : "\<C-f>"
-nnoremap <silent><expr> <C-b> skylight#float#has_scroll() ? skylight#float#scroll(0) : "\<C-b>"
 
 " Elixir configuration
 Plug 'elixir-editors/vim-elixir'
@@ -365,9 +368,16 @@ autocmd VimResized * wincmd =
 
 nnoremap <C-Left> gt<CR>
 nnoremap <C-Right> gT<CR>
+" TAB in general mode will move to text buffer
+nnoremap <silent> <TAB> :bnext<CR>
+" SHIFT-TAB will go back
+nnoremap <silent> <S-TAB> :bprevious<CR>
 
-noremap <leader>wk :windo wincmd K<CR>
+
+" Swap horizontally splits
 noremap <leader>wh :windo wincmd H<CR>
+" Swap vertically splits
+noremap <leader>wk :windo wincmd K<CR>
 
 " Run a alt command from a given path to return the test file.
 function! AltCommand(path, vim_command)
