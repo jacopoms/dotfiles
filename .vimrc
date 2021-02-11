@@ -11,8 +11,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
-let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_startify = 1
+"let g:webdevicons_enable_airline_statusline = 1
+"let g:webdevicons_enable_startify = 1
 nmap <Leader>/  <Plug>NERDCommenterToggle
 
 " FZF Plugin settings
@@ -74,26 +74,27 @@ let g:sneak#label = 1
 "let g:quantum_black = 1
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'patstockwell/vim-monokai-tasty'
-Plug 'KeitaNakamura/neodark.vim'
-" Airline plugin
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'KeitaNakamura/neodark.vim'
+"let g:neodark#background = '#242424'
+""let g:neodark#use_256color = 0
+"let g:neodark#terminal_transparent = 1
+"let g:neodark#solid_vertsplit = 1
+"let g:neodark#use_custom_terminal_theme = 1
 
-"Plug 'rakr/vim-one'
-"Plug 'srcery-colors/srcery-vim'
-let g:airline_theme = 'neodark' "github/onedark/one
-"let g:airline_powerline_fonts = 1
+Plug 'liuchengxu/space-vim-theme'
+Plug 'joshdick/onedark.vim'
+
+Plug 'glepnir/spaceline.vim'
+
+"Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+let g:spaceline_seperate_style = 'slant'
+let g:spaceline_colorscheme = 'space'
+let g:space_vim_transp_bg = 0
 let g:rehash256 = 1
 "let g:one_allow_italics = 1
 "let g:github_colors_soft = 1
 "let g:github_colors_block_diffmark = 0
-let g:neodark#background = '#242424'
-"let g:neodark#use_256color = 0
-let g:neodark#terminal_transparent = 1
-let g:neodark#solid_vertsplit = 1
-let g:neodark#use_custom_terminal_theme = 1
 " Highligh yanks
 Plug 'machakann/vim-highlightedyank'
 
@@ -131,7 +132,7 @@ nnoremap <silent><nowait> <leader>w  :<C-u>CocList -I symbols<cr>
 " Search for input.
 nnoremap <silent><leader>S :CocSearch<space>
 " Open explorer
-nnoremap <leader>t :CocCommand explorer<cr>
+nnoremap <leader>e :CocCommand explorer<cr>
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -183,7 +184,7 @@ nmap <leader>rn <Plug>(coc-rename)
 " provide custom statusline: lightline.vim, vim-airline.
 "set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
 "set statusline+=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
-autocmd User CocGitStatusChange {command}
+"autocmd User CocGitStatusChange {command}
 
 " Tabnine plugin
 "Plug 'codota/tabnine-vim'
@@ -240,6 +241,7 @@ Plug 'rstacruz/vim-closer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'tpope/vim-sleuth'
+Plug 'sheerun/vim-polyglot'
 
 
 " Elixir configuration
@@ -267,7 +269,7 @@ set termguicolors
 " set t_Co=256  " make use of 256 terminal colors only for summerfruit256
 " Set up quantum as colorscheme in silent mode due to fresh installs
 "let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
-colorscheme neodark "onedark/summerfruit256/onedark/one/onedark/monokai/monokai_pro/github/vim-monokai-tasty/OceanicNext/quantum
+colorscheme  onedark "space_vim_theme/neodark
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
@@ -311,7 +313,7 @@ set noeol
 set clipboard=unnamedplus
 "" powerline
 "set rtp+=/usr/local/lib/python3.6/site-packages/powerline/bindings/vim
-
+set mouse=a
 set showcmd
 set cursorline
 set colorcolumn=100
@@ -395,5 +397,5 @@ endif
 " ctags settings
 "
 "let g:gutentags_trace = 0
-set tags=tags
-set statusline+=%{gutentags#statusline()}
+"set tags+=tags
+"set statusline+=%{gutentags#statusline()}
