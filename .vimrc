@@ -220,7 +220,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'tpope/vim-sleuth'
 Plug 'sheerun/vim-polyglot'
+
+" testing
 Plug 'vim-test/vim-test'
+noremap <Leader>t :TestFile<CR>
+
 
 " Elixir configuration
 Plug 'elixir-editors/vim-elixir'
