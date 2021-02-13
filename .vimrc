@@ -9,6 +9,17 @@ let g:mapleader=' '
 nnoremap <SPACE> <Nop>
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'preservim/nerdtree'
+nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeFocus<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
 Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 "let g:webdevicons_enable_airline_statusline = 1
@@ -91,6 +102,8 @@ Plug 'ryanoasis/vim-devicons'
 let g:spaceline_seperate_style = 'slant'
 let g:spaceline_colorscheme = 'space'
 let g:space_vim_transp_bg = 0
+let g:spaceline_diagnostic_tool = 'ale'
+let g:spaceline_diff_tool = 'git-gutter'
 let g:rehash256 = 1
 "let g:one_allow_italics = 1
 "let g:github_colors_soft = 1
@@ -98,94 +111,62 @@ let g:rehash256 = 1
 " Highligh yanks
 Plug 'machakann/vim-highlightedyank'
 
+" Linter
+Plug 'dense-analysis/ale'
+
+let g:ale_completion_autoimport = 1
+
+let b:ale_linters = {
+\   'javascript': ['eslint'],
+\   'ruby': ['ruby','solargraph'],
+\ }
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop'],
+\}
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline=%{LinterStatus()}
+
+let g:ale_fix_on_save = 1
+
+
 " Code Completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-" future extensions: coc-yank, coc-sql, coc-terminal, coc-docker
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
-let g:coc_global_extensions = [
-      \ 'coc-solargraph',
-      \ 'coc-pairs',
-      \ 'coc-json',
-      \ 'coc-explorer'
-      \ ]
 let g:LanguageClient_serverCommands = {
-      \ 'ruby': ['~/.rbenv/shims/solargraph', 'socket'],
+      \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
       \ }
 
-nmap <F5> <Plug>(lcn-menu)
-"nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
-nmap <silent>H <Plug>(lcn-hover)
-"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nmap <silent> gd <Plug>(lcn-definition)
-"nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-nmap <silent> <F2> <Plug>(lcn-rename)
-" Show commands.
-nnoremap <silent><nowait> <leader>k  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <leader>i  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <leader>w  :<C-u>CocList -I symbols<cr>
-" Search for input.
-nnoremap <silent><leader>S :CocSearch<space>
-" Open explorer
-nnoremap <leader>e :CocCommand explorer<cr>
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
+      \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-"set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
-"set statusline+=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
-"autocmd User CocGitStatusChange {command}
-
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 " Tabnine plugin
 "Plug 'codota/tabnine-vim'
 
@@ -195,9 +176,6 @@ Plug 'wellle/targets.vim'
 " Undo tree visualization
 Plug 'mbbill/undotree'
 nnoremap <Leader>u :UndotreeToggle<CR>
-
-" Linter
-"Plug 'dense-analysis/ale'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -242,7 +220,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'lukhio/vim-mapping-conflicts'
 Plug 'tpope/vim-sleuth'
 Plug 'sheerun/vim-polyglot'
-
+Plug 'vim-test/vim-test'
 
 " Elixir configuration
 Plug 'elixir-editors/vim-elixir'
