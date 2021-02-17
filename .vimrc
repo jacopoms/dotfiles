@@ -15,15 +15,13 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeFocus<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 Plug 'preservim/nerdcommenter'
-Plug 'ryanoasis/vim-devicons'
-"let g:webdevicons_enable_airline_statusline = 1
-"let g:webdevicons_enable_startify = 1
 nmap <Leader>/  <Plug>NERDCommenterToggle
 
 " FZF Plugin settings
@@ -323,8 +321,8 @@ if exists("&undodir")
   set undodir=~/.vim/undo
 endif
 
-let g:vim_markdown_conceal = 2
-set conceallevel=2
+let g:vim_markdown_conceal = 0
+set conceallevel=0
 
 " remove trailing spaces automatically
 autocmd BufWritePre * %s/\s\+$//e
