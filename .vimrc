@@ -13,7 +13,7 @@ Plug 'preservim/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeFocus<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <Leader>ef :NERDTreeFind<CR>
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -192,7 +192,9 @@ cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 "noremap <Leader>a :Ack! <cword><CR>
 vnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
-
+let g:ackhighlight = 1
+let g:ackpreview = 1
+let g:ack_handler = "topright lopen 30"
 
 Plug 'terryma/vim-multiple-cursors'
 
@@ -211,6 +213,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ludovicchabant/vim-gutentags'
+
+
 Plug 'tpope/vim-surround'
 Plug 'jparise/vim-graphql'
 Plug 'rstacruz/vim-closer'
@@ -376,6 +380,6 @@ endif
 
 " ctags settings
 "
-"let g:gutentags_trace = 0
-"set tags+=tags
-"set statusline+=%{gutentags#statusline()}
+let g:gutentags_trace = 0
+set tags+=tags
+set statusline+=%{gutentags#statusline()}
