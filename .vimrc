@@ -89,16 +89,18 @@ let g:sneak#label = 1
 "let g:neodark#terminal_transparent = 1
 "let g:neodark#solid_vertsplit = 1
 "let g:neodark#use_custom_terminal_theme = 1
+" Plug 'liuchengxu/space-vim-theme'
 
-Plug 'liuchengxu/space-vim-theme'
 Plug 'joshdick/onedark.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'glepnir/spaceline.vim'
 
-"Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'ryanoasis/vim-devicons'
+
 let g:spaceline_seperate_style = 'slant'
-let g:spaceline_colorscheme = 'space'
+let g:spaceline_colorscheme = 'one'
 let g:space_vim_transp_bg = 0
 let g:spaceline_diagnostic_tool = 'ale'
 let g:spaceline_diff_tool = 'git-gutter'
@@ -175,9 +177,11 @@ Plug 'wellle/targets.vim'
 Plug 'mbbill/undotree'
 nnoremap <Leader>u :UndotreeToggle<CR>
 
-" Git
+" Git - Github
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-rhubarb'
+
 
 " Ag - the silver searcher
 " map Ag to space + p
@@ -250,10 +254,10 @@ syntax on
 " Turn on dark/light brackground and true color
 set background=dark
 set termguicolors
-" set t_Co=256  " make use of 256 terminal colors only for summerfruit256
+set t_Co=256  " make use of 256 terminal colors only for summerfruit256
 " Set up quantum as colorscheme in silent mode due to fresh installs
 "let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
-colorscheme  onedark "space_vim_theme/neodark
+colorscheme Papercolor "onedark/neodark
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
