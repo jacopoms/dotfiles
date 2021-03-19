@@ -115,17 +115,22 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'dense-analysis/ale'
 
 let g:ale_completion_autoimport = 1
-
+let g:ale_elixir_elixir_ls_release='~/elixir-ls/release/'
 let b:ale_linters = {
 \   'javascript': ['eslint'],
-\   'ruby': ['ruby','solargraph'],
+\   'ruby': ['ruby', 'rubocop', 'solargraph', 'reek', 'rails_best_practice'],
+\   'elixir': ['elixir-ls'],
 \ }
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop'],
+\   'elixir':['mix_format'],
 \}
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
@@ -142,9 +147,6 @@ endfunction
 
 set statusline=%{LinterStatus()}
 
-let g:ale_fix_on_save = 1
-
-
 " Code Completion
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -157,6 +159,7 @@ let g:deoplete#enable_at_startup = 1
 
 let g:LanguageClient_serverCommands = {
       \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+      \ 'elixir': ['~/elixir-ls/release/language_server.sh'],
       \ }
 
 inoremap <silent><expr> <TAB>
@@ -213,11 +216,13 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake', { 'for': 'ruby' }
 Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'rainerborene/vim-reek'
+let g:reek_line_limit = 1000
+
 Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ludovicchabant/vim-gutentags'
-
 
 Plug 'tpope/vim-surround'
 Plug 'jparise/vim-graphql'
