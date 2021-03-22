@@ -11,8 +11,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'preservim/nerdtree'
 nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeFocus<CR>
 nnoremap <Leader>ef :NERDTreeFind<CR>
 
 Plug 'ryanoasis/vim-devicons'
@@ -119,8 +117,8 @@ let g:ale_elixir_elixir_ls_release='~/elixir-ls/release/'
 let b:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ruby': ['ruby', 'rubocop', 'solargraph', 'reek', 'rails_best_practice'],
-\   'elixir': ['elixir-ls'],
-\ }
+\   'elixir': ['elixir-ls', 'mix'],
+\}
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -223,6 +221,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ludovicchabant/vim-gutentags'
+noremap <Leader>t :Tags<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'jparise/vim-graphql'
@@ -234,8 +233,7 @@ Plug 'sheerun/vim-polyglot'
 
 " testing
 Plug 'vim-test/vim-test'
-noremap <Leader>t :TestFile<CR>
-
+nnoremap <C-t> :TestFile<CR>
 
 " Elixir configuration
 Plug 'elixir-editors/vim-elixir'
