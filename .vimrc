@@ -94,11 +94,11 @@ Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'glepnir/spaceline.vim'
 
-Plug 'kyazdani42/nvim-web-devicons'
-"Plug 'ryanoasis/vim-devicons'
+"Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 let g:spaceline_seperate_style = 'slant'
-let g:spaceline_colorscheme = 'one'
+let g:spaceline_colorscheme = 'space'
 let g:space_vim_transp_bg = 0
 let g:spaceline_diagnostic_tool = 'ale'
 let g:spaceline_diff_tool = 'git-gutter'
@@ -114,9 +114,9 @@ Plug 'dense-analysis/ale'
 
 let g:ale_completion_autoimport = 1
 let g:ale_elixir_elixir_ls_release='~/elixir-ls/release/'
-let b:ale_linters = {
+let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'ruby': ['ruby', 'rubocop', 'solargraph', 'reek', 'rails_best_practice'],
+\   'ruby': ['ruby', 'rubocop', 'solargraph', 'reek'],
 \   'elixir': ['elixir-ls', 'mix'],
 \}
 
@@ -126,24 +126,12 @@ let g:ale_fixers = {
 \   'ruby': ['rubocop'],
 \   'elixir':['mix_format'],
 \}
+
 let g:ale_linters_explicit = 1
-let g:ale_lint_on_save = 1
+"let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
-
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-set statusline=%{LinterStatus()}
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
 
 " Code Completion
 if has('nvim')
@@ -260,7 +248,7 @@ set termguicolors
 set t_Co=256  " make use of 256 terminal colors only for summerfruit256
 " Set up quantum as colorscheme in silent mode due to fresh installs
 "let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
-colorscheme Papercolor "onedark/neodark
+colorscheme onedark "Papercolor/onedark/neodark
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
@@ -389,4 +377,4 @@ endif
 "
 let g:gutentags_trace = 0
 set tags+=tags
-set statusline+=%{gutentags#statusline()}
+set statusline=%{gutentags#statusline()}
