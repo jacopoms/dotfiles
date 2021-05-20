@@ -1,8 +1,8 @@
 "Autoinstall VimPlug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+      silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+                        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " Remap leader key to space
 let g:mapleader=' '
@@ -22,41 +22,48 @@ let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 Plug 'preservim/nerdcommenter'
 nmap <Leader>/  <Plug>NERDCommenterToggle
 
-" FZF Plugin settings
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Telescope Plugin
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" Find files using Telescope command-line sugar.
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>ht <cmd>Telescope help_tags<cr>
+nnoremap <leader>g <cmd>Telescope git_files<cr>
 
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>g :GFiles<CR>
-nnoremap <Leader>l :GFiles?<CR>
+" Dashboard Plugin
+Plug 'glepnir/dashboard-nvim'
+let g:dashboard_default_executive = 'telescope'
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
-let g:fzf_preview_window = 'right:60%'
-" remapping the coors for the preview
-let g:fzf_colors =
-      \ { 'fg':      ['fg', 'Normal'],
-      \ 'bg':      ['bg', 'Normal'],
-      \ 'hl':      ['fg', 'Comment'],
-      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-      \ 'hl+':     ['fg', 'Statement'],
-      \ 'info':    ['fg', 'PreProc'],
-      \ 'border':  ['fg', 'Normal'],
-      \ 'prompt':  ['fg', 'Conditional'],
-      \ 'pointer': ['fg', 'Exception'],
-      \ 'marker':  ['fg', 'Keyword'],
-      \ 'spinner': ['fg', 'Label'],
-      \ 'header':  ['fg', 'Comment'] }
+"nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+"nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+let g:dashboard_custom_header = [
+  \'               ▄▄██████████▄▄             ',
+  \'               ▀▀▀   ██   ▀▀▀             ',
+  \'       ▄██▄   ▄▄████████████▄▄   ▄██▄     ',
+  \'     ▄███▀  ▄████▀▀▀    ▀▀▀████▄  ▀███▄   ',
+  \'    ████▄ ▄███▀              ▀███▄ ▄████  ',
+  \'   ███▀█████▀▄████▄      ▄████▄▀█████▀███ ',
+  \'   ██▀  ███▀ ██████      ██████ ▀███  ▀██ ',
+  \'    ▀  ▄██▀  ▀████▀  ▄▄  ▀████▀  ▀██▄  ▀  ',
+  \'       ███           ▀▀           ███     ',
+  \'       ██████████████████████████████     ',
+  \'   ▄█  ▀██  ███   ██    ██   ███  ██▀  █▄ ',
+  \'   ███  ███ ███   ██    ██   ███▄███  ███ ',
+  \'   ▀██▄████████   ██    ██   ████████▄██▀ ',
+  \'    ▀███▀ ▀████   ██    ██   ████▀ ▀███▀  ',
+  \'     ▀███▄  ▀███████    ███████▀  ▄███▀   ',
+  \'       ▀███    ▀▀██████████▀▀▀   ███▀     ',
+  \'         ▀    ▄▄▄    ██    ▄▄▄    ▀       ',
+  \'               ▀████████████▀             ',
+\]
 
-" Plug 'liuchengxu/vim-clap'
-" let g:clap_provider_grep_delay = 0
-" let g:clap_provider_grep_blink = [0, 0]
-" let g:clap_provider_grep_enable_icon = 0
-" nnoremap <Leader>f :Clap files<CR>
-" nnoremap <Leader>b :Clap buffers<CR>
-
+" Formatting plugins
 Plug 'tpope/vim-endwise'
 Plug 'ntpeters/vim-better-whitespace'
 let g:strip_whitespace_on_save = 1
@@ -115,17 +122,17 @@ Plug 'dense-analysis/ale'
 let g:ale_completion_autoimport = 1
 let g:ale_elixir_elixir_ls_release='~/elixir-ls/release/'
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'ruby': ['ruby', 'rubocop', 'solargraph', 'reek'],
-\   'elixir': ['elixir-ls', 'mix'],
-\}
+                  \   'javascript': ['eslint'],
+                  \   'ruby': ['ruby', 'rubocop', 'solargraph', 'reek'],
+                  \   'elixir': ['elixir-ls', 'mix'],
+                  \}
 
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\   'ruby': ['rubocop'],
-\   'elixir':['mix_format'],
-\}
+                  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+                  \   'javascript': ['eslint'],
+                  \   'ruby': ['rubocop'],
+                  \   'elixir':['mix_format'],
+                  \}
 
 let g:ale_linters_explicit = 1
 "let g:ale_lint_on_save = 1
@@ -135,26 +142,26 @@ let g:ale_sign_warning = '.'
 
 " Code Completion
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'roxma/nvim-yarp'
+      Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
 
 let g:LanguageClient_serverCommands = {
-      \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-      \ 'elixir': ['~/elixir-ls/release/language_server.sh'],
-      \ }
+                  \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+                  \ 'elixir': ['~/elixir-ls/release/language_server.sh'],
+                  \ }
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#mappings#manual_complete()
+                  \ pumvisible() ? "\<C-n>" :
+                  \ <SID>check_back_space() ? "\<TAB>" :
+                  \ deoplete#mappings#manual_complete()
 function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
 " Tabnine plugin
 "Plug 'codota/tabnine-vim'
@@ -170,24 +177,6 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb'
-
-
-" Ag - the silver searcher
-" map Ag to space + p
-noremap <Leader>p :Ag<space>
-
-Plug 'mileszs/ack.vim'
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
-"noremap <Leader>a :Ack! <cword><CR>
-vnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
-let g:ackhighlight = 1
-let g:ackpreview = 1
-let g:ack_handler = "topright lopen 30"
 
 Plug 'terryma/vim-multiple-cursors'
 
@@ -209,8 +198,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ludovicchabant/vim-gutentags'
-noremap <Leader>t :Tags<CR>
-
 Plug 'tpope/vim-surround'
 Plug 'jparise/vim-graphql'
 Plug 'rstacruz/vim-closer'
@@ -253,12 +240,17 @@ colorscheme onedark "Papercolor/onedark/neodark
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
 augroup EscToNormalModeOnTerminalUnlessFZF
-  autocmd!
-  autocmd TermOpen * if !exists("b:fzf") | tnoremap <buffer> <Esc> <C-\><C-n> | endif
+      autocmd!
+      autocmd TermOpen * if !exists("b:fzf") | tnoremap <buffer> <Esc> <C-\><C-n> | endif
 augroup END
 
 " Enable highlighting and previewing substitutions
 set inccommand=split
+
+"substitute the word under the cursor with
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+"search for word under the cursor with
+nnoremap <Leader>d /<C-r><C-w>
 
 " Saving keystrokes when moving between splits
 nnoremap <C-j> <C-w><C-j>
@@ -266,18 +258,14 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
 
-"substitute the word under the cursor with
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-"search for word under the cursor with
-nnoremap <Leader>d /<C-r><C-w>
 
 " split vertically
-noremap <leader>v :vsp<CR>
+noremap <C-v> :vsp<CR>
 " split horizontally
-noremap <leader>h :sp<CR>
+noremap <C-h> :sp<CR>
 
 " new tab
-nnoremap <Leader>n :tabnew<CR>
+nnoremap <C-n> :tabnew<CR>
 
 " Auto indent the whole file
 map <F7> gg=G<C-o><C-o>
@@ -317,7 +305,7 @@ set foldmethod=indent
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-  set undodir=~/.vim/undo
+      set undodir=~/.vim/undo
 endif
 
 let g:vim_markdown_conceal = 0
@@ -328,8 +316,8 @@ autocmd BufWritePre * %s/\s\+$//e
 
 autocmd VimResized * wincmd =
 
-nnoremap <C-Left> gt<CR>
-nnoremap <C-Right> gT<CR>
+nnoremap <silent> <C-Left> gt<CR>
+nnoremap <silent> <C-Right> gT<CR>
 " TAB in general mode will move to text buffer
 nnoremap <silent> <TAB> :bnext<CR>
 " SHIFT-TAB will go back
@@ -337,18 +325,18 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 
 
 " Swap horizontally splits
-noremap <leader>wh :windo wincmd H<CR>
+noremap <C-w><C-h> :windo wincmd H<CR>
 " Swap vertically splits
-noremap <leader>wk :windo wincmd K<CR>
+noremap <C-w><C-k> :windo wincmd K<CR>
 
 " Run a alt command from a given path to return the test file.
 function! AltCommand(path, vim_command)
-  let l:alternate = system("alt " . a:path)
-  if empty(l:alternate)
-    echo "No alternate file for " . a:path . " exists!"
-  else
-    exec a:vim_command . " " . l:alternate
-  endif
+      let l:alternate = system("alt " . a:path)
+      if empty(l:alternate)
+            echo "No alternate file for " . a:path . " exists!"
+      else
+            exec a:vim_command . " " . l:alternate
+      endif
 endfunction
 
 " Find the alternate file for the current path and open it
@@ -359,18 +347,18 @@ set grepprg=rg\ --smart-case\ --vimgrep
 
 " Strips any kind of carriage when copy/pasting. Ex: ^M
 if !empty($WAYLAND_DISPLAY)
-  let g:clipboard = {
-	\   'name': 'wayland-strip-carriage',
-	\   'copy': {
-	\      '+': 'wl-copy --foreground --type text/plain',
-	\      '*': 'wl-copy --foreground --type text/plain --primary',
-	\    },
-	\   'paste': {
-	\      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
-	\      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
-	\   },
-	\   'cache_enabled': 1,
-	\ }
+      let g:clipboard = {
+                        \   'name': 'wayland-strip-carriage',
+                        \   'copy': {
+                        \      '+': 'wl-copy --foreground --type text/plain',
+                        \      '*': 'wl-copy --foreground --type text/plain --primary',
+                        \    },
+                        \   'paste': {
+                        \      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
+                        \      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
+                        \   },
+                        \   'cache_enabled': 1,
+                        \ }
 endif
 
 " ctags settings
