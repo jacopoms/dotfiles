@@ -1,23 +1,29 @@
 "Autoinstall VimPlug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-      silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-                        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " Remap leader key to space
 let g:mapleader=' '
 nnoremap <SPACE> <Nop>
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'preservim/nerdtree'
-nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <Leader>ef :NERDTreeFind<CR>
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+nnoremap <leader>et :NvimTreeToggle<CR>
+nnoremap <leader>er :NvimTreeRefresh<CR>
+nnoremap <leader>ef :NvimTreeFindFile<CR>
+nnoremap <leader>ec :NvimTreeClose<CR>
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 
 Plug 'preservim/nerdcommenter'
 nmap <Leader>/  <Plug>NERDCommenterToggle
@@ -27,41 +33,42 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Find files using Telescope command-line sugar.
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>tf <cmd>Telescope find_files<cr>
+nnoremap <leader>tl <cmd>Telescope live_grep<cr>
+nnoremap <leader>tb <cmd>Telescope buffers<cr>
 nnoremap <leader>ht <cmd>Telescope help_tags<cr>
-nnoremap <leader>g <cmd>Telescope git_files<cr>
+nnoremap <leader>tg <cmd>Telescope git_files<cr>
 
 " Dashboard Plugin
 Plug 'glepnir/dashboard-nvim'
 let g:dashboard_default_executive = 'telescope'
 
-"nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
 nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
 nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
 nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
-"nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+
 let g:dashboard_custom_header = [
-  \'               ▄▄██████████▄▄             ',
-  \'               ▀▀▀   ██   ▀▀▀             ',
-  \'       ▄██▄   ▄▄████████████▄▄   ▄██▄     ',
-  \'     ▄███▀  ▄████▀▀▀    ▀▀▀████▄  ▀███▄   ',
-  \'    ████▄ ▄███▀              ▀███▄ ▄████  ',
-  \'   ███▀█████▀▄████▄      ▄████▄▀█████▀███ ',
-  \'   ██▀  ███▀ ██████      ██████ ▀███  ▀██ ',
-  \'    ▀  ▄██▀  ▀████▀  ▄▄  ▀████▀  ▀██▄  ▀  ',
-  \'       ███           ▀▀           ███     ',
-  \'       ██████████████████████████████     ',
-  \'   ▄█  ▀██  ███   ██    ██   ███  ██▀  █▄ ',
-  \'   ███  ███ ███   ██    ██   ███▄███  ███ ',
-  \'   ▀██▄████████   ██    ██   ████████▄██▀ ',
-  \'    ▀███▀ ▀████   ██    ██   ████▀ ▀███▀  ',
-  \'     ▀███▄  ▀███████    ███████▀  ▄███▀   ',
-  \'       ▀███    ▀▀██████████▀▀▀   ███▀     ',
-  \'         ▀    ▄▄▄    ██    ▄▄▄    ▀       ',
-  \'               ▀████████████▀             ',
-\]
+			\'               ▄▄██████████▄▄             ',
+			\'               ▀▀▀   ██   ▀▀▀             ',
+			\'       ▄██▄   ▄▄████████████▄▄   ▄██▄     ',
+			\'     ▄███▀  ▄████▀▀▀    ▀▀▀████▄  ▀███▄   ',
+			\'    ████▄ ▄███▀              ▀███▄ ▄████  ',
+			\'   ███▀█████▀▄████▄      ▄████▄▀█████▀███ ',
+			\'   ██▀  ███▀ ██████      ██████ ▀███  ▀██ ',
+			\'    ▀  ▄██▀  ▀████▀  ▄▄  ▀████▀  ▀██▄  ▀  ',
+			\'       ███           ▀▀           ███     ',
+			\'       ██████████████████████████████     ',
+			\'   ▄█  ▀██  ███   ██    ██   ███  ██▀  █▄ ',
+			\'   ███  ███ ███   ██    ██   ███▄███  ███ ',
+			\'   ▀██▄████████   ██    ██   ████████▄██▀ ',
+			\'    ▀███▀ ▀████   ██    ██   ████▀ ▀███▀  ',
+			\'     ▀███▄  ▀███████    ███████▀  ▄███▀   ',
+			\'       ▀███    ▀▀██████████▀▀▀   ███▀     ',
+			\'         ▀    ▄▄▄    ██    ▄▄▄    ▀       ',
+			\'               ▀████████████▀             ',
+			\]
 
 " Formatting plugins
 Plug 'tpope/vim-endwise'
@@ -95,76 +102,50 @@ let g:sneak#label = 1
 "let g:neodark#solid_vertsplit = 1
 "let g:neodark#use_custom_terminal_theme = 1
 " Plug 'liuchengxu/space-vim-theme'
+"luafile ~/.config/nvim/lua/galaxy.lua
 
 Plug 'joshdick/onedark.vim'
 Plug 'NLKNguyen/papercolor-theme'
-
+Plug 'glepnir/oceanic-material'
 Plug 'glepnir/spaceline.vim'
-
-"Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'ryanoasis/vim-devicons'
 
 let g:spaceline_seperate_style = 'slant'
 let g:spaceline_colorscheme = 'space'
 let g:space_vim_transp_bg = 0
-let g:spaceline_diagnostic_tool = 'ale'
+let g:spaceline_diagnostic_tool = 'nvim_lsp'
 let g:spaceline_diff_tool = 'git-gutter'
 let g:rehash256 = 1
-"let g:one_allow_italics = 1
-"let g:github_colors_soft = 1
-"let g:github_colors_block_diffmark = 0
 " Highligh yanks
 Plug 'machakann/vim-highlightedyank'
 
-" Linter
-Plug 'dense-analysis/ale'
+"let g:ale_sign_error = '●'
+"let g:ale_sign_warning = '.'
 
-let g:ale_completion_autoimport = 1
-let g:ale_elixir_elixir_ls_release='~/elixir-ls/release/'
-let g:ale_linters = {
-                  \   'javascript': ['eslint'],
-                  \   'ruby': ['ruby', 'rubocop', 'solargraph', 'reek'],
-                  \   'elixir': ['elixir-ls', 'mix'],
-                  \}
+" LSP and  Code Completion
 
-let g:ale_fixers = {
-                  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-                  \   'javascript': ['eslint'],
-                  \   'ruby': ['rubocop'],
-                  \   'elixir':['mix_format'],
-                  \}
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 
-let g:ale_linters_explicit = 1
-"let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
+" Completion
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Code Completion
-if has('nvim')
-      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-      Plug 'Shougo/deoplete.nvim'
-      Plug 'roxma/nvim-yarp'
-      Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
 
-let g:LanguageClient_serverCommands = {
-                  \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-                  \ 'elixir': ['~/elixir-ls/release/language_server.sh'],
-                  \ }
-
-inoremap <silent><expr> <TAB>
-                  \ pumvisible() ? "\<C-n>" :
-                  \ <SID>check_back_space() ? "\<TAB>" :
-                  \ deoplete#mappings#manual_complete()
 function! s:check_back_space() abort "{{{
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~ '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
 " Tabnine plugin
 "Plug 'codota/tabnine-vim'
+
+" Code Snippets
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
+
+"let g:completion_enable_snippet = 'UltiSnips'
 
 " Add more text object to operate(|, [, {, etc)
 Plug 'wellle/targets.vim'
@@ -216,6 +197,10 @@ Plug 'mhinz/vim-mix-format'
 let g:mix_format_on_save = 1
 call plug#end()
 
+" Solargraph
+"
+luafile ~/.config/nvim/lua/lsp.lua
+
 " Tab properties
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
@@ -235,13 +220,13 @@ set termguicolors
 set t_Co=256  " make use of 256 terminal colors only for summerfruit256
 " Set up quantum as colorscheme in silent mode due to fresh installs
 "let g:vim_monokai_tasty_italic = 1 " allow italics, set this before the colorscheme
-colorscheme onedark "Papercolor/onedark/neodark
+colorscheme oceanic_material "onedark/Papercolor/neodark
 
 " Enable esc to normal mode inside terminal mode with the exception of fzf
 
 augroup EscToNormalModeOnTerminalUnlessFZF
-      autocmd!
-      autocmd TermOpen * if !exists("b:fzf") | tnoremap <buffer> <Esc> <C-\><C-n> | endif
+	autocmd!
+	autocmd TermOpen * if !exists("b:fzf") | tnoremap <buffer> <Esc> <C-\><C-n> | endif
 augroup END
 
 " Enable highlighting and previewing substitutions
@@ -260,12 +245,12 @@ nnoremap <C-h> <C-w><C-h>
 
 
 " split vertically
-noremap <C-v> :vsp<CR>
+noremap <C-s><C-v> :vsp<CR>
 " split horizontally
-noremap <C-h> :sp<CR>
+noremap <C-s><C-h> :sp<CR>
 
 " new tab
-nnoremap <C-n> :tabnew<CR>
+nnoremap <C-s><C-n> :tabnew<CR>
 
 " Auto indent the whole file
 map <F7> gg=G<C-o><C-o>
@@ -305,7 +290,7 @@ set foldmethod=indent
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-      set undodir=~/.vim/undo
+	set undodir=~/.vim/undo
 endif
 
 let g:vim_markdown_conceal = 0
@@ -331,12 +316,12 @@ noremap <C-w><C-k> :windo wincmd K<CR>
 
 " Run a alt command from a given path to return the test file.
 function! AltCommand(path, vim_command)
-      let l:alternate = system("alt " . a:path)
-      if empty(l:alternate)
-            echo "No alternate file for " . a:path . " exists!"
-      else
-            exec a:vim_command . " " . l:alternate
-      endif
+	let l:alternate = system("alt " . a:path)
+	if empty(l:alternate)
+		echo "No alternate file for " . a:path . " exists!"
+	else
+		exec a:vim_command . " " . l:alternate
+	endif
 endfunction
 
 " Find the alternate file for the current path and open it
@@ -347,18 +332,18 @@ set grepprg=rg\ --smart-case\ --vimgrep
 
 " Strips any kind of carriage when copy/pasting. Ex: ^M
 if !empty($WAYLAND_DISPLAY)
-      let g:clipboard = {
-                        \   'name': 'wayland-strip-carriage',
-                        \   'copy': {
-                        \      '+': 'wl-copy --foreground --type text/plain',
-                        \      '*': 'wl-copy --foreground --type text/plain --primary',
-                        \    },
-                        \   'paste': {
-                        \      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
-                        \      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
-                        \   },
-                        \   'cache_enabled': 1,
-                        \ }
+	let g:clipboard = {
+				\   'name': 'wayland-strip-carriage',
+				\   'copy': {
+				\      '+': 'wl-copy --foreground --type text/plain',
+				\      '*': 'wl-copy --foreground --type text/plain --primary',
+				\    },
+				\   'paste': {
+				\      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
+				\      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
+				\   },
+				\   'cache_enabled': 1,
+				\ }
 endif
 
 " ctags settings
