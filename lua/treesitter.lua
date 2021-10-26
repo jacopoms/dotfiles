@@ -2,6 +2,7 @@ local ts_config = require("nvim-treesitter.configs")
 
 ts_config.setup {
   ensure_installed = {
+    "lua",
     "ruby",
     "elixir",
     "dockerfile",
@@ -9,5 +10,8 @@ ts_config.setup {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = true,
+  },
+  indent = {
+    enable = true,
   }
 }

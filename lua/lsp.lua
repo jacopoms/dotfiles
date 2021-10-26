@@ -29,11 +29,49 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+vim.lsp.protocol.CompletionItemKind = {
+  "   (Text) ",
+  "   (Method)",
+  "   (Function)",
+  "   (Constructor)",
+  " ﴲ  (Field)",
+  "[] (Variable)",
+  "   (Class)",
+  " ﰮ  (Interface)",
+  "   (Module)",
+  " 襁 (Property)",
+  "   (Unit)",
+  "   (Value)",
+  " 練 (Enum)",
+  "   (Keyword)",
+  "   (Snippet)",
+  "   (Color)",
+  "   (File)",
+  "   (Reference)",
+  "   (Folder)",
+  "   (EnumMember)",
+  " ﲀ  (Constant)",
+  " ﳤ  (Struct)",
+  "   (Event)",
+  "   (Operator)",
+  "   (TypeParameter)",
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
+        virtual_text = false,
+        signs = true,
+        underline = true,
+        update_in_insert = true,
     }
 )
+
+local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 
@@ -73,7 +111,7 @@ lsp_installer.on_server_ready(function(server)
   elseif server.name == "elixirls" then
     opts = {
       cmd = { path_to_elixirls },
-      capabilities = capabilities,
+      capabilities = {},
       on_attach = on_attach,
       settings = {
         elixirLS = {
@@ -90,7 +128,7 @@ lsp_installer.on_server_ready(function(server)
     }
   elseif server.name == "efm" then
     opts = {
-      capabilities = capabilities,
+      capabilities = {},
       on_attach = on_attach,
       filetypes = {
         "elixir",
