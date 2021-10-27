@@ -27,7 +27,26 @@ return require("packer").startup(function()
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require'nvim-tree'.setup {} end
   }
-  -- use "glepnir/lspsaga.nvim"
+ use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        use_lsp_diagnostic_signs = false,
+        signs = {
+          -- icons / text used for a diagnostic
+          error = "",
+          warning = "",
+          hint = "",
+          information = "",
+          other = "﫠"
+        },
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  } -- use "glepnir/lspsaga.nvim"
   use "tpope/vim-fugitive"
   use "tpope/vim-rhubarb" -- open file on github
   use "fnune/base16-vim"
@@ -36,7 +55,15 @@ return require("packer").startup(function()
   use "machakann/vim-highlightedyank"
   use "vim-ruby/vim-ruby"
   use "navarasu/onedark.nvim"
-  use "glepnir/spaceline.vim"
+  -- use "glepnir/spaceline.vim"
+  use {
+    'glepnir/galaxyline.nvim',
+    branch = 'main',
+    -- your statusline
+    -- config = function() require'glepnir' end,
+    -- some optional icons
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
   -- use {
   --   "hoob3rt/lualine.nvim",
   --   requires = {'kyazdani42/nvim-web-devicons'},
