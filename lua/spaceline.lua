@@ -26,7 +26,7 @@ end
 gls.left[1] = {
   FirstElement = {
     provider = function() return '▋' end,
-    highlight = {colors.blue,colors.yellow}
+    highlight = {colors.magenta,colors.purple}
   },
 }
 gls.left[2] = {
@@ -101,6 +101,7 @@ gls.left[8] = {
     highlight = {colors.orange,colors.purple},
   }
 }
+
 gls.left[9] = {
   DiffRemove = {
     provider = 'DiffRemove',

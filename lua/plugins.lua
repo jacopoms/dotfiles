@@ -54,6 +54,7 @@ return require("packer").startup(function()
   use "ryanoasis/vim-devicons"
   use "machakann/vim-highlightedyank"
   use "vim-ruby/vim-ruby"
+  use "elixir-editors/vim-elixir"
   use "navarasu/onedark.nvim"
   -- use "glepnir/spaceline.vim"
   use {
@@ -76,7 +77,7 @@ return require("packer").startup(function()
   use "terrortylor/nvim-comment"
   use "vim-test/vim-test"
   use "ntpeters/vim-better-whitespace"
-  use "airblade/vim-gitgutter"
+  -- use "airblade/vim-gitgutter"
   use {
     "lewis6991/gitsigns.nvim",
     requires = {"nvim-lua/plenary.nvim"}

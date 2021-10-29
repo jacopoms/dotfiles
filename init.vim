@@ -5,10 +5,9 @@ lua require("buffer")
 lua require("lsp")
 lua require("comment")
 lua require("_gitsigns")
-lua require("treesitter")
 lua require("spaceline")
+lua require("telescope-nvim")
 " lua require("saga")
-" lua require("telescope-nvim")
 
 " packer
 augroup packer_user_config
@@ -69,15 +68,6 @@ let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_disable_netrw = 0
 let g:nvim_tree_follow = 1
-
-" spaceline
-let g:spaceline_seperate_style = 'slant'
-let g:spaceline_colorscheme = 'space'
-let g:space_vim_transp_bg = 0
-let g:spaceline_diagnostic_tool = 'nvim_lsp'
-let g:spaceline_diagnostic_errorsign = '●'
-let g:spaceline_diagnostic_warnsign = '.'
-let g:spaceline_diff_tool = 'git-gutter'
 
 " Vim ruby
 set nocompatible      " We're running Vim, not Vi!
@@ -177,7 +167,7 @@ nnoremap <leader>m <cmd>lua vim.lsp.buf.formatting()<CR>
 " nnoremap <silent>K :Lspsaga hover_doc<CR>
 
 "formatting
-let g:better_whitespace_enabled=1
+let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
 let g:strip_whitespace_confirm = 0
 
