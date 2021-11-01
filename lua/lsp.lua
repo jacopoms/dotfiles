@@ -27,6 +27,15 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<S-f>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("n", "<S-f>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
+
+
 end
 
 vim.lsp.protocol.CompletionItemKind = {
@@ -86,22 +95,9 @@ lsp_installer.on_server_ready(function(server)
   -- end
   if server.name == "solargraph" then
     opts = {
-      cmd = { "solargraph", "stdio" },
       on_attach = on_attach,
       settings = {
         solargraph = {
-          useBundler = true,
-          bundlerPath = "~/.asdf/shims/bundle",
-          transport = "stdio",
-          autoformat = true,
-          logLevel = "debug",
-          diagnostics = true,
-          completion = true,
-          symbols = true,
-          references = true,
-          definitions = true,
-          formatting = true,
-          hover = true,
           flags = {
             debounce_text_changes = 150,
           }
