@@ -2,7 +2,7 @@ local lspconfig = require("lspconfig")
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
+  print('Attaching LSP: ' .. client.name)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -34,8 +34,6 @@ local on_attach = function(client, bufnr)
   elseif client.resolved_capabilities.document_range_formatting then
     buf_set_keymap("n", "<S-f>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
-
-
 end
 
 vim.lsp.protocol.CompletionItemKind = {
@@ -84,51 +82,60 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 
+lspconfig.elixirls.setup {
+  cmd = { path_to_elixirls },
+  capabilities = {},
+  on_attach = on_attach,
+  settings = {
+    elixirLS = {
+      -- I choose to disable dialyzer for personal reasons, but
+      -- I would suggest you also disable it unless you are well
+      -- aquainted with dialzyer and know how to use it.
+      dialyzerEnabled = false,
+      -- I also choose to turn off the auto dep fetching feature.
+      -- It often get's into a weird state that requires deleting
+      -- the .elixir_ls directory and restarting your editor.
+      fetchDeps = false
+    }
+  }
+}
+
+lspconfig.solargraph.setup {
+  cmd = { 'solargraph' , 'stdio' },
+  filetypes = {"ruby", "rakefile"},
+  on_attach = on_attach,
+  -- root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+  settings = {
+    solargraph = {
+      commandPath = '~/.asdf/shims/solargraph',
+      autoformat = true,
+      completion = true,
+      diagnostic = true,
+      folding = true,
+      references = true,
+      rename = true,
+      symbols = true,
+      flags = {
+        debounce_text_changes = 150,
+      }
+    }
+  }
+}
+
+-- lsp_installer.on_server_ready(function (server) server:setup {} end)
+
 local lsp_installer = require("nvim-lsp-installer")
 
 lsp_installer.on_server_ready(function(server)
-  local opts = {}
-
   -- (optional) Customize the options passed to the server
   -- if server.name == "tsserver" then
   --     opts.root_dir = function() ... end
   -- end
-  if server.name == "solargraph" then
-    opts = {
-      on_attach = on_attach,
-      settings = {
-        solargraph = {
-          flags = {
-            debounce_text_changes = 150,
-          }
-        }
-      }
+  local opts = {
+      on_attach = on_attach
     }
-  elseif server.name == "elixirls" then
-    opts = {
-      cmd = { path_to_elixirls },
-      capabilities = {},
-      on_attach = on_attach,
-      settings = {
-        elixirLS = {
-          -- I choose to disable dialyzer for personal reasons, but
-          -- I would suggest you also disable it unless you are well
-          -- aquainted with dialzyer and know how to use it.
-          dialyzerEnabled = false,
-          -- I also choose to turn off the auto dep fetching feature.
-          -- It often get's into a weird state that requires deleting
-          -- the .elixir_ls directory and restarting your editor.
-          fetchDeps = false
-        }
-      }
-    }
-  else
-    opts = {}
-  end
   -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
     server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
+    -- vim.cmd [[ do User LspAttachBuffers ]]
 end)
-
--- lsp_installer.on_server_ready(function (server) server:setup {} end)
 

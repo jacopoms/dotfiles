@@ -57,9 +57,23 @@ require("telescope").setup {
 
 -- highlight
 
+local M = {}
+
+local telescope_builtin = require 'telescope.builtin'
+
+M.find_files = function()
+  telescope_builtin.find_files {
+    find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+    previewer = false
+  }
+end
+
 local cmd = vim.cmd
 
 cmd "hi TelescopeBorder   guifg=#2a2e36"
 cmd "hi TelescopePromptBorder   guifg=#2a2e36"
 cmd "hi TelescopeResultsBorder  guifg=#2a2e36"
 cmd "hi TelescopePreviewBorder  guifg=#525865"
+
+return M
+
