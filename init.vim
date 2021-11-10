@@ -52,7 +52,7 @@ set updatetime=10
 
 "Color Theme Settings
 set termguicolors
-set background=dark
+let g:onedark_style = "deep"
 colorscheme onedark
 
 " ctags settings

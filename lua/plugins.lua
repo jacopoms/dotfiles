@@ -57,6 +57,7 @@ return require("packer").startup(function()
   use "elixir-editors/vim-elixir"
 
   use "navarasu/onedark.nvim"
+  use "shaunsingh/solarized.nvim"
   -- use "glepnir/spaceline.vim"
   use {
     'glepnir/galaxyline.nvim',
