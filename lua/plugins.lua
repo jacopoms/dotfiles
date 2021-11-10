@@ -1,5 +1,4 @@
-return require("packer").startup(function()
-  use "wbthomason/packer.nvim"
+return require("packer").startup(function()  use "wbthomason/packer.nvim"
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
@@ -58,28 +57,15 @@ return require("packer").startup(function()
 
   use "navarasu/onedark.nvim"
   use "shaunsingh/solarized.nvim"
-  -- use "glepnir/spaceline.vim"
+  use "folke/tokyonight.nvim"
+  -- " use "glepnir/spaceline.vim"
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    -- your statusline
-    -- config = function() require'glepnir' end,
-    -- some optional icons
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    "nvim-lualine/lualine.nvim",
+    requires = {"kyazdani42/nvim-web-devicons", opt = true}
   }
-  -- use {
-  --   "hoob3rt/lualine.nvim",
-  --   requires = {'kyazdani42/nvim-web-devicons'},
-  --   config = function() require('lualine').setup({
-  --     options = {
-  --       theme = 'onedark'
-  --     }
-  --   }) end
-  -- }
   use "terrortylor/nvim-comment"
   use "vim-test/vim-test"
   use "ntpeters/vim-better-whitespace"
-  -- use "airblade/vim-gitgutter"
   use {
     "lewis6991/gitsigns.nvim",
     requires = {"nvim-lua/plenary.nvim"}
