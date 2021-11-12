@@ -7,6 +7,7 @@ lua require("comment")
 lua require("_gitsigns")
 lua require("_lualine")
 lua require("telescope-nvim")
+lua require("_tokyonight")
 
 " packer
 augroup packer_user_config
@@ -51,10 +52,10 @@ set updatetime=10
 
 "Color Theme Settings
 set termguicolors
-" let g:onedark_style = "deep"
+" let g:onedark_style = deep
 "colorscheme onedark
-let g:tokyonight_style = "day"
-colorscheme tokyonight
+" let g:tokyonight_style = "day"
+" colorscheme tokyonight
 " ctags settings
 " let g:gutentags_trace = 0
 " set tags+=tags
@@ -163,8 +164,9 @@ nnoremap \d <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <leader>m <cmd>lua vim.lsp.buf.formatting()<CR>
-" Saga
+"tokyonight
 " nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap \cs <cmd>lua require("_tokyonight").toggle()<CR>
 
 "formatting
 let g:better_whitespace_enabled = 1
