@@ -54,12 +54,8 @@ set updatetime=10
 set termguicolors
 " let g:onedark_style = deep
 "colorscheme onedark
-" let g:tokyonight_style = "day"
+" let g:tokyonight_style = day
 " colorscheme tokyonight
-" ctags settings
-" let g:gutentags_trace = 0
-" set tags+=tags
-" set statusline=%{gutentags#statusline()}
 
 " nvim-tree
 let g:nvim_tree_side = "left"
@@ -115,15 +111,6 @@ nnoremap <Leader>gst <cmd>Telescope git_stash<CR>
 nnoremap <Leader>gl <cmd>Telescope git_commits<CR>
 nnoremap <Leader>glb <cmd>Telescope git_bcommits<CR>
 nnoremap <Leader>gb <cmd>Telescope git_branches<CR>
-
-" trouble
-nnoremap <leader>xx <cmd>TroubleToggle<CR>
-nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<CR>
-nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<CR>
-nnoremap <leader>xq <cmd>TroubleToggle quickfix<CR>
-nnoremap <leader>xl <cmd>TroubleToggle loclist<CR>
-nnoremap gR <cmd>TroubleToggle lsp_references<CR>
-
 
 " bufferline
 nnoremap <leader>q <cmd>bdelete<CR>

@@ -132,10 +132,17 @@ lsp_installer.on_server_ready(function(server)
   --     opts.root_dir = function() ... end
   -- end
   local opts = {
-      on_attach = on_attach
+    on_attach = on_attach
+  }
+  if server.name == "efm" then
+    opts = {
+      on_attach = on_attach,
+      init_options = {documentFormatting = true},
+      filetype = {"elixir"}
     }
+  end
   -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-    server:setup(opts)
-    -- vim.cmd [[ do User LspAttachBuffers ]]
+  server:setup(opts)
+  -- vim.cmd [[ do User LspAttachBuffers ]]
 end)
 

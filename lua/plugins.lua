@@ -26,26 +26,7 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require'nvim-tree'.setup {} end
   }
- use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        use_lsp_diagnostic_signs = false,
-        signs = {
-          -- icons / text used for a diagnostic
-          error = "",
-          warning = "",
-          hint = "",
-          information = "",
-          other = "﫠"
-        },
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  } -- use "glepnir/lspsaga.nvim"
+  -- use "glepnir/lspsaga.nvim"
   use "tpope/vim-fugitive"
   use "tpope/vim-rhubarb" -- open file on github
   use "fnune/base16-vim"
