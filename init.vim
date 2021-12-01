@@ -7,7 +7,7 @@ lua require("comment")
 lua require("_gitsigns")
 lua require("_lualine")
 lua require("telescope-nvim")
-" lua require("_tokyonight")
+lua require("_tokyonight")
 
 " packer
 augroup packer_user_config
@@ -52,8 +52,8 @@ set updatetime=10
 
 "Color Theme Settings
 set termguicolors
-let g:onedark_style = "deep"
-colorscheme onedark
+" let g:onedark_style = "deep"
+" colorscheme onedark
 " let g:tokyonight_style = day
 " colorscheme tokyonight
 
@@ -81,7 +81,7 @@ autocmd BufWritePost plugins.lua PackerCompile
 let mapleader = " "
 tnoremap <leader><Esc> <C-\><C-n>
 nnoremap <C-T> <cmd>vnew term://zsh<CR>
-nnoremap <C-X> <Cmd>split term://zsh \| resize 18<CR>
+nnoremap <C-X> <Cmd>split term://zsh<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " Saving keystrokes when moving between splits

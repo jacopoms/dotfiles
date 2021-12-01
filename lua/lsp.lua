@@ -67,18 +67,22 @@ vim.lsp.protocol.CompletionItemKind = {
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 
 for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+  -- for nvim 0.5.1
+  local hl = "LspDiagnosticsSign" .. type
+  -- for nvim 0.6.0
+  -- local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
-        signs = true,
-        underline = true,
-        update_in_insert = true,
-    }
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+  }
 )
+
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 
@@ -138,7 +142,7 @@ lsp_installer.on_server_ready(function(server)
     opts = {
       on_attach = on_attach,
       init_options = {documentFormatting = true},
-      filetype = {"elixir"}
+      filetypes = { 'elixir','ruby' }
     }
   end
   -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
