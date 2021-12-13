@@ -68,9 +68,9 @@ local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 
 for type, icon in pairs(signs) do
   -- for nvim 0.5.1
-  local hl = "LspDiagnosticsSign" .. type
+  -- local hl = "LspDiagnosticsSign" .. type
   -- for nvim 0.6.0
-  -- local hl = 'DiagnosticSign' .. type
+  local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 

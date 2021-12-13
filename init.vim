@@ -7,7 +7,7 @@ lua require("comment")
 lua require("_gitsigns")
 lua require("_lualine")
 lua require("telescope-nvim")
-lua require("_tokyonight")
+" lua require("_tokyonight")
 
 " packer
 augroup packer_user_config
@@ -52,8 +52,8 @@ set updatetime=10
 
 "Color Theme Settings
 set termguicolors
-" let g:onedark_style = "deep"
-" colorscheme onedark
+let g:onedark_style = "deep"
+colorscheme onedark
 " let g:tokyonight_style = day
 " colorscheme tokyonight
 
