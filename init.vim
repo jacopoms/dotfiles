@@ -59,12 +59,12 @@ colorscheme onedark
 
 " nvim-tree
 let g:nvim_tree_side = "left"
-let g:nvim_tree_auto_close = 1
+" let g:nvim_tree_auto_close = 1
 let g:nvim_tree_quit_on_open = 1
 let g:nvim_tree_indent_markers = 1
 let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_disable_netrw = 0
-let g:nvim_tree_follow = 1
+" let g:nvim_tree_disable_netrw = 0
+" let g:nvim_tree_follow = 1
 
 " Vim ruby
 set nocompatible      " We're running Vim, not Vi!
