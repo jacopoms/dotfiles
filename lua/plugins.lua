@@ -11,8 +11,8 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
       'williamboman/nvim-lsp-installer',
   }
   use "hrsh7th/nvim-compe"
-  use "hrsh7th/vim-vsnip"
-  use "hrsh7th/vim-vsnip-integ"
+  -- use "hrsh7th/vim-vsnip"
+  -- use "hrsh7th/vim-vsnip-integ"
   use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
@@ -35,7 +35,9 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
   use "machakann/vim-highlightedyank"
   use "vim-ruby/vim-ruby"
   use "elixir-editors/vim-elixir"
-
+  use "lukas-reineke/indent-blankline.nvim"
+  -- " color schemes
+  use 'EdenEast/nightfox.nvim'
   use "navarasu/onedark.nvim"
   use "shaunsingh/solarized.nvim"
   use "folke/tokyonight.nvim"

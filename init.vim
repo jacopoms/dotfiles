@@ -53,7 +53,7 @@ set updatetime=10
 "Color Theme Settings
 set termguicolors
 let g:onedark_style = "deep"
-colorscheme onedark
+colorscheme nightfox
 " let g:tokyonight_style = day
 " colorscheme tokyonight
 
