@@ -17,6 +17,13 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
   use "hrsh7th/cmp-vsnip"
   use "hrsh7th/vim-vsnip"
   use "hrsh7th/vim-vsnip-integ"
+  use {
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    requires = {
+      "hrsh7th/nvim-cmp"
+    }
+  }
 
   use {
         'nvim-treesitter/nvim-treesitter',
