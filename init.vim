@@ -52,7 +52,7 @@ set updatetime=10
 
 "Color Theme Settings
 set termguicolors
-let g:onedark_style = "deep"
+" let g:onedark_style = "deep"
 colorscheme nightfox
 " let g:tokyonight_style = day
 " colorscheme tokyonight
@@ -100,7 +100,9 @@ noremap <C-s><C-h> :sp<CR>
 "Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
-nnoremap <leader>fb <cmd>Telescope buffers<CR>
+nnoremap <leader>fgr <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<CR>
+nnoremap <leader>bb <cmd>Telescope buffers<CR>
+nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fq <cmd>Telescope quickfix<CR>
 nnoremap <Leader>ft <cmd>Telescope tags<CR>

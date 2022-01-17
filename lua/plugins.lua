@@ -3,16 +3,21 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
     "nvim-telescope/telescope.nvim",
     requires = {
       {"nvim-lua/popup.nvim"},
-      {"nvim-lua/plenary.nvim"}
+      {"nvim-lua/plenary.nvim"},
+      { 'nvim-telescope/telescope-live-grep-raw.nvim' }
     }
   }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
   use {
       'neovim/nvim-lspconfig',
       'williamboman/nvim-lsp-installer',
   }
-  use "hrsh7th/nvim-compe"
-  -- use "hrsh7th/vim-vsnip"
-  -- use "hrsh7th/vim-vsnip-integ"
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-vsnip"
+  use "hrsh7th/vim-vsnip"
+  use "hrsh7th/vim-vsnip-integ"
+
   use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'

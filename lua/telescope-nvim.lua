@@ -2,15 +2,15 @@ local actions = require("telescope.actions")
 
 require("telescope").setup {
   defaults = {
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case"
-    },
+    -- vimgrep_arguments = {
+    --   "rg",
+    --   "--color=auto",
+    --   "--no-heading",
+    --   "--with-filename",
+    --   "--line-number",
+    --   "--column",
+    --   "--smart-case"
+    -- },
     prompt_prefix = " ",
     selection_caret = " ",
     entry_prefix = "  ",
@@ -46,6 +46,17 @@ require("telescope").setup {
     media_files = {
       filetypes = {"png", "webp", "jpg", "jpeg"},
       find_cmd = "rg" -- find command (defaults to `fd`)
+    },
+    file_browser = {
+      theme = "ivy",
+      mappings = {
+        ["i"] = {
+         -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
     }
   }
 }
@@ -62,6 +73,8 @@ M.find_files = function()
     previewer = false
   }
 end
+
+require("telescope").load_extension "file_browser"
 
 local cmd = vim.cmd
 
