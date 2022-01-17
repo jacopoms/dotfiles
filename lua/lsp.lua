@@ -22,7 +22,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -85,10 +85,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lspconfig.elixirls.setup {
   cmd = { path_to_elixirls },
-  capabilities = {},
+  capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     elixirLS = {
@@ -106,6 +107,7 @@ lspconfig.elixirls.setup {
 
 lspconfig.solargraph.setup {
   cmd = { 'solargraph' , 'stdio' },
+  capabilities = capabilities,
   filetypes = {"ruby", "rakefile"},
   on_attach = on_attach,
   -- root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
@@ -136,10 +138,12 @@ lsp_installer.on_server_ready(function(server)
   --     opts.root_dir = function() ... end
   -- end
   local opts = {
+    capabilities = capabilities,
     on_attach = on_attach
   }
   if server.name == "efm" then
     opts = {
+      capabilities = capabilities,
       on_attach = on_attach,
       init_options = {documentFormatting = true},
       filetypes = { 'elixir','ruby' }
