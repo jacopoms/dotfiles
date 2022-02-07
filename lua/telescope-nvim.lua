@@ -75,13 +75,12 @@ M.find_files = function()
 end
 
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension "githubcoauthors"
 
-local cmd = vim.cmd
-
-cmd "hi TelescopeBorder   guifg=#2a2e36"
-cmd "hi TelescopePromptBorder   guifg=#2a2e36"
-cmd "hi TelescopeResultsBorder  guifg=#2a2e36"
-cmd "hi TelescopePreviewBorder  guifg=#525865"
+vim.cmd "hi TelescopeBorder   guifg=#2a2e36"
+vim.cmd "hi TelescopePromptBorder   guifg=#2a2e36"
+vim.cmd "hi TelescopeResultsBorder  guifg=#2a2e36"
+vim.cmd "hi TelescopePreviewBorder  guifg=#525865"
 
 return M
 
