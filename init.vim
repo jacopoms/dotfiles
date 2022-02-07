@@ -113,6 +113,7 @@ nnoremap <Leader>gst <cmd>Telescope git_stash<CR>
 nnoremap <Leader>gl <cmd>Telescope git_commits<CR>
 nnoremap <Leader>glb <cmd>Telescope git_bcommits<CR>
 nnoremap <Leader>gb <cmd>Telescope git_branches<CR>
+nnoremap <leader>gco <cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>
 
 " bufferline
 nnoremap <leader>q <cmd>bdelete<CR>
@@ -166,7 +167,7 @@ let g:strip_whitespace_confirm = 0
 
 " vim test
 nnoremap <leader>t :TestFile<CR>
-
+let test#strategy = "neovim"
 " Swap horizontally splits
 noremap <C-w><S-h> :windo wincmd H<CR>
 " Swap vertically splits

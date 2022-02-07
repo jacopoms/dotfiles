@@ -58,6 +58,7 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
     "nvim-lualine/lualine.nvim",
     requires = {"kyazdani42/nvim-web-devicons", opt = true}
   }
+  use "cwebster2/github-coauthors.nvim"
   use "terrortylor/nvim-comment"
   use "vim-test/vim-test"
   use "ntpeters/vim-better-whitespace"
