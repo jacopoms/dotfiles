@@ -123,15 +123,6 @@ nnoremap <S-Tab> <cmd>BufferLineCyclePrev<CR>
 nnoremap <silent> <leader>tt :NvimTreeToggle<CR>
 nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
 
-" nvim-compe
-" inoremap <silent><expr> <CR> compe#confirm("<CR>")
-" inoremap <silent><expr> <Tab> v:lua.tab_complete('<CR>')<CR>
-" inoremap <silent><expr> <S-Tab> v:lua.s_tab_complete('<CR>')<CR>
-" inoremap <silent><expr> <C-Space> compe#complete()
-" inoremap <silent><expr> <CR> compe#confirm('<CR>')
-" inoremap <silent><expr> <C-e> compe#close('<C-e>')
-" inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
-" inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
 " TODO add more git related remaps from other plugins here
 nnoremap <expr> ]c <cmd>lua require("gitsigns").next_hunk()<CR>
 nnoremap <expr> [c <cmd>lua require("gitsigns").prev_hunk()<CR>
@@ -177,3 +168,7 @@ noremap <C-w><S-k> :windo wincmd K<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 "search for word under the cursor with
 nnoremap <Leader>d /<C-r><C-w>
+
+" save file with <Leader>w
+noremap <leader>w :w<CR>
+
