@@ -8,9 +8,10 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
     }
   }
   use { "nvim-telescope/telescope-file-browser.nvim" }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
-      'neovim/nvim-lspconfig',
-      'williamboman/nvim-lsp-installer',
+    'neovim/nvim-lspconfig',
+    'williamboman/nvim-lsp-installer',
   }
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
@@ -26,9 +27,9 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
   }
 
   use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
   use {
     "akinsho/nvim-bufferline.lua",
     requires = 'kyazdani42/nvim-web-devicons'
