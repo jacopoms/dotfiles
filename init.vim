@@ -170,5 +170,7 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <Leader>d /<C-r><C-w>
 
 " save file with <Leader>w
-noremap <leader>w :w<CR>
+nnoremap <leader>w :w<CR>
 
+" save and exit with <leader>wq
+nnoremap <leader>wq :wq<CR>
