@@ -42,6 +42,11 @@ require("telescope").setup {
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker
   },
+  pickers = {
+    find_files = {
+      hidden = true
+    }
+  },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching

@@ -16,7 +16,7 @@ augroup packer_user_config
 augroup end
 
 
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
 set expandtab
 set smartindent
 set linespace=2 shiftwidth=2 softtabstop=2 tabstop=2
@@ -174,3 +174,18 @@ nnoremap <leader>w :w<CR>
 
 " save and exit with <leader>wq
 nnoremap <leader>wq :wq<CR>
+
+" save and exit all buffers with <leader>wqa
+nnoremap <leader>wqa :wqa<CR>
+
+" copy and save from the clipboard"
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+y$
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
