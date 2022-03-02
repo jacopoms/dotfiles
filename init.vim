@@ -39,7 +39,9 @@ set mouse=a
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
-set foldlevel=2"set guicursor=
+set foldlevel=1
+set foldexpr='nvim_treesitter#foldexpr()'
+
 set nohlsearch
 set scrolloff=8
 set shortmess+=c
@@ -172,6 +174,8 @@ nnoremap <Leader>d /<C-r><C-w>
 " save file with <Leader>w
 nnoremap <leader>w :w<CR>
 
+" save all files file with <Leader>w
+nnoremap <leader>w :w<CR>
 " save and exit with <leader>wq
 nnoremap <leader>wq :wq<CR>
 
