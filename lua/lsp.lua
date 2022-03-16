@@ -102,6 +102,7 @@ lspconfig.solargraph.setup {
   capabilities = capabilities,
   filetypes = {"ruby", "rakefile"},
   on_attach = on_attach,
+  init_options = {formatting = true},
   -- root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
   settings = {
     solargraph = {
@@ -109,6 +110,7 @@ lspconfig.solargraph.setup {
       autoformat = true,
       completion = true,
       diagnostic = true,
+      formatting = true,
       folding = true,
       references = true,
       rename = true,
@@ -137,7 +139,13 @@ lsp_installer.on_server_ready(function(server)
     opts = {
       capabilities = capabilities,
       on_attach = on_attach,
-      init_options = {documentFormatting = true},
+      init_options = {
+        documentFormatting = true,
+        hover = true,
+        documentSymbol = true,
+        codeAction = true,
+        complete = true,
+      },
       filetypes = { 'elixir','ruby' }
     }
   end
