@@ -19,21 +19,22 @@ augroup end
 " set clipboard+=unnamedplus
 set expandtab
 set smartindent
-set linespace=2 shiftwidth=2 softtabstop=2 tabstop=2
+set linespace=2 shiftwidth=2 tabstop=2
 set splitbelow splitright
 set number relativenumber
 set hidden
 set textwidth=100
 set colorcolumn=99
 set spelllang=en
-set noswapfile
-set nobackup
+" set noswapfile
+" set nobackup
 set undodir=~/.config/nvim/undodir
 set undofile
 set incsearch
 set noshowmode
 set completeopt=menuone,noinsert,noselect
-set ignorecase smartcase
+set ignorecase
+set smartcase
 set nowrap
 set mouse=a
 set foldmethod=indent
@@ -42,7 +43,7 @@ set nofoldenable
 set foldlevel=1
 set foldexpr='nvim_treesitter#foldexpr()'
 
-set nohlsearch
+" set nohlsearch
 set scrolloff=8
 set shortmess+=c
 set cursorline
