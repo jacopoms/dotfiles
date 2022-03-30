@@ -101,6 +101,7 @@ noremap <C-s><C-h> :sp<CR>
 
 
 "Telescope
+nnoremap <leader>f <cmd>Telescope<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>fgr <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<CR>
