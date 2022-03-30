@@ -55,6 +55,8 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
   use "shaunsingh/solarized.nvim"
   use "folke/tokyonight.nvim"
   use "projekt0n/github-nvim-theme"
+  use { "NTBBloodbath/doom-one.nvim", branch = 'main'}
+  use "ray-x/aurora"
   -- " use "glepnir/spaceline.vim"
   use {
     "nvim-lualine/lualine.nvim",
