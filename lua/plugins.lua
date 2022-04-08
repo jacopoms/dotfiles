@@ -47,6 +47,10 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
   use "ryanoasis/vim-devicons"
   use "machakann/vim-highlightedyank"
   use "vim-ruby/vim-ruby"
+  use {
+    "kkoomen/vim-doge",
+    run = function() vim.fn['doge#install'](0) end
+  }
   use "elixir-editors/vim-elixir"
   use "lukas-reineke/indent-blankline.nvim"
   -- " color schemes
