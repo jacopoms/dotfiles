@@ -58,7 +58,7 @@ set updatetime=10
 set termguicolors
 " let g:onedark_style = 'deep'
 colorscheme nightfox
-" let g:tokyonight_style = day
+" let g:tokyonight_style = 'night'
 " colorscheme tokyonight
 
 " nvim-tree
