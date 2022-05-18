@@ -1,3 +1,4 @@
+-- Tokyonight
 local M = {}
 -- Example config in Lua
 -- "storm" ,"night" "day"
@@ -8,9 +9,6 @@ vim.g.tokyonight_hide_inactive_statusline = true
 -- Change the "hint" color to the "orange" color, and make the "error" color bright red
 vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 
--- Load the colorscheme
-vim.cmd[[colorscheme tokyonight]]
-
 function M.toggle()
   local styles = { 'storm', 'night', 'day'}
   local index={}
@@ -19,4 +17,29 @@ function M.toggle()
   vim.cmd[[colorscheme tokyonight]]
 end
 
-return M
+
+-- nightfox
+require('nightfox').setup({
+  options = {
+    transparent = true,
+    styles = {
+      commnets = "italic",
+      keywords = "bold",
+      types = "italic,bold",
+    }
+  }
+})
+
+
+-- onedark
+require('onedark').setup({
+    style = "light"
+})
+
+-- catpuccin
+require("catppuccin").setup()
+
+
+-- Load the colorscheme
+vim.cmd[[colorscheme onedark]]
+
