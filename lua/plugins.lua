@@ -1,28 +1,29 @@
-return require("packer").startup(function()  use "wbthomason/packer.nvim"
+return require('packer').startup(function()  use 'wbthomason/packer.nvim'
   use {
-    "nvim-telescope/telescope.nvim",
+    'nvim-telescope/telescope.nvim',
     requires = {
-      {"nvim-lua/popup.nvim"},
-      {"nvim-lua/plenary.nvim"},
-      { 'nvim-telescope/telescope-live-grep-raw.nvim' }
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+      { 'nvim-telescope/telescope-live-grep-raw.nvim' },
+      { "nvim-telescope/telescope-github.nvim" },
     }
   }
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use { 'nvim-telescope/telescope-file-browser.nvim' }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
   }
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-vsnip"
-  use "hrsh7th/vim-vsnip"
-  use "hrsh7th/vim-vsnip-integ"
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip-integ'
   use {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
+    'tzachar/cmp-tabnine',
+    run = './install.sh',
     requires = {
-      "hrsh7th/nvim-cmp"
+      'hrsh7th/nvim-cmp'
     }
   }
 
@@ -31,7 +32,7 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
     run = ':TSUpdate'
   }
   use {
-    "akinsho/nvim-bufferline.lua",
+    'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons'
   }
   use {
@@ -39,43 +40,44 @@ return require("packer").startup(function()  use "wbthomason/packer.nvim"
     requires = 'kyazdani42/nvim-web-devicons',
     config = function() require'nvim-tree'.setup {} end
   }
-  -- use "glepnir/lspsaga.nvim"
-  use "tpope/vim-fugitive"
-  use "tpope/vim-rhubarb" -- open file on github
-  use "fnune/base16-vim"
-  use "tpope/vim-endwise"
-  use "ryanoasis/vim-devicons"
-  use "machakann/vim-highlightedyank"
-  use "vim-ruby/vim-ruby"
+  -- use 'glepnir/lspsaga.nvim'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb' -- open file on github
+  use 'fnune/base16-vim'
+  use 'tpope/vim-endwise'
+  use 'ryanoasis/vim-devicons'
+  use 'machakann/vim-highlightedyank'
+  use 'vim-ruby/vim-ruby'
   use {
-    "kkoomen/vim-doge",
+    'kkoomen/vim-doge',
     run = function() vim.fn['doge#install'](0) end
   }
-  use "elixir-editors/vim-elixir"
-  use "lukas-reineke/indent-blankline.nvim"
-  -- " color schemes
+  use 'elixir-editors/vim-elixir'
+  use 'lukas-reineke/indent-blankline.nvim'
+  -- ' color schemes
   use 'EdenEast/nightfox.nvim'
-  use "navarasu/onedark.nvim"
-  use "shaunsingh/solarized.nvim"
-  use "folke/tokyonight.nvim"
-  use "projekt0n/github-nvim-theme"
-  use { "NTBBloodbath/doom-one.nvim", branch = 'main'}
-  use "ray-x/aurora"
+  use 'navarasu/onedark.nvim'
+  use 'shaunsingh/solarized.nvim'
+  use 'folke/tokyonight.nvim'
+  use 'projekt0n/github-nvim-theme'
+  use 'tiagovla/tokyodark.nvim'
+  use { 'NTBBloodbath/doom-one.nvim', branch = 'main'}
+  use 'ray-x/aurora'
   use({
-    "catppuccin/nvim",
-    as = "catppuccin"
+    'catppuccin/nvim',
+    as = 'catppuccin'
   })
-  -- " use "glepnir/spaceline.vim"
+  -- ' use 'glepnir/spaceline.vim'
   use {
-    "nvim-lualine/lualine.nvim",
-    requires = {"kyazdani42/nvim-web-devicons", opt = true}
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
-  use "cwebster2/github-coauthors.nvim"
-  use "terrortylor/nvim-comment"
-  use "vim-test/vim-test"
-  use "ntpeters/vim-better-whitespace"
+  use 'cwebster2/github-coauthors.nvim'
+  use 'terrortylor/nvim-comment'
+  use 'vim-test/vim-test'
+  use 'ntpeters/vim-better-whitespace'
   use {
-    "lewis6991/gitsigns.nvim",
-    requires = {"nvim-lua/plenary.nvim"}
+    'lewis6991/gitsigns.nvim',
+    requires = {'nvim-lua/plenary.nvim'}
   }
 end)

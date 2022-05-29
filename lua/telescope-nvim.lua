@@ -71,7 +71,7 @@ require("telescope").setup {
       find_cmd = "rg" -- find command (defaults to `fd`)
     },
     file_browser = {
-      theme = "ivy",
+      -- theme = "ivy",
       mappings = {
         ["i"] = {
          -- your custom insert mode mappings
@@ -99,7 +99,8 @@ end
 
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "githubcoauthors"
-require('telescope').load_extension('fzf')
+require('telescope').load_extension("fzf")
+require('telescope').load_extension("gh")
 
 vim.cmd "hi TelescopeBorder   guifg=#2a2e36"
 vim.cmd "hi TelescopePromptBorder   guifg=#2a2e36"

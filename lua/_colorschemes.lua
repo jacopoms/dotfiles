@@ -1,13 +1,13 @@
 -- Tokyonight
 local M = {}
 -- Example config in Lua
--- "storm" ,"night" "day"
-vim.g.tokyonight_style = "day"
+-- 'storm' ,'night' 'day'
+vim.g.tokyonight_style = 'day'
 vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+vim.g.tokyonight_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' }
 vim.g.tokyonight_hide_inactive_statusline = true
--- Change the "hint" color to the "orange" color, and make the "error" color bright red
-vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+-- Change the 'hint' color to the 'orange' color, and make the 'error' color bright red
+vim.g.tokyonight_colors = { hint = 'orange', error = '#ff0000' }
 
 function M.toggle()
   local styles = { 'storm', 'night', 'day'}
@@ -23,9 +23,9 @@ require('nightfox').setup({
   options = {
     transparent = true,
     styles = {
-      commnets = "italic",
-      keywords = "bold",
-      types = "italic,bold",
+      comments = 'italic',
+      keywords = 'bold',
+      types = 'italic,bold',
     }
   }
 })
@@ -33,11 +33,11 @@ require('nightfox').setup({
 
 -- onedark
 require('onedark').setup({
-    style = "light"
+  style = 'deep'
 })
 
 -- catpuccin
-require("catppuccin").setup()
+require('catppuccin').setup()
 
 
 -- Load the colorscheme

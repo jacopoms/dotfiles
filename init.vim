@@ -113,6 +113,7 @@ nnoremap <Leader>gst <cmd>Telescope git_stash<CR>
 nnoremap <Leader>gl <cmd>Telescope git_commits<CR>
 nnoremap <Leader>glb <cmd>Telescope git_bcommits<CR>
 nnoremap <Leader>gb <cmd>Telescope git_branches<CR>
+nnoremap <Leader>gpr <cmd>Telescope gh pull_request<CR>
 nnoremap <leader>gco <cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>
 
 " bufferline
