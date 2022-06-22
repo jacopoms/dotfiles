@@ -101,6 +101,7 @@ require("telescope").load_extension "file_browser"
 require("telescope").load_extension "githubcoauthors"
 require('telescope').load_extension("fzf")
 require('telescope').load_extension("gh")
+require('telescope').load_extension("live_grep_args")
 
 vim.cmd "hi TelescopeBorder   guifg=#2a2e36"
 vim.cmd "hi TelescopePromptBorder   guifg=#2a2e36"
