@@ -8,6 +8,7 @@ lua require("_gitsigns")
 lua require("_lualine")
 lua require("telescope-nvim")
 lua require("_colorschemes")
+lua require("_tree")
 
 " packer
 augroup packer_user_config
@@ -56,15 +57,6 @@ set updatetime=10
 "Color Theme Settings
 set termguicolors
 
-" nvim-tree
-let g:nvim_tree_side = "left"
-" let g:nvim_tree_auto_close = 1
-let g:nvim_tree_quit_on_open = 1
-let g:nvim_tree_indent_markers = 1
-let g:nvim_tree_highlight_opened_files = 1
-" let g:nvim_tree_disable_netrw = 0
-" let g:nvim_tree_follow = 1
-
 " Vim ruby
 set nocompatible      " We're running Vim, not Vi!
 filetype on           " Enable filetype detection
@@ -100,7 +92,7 @@ noremap <C-s><C-h> :sp<CR>
 nnoremap <leader>f <cmd>Telescope<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
-nnoremap <leader>fgr <cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<CR>
+nnoremap <leader>fgr <cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>
 nnoremap <leader>bb <cmd>Telescope buffers<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>

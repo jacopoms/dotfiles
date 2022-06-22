@@ -1,15 +1,15 @@
-return require('packer').startup(function()  use 'wbthomason/packer.nvim'
+return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
-      {'nvim-lua/popup.nvim'},
-      {'nvim-lua/plenary.nvim'},
-      { 'nvim-telescope/telescope-live-grep-raw.nvim' },
+      { 'nvim-lua/popup.nvim' },
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-live-grep-args.nvim' },
       { "nvim-telescope/telescope-github.nvim" },
     }
   }
   use { 'nvim-telescope/telescope-file-browser.nvim' }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
@@ -37,8 +37,7 @@ return require('packer').startup(function()  use 'wbthomason/packer.nvim'
   }
   use {
     'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require'nvim-tree'.setup {} end
+    requires = 'kyazdani42/nvim-web-devicons'
   }
   -- use 'glepnir/lspsaga.nvim'
   use 'tpope/vim-fugitive'
@@ -61,7 +60,7 @@ return require('packer').startup(function()  use 'wbthomason/packer.nvim'
   use 'folke/tokyonight.nvim'
   use 'projekt0n/github-nvim-theme'
   use 'tiagovla/tokyodark.nvim'
-  use { 'NTBBloodbath/doom-one.nvim', branch = 'main'}
+  use { 'NTBBloodbath/doom-one.nvim', branch = 'main' }
   use 'ray-x/aurora'
   use({
     'catppuccin/nvim',
@@ -70,7 +69,7 @@ return require('packer').startup(function()  use 'wbthomason/packer.nvim'
   -- ' use 'glepnir/spaceline.vim'
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use 'cwebster2/github-coauthors.nvim'
   use 'terrortylor/nvim-comment'
@@ -78,6 +77,6 @@ return require('packer').startup(function()  use 'wbthomason/packer.nvim'
   use 'ntpeters/vim-better-whitespace'
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {'nvim-lua/plenary.nvim'}
+    requires = { 'nvim-lua/plenary.nvim' }
   }
 end)
