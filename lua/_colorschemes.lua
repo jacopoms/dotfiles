@@ -41,5 +41,6 @@ require('catppuccin').setup()
 
 
 -- Load the colorscheme
-vim.cmd[[colorscheme onedark]]
+vim.cmd[[set background=light]]
+vim.cmd[[colorscheme solarized8]]
 

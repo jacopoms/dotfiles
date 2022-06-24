@@ -66,6 +66,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
     'catppuccin/nvim',
     as = 'catppuccin'
   })
+  use 'lifepillar/vim-solarized8'
   -- ' use 'glepnir/spaceline.vim'
   use {
     'nvim-lualine/lualine.nvim',

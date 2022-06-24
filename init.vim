@@ -113,6 +113,9 @@ nnoremap <leader>q <cmd>bdelete<CR>
 nnoremap <Tab> <cmd>BufferLineCycleNext<CR>
 nnoremap <S-Tab> <cmd>BufferLineCyclePrev<CR>
 
+" format code
+nnoremap <leader>mm gg=G<CR>
+
 nnoremap <silent> <leader>tt :NvimTreeToggle<CR>
 nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
 
