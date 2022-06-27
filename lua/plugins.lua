@@ -42,7 +42,6 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   -- use 'glepnir/lspsaga.nvim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb' -- open file on github
-  use 'fnune/base16-vim'
   use 'tpope/vim-endwise'
   use 'ryanoasis/vim-devicons'
   use 'machakann/vim-highlightedyank'
