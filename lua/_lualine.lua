@@ -1,6 +1,6 @@
 require("lualine").setup {
   options = {
-    theme = "solarized",
+    theme = "tokyonight",
     icons_enabled = true,
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
