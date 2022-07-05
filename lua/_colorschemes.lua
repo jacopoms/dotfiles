@@ -33,7 +33,7 @@ require('nightfox').setup({
 
 -- onedark
 require('onedark').setup({
-  style = 'deep'
+  style = 'light'
 })
 
 -- catpuccin
@@ -41,6 +41,7 @@ require('catppuccin').setup()
 
 
 -- Load the colorscheme
-vim.cmd[[set background=light]]
-vim.cmd[[colorscheme solarized8]]
+-- vim.cmd[[set background=dark]]
+vim.cmd[[colorscheme onedark]]
+
 
