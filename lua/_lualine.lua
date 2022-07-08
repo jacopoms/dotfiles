@@ -56,7 +56,7 @@ ins_left({
     return msg
   end,
   icon = ' LSP:',
-  color = { fg = '#CCCCCC'},
+  color = { fg = '#CCCCCC' },
 })
 
 lualine.setup(config)

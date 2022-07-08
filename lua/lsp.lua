@@ -1,13 +1,15 @@
 local lspconfig = require("lspconfig")
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
   -- print('Attaching LSP: ' .. client.name)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -68,13 +70,12 @@ end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-    signs = true,
-    underline = true,
-    update_in_insert = true,
-  }
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+}
 )
-
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -98,11 +99,11 @@ lspconfig.elixirls.setup {
 }
 
 lspconfig.solargraph.setup {
-  cmd = { 'solargraph' , 'stdio' },
+  cmd = { 'solargraph', 'stdio' },
   capabilities = capabilities,
-  filetypes = {"ruby", "rakefile"},
+  filetypes = { "ruby", "rakefile" },
   on_attach = on_attach,
-  init_options = {formatting = true},
+  init_options = { formatting = true },
   -- root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
   settings = {
     solargraph = {
@@ -153,4 +154,3 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
   -- vim.cmd [[ do User LspAttachBuffers ]]
 end)
-

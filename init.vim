@@ -54,9 +54,6 @@ set timeoutlen=500 ttimeoutlen=0
 set updatetime=10
 "set list listchars=tab:»\ ,trail:·,eol:¬,extends:>,precedes:<,nbsp:+
 
-"Color Theme Settings
-set termguicolors
-
 " Vim ruby
 set nocompatible      " We're running Vim, not Vi!
 filetype on           " Enable filetype detection
@@ -81,12 +78,10 @@ nnoremap <silent> <C-k> <C-w><C-k>
 nnoremap <silent> <C-l> <C-w><C-l>
 nnoremap <silent> <C-h> <C-w><C-h>
 
-
 " split vertically
 noremap <C-s><C-v> :vsp<CR>
 " split horizontally
 noremap <C-s><C-h> :sp<CR>
-
 
 "Telescope
 nnoremap <leader>f <cmd>Telescope<CR>
@@ -112,6 +107,11 @@ nnoremap <leader>gco <cmd>lua require('telescope').extensions.githubcoauthors.co
 nnoremap <leader>q <cmd>bdelete<CR>
 nnoremap <Tab> <cmd>BufferLineCycleNext<CR>
 nnoremap <S-Tab> <cmd>BufferLineCyclePrev<CR>
+
+" DiffView
+nnoremap <leader>df <cmd>DiffviewFileHistory<CR>
+nnoremap <leader>dff <cmd>DiffviewFileHistory %<CR>
+nnoremap <leader>dc <cmd>DiffviewClose<CR>
 
 " format code
 nnoremap <leader>mm gg=G<CR>
