@@ -39,7 +39,6 @@ require('onedark').setup({
 -- catpuccin
 require('catppuccin').setup()
 
-
 -- Load the colorscheme
 -- vim.cmd[[set background=dark]]
 vim.cmd[[colorscheme onedark]]
