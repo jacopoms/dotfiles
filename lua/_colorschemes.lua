@@ -10,13 +10,12 @@ vim.g.tokyonight_hide_inactive_statusline = true
 vim.g.tokyonight_colors = { hint = 'orange', error = '#ff0000' }
 
 function M.toggle()
-  local styles = { 'storm', 'night', 'day'}
-  local index={}
-  for k,v in pairs(styles) do index[v]=k end
-  vim.g.tokyonight_style =  styles[index[vim.g.tokyonight_style] + 1] or 'storm'
-  vim.cmd[[colorscheme tokyonight]]
+  local styles = { 'storm', 'night', 'day' }
+  local index = {}
+  for k, v in pairs(styles) do index[v] = k end
+  vim.g.tokyonight_style = styles[index[vim.g.tokyonight_style] + 1] or 'storm'
+  vim.cmd [[colorscheme tokyonight]]
 end
-
 
 -- nightfox
 require('nightfox').setup({
@@ -25,11 +24,10 @@ require('nightfox').setup({
     styles = {
       comments = 'italic',
       keywords = 'bold',
-      types = 'italic,bold',
+      types = 'italic', 'bold',
     }
   }
 })
-
 
 -- onedark
 require('onedark').setup({
@@ -41,6 +39,9 @@ require('catppuccin').setup()
 
 -- Load the colorscheme
 -- vim.cmd[[set background=dark]]
-vim.cmd[[colorscheme onedark]]
+vim.cmd [[colorscheme onedark]]
 
+
+-- Setting up colorizer in newvim
+require('colorizer').setup()
 
