@@ -14,6 +14,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
   }
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-vsnip'
@@ -66,6 +67,8 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
     as = 'catppuccin'
   })
   use 'lifepillar/vim-solarized8'
+  use 'sainnhe/sonokai'
+
   -- ' use 'glepnir/spaceline.vim'
   use {
     'nvim-lualine/lualine.nvim',
