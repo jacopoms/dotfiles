@@ -1,3 +1,5 @@
+
+
 local lspconfig = require("lspconfig")
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -79,6 +81,22 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.on_server_ready(function(server)
+  -- (optional) Customize the options passed to the server
+  -- if server.name == "tsserver" then
+  --     opts.root_dir = function() ... end
+  -- end
+  local opts = {
+    capabilities = capabilities,
+    on_attach = on_attach
+  }
+
+  -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+  server:setup(opts)
+  -- vim.cmd [[ do User LspAttachBuffers ]]
+end)
 
 lspconfig.elixirls.setup {
   cmd = { path_to_elixirls },
@@ -125,32 +143,18 @@ lspconfig.solargraph.setup {
 
 -- lsp_installer.on_server_ready(function (server) server:setup {} end)
 
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.on_server_ready(function(server)
-  -- (optional) Customize the options passed to the server
-  -- if server.name == "tsserver" then
-  --     opts.root_dir = function() ... end
-  -- end
-  local opts = {
+lspconfig.efm.setup({
+  opts = {
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    init_options = {
+      documentFormatting = true,
+      hover = true,
+      documentSymbol = true,
+      codeAction = true,
+      complete = true,
+    },
+    filetypes = { 'elixir' }
   }
-  if server.name == "efm" then
-    opts = {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      init_options = {
-        documentFormatting = true,
-        hover = true,
-        documentSymbol = true,
-        codeAction = true,
-        complete = true,
-      },
-      filetypes = { 'elixir' }
-    }
-  end
-  -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-  server:setup(opts)
-  -- vim.cmd [[ do User LspAttachBuffers ]]
-end)
+})
+
