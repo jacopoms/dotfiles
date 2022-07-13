@@ -154,6 +154,7 @@ let g:strip_whitespace_confirm = 0
 
 " vim test
 nnoremap <leader>t :TestFile<CR>
+nnoremap <leader>tn :TestNearest<CR>
 let test#strategy = "neovim"
 " Swap horizontally splits
 noremap <C-w><S-h> :windo wincmd H<CR>

@@ -31,17 +31,17 @@ require('nightfox').setup({
 
 -- onedark
 require('onedark').setup({
-  style = 'deep'
+  style = 'warm'
 })
 
 -- catpuccin
 require('catppuccin').setup()
 
 -- Load the colorscheme
--- vim.cmd[[set background=dark]]
+vim.cmd[[set background=dark]]
 vim.cmd[[set termguicolors]]
--- vim.g.sonokai_style = 'default'
-vim.cmd [[colorscheme onedark]]
+vim.g.sonokai_style = 'maia'
+vim.cmd [[colorscheme sonokai]]
 
 
 -- Setting up colorizer in newvim
