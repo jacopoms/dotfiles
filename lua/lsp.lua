@@ -1,5 +1,3 @@
-
-
 local lspconfig = require("lspconfig")
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -60,8 +58,7 @@ vim.lsp.protocol.CompletionItemKind = {
   "   (TypeParameter)",
 }
 
-local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
-
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
   -- for nvim 0.5.1
   -- local hl = "LspDiagnosticsSign" .. type
@@ -157,4 +154,3 @@ lspconfig.efm.setup({
     filetypes = { 'elixir' }
   }
 })
-
