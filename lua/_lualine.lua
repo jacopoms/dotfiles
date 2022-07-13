@@ -8,17 +8,18 @@ local config = {
     section_separators = { left = '', right = '' },
     disabled_filetypes = {},
     always_divide_middle = true,
+    globalstatus = true,
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'filename'},
-    lualine_c = {
+    lualine_b = {
       {
         'diagnostics',
-        sources = { 'nvim_diagnostic' } ,
+        sources = { 'nvim_diagnostic' },
         color = { bg = '#FCFBCA' },
       }
     },
+    lualine_c = { 'diff', 'filename', 'branch' },
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
