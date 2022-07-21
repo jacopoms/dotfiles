@@ -163,8 +163,11 @@ noremap <C-w><S-k> :windo wincmd K<CR>
 
 "substitute the word under the cursor with
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-"search for word under the cursor with
-nnoremap <Leader>d /<C-r><C-w>
+
+"search forward for word under the cursor with
+nnoremap <Leader>h /<C-r><C-w><CR>
+"search backward for word under the cursor with
+nnoremap <Leader>hh ?<C-r><C-w><CR>
 
 " save file with <Leader>w
 nnoremap <leader>w :w<CR>

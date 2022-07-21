@@ -60,12 +60,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use 'folke/tokyonight.nvim'
   use 'projekt0n/github-nvim-theme'
   use 'tiagovla/tokyodark.nvim'
-  use { 'NTBBloodbath/doom-one.nvim', branch = 'main' }
   use 'ray-x/aurora'
-  use({
-    'catppuccin/nvim',
-    as = 'catppuccin'
-  })
   use 'lifepillar/vim-solarized8'
   use 'sainnhe/sonokai'
 
