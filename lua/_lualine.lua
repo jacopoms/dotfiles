@@ -16,7 +16,7 @@ local config = {
       {
         'diagnostics',
         sources = { 'nvim_diagnostic' },
-        color = { bg = '#FCFBCA' },
+        color = { bg = '#0A1399' },
       }
     },
     lualine_c = { 'diff', 'filename', 'branch' },

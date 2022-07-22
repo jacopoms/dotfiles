@@ -8,6 +8,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
       { "nvim-telescope/telescope-github.nvim" },
     }
   }
+  use 'famiu/nvim-reload'
   use { 'nvim-telescope/telescope-file-browser.nvim' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
