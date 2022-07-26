@@ -31,14 +31,30 @@ require('nightfox').setup({
 
 -- onedark
 require('onedark').setup({
-  style = 'warmer'
+  style = 'light'
 })
 
--- Load the colorscheme
-vim.cmd[[set background=dark]]
-vim.cmd[[set termguicolors]]
+-- sonokai
 vim.g.sonokai_style = 'maia'
-vim.cmd [[colorscheme onedark]]
+
+-- material
+vim.g.material_style = "oceanic"
+require('material').setup({
+  lualine_style = "default",
+	contrast = {
+		sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+		floating_windows = true, -- Enable contrast for floating windows
+		line_numbers = false, -- Enable contrast background for line numbers
+		sign_column = true, -- Enable contrast background for the sign column
+		cursor_line = false, -- Enable darker background for the cursor line
+		non_current_windows = true, -- Enable darker background for non-current windows
+		popup_menu = true, -- Enable lighter background for the popup menu
+	},
+})
+-- Load the colorscheme
+-- vim.cmd [[set background=light]]
+vim.cmd [[set termguicolors]]
+vim.cmd [[colorscheme material]]
 
 
 -- Setting up colorizer in newvim

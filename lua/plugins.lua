@@ -64,7 +64,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use 'ray-x/aurora'
   use 'lifepillar/vim-solarized8'
   use 'sainnhe/sonokai'
-
+  use 'marko-cerovac/material.nvim'
   -- ' use 'glepnir/spaceline.vim'
   use {
     'nvim-lualine/lualine.nvim',
