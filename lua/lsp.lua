@@ -139,18 +139,3 @@ lspconfig.solargraph.setup {
 }
 
 -- lsp_installer.on_server_ready(function (server) server:setup {} end)
-
-lspconfig.efm.setup({
-  opts = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    init_options = {
-      documentFormatting = true,
-      hover = true,
-      documentSymbol = true,
-      codeAction = true,
-      complete = true,
-    },
-    filetypes = { 'elixir' }
-  }
-})
