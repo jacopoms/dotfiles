@@ -7,7 +7,7 @@ require("bufferline").setup {
     diagnostics_indicator = function(count, level, _diagnostics_dict, _context)
       local signs = { error = ' ', warning = ' ', hint = ' ', info = ' ' }
 
-      print('level: ' .. level)
+      -- print('level: ' .. level)
       local icon = signs[level]
       return " " .. icon .. count
     end
