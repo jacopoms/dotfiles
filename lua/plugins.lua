@@ -28,7 +28,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
       'hrsh7th/nvim-cmp'
     }
   }
-
+  use { 'stevearc/aerial.nvim' }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'

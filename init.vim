@@ -6,6 +6,7 @@ lua require("lsp")
 lua require("comment")
 lua require("_gitsigns")
 lua require("_lualine")
+lua require("_aerial")
 lua require("telescope-nvim")
 lua require("_colorschemes")
 lua require("_tree")
@@ -94,6 +95,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fq <cmd>Telescope quickfix<CR>
 nnoremap <Leader>ft <cmd>Telescope tags<CR>
 nnoremap <Leader>fa <cmd>Telescope grep_string<CR>
+nnoremap <Leader>fo <cmd>Telescope aerial<CR>
 nnoremap <Leader>gf <cmd>Telescope git_files<CR>
 nnoremap <Leader>gs <cmd>Telescope git_status<CR>
 nnoremap <Leader>gst <cmd>Telescope git_stash<CR>
@@ -112,6 +114,10 @@ nnoremap <S-Tab> <cmd>BufferLineCyclePrev<CR>
 nnoremap <leader>df <cmd>DiffviewFileHistory<CR>
 nnoremap <leader>dff <cmd>DiffviewFileHistory %<CR>
 nnoremap <leader>dc <cmd>DiffviewClose<CR>
+
+" Aerial
+nnoremap <leader>aa <cmd>AerialToggle!<CR>
+
 
 " format code
 nnoremap <leader>mm gg=G<CR>
