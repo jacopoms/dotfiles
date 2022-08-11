@@ -75,8 +75,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   signs = true,
   underline = true,
   update_in_insert = true,
-}
-)
+})
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -96,6 +95,12 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
   -- vim.cmd [[ do User LspAttachBuffers ]]
 end)
+
+local eslint_config = require("lspconfig.server_configurations.eslint")
+
+lspconfig.eslint.setup {
+  cmd = { "yarn", "exec", unpack(eslint_config.default_config.cmd) }
+}
 
 lspconfig.elixirls.setup {
   cmd = { path_to_elixirls },
