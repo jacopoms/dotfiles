@@ -28,11 +28,13 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
       'hrsh7th/nvim-cmp'
     }
   }
+  use { 'folke/which-key.nvim' }
   use { 'stevearc/aerial.nvim' }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use { "ziontee113/syntax-tree-surfer" }
   use {
     'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons'
@@ -52,6 +54,13 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
     'kkoomen/vim-doge',
     run = function() vim.fn['doge#install'](0) end
   }
+  use {
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  }
+  use { 'akinsho/git-conflict.nvim', tag = "*", config = function()
+    require('git-conflict').setup()
+  end }
   use 'elixir-editors/vim-elixir'
   use 'lukas-reineke/indent-blankline.nvim'
   -- ' color schemes

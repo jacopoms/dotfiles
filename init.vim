@@ -10,6 +10,9 @@ lua require("_aerial")
 lua require("telescope-nvim")
 lua require("_colorschemes")
 lua require("_tree")
+lua require("_which_key")
+lua require("_tree_surfer")
+lua require("_gitlinker")
 
 " packer
 augroup packer_user_config
