@@ -26,7 +26,16 @@ set expandtab
 set smartindent
 set linespace=2 shiftwidth=2 tabstop=2
 set splitbelow splitright
-set number relativenumber
+" set number relativenumber
+set number
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+
+set ruler
 set hidden
 set textwidth=100
 set colorcolumn=99

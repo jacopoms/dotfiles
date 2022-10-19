@@ -59,7 +59,7 @@ require("material").setup({
 -- Load the colorscheme
 -- vim.cmd [[set background=light]]
 vim.cmd [[set termguicolors]]
-vim.cmd [[colorscheme material]]
+vim.cmd [[colorscheme monokaipro]]
 
 
 -- Setting up colorizer in newvim

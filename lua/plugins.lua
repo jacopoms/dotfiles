@@ -34,7 +34,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
-  use { "ziontee113/syntax-tree-surfer" }
+  use { 'ziontee113/syntax-tree-surfer' }
   use {
     'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons'
@@ -74,6 +74,8 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use 'lifepillar/vim-solarized8'
   use 'sainnhe/sonokai'
   use 'marko-cerovac/material.nvim'
+  -- use 'tanvirtin/monokai.nvim'
+  use 'https://gitlab.com/__tpb/monokai-pro.nvim'
   -- ' use 'glepnir/spaceline.vim'
   use {
     'nvim-lualine/lualine.nvim',
