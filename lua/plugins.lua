@@ -84,7 +84,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use 'cwebster2/github-coauthors.nvim'
   use 'terrortylor/nvim-comment'
   use 'vim-test/vim-test'
-  use 'ntpeters/vim-better-whitespace'
+  -- use 'ntpeters/vim-better-whitespace'
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' }

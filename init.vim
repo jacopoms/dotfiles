@@ -164,11 +164,12 @@ nnoremap <leader>m <cmd>lua vim.lsp.buf.formatting()<CR>
 " nnoremap \cs <cmd>lua require("_tokyonight").toggle()<CR>
 
 "formatting
-let g:better_whitespace_ctermcolor='LightYellow'
-let g:better_whitespace_guicolor='LightYellow'
-let g:better_whitespace_enabled = 1
-let g:strip_whitespace_on_save = 1
-let g:strip_whitespace_confirm = 0
+" let g:better_whitespace_ctermcolor='LightYellow'
+" let g:better_whitespace_guicolor='LightYellow'
+" let g:better_whitespace_enabled = 1
+" let g:strip_whitespace_on_save = 1
+" let g:strip_whitespace_confirm = 0
+
 
 " vim test
 nnoremap <leader>t :TestFile<CR>
