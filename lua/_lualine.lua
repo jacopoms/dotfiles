@@ -20,7 +20,7 @@ local config = {
       }
     },
     lualine_c = { 'diff', 'filename', 'branch' },
-    lualine_x = { 'aerial', 'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
   },
