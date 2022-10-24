@@ -64,3 +64,8 @@ vim.cmd [[colorscheme monokaipro]]
 
 -- Setting up colorizer in newvim
 require("colorizer").setup()
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})

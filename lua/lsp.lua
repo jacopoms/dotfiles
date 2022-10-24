@@ -17,16 +17,16 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.setloclist()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev, opts<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next, opts<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>m', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<space>m', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.server_capabilities.document_formatting then
-    buf_set_keymap("n", "<S-f>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<S-f>", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", opts)
   elseif client.server_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<S-f>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<S-f>", "<cmd>lua vim.lsp.buf.format { async = true }<CR>", opts)
   end
 
   require("aerial").on_attach(client, bufnr)
