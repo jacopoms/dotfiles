@@ -74,9 +74,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use 'lifepillar/vim-solarized8'
   use 'sainnhe/sonokai'
   use 'marko-cerovac/material.nvim'
-  -- use 'tanvirtin/monokai.nvim'
   use 'https://gitlab.com/__tpb/monokai-pro.nvim'
-  -- ' use 'glepnir/spaceline.vim'
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -84,7 +82,6 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use 'cwebster2/github-coauthors.nvim'
   use 'terrortylor/nvim-comment'
   use 'vim-test/vim-test'
-  -- use 'ntpeters/vim-better-whitespace'
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' }

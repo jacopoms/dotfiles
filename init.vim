@@ -141,24 +141,6 @@ nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
 nnoremap <expr> ]c <cmd>lua require("gitsigns").next_hunk()<CR>
 nnoremap <expr> [c <cmd>lua require("gitsigns").prev_hunk()<CR>
 
-" lsp
-nnoremap <leader>l <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
-nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR>
-" nnoremap <C-K> <cmd>lua vim.lsp.buf.signature_help()<CR>
-" nnoremap <leader>wa <cmd>lua vim.lsp.buf.add_workspace_folder()<CR>
-" nnoremap <leader>wr <cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>
-" nnoremap <leader>wl <cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
-nnoremap <leader>D <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap \d <cmd>lua vim.diagnostic.open_float()<CR>
-nnoremap [d <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap ]d <cmd>lua vim.diagnostic.goto_next()<CR>
-nnoremap <leader>m <cmd>lua vim.lsp.buf.formatting()<CR>
 "tokyonight
 " nnoremap <silent>K :Lspsaga hover_doc<CR>
 " nnoremap \cs <cmd>lua require("_tokyonight").toggle()<CR>

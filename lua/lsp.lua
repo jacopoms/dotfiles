@@ -126,7 +126,7 @@ lspconfig.solargraph.setup {
   filetypes = { "ruby", "rakefile" },
   on_attach = on_attach,
   init_options = { formatting = true },
-  -- root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+  root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
   settings = {
     solargraph = {
       commandPath = '~/.asdf/shims/solargraph',
