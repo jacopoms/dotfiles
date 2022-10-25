@@ -31,7 +31,7 @@ require("nightfox").setup({
 
 -- onedark
 require("onedark").setup({
-  style = "dark"
+  style = "deep"
 })
 
 -- sonokai
