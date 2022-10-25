@@ -31,7 +31,7 @@ require("nightfox").setup({
 
 -- onedark
 require("onedark").setup({
-  style = "light"
+  style = "dark"
 })
 
 -- sonokai
@@ -59,7 +59,7 @@ require("material").setup({
 -- Load the colorscheme
 -- vim.cmd [[set background=light]]
 vim.cmd [[set termguicolors]]
-vim.cmd [[colorscheme monokaipro]]
+vim.cmd [[colorscheme onedark]]
 
 
 -- Setting up colorizer in newvim
