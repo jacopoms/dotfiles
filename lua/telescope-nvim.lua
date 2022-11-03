@@ -17,14 +17,14 @@ require("telescope").setup {
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "descending",
-    layout_strategy = "horizontal",
+    layout_strategy = "vertical",
     layout_config = {
       horizontal = {
         mirror = false,
         preview_width = 0.5
       },
       vertical = {
-        mirror = false
+        mirror = true
       }
     },
     file_sorter = require "telescope.sorters".get_fuzzy_file,
@@ -44,6 +44,7 @@ require("telescope").setup {
   },
   pickers = {
     find_files = {
+      theme = "ivy",
       hidden = true
     },
     buffers = {
@@ -71,7 +72,7 @@ require("telescope").setup {
       find_cmd = "rg" -- find command (defaults to `fd`)
     },
     file_browser = {
-      -- theme = "ivy",
+      theme = "ivy",
       mappings = {
         ["i"] = {
           -- your custom insert mode mappings
