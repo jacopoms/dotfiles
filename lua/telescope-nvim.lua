@@ -17,14 +17,19 @@ require("telescope").setup {
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "descending",
-    layout_strategy = "vertical",
+    layout_strategy = "bottom_pane",
     layout_config = {
       horizontal = {
         mirror = false,
-        preview_width = 0.5
+        preview_width = 0.5,
+        anchor = "S",
+        prompt_position = 'top',
       },
       vertical = {
-        mirror = true
+        mirror = false,
+        preview_width = 0.5,
+        anchor = "S",
+        prompt_position = 'top',
       }
     },
     file_sorter = require "telescope.sorters".get_fuzzy_file,
