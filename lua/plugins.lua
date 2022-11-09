@@ -43,7 +43,8 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'
   }
-  -- use 'glepnir/lspsaga.nvim'
+  use { "lewis6991/hover.nvim" }
+    -- use 'glepnir/lspsaga.nvim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb' -- open file on github
   use 'tpope/vim-endwise'

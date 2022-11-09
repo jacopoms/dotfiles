@@ -16,19 +16,13 @@ require("telescope").setup {
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
-    sorting_strategy = "descending",
+    sorting_strategy = "ascending",
     layout_strategy = "bottom_pane",
     layout_config = {
-      horizontal = {
+      height = 25,
+      bottom_pane = {
         mirror = false,
         preview_width = 0.5,
-        anchor = "S",
-        prompt_position = 'top',
-      },
-      vertical = {
-        mirror = false,
-        preview_width = 0.5,
-        anchor = "S",
         prompt_position = 'top',
       }
     },
@@ -36,8 +30,12 @@ require("telescope").setup {
     file_ignore_patterns = {},
     generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
     winblend = 0,
-    border = {},
-    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    border = true,
+    borderchars = {
+      prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+      results = { " " },
+      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    },
     color_devicons = true,
     use_less = true,
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
