@@ -13,6 +13,7 @@ lua require("_tree")
 lua require("_which_key")
 lua require("_tree_surfer")
 lua require("_gitlinker")
+lua require("_hover")
 
 " packer
 augroup packer_user_config
@@ -56,8 +57,12 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=1
 set foldexpr='nvim_treesitter#foldexpr()'
-
-" set nohlsearch
+set title
+augroup dirchange
+    autocmd!
+    autocmd DirChanged * let &titlestring=v:event['cwd']
+augroup END
+" " set nohlsearch
 set scrolloff=8
 set shortmess+=c
 set cursorline
