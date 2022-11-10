@@ -60,6 +60,9 @@ require("telescope").setup {
           ["<c-d>"] = "delete_buffer",
         }
       }
+    },
+    colorscheme = {
+      enable_preview = true
     }
   },
   extensions = {

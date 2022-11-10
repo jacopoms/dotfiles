@@ -76,6 +76,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use 'sainnhe/sonokai'
   use 'marko-cerovac/material.nvim'
   use 'https://gitlab.com/__tpb/monokai-pro.nvim'
+  use 'yorik1984/newpaper.nvim'
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
