@@ -56,10 +56,12 @@ require("material").setup({
     darker = true, -- Enable higher contrast text for darker style
   },
 })
+
+vim.g.newpaper_style = "dark"
 -- Load the colorscheme
--- vim.cmd [[set background=light]]
+-- vim.cmd [[set background=dark]]
 vim.cmd [[set termguicolors]]
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme newpaper]]
 
 
 -- Setting up colorizer in newvim
