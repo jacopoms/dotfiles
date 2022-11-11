@@ -18,21 +18,21 @@ function M.toggle()
 end
 
 -- nightfox
-require("nightfox").setup({
-  options = {
-    transparent = true,
-    styles = {
-      comments = "italic",
-      keywords = "bold",
-      types = "italic", "bold",
-    }
-  }
-})
+-- require("nightfox").setup({
+--   options = {
+--     transparent = true,
+--     styles = {
+--       comments = "italic",
+--       keywords = "bold",
+--       types = "italic", "bold",
+--     }
+--   }
+-- })
 
 -- onedark
-require("onedark").setup({
-  style = "deep"
-})
+-- require("onedark").setup({
+--   style = "deep"
+-- })
 
 -- sonokai
 vim.g.sonokai_style = "maia"
@@ -40,25 +40,34 @@ vim.g.sonokai_style = "maia"
 -- material
 vim.g.material_style = "palenight"
 
-require("material").setup({
-  lualine_style = "default",
-  contrast = {
-    sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
-    floating_windows = true, -- Enable contrast for floating windows
-    line_numbers = true, -- Enable contrast background for line numbers
-    sign_column = false, -- Enable contrast background for the sign column
-    cursor_line = true, -- Enable darker background for the cursor line
-    non_current_windows = true, -- Enable darker background for non-current windows
-    popup_menu = true, -- Enable lighter background for the popup menu
-  },
-  high_visibility = {
-    lighter = true, -- Enable higher contrast text for lighter style
-    darker = true, -- Enable higher contrast text for darker style
-  },
+-- require("material").setup({
+--   lualine_style = "default",
+--   contrast = {
+--     sidebars = true, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+--     floating_windows = true, -- Enable contrast for floating windows
+--     line_numbers = true, -- Enable contrast background for line numbers
+--     sign_column = false, -- Enable contrast background for the sign column
+--     cursor_line = true, -- Enable darker background for the cursor line
+--     non_current_windows = true, -- Enable darker background for non-current windows
+--     popup_menu = true, -- Enable lighter background for the popup menu
+--   },
+--   high_visibility = {
+--     lighter = true, -- Enable higher contrast text for lighter style
+--     darker = true, -- Enable higher contrast text for darker style
+--   },
+-- })
+vim.g.newpaper_style = "dark"
+vim.g.newpaper_lualine_style = "dark"
+vim.g.newpaper_sidebars_contrast = {"NvimTree", "packer", "Aerial" }
+
+require("newpaper").setup({
+  style = "dark",
+  lualine_style = "dark",
+  sidebars_contrast = {"NvimTree", "packer", "Aerial"},
 })
 
-vim.g.newpaper_style = "dark"
--- Load the colorscheme
+
+-- -- Load the colorscheme
 -- vim.cmd [[set background=dark]]
 vim.cmd [[set termguicolors]]
 vim.cmd [[colorscheme newpaper]]
