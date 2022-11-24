@@ -58,12 +58,11 @@ vim.g.material_style = "palenight"
 -- })
 vim.g.newpaper_style = "dark"
 vim.g.newpaper_lualine_style = "dark"
-vim.g.newpaper_sidebars_contrast = {"NvimTree", "packer", "Aerial" }
-
+vim.g.newpaper_sidebars_contrast = {"NvimTree", "packer" }
 require("newpaper").setup({
   style = "dark",
   lualine_style = "dark",
-  sidebars_contrast = {"NvimTree", "packer", "Aerial"},
+  sidebars_contrast = {"NvimTree", "packer" },
 })
 
 
@@ -71,6 +70,7 @@ require("newpaper").setup({
 -- vim.cmd [[set background=dark]]
 vim.cmd [[set termguicolors]]
 vim.cmd [[colorscheme newpaper]]
+vim.cmd [[highlight GitSignsCurrentLineBlame guifg=#778899]]
 
 
 -- Setting up colorizer in newvim

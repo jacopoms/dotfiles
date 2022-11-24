@@ -23,8 +23,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
-
-  -- require("aerial").on_attach(client, bufnr)
 end
 
 vim.lsp.protocol.CompletionItemKind = {
