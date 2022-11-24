@@ -132,9 +132,6 @@ nnoremap <leader>df <cmd>DiffviewFileHistory<CR>
 nnoremap <leader>dff <cmd>DiffviewFileHistory %<CR>
 nnoremap <leader>dc <cmd>DiffviewClose<CR>
 
-" Aerial
-nnoremap <leader>aa <cmd>AerialToggle!<CR>
-
 
 " format code
 nnoremap <leader>mm gg=G<CR>
