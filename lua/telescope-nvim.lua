@@ -104,6 +104,12 @@ M.find_files = function()
   }
 end
 
+M.diagnostics = function ()
+  telescope_builtin.diagnostics {
+    bufnr = nil
+  }
+end
+
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "githubcoauthors"
 require('telescope').load_extension("fzf")
