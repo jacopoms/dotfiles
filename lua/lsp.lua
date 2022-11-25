@@ -1,10 +1,11 @@
 local lspconfig = require("lspconfig")
 local opts = { noremap = true, silent = true }
+-- vim.diagnostic.get({ bufnr = nil })
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>Q', vim.diagnostic.setloclist, opts)
-
+vim.keymap.set('n', 'd[', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', 'd]', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>ee', vim.diagnostic.setloclist, opts)
+vim.keymap.set('n', '<space>fd', '<cmd>Telescope diagnostics<CR>', opts)
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -62,8 +63,12 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+
+vim.diagnostic.config({
+  severity_sort = true,
+  float = {
+    source = "always", -- Or "if_many"
+  },
   virtual_text = false,
   signs = true,
   underline = true,
@@ -118,7 +123,10 @@ lspconfig.solargraph.setup {
   capabilities = capabilities,
   filetypes = { "ruby", "rakefile" },
   on_attach = on_attach,
-  init_options = { formatting = true },
+  init_options = {
+    formatting = true,
+    diagnostic = true
+  },
   root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
   settings = {
     solargraph = {
