@@ -12,6 +12,7 @@ lua require("_tree")
 lua require("_tree_surfer")
 lua require("_gitlinker")
 lua require("_hover")
+lua require("_neogen")
 
 " packer
 augroup packer_user_config
