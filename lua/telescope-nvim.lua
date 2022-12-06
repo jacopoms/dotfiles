@@ -1,4 +1,4 @@
-local actions = require("telescope.actions")
+-- local actions = require("telescope.actions")
 
 require("telescope").setup {
   defaults = {
@@ -110,8 +110,8 @@ M.diagnostics = function ()
   }
 end
 
-require("telescope").load_extension "file_browser"
-require("telescope").load_extension "githubcoauthors"
+require("telescope").load_extension("file_browser")
+require("telescope").load_extension("githubcoauthors")
 require('telescope').load_extension("fzf")
 require('telescope').load_extension("gh")
 require('telescope').load_extension("live_grep_args")

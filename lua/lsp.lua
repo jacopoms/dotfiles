@@ -28,34 +28,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-vim.lsp.protocol.CompletionItemKind = {
-  "   (Text) ",
-  "   (Method)",
-  "   (Function)",
-  "   (Constructor)",
-  " ﴲ  (Field)",
-  "[] (Variable)",
-  "   (Class)",
-  " ﰮ  (Interface)",
-  "   (Module)",
-  " 襁 (Property)",
-  "   (Unit)",
-  "   (Value)",
-  " 練 (Enum)",
-  "   (Keyword)",
-  "   (Snippet)",
-  "   (Color)",
-  "   (File)",
-  "   (Reference)",
-  "   (Folder)",
-  "   (EnumMember)",
-  " ﲀ  (Constant)",
-  " ﳤ  (Struct)",
-  "   (Event)",
-  "   (Operator)",
-  "   (TypeParameter)",
-}
-
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
   -- for nvim 0.5.1

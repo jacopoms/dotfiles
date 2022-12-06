@@ -28,6 +28,12 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
       'hrsh7th/nvim-cmp'
     }
   }
+  use {
+    'onsails/lspkind.nvim',
+    requires = {
+      'hrsh7th/nvim-cmp'
+    }
+  }
   -- use { 'folke/which-key.nvim' }
   use {
     'nvim-treesitter/nvim-treesitter',
