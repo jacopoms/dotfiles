@@ -1,6 +1,7 @@
 local ts_config = require("nvim-treesitter.configs")
 
 ts_config.setup {
+  auto_install = true,
   ensure_installed = {
     "lua",
     "ruby",
@@ -12,6 +13,6 @@ ts_config.setup {
     additional_vim_regex_highlighting = true,
   },
   indent = {
-    enable = false,
+    enable = true,
   }
 }

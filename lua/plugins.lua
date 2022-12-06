@@ -39,21 +39,28 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
     requires = 'kyazdani42/nvim-web-devicons'
   }
   use {
+    "danymat/neogen",
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+      "hrsh7th/vim-vsnip"
+    },
+
+    -- Uncomment next line if you want to follow only stable versions
+    tag = "*"
+  }
+
+  use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'
   }
   use { "lewis6991/hover.nvim" }
-    -- use 'glepnir/lspsaga.nvim'
+  -- use 'glepnir/lspsaga.nvim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb' -- open file on github
   use 'tpope/vim-endwise'
   use 'ryanoasis/vim-devicons'
   use 'machakann/vim-highlightedyank'
   use 'vim-ruby/vim-ruby'
-  use {
-    'kkoomen/vim-doge',
-    run = function() vim.fn['doge#install'](0) end
-  }
   use {
     'ruifm/gitlinker.nvim',
     requires = 'nvim-lua/plenary.nvim',
