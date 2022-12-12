@@ -102,7 +102,8 @@ noremap <C-s><C-h> :sp<CR>
 
 "Telescope
 nnoremap <leader>ff <cmd>Telescope<CR>
-nnoremap <leader>f <cmd>Telescope find_files<CR>
+nnoremap <leader>f <cmd>Telescope find_files prompt_prefix=🔍<CR>
+nnoremap <leader>fH <cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<CR>
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <leader>fgr <cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>
 nnoremap <leader>bb <cmd>Telescope buffers<CR>
@@ -111,6 +112,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fq <cmd>Telescope quickfix<CR>
 nnoremap <Leader>ft <cmd>Telescope tags<CR>
 nnoremap <Leader>fa <cmd>Telescope grep_string<CR>
+nnoremap <Leader>fe <cmd>Telescope env<CR>
 nnoremap <Leader>gf <cmd>Telescope git_files<CR>
 nnoremap <Leader>gs <cmd>Telescope git_status<CR>
 nnoremap <Leader>gst <cmd>Telescope git_stash<CR>
@@ -173,10 +175,8 @@ nnoremap <Leader>hh ?<C-r><C-w><CR>
 " save file with <Leader>w
 nnoremap <leader>w :w<CR>
 
-" save all files file with <Leader>w
-nnoremap <leader>w :w<CR>
 " save and exit with <leader>wq
-nnoremap <leader>wq :wq<CR>
+nnoremap <leader>W :wq<CR>
 
 " save and exit all buffers with <leader>wqa
 nnoremap <leader>wqa :wqa<CR>
