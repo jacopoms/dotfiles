@@ -48,7 +48,7 @@ require("telescope").setup {
   pickers = {
     find_files = {
       theme = "ivy",
-      hidden = true
+      -- hidden = true
     },
     buffers = {
       show_all_buffers = true,
@@ -99,7 +99,7 @@ local telescope_builtin = require 'telescope.builtin'
 
 M.find_files = function()
   telescope_builtin.find_files {
-    find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+    find_command = { 'rg', '--files', '--iglob', '!.git' },
     previewer = false
   }
 end
@@ -115,6 +115,7 @@ require("telescope").load_extension("githubcoauthors")
 require('telescope').load_extension("fzf")
 require('telescope').load_extension("gh")
 require('telescope').load_extension("live_grep_args")
+require('telescope').load_extension('env')
 
 vim.cmd "hi TelescopeBorder   guifg=#2a2e36"
 vim.cmd "hi TelescopePromptBorder   guifg=#2a2e36"

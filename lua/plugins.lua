@@ -6,6 +6,16 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-live-grep-args.nvim' },
       { "nvim-telescope/telescope-github.nvim" },
+      { "LinArcX/telescope-env.nvim" },
+    }
+  }
+  use {
+    'sudormrfbin/cheatsheet.nvim',
+
+    requires = {
+      {'nvim-telescope/telescope.nvim'},
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
     }
   }
   use 'famiu/nvim-reload'
