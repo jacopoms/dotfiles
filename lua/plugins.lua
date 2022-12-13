@@ -13,9 +13,9 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
     'sudormrfbin/cheatsheet.nvim',
 
     requires = {
-      {'nvim-telescope/telescope.nvim'},
-      {'nvim-lua/popup.nvim'},
-      {'nvim-lua/plenary.nvim'},
+      { 'nvim-telescope/telescope.nvim' },
+      { 'nvim-lua/popup.nvim' },
+      { 'nvim-lua/plenary.nvim' },
     }
   }
   use 'famiu/nvim-reload'
@@ -99,6 +99,7 @@ return require('packer').startup(function() use 'wbthomason/packer.nvim'
   use 'marko-cerovac/material.nvim'
   use 'https://gitlab.com/__tpb/monokai-pro.nvim'
   use 'yorik1984/newpaper.nvim'
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
