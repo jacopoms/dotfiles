@@ -1,4 +1,5 @@
 lua require("plugins")
+lua require("_key_bindings")
 lua require("treesitter")
 lua require("completion")
 lua require("buffer")
@@ -13,6 +14,7 @@ lua require("_tree_surfer")
 lua require("_gitlinker")
 lua require("_hover")
 lua require("_neogen")
+lua require("_which-key")
 
 " packer
 augroup packer_user_config
@@ -83,7 +85,7 @@ autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guard
 autocmd BufWritePost plugins.lua PackerCompile
 
 " -- remaps
-let mapleader = " "
+" let mapleader = " "
 tnoremap <leader><Esc> <C-\><C-n>
 nnoremap <C-T> <cmd>vnew term://zsh<CR>
 nnoremap <C-X> <Cmd>split term://zsh<CR>
@@ -109,6 +111,7 @@ nnoremap <leader>fgr <cmd>lua require("telescope").extensions.live_grep_args.liv
 nnoremap <leader>bb <cmd>Telescope buffers<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
+nnoremap <leader>fc <cmd>Telescope commands<CR>
 nnoremap <leader>fq <cmd>Telescope quickfix<CR>
 nnoremap <Leader>ft <cmd>Telescope tags<CR>
 nnoremap <Leader>fa <cmd>Telescope grep_string<CR>
