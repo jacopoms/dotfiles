@@ -56,12 +56,13 @@
 --     darker = true, -- Enable higher contrast text for darker style
 --   },
 -- })
-vim.g.newpaper_style = "dark"
-vim.g.newpaper_lualine_style = "dark"
-vim.g.newpaper_sidebars_contrast = {"NvimTree", "packer" }
+-- vim.g.newpaper_style = "dark"
+-- vim.g.newpaper_lualine_style = "dark"
+-- vim.g.newpaper_sidebars_contrast = {"NvimTree", "packer" }
+
 require("newpaper").setup({
-  style = "dark",
-  lualine_style = "dark",
+  style = "light",
+  lualine_style = "light",
   sidebars_contrast = {"NvimTree", "packer" },
 })
 

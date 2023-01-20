@@ -9,6 +9,8 @@ vim.keymap.set('n', '<space>fd', '<cmd>Telescope diagnostics<CR>', opts)
 vim.keymap.set('n', '<space>fs', '<cmd>Telescope lsp_document_symbols<CR>', opts)
 vim.keymap.set('n', '<space>fw', '<cmd>Telescope lsp_workspace_symbols<CR>', opts)
 
+vim.lsp.set_log_level("debug")
+
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -68,10 +70,10 @@ lsp_installer.on_server_ready(function(server)
   -- vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
-local eslint_config = require("lspconfig.server_configurations.eslint")
+-- local eslint_config = require("lspconfig.server_configurations.eslint")
 
 lspconfig.eslint.setup {
-  cmd = { "yarn", "exec", unpack(eslint_config.default_config.cmd) }
+  -- cmd = { "yarn", "exec", unpack(eslint_config.default_config.cmd) }
 }
 
 lspconfig.elixirls.setup {
@@ -120,6 +122,14 @@ lspconfig.solargraph.setup {
   }
 }
 
-lspconfig.ruby_ls.setup{}
+lspconfig.ruby_ls.setup {
+  cmd = { 'ruby-lsp' },
+  capabilities = capabilities,
+  filetypes = { "ruby", "rakefile" },
+  on_attach = on_attach,
+  init_options = {
+    enabledFeatures = { "codeActions", "diagnostics", "documentHighlights", "documentSymbols", "formatting", "inlayHint" }
+  },
+}
 
 -- lsp_installer.on_server_ready(function (server) server:setup {} end)
