@@ -135,6 +135,8 @@ nnoremap <leader>df <cmd>DiffviewFileHistory<CR>
 nnoremap <leader>dff <cmd>DiffviewFileHistory %<CR>
 nnoremap <leader>dc <cmd>DiffviewClose<CR>
 
+" update packages
+noremap <leader><C-u> <cmd>PackerSync<CR>
 
 " format code
 nnoremap <leader>mm gg=G<CR>
