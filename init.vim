@@ -60,8 +60,8 @@ set foldlevel=1
 set foldexpr='nvim_treesitter#foldexpr()'
 set title
 augroup dirchange
-    autocmd!
-    autocmd DirChanged * let &titlestring=v:event['cwd']
+  autocmd!
+  autocmd DirChanged * let &titlestring=v:event['cwd']
 augroup END
 " " set nohlsearch
 set scrolloff=8
@@ -79,10 +79,20 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
+function! <SID>AddFrozenStringLiteralMagicComment()
+  let l = line(".")
+  let c = col(".")
+  execute "norm gg"
+  execute "norm O# frozen_string_literal: true"
+  execute "norm o"
+  call cursor(l+2, c)
+endfunction
+
 " -- auto cmds
 autocmd TermOpen * setlocal nonu
 autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} set ft=ruby
 autocmd BufWritePost plugins.lua PackerCompile
+autocmd FileType ruby map <leader>rfs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
 
 " -- remaps
 " let mapleader = " "
@@ -113,16 +123,16 @@ nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <leader>fc <cmd>Telescope commands<CR>
 nnoremap <leader>fq <cmd>Telescope quickfix<CR>
-nnoremap <Leader>ft <cmd>Telescope tags<CR>
-nnoremap <Leader>fa <cmd>Telescope grep_string<CR>
-nnoremap <Leader>fe <cmd>Telescope env<CR>
-nnoremap <Leader>gf <cmd>Telescope git_files<CR>
-nnoremap <Leader>gs <cmd>Telescope git_status<CR>
-nnoremap <Leader>gst <cmd>Telescope git_stash<CR>
-nnoremap <Leader>gl <cmd>Telescope git_commits<CR>
-nnoremap <Leader>glb <cmd>Telescope git_bcommits<CR>
-nnoremap <Leader>gb <cmd>Telescope git_branches<CR>
-nnoremap <Leader>gpr <cmd>Telescope gh pull_request<CR>
+nnoremap <leader>ft <cmd>Telescope tags<CR>
+nnoremap <leader>fa <cmd>Telescope grep_string<CR>
+nnoremap <leader>fe <cmd>Telescope env<CR>
+nnoremap <leader>gf <cmd>Telescope git_files<CR>
+nnoremap <leader>gs <cmd>Telescope git_status<CR>
+nnoremap <leader>gst <cmd>Telescope git_stash<CR>
+nnoremap <leader>gl <cmd>Telescope git_commits<CR>
+nnoremap <leader>glb <cmd>Telescope git_bcommits<CR>
+nnoremap <leader>gb <cmd>Telescope git_branches<CR>
+nnoremap <leader>gpr <cmd>Telescope gh pull_request<CR>
 nnoremap <leader>gco <cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>
 
 " bufferline
@@ -136,7 +146,7 @@ nnoremap <leader>dff <cmd>DiffviewFileHistory %<CR>
 nnoremap <leader>dc <cmd>DiffviewClose<CR>
 
 " update packages
-noremap <leader><C-u> <cmd>PackerSync<CR>
+noremap <C-u><S-u> <cmd>PackerSync<CR>
 
 " format code
 nnoremap <leader>mm gg=G<CR>
@@ -148,43 +158,30 @@ nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
 nnoremap <expr> ]c <cmd>lua require("gitsigns").next_hunk()<CR>
 nnoremap <expr> [c <cmd>lua require("gitsigns").prev_hunk()<CR>
 
-"tokyonight
-" nnoremap <silent>K :Lspsaga hover_doc<CR>
-" nnoremap \cs <cmd>lua require("_tokyonight").toggle()<CR>
-
-"formatting
-" let g:better_whitespace_ctermcolor='LightYellow'
-" let g:better_whitespace_guicolor='LightYellow'
-" let g:better_whitespace_enabled = 1
-" let g:strip_whitespace_on_save = 1
-" let g:strip_whitespace_confirm = 0
-
-
 " vim test
 nnoremap <leader>t :TestFile<CR>
 nnoremap <leader>tn :TestNearest<CR>
+nnoremap <leader>ta :TestSuite<CR>
 let test#strategy = "neovim"
+
 " Swap horizontally splits
 noremap <C-w><S-h> :windo wincmd H<CR>
+
 " Swap vertically splits
 noremap <C-w><S-k> :windo wincmd K<CR>
 
-"substitute the word under the cursor with
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+"subsitute the word under the cursor with
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 
 "search forward for word under the cursor with
-nnoremap <Leader>h /<C-r><C-w><CR>
+nnoremap <leader>h /<C-r><C-w><CR>
 "search backward for word under the cursor with
-nnoremap <Leader>hh ?<C-r><C-w><CR>
+nnoremap <leader>hh ?<C-r><C-w><CR>
 
-" save file with <Leader>w
+" save with leader W
 nnoremap <leader>w :w<CR>
 
-" save and exit with <leader>wq
-nnoremap <leader>W :wq<CR>
-
-" save and exit all buffers with <leader>wqa
-nnoremap <leader>wqa :wqa<CR>
+inoremap <leader>; <Esc>
 
 " copy and save from the clipboard"
 vnoremap  <leader>y  "+y

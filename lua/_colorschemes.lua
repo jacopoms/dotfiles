@@ -61,8 +61,9 @@
 -- vim.g.newpaper_sidebars_contrast = {"NvimTree", "packer" }
 
 require("newpaper").setup({
-  style = "dark",
-  lualine_style = "dark",
+  style = "light",
+  lualine_style = "light",
+
   sidebars_contrast = {"NvimTree", "packer" },
 })
 
