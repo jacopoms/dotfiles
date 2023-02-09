@@ -79,6 +79,7 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
+
 function! <SID>AddFrozenStringLiteralMagicComment()
   let l = line(".")
   let c = col(".")
@@ -163,6 +164,9 @@ nnoremap <leader>t :TestFile<CR>
 nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>ta :TestSuite<CR>
 let test#strategy = "neovim"
+
+" SymbolsOutline plugin
+nnoremap <leader>a <cmd>SymbolsOutline<CR>
 
 " Swap horizontally splits
 noremap <C-w><S-h> :windo wincmd H<CR>

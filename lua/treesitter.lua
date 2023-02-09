@@ -16,3 +16,5 @@ ts_config.setup {
     enable = true,
   }
 }
+
+require('symbols-outline').setup()
