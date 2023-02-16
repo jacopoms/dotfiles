@@ -27,7 +27,13 @@ local config = {
         },
       },
     },
-    lualine_c = { 'filename', 'branch' },
+    lualine_c = {
+      {
+        'filename',
+        path = 1
+      },
+      'branch'
+    },
     lualine_x = {
       {
         "diagnostics",
@@ -48,7 +54,7 @@ local config = {
         },
       },
     },
-    lualine_y = { 'fileformat', 'filetype', 'encoding','progress' },
+    lualine_y = { 'fileformat', 'filetype', 'encoding', 'progress' },
   },
   tabline = {},
   extensions = {

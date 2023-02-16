@@ -74,7 +74,6 @@ return require('packer').startup(function()
       "nvim-treesitter/nvim-treesitter",
       "hrsh7th/vim-vsnip"
     },
-
     -- Uncomment next line if you want to follow only stable versions
     tag = "*"
   }
@@ -101,6 +100,13 @@ return require('packer').startup(function()
   use 'elixir-editors/vim-elixir'
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'simrat39/symbols-outline.nvim' }
+  use {
+    'windwp/nvim-spectre',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
+
   -- ' color schemes
   -- use 'EdenEast/nightfox.nvim'
   use 'navarasu/onedark.nvim'

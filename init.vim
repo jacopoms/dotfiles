@@ -74,7 +74,7 @@ set updatetime=10
 "set list listchars=tab:»\ ,trail:·,eol:¬,extends:>,precedes:<,nbsp:+
 
 " Vim ruby
-set nocompatible      " We're running Vim, not Vi!
+" set nocompatible      " We're running Vim, not Vi!
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins

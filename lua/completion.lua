@@ -28,7 +28,9 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'vsnip' }, -- For vsnip users.
     { name = 'cmp_tabnine' },
-    -- { name = 'luasnip' }, -- For luasnip users.
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }, {
@@ -84,3 +86,4 @@ cmp.setup.cmdline(':', {
 --     capabilities = capabilities
 --   }
 -- end
+
