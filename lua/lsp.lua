@@ -5,9 +5,9 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', 'd[', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', 'd]', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>ee', vim.diagnostic.setloclist, opts)
-vim.keymap.set('n', '<space>fd', '<cmd>Telescope diagnostics<CR>', opts)
-vim.keymap.set('n', '<space>fs', '<cmd>Telescope lsp_document_symbols<CR>', opts)
-vim.keymap.set('n', '<space>fw', '<cmd>Telescope lsp_workspace_symbols<CR>', opts)
+vim.keymap.set('n', '<space>ld', '<cmd>Telescope diagnostics<CR>', opts)
+vim.keymap.set('n', '<space>ls', '<cmd>Telescope lsp_document_symbols<CR>', opts)
+vim.keymap.set('n', '<space>lw', '<cmd>Telescope lsp_workspace_symbols<CR>', opts)
 
 vim.lsp.set_log_level("debug")
 
@@ -20,6 +20,9 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'gdv', '<cmd>vsplit<CR> | <cmd> lua vim.lsp.buf.definition<CR>', bufopts)
+  vim.keymap.set('n', '<space>lr', '<cmd>Telescope lsp_references<CR>', opts)
+  vim.keymap.set('n', '<space>lf', '<cmd>Telescope lsp_definitions<CR>', opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -60,13 +63,13 @@ lsp_installer.on_server_ready(function(server)
   -- if server.name == "tsserver" then
   --     opts.root_dir = function() ... end
   -- end
-  local opts = {
+  local local_opts = {
     capabilities = capabilities,
     on_attach = on_attach
   }
 
   -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-  server:setup(opts)
+  server:setup(local_opts)
   -- vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
@@ -132,4 +135,13 @@ lspconfig.ruby_ls.setup {
   },
 }
 
+lspconfig.lua_ls.setup({
+    settings = {
+        Lua = {
+            diagnostics = {
+                 globals = { 'vim' }
+            }
+        }
+    }
+})
 -- lsp_installer.on_server_ready(function (server) server:setup {} end)

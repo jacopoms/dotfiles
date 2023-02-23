@@ -4,7 +4,6 @@ lua require("treesitter")
 lua require("completion")
 lua require("buffer")
 lua require("lsp")
-lua require("comment")
 lua require("_gitsigns")
 lua require("_lualine")
 lua require("telescope-nvim")
@@ -21,7 +20,6 @@ augroup packer_user_config
   autocmd!
   autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 augroup end
-
 
 " set clipboard+=unnamedplus
 set expandtab
@@ -109,16 +107,16 @@ nnoremap <silent> <C-l> <C-w><C-l>
 nnoremap <silent> <C-h> <C-w><C-h>
 
 " split vertically
-noremap <C-s><C-v> :vsp<CR>
+noremap <C-s><C-v> <cmd>vsp<CR>
 " split horizontally
-noremap <C-s><C-h> :sp<CR>
+noremap <C-s><C-h> <cmd> sp<CR>
 
 "Telescope
 nnoremap <leader>ff <cmd>Telescope<CR>
 nnoremap <leader>f <cmd>Telescope find_files prompt_prefix=🔍<CR>
 nnoremap <leader>fH <cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<CR>
-nnoremap <leader>fgr <cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>
+nnoremap <leader>fl <cmd>Telescope live_grep<CR>
+nnoremap <leader>fg <cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>
 nnoremap <leader>bb <cmd>Telescope buffers<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
@@ -138,6 +136,7 @@ nnoremap <leader>gco <cmd>lua require('telescope').extensions.githubcoauthors.co
 
 " bufferline
 nnoremap <leader>q <cmd>bdelete<CR>
+nnoremap <leader>qq <cmd>bdelete!<CR>
 nnoremap <Tab> <cmd>BufferLineCycleNext<CR>
 nnoremap <S-Tab> <cmd>BufferLineCyclePrev<CR>
 
@@ -185,7 +184,7 @@ nnoremap <leader>hh ?<C-r><C-w><CR>
 " save with leader W
 nnoremap <leader>w :w<CR>
 
-inoremap <leader>; <Esc>
+inoremap <C-q> <Esc>
 
 " copy and save from the clipboard"
 vnoremap  <leader>y  "+y
