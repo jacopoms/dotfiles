@@ -35,19 +35,29 @@ return require('packer').startup(function()
   use 'famiu/nvim-reload'
   use { 'nvim-telescope/telescope-file-browser.nvim' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use 'neovim/nvim-lspconfig'
   use {
-    'neovim/nvim-lspconfig',
-    'williamboman/nvim-lsp-installer',
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    requires = 'neovim/nvim-lspconfig'
   }
+  use 'mhartington/formatter.nvim'
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
+  -- use 'hrsh7th/cmp-vsnip'
+  -- use 'hrsh7th/vim-vsnip'
+  -- use 'hrsh7th/vim-vsnip-integ'
+  use {
+  	"L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v<CurrentMajor>.*",
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  }
   use {
     'tzachar/cmp-tabnine',
     run = './install.sh',

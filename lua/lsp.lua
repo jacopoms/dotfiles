@@ -1,4 +1,6 @@
-local lspconfig = require("lspconfig")
+require("mason").setup()
+require("mason-lspconfig").setup()
+local lspconfig = require('lspconfig')
 local opts = { noremap = true, silent = true }
 -- vim.diagnostic.get({ bufnr = nil })
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
@@ -20,7 +22,6 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'gdv', '<cmd>vsplit<CR> | <cmd> lua vim.lsp.buf.definition<CR>', bufopts)
   vim.keymap.set('n', '<space>lr', '<cmd>Telescope lsp_references<CR>', opts)
   vim.keymap.set('n', '<space>lf', '<cmd>Telescope lsp_definitions<CR>', opts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -30,7 +31,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<space>fm', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set('n', '<space>lfm', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
@@ -56,23 +57,6 @@ vim.diagnostic.config({
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.on_server_ready(function(server)
-  -- (optional) Customize the options passed to the server
-  -- if server.name == "tsserver" then
-  --     opts.root_dir = function() ... end
-  -- end
-  local local_opts = {
-    capabilities = capabilities,
-    on_attach = on_attach
-  }
-
-  -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-  server:setup(local_opts)
-  -- vim.cmd [[ do User LspAttachBuffers ]]
-end)
-
 -- local eslint_config = require("lspconfig.server_configurations.eslint")
 
 lspconfig.eslint.setup {
@@ -144,4 +128,12 @@ lspconfig.lua_ls.setup({
         }
     }
 })
--- lsp_installer.on_server_ready(function (server) server:setup {} end)
+
+require("mason-lspconfig").setup_handlers {
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function (server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {}
+    end
+}
