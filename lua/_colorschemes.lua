@@ -63,6 +63,7 @@
 require("newpaper").setup({
 	style = "dark",
 	lualine_style = "dark",
+	keywords = "bold,italic",
 	sidebars_contrast = { "NvimTree", "packer" },
 })
 
