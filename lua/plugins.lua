@@ -42,6 +42,9 @@ return require('packer').startup(function()
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
@@ -77,7 +80,12 @@ return require('packer').startup(function()
     -- Uncomment next line if you want to follow only stable versions
     tag = "*"
   }
-
+  use {
+    'rmagatti/goto-preview',
+    config = function()
+      require('goto-preview').setup { default_mappings = true}
+    end
+  }
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'
@@ -86,7 +94,7 @@ return require('packer').startup(function()
   -- use 'glepnir/lspsaga.nvim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb' -- open file on github
-  use 'tpope/vim-endwise'
+  use 'RRethy/nvim-treesitter-endwise'
   use 'ryanoasis/vim-devicons'
   use 'machakann/vim-highlightedyank'
   use 'vim-ruby/vim-ruby'
@@ -106,7 +114,6 @@ return require('packer').startup(function()
       'nvim-lua/plenary.nvim'
     }
   }
-
   -- ' color schemes
   -- use 'EdenEast/nightfox.nvim'
   use 'navarasu/onedark.nvim'
@@ -126,14 +133,29 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use 'cwebster2/github-coauthors.nvim'
-  use 'terrortylor/nvim-comment'
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
   use 'vim-test/vim-test'
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
   }
   use 'norcalli/nvim-colorizer.lua'
-
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

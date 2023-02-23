@@ -14,6 +14,9 @@ ts_config.setup {
   },
   indent = {
     enable = true,
+  },
+  endwise = {
+    enable = true
   }
 }
 
