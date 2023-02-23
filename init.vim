@@ -4,6 +4,7 @@ lua require("treesitter")
 lua require("completion")
 lua require("buffer")
 lua require("lsp")
+lua require("_formatter")
 lua require("_gitsigns")
 lua require("_lualine")
 lua require("telescope-nvim")
@@ -14,7 +15,6 @@ lua require("_gitlinker")
 lua require("_hover")
 lua require("_neogen")
 lua require("_which-key")
-
 " packer
 augroup packer_user_config
   autocmd!
@@ -33,6 +33,11 @@ augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost * FormatWrite
 augroup END
 
 set ruler

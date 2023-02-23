@@ -61,23 +61,21 @@
 -- vim.g.newpaper_sidebars_contrast = {"NvimTree", "packer" }
 
 require("newpaper").setup({
-  style = "dark",
-  lualine_style = "dark",
-  sidebars_contrast = {"NvimTree", "packer" },
+	style = "dark",
+	lualine_style = "dark",
+	sidebars_contrast = { "NvimTree", "packer" },
 })
-
 
 -- -- Load the colorscheme
 -- vim.cmd [[set background=dark]]
-vim.cmd [[set termguicolors]]
-vim.cmd [[colorscheme newpaper]]
-vim.cmd [[highlight GitSignsCurrentLineBlame guifg=#778899]]
-
+vim.cmd([[set termguicolors]])
+vim.cmd([[colorscheme newpaper]])
+vim.cmd([[highlight GitSignsCurrentLineBlame guifg=#778899]])
 
 -- Setting up colorizer in newvim
 require("colorizer").setup()
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = [[%s/\s\+$//e]],
+	pattern = { "*" },
+	command = [[%s/\s\+$//e]],
 })
