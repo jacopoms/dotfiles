@@ -91,12 +91,6 @@ return require("packer").startup(function()
 		tag = "*",
 	})
 	use({
-		"rmagatti/goto-preview",
-		config = function()
-			require("goto-preview").setup({ default_mappings = true })
-		end,
-	})
-	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
