@@ -43,34 +43,42 @@ return require("packer").startup(function()
 	})
 	use("mhartington/formatter.nvim")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	-- use 'hrsh7th/cmp-vsnip'
-	-- use 'hrsh7th/vim-vsnip'
-	-- use 'hrsh7th/vim-vsnip-integ'
+	-- completion engine
+
+	use("L3MON4D3/LuaSnip")
+	use("rafamadriz/friendly-snippets")
+	-- use("hrsh7th/nvim-cmp")
+	-- use("hrsh7th/cmp-buffer")
+	-- use("hrsh7th/cmp-path")
+	-- use("hrsh7th/cmp-cmdline")
+	-- use("hrsh7th/cmp-emoji")
+	-- use("hrsh7th/cmp-nvim-lua")
+	-- use("hrsh7th/cmp-nvim-lsp")
+	-- use("ray-x/cmp-treesitter")
+	-- use("onsails/lspkind.nvim")
+	-- use("saadparwaiz1/cmp_luasnip")
+	-- auto complete
 	use({
-		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		tag = "v<CurrentMajor>.*",
-		-- install jsregexp (optional!:).
-		run = "make install_jsregexp",
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-emoji",
+			"ray-x/cmp-treesitter",
+			"hrsh7th/cmp-cmdline",
+			"onsails/lspkind.nvim",
+			"saadparwaiz1/cmp_luasnip",
+		},
 	})
+	-- tabnine AI Assistant
 	use({
 		"tzachar/cmp-tabnine",
 		run = "./install.sh",
-		requires = {
-			"hrsh7th/nvim-cmp",
-		},
+		requires = "hrsh7th/nvim-cmp",
 	})
-	use({
-		"onsails/lspkind.nvim",
-		requires = {
-			"hrsh7th/nvim-cmp",
-		},
-	})
+	-- Tell which key
 	use({ "folke/which-key.nvim" })
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -125,17 +133,15 @@ return require("packer").startup(function()
 	-- ' color schemes
 	-- use 'EdenEast/nightfox.nvim'
 	use("navarasu/onedark.nvim")
-	use("shaunsingh/solarized.nvim")
 	-- use 'folke/tokyonight.nvim'
 	use("projekt0n/github-nvim-theme")
-	use("tiagovla/tokyodark.nvim")
-	use("ray-x/aurora")
 	use("lifepillar/vim-solarized8")
 	-- use 'sainnhe/sonokai'
 	use("marko-cerovac/material.nvim")
-	use("https://gitlab.com/__tpb/monokai-pro.nvim")
 	use("yorik1984/newpaper.nvim")
+	use({ "mhartington/oceanic-next", opt = true })
 
+	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
