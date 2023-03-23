@@ -1,5 +1,9 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
+require("neodev").setup({
+	library = { plugins = { "neotest" }, types = true },
+})
+
 local lspconfig = require("lspconfig")
 local opts = { noremap = true, silent = true }
 -- vim.diagnostic.get({ bufnr = nil })

@@ -2,7 +2,7 @@ local lualine = require("lualine")
 
 local config = {
 	options = {
-		theme = "oceanicnext",
+		theme = "auto",
 		icons_enabled = true,
 		-- component_separators = { left = '', right = '' },
 		-- section_separators = { left = '', right = '' },
