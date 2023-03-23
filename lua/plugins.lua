@@ -24,14 +24,10 @@ return require("packer").startup(function()
 		},
 	})
 	use({
-		"sudormrfbin/cheatsheet.nvim",
-
-		requires = {
-			{ "nvim-telescope/telescope.nvim" },
-			{ "nvim-lua/popup.nvim" },
-			{ "nvim-lua/plenary.nvim" },
-		},
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
 	})
+	use("mg979/vim-visual-multi")
 	use("famiu/nvim-reload")
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -41,22 +37,12 @@ return require("packer").startup(function()
 		"williamboman/mason-lspconfig.nvim",
 		requires = "neovim/nvim-lspconfig",
 	})
+	use("folke/neodev.nvim")
 	use("mhartington/formatter.nvim")
-	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
-	-- completion engine
 
+	-- completion engine
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
-	-- use("hrsh7th/nvim-cmp")
-	-- use("hrsh7th/cmp-buffer")
-	-- use("hrsh7th/cmp-path")
-	-- use("hrsh7th/cmp-cmdline")
-	-- use("hrsh7th/cmp-emoji")
-	-- use("hrsh7th/cmp-nvim-lua")
-	-- use("hrsh7th/cmp-nvim-lsp")
-	-- use("ray-x/cmp-treesitter")
-	-- use("onsails/lspkind.nvim")
-	-- use("saadparwaiz1/cmp_luasnip")
 	-- auto complete
 	use({
 		"hrsh7th/nvim-cmp",
@@ -80,10 +66,6 @@ return require("packer").startup(function()
 	})
 	-- Tell which key
 	use({ "folke/which-key.nvim" })
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
 	use({ "ziontee113/syntax-tree-surfer" })
 	use({
 		"akinsho/nvim-bufferline.lua",
@@ -103,8 +85,14 @@ return require("packer").startup(function()
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use({ "lewis6991/hover.nvim" })
-	-- use 'glepnir/lspsaga.nvim'
-	-- use("tpope/vim-fugitive")
+	use("tpope/vim-fugitive")
+	use({
+		"TimUntersberger/neogit",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+		},
+	})
 	use("tpope/vim-rhubarb") -- open file on github
 	use("RRethy/nvim-treesitter-endwise")
 	use("ryanoasis/vim-devicons")
@@ -137,10 +125,10 @@ return require("packer").startup(function()
 	use("projekt0n/github-nvim-theme")
 	use("lifepillar/vim-solarized8")
 	-- use 'sainnhe/sonokai'
+	use("rebelot/kanagawa.nvim")
 	use("marko-cerovac/material.nvim")
 	use("yorik1984/newpaper.nvim")
 	use({ "mhartington/oceanic-next", opt = true })
-
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -154,6 +142,16 @@ return require("packer").startup(function()
 		end,
 	})
 	use("vim-test/vim-test")
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"olimorris/neotest-rspec",
+			"nvim-neotest/neotest-vim-test",
+		},
+	})
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" },

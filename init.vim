@@ -14,7 +14,10 @@ lua require("_tree_surfer")
 lua require("_gitlinker")
 lua require("_hover")
 lua require("_neogen")
+lua require("_neogit")
+lua require("_neotest")
 lua require("_which-key")
+
 " packer
 augroup packer_user_config
   autocmd!
@@ -158,10 +161,6 @@ nnoremap <leader>mm gg=G<CR>
 
 nnoremap <silent> <leader>tt :NvimTreeToggle<CR>
 nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
-
-" TODO add more git related remaps from other plugins here
-nnoremap <expr> ]c <cmd>lua require("gitsigns").next_hunk()<CR>
-nnoremap <expr> [c <cmd>lua require("gitsigns").prev_hunk()<CR>
 
 " vim test
 nnoremap <leader>t :TestFile<CR>
