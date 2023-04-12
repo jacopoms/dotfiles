@@ -100,7 +100,7 @@ local telescope_builtin = require("telescope.builtin")
 M.find_files = function()
 	telescope_builtin.find_files({
 		find_command = { "rg", "--files", "--iglob", "!.git" },
-		previewer = false,
+		previewer = true,
 	})
 end
 

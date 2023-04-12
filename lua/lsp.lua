@@ -3,6 +3,8 @@ require("mason-lspconfig").setup()
 require("neodev").setup({
 	library = { plugins = { "neotest" }, types = true },
 })
+local lsp_status = require("lsp-status")
+lsp_status.register_progress()
 
 local lspconfig = require("lspconfig")
 local opts = { noremap = true, silent = true }
@@ -20,6 +22,7 @@ vim.lsp.set_log_level("debug")
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	lsp_status.on_attach(client)
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -61,8 +64,11 @@ vim.diagnostic.config({
 })
 
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
--- local eslint_config = require("lspconfig.server_configurations.eslint")
+capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities)
+
+-- local eslint_config L require("lspconfig.server_configurations.eslint")
 
 lspconfig.eslint.setup({
 	-- cmd = { "yarn", "exec", unpack(eslint_config.default_config.cmd) }

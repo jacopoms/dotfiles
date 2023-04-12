@@ -64,12 +64,15 @@ return require("packer").startup(function()
 		run = "./install.sh",
 		requires = "hrsh7th/nvim-cmp",
 	})
+	-- use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
+
 	-- Tell which key
 	use({ "folke/which-key.nvim" })
 	use({ "ziontee113/syntax-tree-surfer" })
 	use({
 		"akinsho/nvim-bufferline.lua",
-		requires = "kyazdani42/nvim-web-devicons",
+		tags = "v3.*",
+		requires = "nvim-tree/nvim-web-devicons",
 	})
 	use({
 		"danymat/neogen",
@@ -81,9 +84,12 @@ return require("packer").startup(function()
 		tag = "*",
 	})
 	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = "kyazdani42/nvim-web-devicons",
+		"nvim-tree/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons",
+		},
 	})
+
 	use({ "lewis6991/hover.nvim" })
 	use("tpope/vim-fugitive")
 	use({
@@ -95,9 +101,9 @@ return require("packer").startup(function()
 	})
 	use("tpope/vim-rhubarb") -- open file on github
 	use("RRethy/nvim-treesitter-endwise")
-	use("ryanoasis/vim-devicons")
 	use("machakann/vim-highlightedyank")
 	use("vim-ruby/vim-ruby")
+	use("jlcrochet/vim-rbs")
 	use({
 		"ruifm/gitlinker.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -119,21 +125,18 @@ return require("packer").startup(function()
 		},
 	})
 	-- ' color schemes
-	-- use 'EdenEast/nightfox.nvim'
 	use("navarasu/onedark.nvim")
-	-- use 'folke/tokyonight.nvim'
 	use("projekt0n/github-nvim-theme")
 	use("lifepillar/vim-solarized8")
-	-- use 'sainnhe/sonokai'
-	use("rebelot/kanagawa.nvim")
-	use("marko-cerovac/material.nvim")
+	use("Mofiqul/dracula.nvim")
 	use("yorik1984/newpaper.nvim")
-	use({ "mhartington/oceanic-next", opt = true })
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
+	-- use({ "arkav/lualine-lsp-progress" })
+	use({ "nvim-lua/lsp-status.nvim" })
 	use("cwebster2/github-coauthors.nvim")
 	use({
 		"numToStr/Comment.nvim",

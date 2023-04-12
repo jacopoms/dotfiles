@@ -122,7 +122,7 @@ noremap <C-s><C-h> <cmd> sp<CR>
 "Telescope
 nnoremap <leader>ff <cmd>Telescope<CR>
 nnoremap <leader>f <cmd>Telescope find_files prompt_prefix=🔍<CR>
-nnoremap <leader>fH <cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍<CR>
+nnoremap <leader>fH <cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍🔍<CR>
 nnoremap <leader>fl <cmd>Telescope live_grep<CR>
 nnoremap <leader>fg <cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>
 nnoremap <leader>bb <cmd>Telescope buffers<CR>
@@ -144,12 +144,12 @@ nnoremap <leader>gco <cmd>lua require('telescope').extensions.githubcoauthors.co
 
 " bufferline
 nnoremap <leader>q <cmd>bdelete<CR>
-nnoremap <leader>qq <cmd>bdelete!<CR>
+nnoremap <leader>Q <cmd>bdelete!<CR>
 nnoremap <Tab> <cmd>BufferLineCycleNext<CR>
 nnoremap <S-Tab> <cmd>BufferLineCyclePrev<CR>
 
 " DiffView
-nnoremap <leader>df <cmd>DiffviewFileHistory<CR>
+" nnoremap <leader>df <cmd>DiffviewFileHistory<CR>
 nnoremap <leader>dff <cmd>DiffviewFileHistory %<CR>
 nnoremap <leader>dc <cmd>DiffviewClose<CR>
 
@@ -157,7 +157,7 @@ nnoremap <leader>dc <cmd>DiffviewClose<CR>
 noremap <C-u><S-u> <cmd>PackerSync<CR>
 
 " format code
-nnoremap <leader>mm gg=G<CR>
+nnoremap <leader>mm gg=G<C-o><CR>
 
 nnoremap <silent> <leader>tt :NvimTreeToggle<CR>
 nnoremap <silent> <leader>tf :NvimTreeFindFile<CR>
@@ -167,6 +167,7 @@ nnoremap <leader>t :TestFile<CR>
 nnoremap <leader>tn :TestNearest<CR>
 nnoremap <leader>ta :TestSuite<CR>
 let test#strategy = "neovim"
+let test#ruby#rspec#executable = 'bundle exec rspec'
 
 " SymbolsOutline plugin
 nnoremap <leader>a <cmd>SymbolsOutline<CR>

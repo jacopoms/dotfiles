@@ -30,6 +30,8 @@ command! Neotest lua require("neotest").run.run(vim.fn.getcwd())
 command! NeotestNearest lua require("neotest").run.run()
 command! NeotestAttach lua require("neotest").run.attach()
 command! NeotestOutput lua require("neotest").output.open()
+command! NeotestJumpNext lua require("neotest").jump.next({ status = "failed" })
+command! NeotestJumpPrev lua require("neotest").output.prev({ status = "failed" })
 ]])
 
 -- -- run nearest spec
@@ -44,3 +46,7 @@ vim.keymap.set("n", "<space>nta", ":NeotestAttach<CR>", opts)
 vim.keymap.set("n", "<space>nts", ":NeotestSummary<CR>", opts)
 -- open output
 vim.keymap.set("n", "<space>nto", ":NeotestOutput<CR>", opts)
+-- jump next failed
+vim.keymap.set("n", "[n", ":NeotestJumpNext<CR>", opts)
+-- jump prev failed
+vim.keymap.set("n", "]n", ":NeotestJumpPrev<CR>", opts)
