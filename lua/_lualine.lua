@@ -1,5 +1,4 @@
 local lualine = require("lualine")
-
 local config = {
 	options = {
 		theme = "auto",
@@ -28,6 +27,8 @@ local config = {
 			},
 		},
 		lualine_c = {
+			"require('lsp-status').status()",
+			-- "lsp_progress",
 			{
 				"filename",
 				path = 1,
@@ -53,10 +54,11 @@ local config = {
 					hint = " ",
 				},
 			},
+			-- "tabnine",
+			"searchcount",
 		},
 		lualine_y = { "fileformat", "filetype", "encoding", "progress" },
 	},
-	tabline = {},
 	extensions = {
 		"fugitive",
 		"nvim-tree",

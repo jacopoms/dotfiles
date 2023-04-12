@@ -1,6 +1,6 @@
 require("bufferline").setup({
 	options = {
-		-- view = "multiwindow",
+		view = "multiwindow",
 		show_close_icon = true,
 		show_buffer_close_icons = true,
 		diagnostics = "nvim_lsp",
