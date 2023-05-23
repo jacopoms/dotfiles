@@ -1,22 +1,28 @@
-lua require("plugins")
-lua require("_key_bindings")
-lua require("treesitter")
-lua require("completion")
-lua require("buffer")
-lua require("lsp")
-lua require("_formatter")
-lua require("_gitsigns")
-lua require("_lualine")
-lua require("telescope-nvim")
-lua require("_colorschemes")
-lua require("_tree")
-lua require("_tree_surfer")
-lua require("_gitlinker")
-lua require("_hover")
-lua require("_neogen")
-lua require("_neogit")
-lua require("_neotest")
-lua require("_which-key")
+if exists('g:vscode')
+    " VSCode extension
+  let mapleader = " "
+else
+  " ordinary Neovim
+  lua require("plugins")
+  lua require("_key_bindings")
+  lua require("treesitter")
+  lua require("completion")
+  lua require("buffer")
+  lua require("lsp")
+  lua require("_formatter")
+  lua require("_gitsigns")
+  lua require("_lualine")
+  lua require("telescope-nvim")
+  lua require("_tree")
+  lua require("_gitlinker")
+  lua require("_hover")
+  lua require("_neogen")
+  lua require("_neogit")
+  lua require("_neotest")
+  lua require("_which-key")
+  lua require("_colorschemes")
+endif
+
 
 " packer
 augroup packer_user_config

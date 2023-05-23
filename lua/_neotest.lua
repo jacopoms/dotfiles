@@ -1,7 +1,15 @@
 local neotest = require("neotest")
 neotest.setup({
 	adapters = {
-		require("neotest-rspec"),
+		require("neotest-rspec")({
+			rspec_cmd = function()
+				return vim.tbl_flatten({
+					"bundle",
+					"exec",
+					"rspec",
+				})
+			end,
+		}),
 	},
 	icons = {
 		child_indent = "│",
@@ -18,20 +26,21 @@ neotest.setup({
 		skipped = "ﰸ",
 		unknown = "?",
 	},
-	require("neotest-vim-test")({ ignore_file_types = { "ruby" } }),
+	require("neotest-vim-test")({ ignore_filetypes = { "ruby" } }),
 })
 
 local opts = { noremap = true, silent = true }
 
 vim.cmd([[
-command! NeotestSummary lua require("neotest").summary.toggle()
-command! NeotestFile lua require("neotest").run.run(vim.fn.expand("%"))
-command! Neotest lua require("neotest").run.run(vim.fn.getcwd())
-command! NeotestNearest lua require("neotest").run.run()
-command! NeotestAttach lua require("neotest").run.attach()
-command! NeotestOutput lua require("neotest").output.open()
-command! NeotestJumpNext lua require("neotest").jump.next({ status = "failed" })
-command! NeotestJumpPrev lua require("neotest").output.prev({ status = "failed" })
+  command! NeotestSummary lua require("neotest").summary.toggle()
+  command! NeotestFile lua require("neotest").run.run(vim.fn.expand("%"))
+  command! Neotest lua require("neotest").run.run(vim.fn.getcwd())
+  command! NeotestNearest lua require("neotest").run.run()
+  command! NeotestAttach lua require("neotest").run.attach()
+  command! NeotestOutput lua require("neotest").output.open()
+  command! NeotestOutputPanel lua require("neotest").output_panel.toggle()
+  command! NeotestJumpNext lua require("neotest").jump.next({ status = "failed" })
+  command! NeotestJumpPrev lua require("neotest").jump.prev({ status = "failed" })
 ]])
 
 -- -- run nearest spec
@@ -46,6 +55,8 @@ vim.keymap.set("n", "<space>nta", ":NeotestAttach<CR>", opts)
 vim.keymap.set("n", "<space>nts", ":NeotestSummary<CR>", opts)
 -- open output
 vim.keymap.set("n", "<space>nto", ":NeotestOutput<CR>", opts)
+-- open output panel
+vim.keymap.set("n", "<space>ntp", ":NeotestOutputPanel<CR>", opts)
 -- jump next failed
 vim.keymap.set("n", "[n", ":NeotestJumpNext<CR>", opts)
 -- jump prev failed

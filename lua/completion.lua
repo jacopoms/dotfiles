@@ -96,23 +96,6 @@ cmp.setup.cmdline(":", {
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
--- Setup lspconfig.
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-require("lspconfig")["solargraph"].setup({
-	capabilities = capabilities,
-})
-require("lspconfig")["ruby_ls"].setup({
-	capabilities = capabilities,
-})
-require("lspconfig")["elixirls"].setup({
-	capabilities = capabilities,
-})
-
-require("lspconfig")["lua"].setup({
-	capabilities = capabilities,
-})
-
 -- Setup Tabnine
 local tabnine = require("cmp_tabnine.config")
 tabnine:setup({

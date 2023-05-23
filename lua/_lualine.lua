@@ -1,10 +1,13 @@
+vim.g.newpaper_lualine_bold = true --default
 local lualine = require("lualine")
 local config = {
 	options = {
-		theme = "auto",
+		theme = "newpaper-dark",
 		icons_enabled = true,
-		-- component_separators = { left = '', right = '' },
-		-- section_separators = { left = '', right = '' },
+		component_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
+		section_separators = { "", "" },
+		-- component_separators = { "│", "│" },
 		disabled_filetypes = {},
 		always_divide_middle = true,
 		globalstatus = true,
@@ -13,11 +16,15 @@ local config = {
 		lualine_b = {
 			{
 				"diff",
+				colored = true,
 				diff_color = {
 					-- specific colors from theme with bg color of section
 					added = "GitSignsAdd",
 					modified = "GitSignsChange",
 					removed = "GitSignsDelete",
+					-- added = { fg = "#28A745" },
+					-- modified = { fg = "#DBAB09" },
+					-- removed = { fg = "#D73A49" },
 				},
 				symbols = {
 					added = " ",
@@ -27,18 +34,18 @@ local config = {
 			},
 		},
 		lualine_c = {
+			"lsp_progress",
 			"require('lsp-status').status()",
-			-- "lsp_progress",
 			{
 				"filename",
 				path = 1,
 			},
-			"branch",
+			{ "branch", icon = "" },
 		},
 		lualine_x = {
 			{
 				"diagnostics",
-				sources = { "nvim_diagnostic" },
+				sources = { "nvim_lsp", "nvim_diagnostic" },
 				sections = { "error", "warn", "info", "hint" },
 				diagnostics_color = {
 					-- specific colors from theme with bg color of section
@@ -46,6 +53,10 @@ local config = {
 					warn = "LualineDiagnosticWarn",
 					info = "LualineDiagnosticInfo",
 					hint = "LualineDiagnosticHint",
+					-- error = { fg = "#AF0000" },
+					-- warn = { fg = "#D75F00" },
+					-- info = { fg = "#0087AF" },
+					-- hint = { fg = "#008700" },
 				},
 				symbols = {
 					error = " ",
@@ -64,5 +75,4 @@ local config = {
 		"nvim-tree",
 	},
 }
-
 lualine.setup(config)

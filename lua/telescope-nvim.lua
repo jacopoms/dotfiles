@@ -1,4 +1,11 @@
 -- local actions = require("telescope.actions")
+require("telescope").load_extension("media_files")
+require("telescope").load_extension("file_browser")
+require("telescope").load_extension("githubcoauthors")
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("gh")
+require("telescope").load_extension("live_grep_args")
+require("telescope").load_extension("env")
 
 require("telescope").setup({
 	defaults = {
@@ -109,13 +116,6 @@ M.diagnostics = function()
 		bufnr = nil,
 	})
 end
-
-require("telescope").load_extension("file_browser")
-require("telescope").load_extension("githubcoauthors")
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("gh")
-require("telescope").load_extension("live_grep_args")
-require("telescope").load_extension("env")
 
 vim.cmd("hi TelescopeBorder   guifg=#2a2e36")
 vim.cmd("hi TelescopePromptBorder   guifg=#2a2e36")

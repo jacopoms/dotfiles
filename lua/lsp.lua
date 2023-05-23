@@ -17,7 +17,7 @@ vim.keymap.set("n", "<space>ld", "<cmd>Telescope diagnostics<CR>", opts)
 vim.keymap.set("n", "<space>ls", "<cmd>Telescope lsp_document_symbols<CR>", opts)
 vim.keymap.set("n", "<space>lw", "<cmd>Telescope lsp_workspace_symbols<CR>", opts)
 
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
@@ -128,6 +128,10 @@ lspconfig.lua_ls.setup({
 			},
 		},
 	},
+})
+
+lspconfig.lua.setup({
+	capabilities = capabilities,
 })
 
 require("mason-lspconfig").setup_handlers({

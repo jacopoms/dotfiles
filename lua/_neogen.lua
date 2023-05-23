@@ -1,6 +1,6 @@
 require("neogen").setup({
 	enabled = true,
-	snippet_engine = "vsnip",
+	snippet_engine = "luasnip",
 })
 
 local opts = { noremap = true, silent = true }
