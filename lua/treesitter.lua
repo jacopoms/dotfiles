@@ -7,6 +7,8 @@ ts_config.setup({
 		"ruby",
 		"elixir",
 		"dockerfile",
+		"css",
+		"html",
 	},
 	highlight = {
 		enable = true,
@@ -16,6 +18,9 @@ ts_config.setup({
 		enable = true,
 	},
 	endwise = {
+		enable = true,
+	},
+	autotag = {
 		enable = true,
 	},
 })

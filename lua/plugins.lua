@@ -20,6 +20,7 @@ return require("packer").startup(function()
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 			{ "nvim-telescope/telescope-github.nvim" },
+			{ "nvim-telescope/telescope-media-files.nvim" },
 			{ "LinArcX/telescope-env.nvim" },
 		},
 	})
@@ -68,7 +69,7 @@ return require("packer").startup(function()
 
 	-- Tell which key
 	use({ "folke/which-key.nvim" })
-	use({ "ziontee113/syntax-tree-surfer" })
+	-- use({ "ziontee113/syntax-tree-surfer" })
 	use({
 		"akinsho/nvim-bufferline.lua",
 		tags = "v3.*",
@@ -78,7 +79,7 @@ return require("packer").startup(function()
 		"danymat/neogen",
 		requires = {
 			"nvim-treesitter/nvim-treesitter",
-			"hrsh7th/vim-vsnip",
+			"L3MON4D3/LuaSnip",
 		},
 		-- Uncomment next line if you want to follow only stable versions
 		tag = "*",
@@ -103,6 +104,7 @@ return require("packer").startup(function()
 	use("RRethy/nvim-treesitter-endwise")
 	use("machakann/vim-highlightedyank")
 	use("vim-ruby/vim-ruby")
+	use("kchmck/vim-coffee-script")
 	use("jlcrochet/vim-rbs")
 	use({
 		"ruifm/gitlinker.nvim",
@@ -135,6 +137,7 @@ return require("packer").startup(function()
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
+	use("yorik1984/lualine-theme.nvim")
 	-- use({ "arkav/lualine-lsp-progress" })
 	use({ "nvim-lua/lsp-status.nvim" })
 	use("cwebster2/github-coauthors.nvim")
