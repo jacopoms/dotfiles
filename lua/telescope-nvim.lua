@@ -24,12 +24,17 @@ require("telescope").setup({
 		initial_mode = "insert",
 		selection_strategy = "reset",
 		sorting_strategy = "ascending",
-		layout_strategy = "bottom_pane",
+		layout_strategy = "horizontal",
 		layout_config = {
 			height = 25,
 			bottom_pane = {
 				mirror = false,
 				preview_width = 0.5,
+				prompt_position = "top",
+			},
+			horizontal = {
+				width = 0.75,
+				height = 0.75,
 				prompt_position = "top",
 			},
 		},

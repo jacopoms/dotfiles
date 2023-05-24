@@ -41,6 +41,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>lfm", function()
 		vim.lsp.buf.format({ async = true })
 	end, bufopts)
+	client.server_capabilities.semanticTokensProvider = nil
 end
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
