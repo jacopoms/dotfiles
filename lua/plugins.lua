@@ -132,6 +132,7 @@ return require("packer").startup(function()
 	use("lifepillar/vim-solarized8")
 	use("Mofiqul/dracula.nvim")
 	use("yorik1984/newpaper.nvim")
+	use("NLKNguyen/papercolor-theme")
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
