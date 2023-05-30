@@ -5,6 +5,15 @@ require("neodev").setup({
 })
 local lsp_status = require("lsp-status")
 lsp_status.register_progress()
+lsp_status.config({
+	current_function = false,
+	diagnostics = false,
+	indicator_errors = " ",
+	indicator_warnings = " ",
+	indicator_info = " ",
+	indicator_hint = " ",
+	indicator_ok = " Ok",
+})
 
 local lspconfig = require("lspconfig")
 local opts = { noremap = true, silent = true }
@@ -124,8 +133,21 @@ lspconfig.solargraph.setup({
 lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+			},
 			diagnostics = {
+				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
 			},
 		},
 	},
