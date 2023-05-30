@@ -12,7 +12,8 @@ else
   lua require("buffer")
   lua require("_formatter")
   lua require("_gitsigns")
-  lua require("_lualine")
+  " lua require("_lualine")
+  lua require("evil_lualine")
   lua require("telescope-nvim")
   lua require("_tree")
   lua require("_gitlinker")
@@ -47,6 +48,7 @@ augroup END
 augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost * FormatWrite
+  autocmd BufWritePre * lua vim.lsp.buf.format({async = true})
 augroup END
 
 set ruler
@@ -106,7 +108,7 @@ autocmd TermOpen * setlocal nonu
 autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} set ft=ruby
 autocmd BufWritePost plugins.lua PackerCompile
 autocmd FileType ruby map <leader>rfs :call <SID>AddFrozenStringLiteralMagicComment()<CR>
-
+autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async = true})
 " -- remaps
 " let mapleader = " "
 tnoremap <leader><Esc> <C-\><C-n>
