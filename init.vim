@@ -14,6 +14,7 @@ else
   lua require("_gitsigns")
   " lua require("_lualine")
   lua require("evil_lualine")
+  " lua require("_feline")
   lua require("telescope-nvim")
   lua require("_tree")
   lua require("_gitlinker")
@@ -85,6 +86,7 @@ set inccommand=nosplit
 set fillchars=vert:│
 set timeoutlen=500 ttimeoutlen=0
 set updatetime=10
+set laststatus=3
 "set list listchars=tab:»\ ,trail:·,eol:¬,extends:>,precedes:<,nbsp:+
 
 " Vim ruby
