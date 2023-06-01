@@ -142,6 +142,10 @@ return require("packer").startup(function()
   use("ryanoasis/vim-devicons")
   use("yorik1984/lualine-theme.nvim")
   -- use({ "arkav/lualine-lsp-progress" })
+  use({
+    "freddiehaddad/feline.nvim",
+    requires = { "SmiteshP/nvim-navic" }
+  })
   use({ "nvim-lua/lsp-status.nvim" })
   use("cwebster2/github-coauthors.nvim")
   use({
