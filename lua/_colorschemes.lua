@@ -14,5 +14,5 @@ vim.cmd([[set background=dark]])
 vim.cmd([[set termguicolors]])
 -- vim.cmd([[colorscheme gruvbox-baby]])
 vim.cmd([[highlight GitSignsCurrentLineBlame guifg=#778899]])
-
+vim.cmd([[highlight ColorColumn ctermbg=16 guibg=#4E4E4E]])
 require("colorizer").setup()

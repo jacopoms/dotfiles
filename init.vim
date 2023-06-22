@@ -4,7 +4,6 @@ if exists('g:vscode')
 else
   " ordinary Neovim
   lua require("plugins")
-  lua require("_colorschemes")
   lua require("_key_bindings")
   lua require("lsp")
   lua require("treesitter")
@@ -14,6 +13,7 @@ else
   lua require("_gitsigns")
   " lua require("_lualine")
   lua require("evil_lualine")
+  " lua require("spaceline")
   " lua require("_feline")
   lua require("telescope-nvim")
   lua require("_tree")
@@ -22,6 +22,8 @@ else
   lua require("_neogen")
   lua require("_neogit")
   lua require("_neotest")
+  lua require("_todo_comments")
+  lua require("_colorschemes")
   lua require("_which-key")
 endif
 

@@ -72,7 +72,7 @@ return require("packer").startup(function()
   -- use({ "ziontee113/syntax-tree-surfer" })
   use({
     "akinsho/nvim-bufferline.lua",
-    tags = "v3.*",
+    tags = "*",
     requires = "nvim-tree/nvim-web-devicons",
   })
   use({
@@ -146,6 +146,7 @@ return require("packer").startup(function()
     "freddiehaddad/feline.nvim",
     requires = { "SmiteshP/nvim-navic" }
   })
+  use({ "nvimdev/galaxyline.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
   use("cwebster2/github-coauthors.nvim")
   use({
@@ -154,6 +155,7 @@ return require("packer").startup(function()
       require("Comment").setup()
     end,
   })
+  use({ "folke/todo-comments.nvim" })
   use("vim-test/vim-test")
   use({
     "nvim-neotest/neotest",
