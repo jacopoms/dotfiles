@@ -65,7 +65,7 @@ return require("packer").startup(function()
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   })
-  -- use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
+  use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
 
   -- Tell which key
   use({ "folke/which-key.nvim" })
