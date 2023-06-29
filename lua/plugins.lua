@@ -65,8 +65,10 @@ return require("packer").startup(function()
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   })
-  use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
+  -- use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
 
+  -- github copilot
+  use({ "github/copilot.vim" })
   -- Tell which key
   use({ "folke/which-key.nvim" })
   -- use({ "ziontee113/syntax-tree-surfer" })

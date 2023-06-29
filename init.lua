@@ -36,15 +36,15 @@ augroup end
 ]])
 
 -- set clipboard+=unnamedplus
-vim.o.expandtab = true
-vim.o.smartindent = true
-vim.o.linespace = 2
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.splitbelow = true
-vim.o.splitright = true
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.linespace = 2
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 -- set number relativenumber
-vim.o.number = true
+vim.opt.number = true
 
 vim.cmd([[
 augroup numbertoggle
@@ -62,29 +62,29 @@ augroup FormatAutogroup
 augroup END
 ]])
 
-vim.o.ruler = true
-vim.o.hidden = true
-vim.o.textwidth = 100
-vim.o.colorcolumn = "99"
-vim.o.spelllang = "en"
+vim.opt.ruler = true
+vim.opt.hidden = true
+vim.opt.textwidth = 100
+vim.opt.colorcolumn = "99"
+vim.opt.spelllang = "en"
 -- set noswapfile
-vim.o.swapfile = false
--- set nobackup
-vim.o.undodir = "~/.config/nvim/undodir"
-vim.o.undofile = true
-vim.o.incsearch = true
-vim.o.showmode = false
-vim.o.completeopt = "menuone,noinsert,noselect"
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.wrap = false
-vim.o.mouse = "a"
-vim.o.foldmethod = "indent"
-vim.o.foldnestmax = 10
-vim.o.foldenable = false
-vim.o.foldlevel = 1
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.title = true
+vim.opt.swapfile = false
+-- vim.opt.backup = false
+vim.opt.undodir = vim.fn.expand("~/.config/nvim/undodir")
+vim.opt.undofile = true
+vim.opt.incsearch = true
+vim.opt.showmode = false
+vim.opt.completeopt = "menuone,noinsert,noselect"
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.wrap = false
+vim.opt.mouse = "a"
+vim.opt.foldmethod = "indent"
+vim.opt.foldnestmax = 10
+vim.opt.foldenable = false
+vim.opt.foldlevel = 1
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.title = true
 vim.cmd([[
 augroup dirchange
   autocmd!
@@ -92,15 +92,15 @@ augroup dirchange
 augroup END
 ]])
 -- set nohlsearch
-vim.o.scrolloff = 8
-vim.o.shortmess = vim.o.shortmess .. "c"
-vim.o.cursorline = true
-vim.o.inccommand = "nosplit"
-vim.o.fillchars = "vert:│"
-vim.o.timeoutlen = 500
-vim.o.ttimeoutlen = 0
-vim.o.updatetime = 10
-vim.o.laststatus = 3
+vim.opt.scrolloff = 8
+vim.opt.shortmess = vim.o.shortmess .. "c"
+vim.opt.cursorline = true
+vim.opt.inccommand = "nosplit"
+vim.opt.fillchars = "vert:│"
+vim.opt.timeoutlen = 500
+vim.opt.ttimeoutlen = 0
+vim.opt.updatetime = 10
+vim.opt.laststatus = 3
 -- set list listchars=tab:»\ ,trail:·,eol:¬,extends:>,precedes:<,nbsp:+
 
 -- Vim ruby
@@ -218,8 +218,12 @@ vim.api.nvim_set_keymap("n", "<leader>hb", "<cmd>lua require('gitsigns').blame_l
 vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>:TestFile<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>tn", "<cmd>:TestNearest<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>ta", "<cmd>:TestSuite<CR>", { noremap = true })
-vim.g.test_strategy = "neovim"
-vim.g.test_ruby_rspec_executable = "bundle exec rspec"
+vim.cmd([[
+  let test#strategy = "neovim"
+  let test#ruby#use_binstubs = 0
+  let test#ruby#rspec#executable = "bundle exec rspec"
+]])
+
 -- close search
 vim.api.nvim_set_keymap("n", "<Esc>", ":noh<CR>", { noremap = true })
 
