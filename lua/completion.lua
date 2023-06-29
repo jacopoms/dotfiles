@@ -35,17 +35,17 @@ cmp.setup({
     }),
     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     -- Tab Completion.
-    ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
+    ["<C-[>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+    ["<C-]>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
   }),
   sources = cmp.config.sources({
     { name = "cmp_tabnine" },
     { name = "nvim_lsp" },
     { name = "luasnip",    option = { show_autosnippets = true } },
-    { name = "nvim_lua" },
     { name = "buffer" },
     { name = "treesitter" },
     { name = "path" },
+    { name = "nvim_lua" },
     { name = "emoji" },
   }),
   sorting = {
@@ -107,14 +107,14 @@ tabnine:setup({
   show_prediction_strength = true,
 })
 
-require("tabnine").setup({
-  disable_auto_comment = true,
-  accept_keymap = "<C-[>",
-  dismiss_keymap = "<C-]>",
-  debounce_ms = 800,
-  suggestion_color = { gui = "#808080", cterm = 244 },
-  exclude_filetypes = { "TelescopePrompt" },
-})
+-- require("tabnine").setup({
+--   disable_auto_comment = true,
+--   accept_keymap = "<C-[>",
+--   dismiss_keymap = "<C-]>",
+--   debounce_ms = 800,
+--   suggestion_color = { gui = "#808080", cterm = 244 },
+--   exclude_filetypes = { "TelescopePrompt" },
+-- })
 
 -- Setting up luasnip and snippet
 
