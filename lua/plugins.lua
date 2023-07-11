@@ -60,15 +60,17 @@ return require("packer").startup(function()
     },
   })
   -- tabnine AI Assistant
-  use({
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  })
+  -- use({
+  --   "tzachar/cmp-tabnine",
+  --   run = "./install.sh",
+  --   requires = "hrsh7th/nvim-cmp",
+  -- })
   -- use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
 
-  -- github copilot
-  use({ "github/copilot.vim" })
+  -- Github Copilot
+  -- use({ "github/copilot.vim" })
+  use({ "zbirenbaum/copilot.lua" })
+  use({ "zbirenbaum/copilot-cmp" })
   -- Tell which key
   use({ "folke/which-key.nvim" })
   -- use({ "ziontee113/syntax-tree-surfer" })
@@ -95,13 +97,6 @@ return require("packer").startup(function()
 
   use({ "lewis6991/hover.nvim" })
   use("tpope/vim-fugitive")
-  use({
-    "TimUntersberger/neogit",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-    },
-  })
   use("tpope/vim-rhubarb") -- open file on github
   use("RRethy/nvim-treesitter-endwise")
   use("machakann/vim-highlightedyank")
@@ -146,7 +141,7 @@ return require("packer").startup(function()
   -- use({ "arkav/lualine-lsp-progress" })
   use({
     "freddiehaddad/feline.nvim",
-    requires = { "SmiteshP/nvim-navic" }
+    requires = { "SmiteshP/nvim-navic" },
   })
   use({ "nvimdev/galaxyline.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
