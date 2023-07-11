@@ -1,6 +1,10 @@
 require("neogen").setup({
-	enabled = true,
-	snippet_engine = "luasnip",
+  enabled = true,
+  snippet_engine = "luasnip",
+  languages = {
+    ["ruby.yard"] = require("neogen.configurations.ruby"),
+    ["ruby.rdoc"] = require("neogen.configurations.ruby"),
+  },
 })
 
 local opts = { noremap = true, silent = true }

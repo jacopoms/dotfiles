@@ -1,30 +1,29 @@
 if vim.g.vscode then
-  -- VSCode extension
-  vim.g.mapleader = " "
+	-- VSCode extension
+	vim.g.mapleader = " "
 else
-  -- ordinary Neovim
-  require("plugins")
-  require("_key_bindings")
-  require("lsp")
-  require("treesitter")
-  require("completion")
-  require("buffer")
-  require("_formatter")
-  require("_gitsigns")
-  -- require("_lualine")
-  require("evil_lualine")
-  -- require("spaceline")
-  -- require("_feline")
-  require("telescope-nvim")
-  require("_tree")
-  require("_gitlinker")
-  require("_hover")
-  require("_neogen")
-  require("_neogit")
-  require("_neotest")
-  require("_todo_comments")
-  require("_colorschemes")
-  require("_which-key")
+	-- ordinary Neovim
+	require("plugins")
+	require("_key_bindings")
+	require("lsp")
+	require("treesitter")
+	require("completion")
+	require("buffer")
+	require("_formatter")
+	require("_gitsigns")
+	-- require("_lualine")
+	require("evil_lualine")
+	-- require("spaceline")
+	-- require("_feline")
+	require("telescope-nvim")
+	require("_tree")
+	require("_gitlinker")
+	require("_hover")
+	require("_neogen")
+	require("_neotest")
+	require("_todo_comments")
+	require("_colorschemes")
+	require("_which-key")
 end
 
 -- packer
@@ -45,22 +44,6 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 -- set number relativenumber
 vim.opt.number = true
-
-vim.cmd([[
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-augroup END
-]])
-
-vim.cmd([[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost * FormatWrite
-  autocmd BufWritePre * lua vim.lsp.buf.format({async = true})
-augroup END
-]])
 
 vim.opt.ruler = true
 vim.opt.hidden = true
@@ -85,12 +68,6 @@ vim.opt.foldenable = false
 vim.opt.foldlevel = 1
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.title = true
-vim.cmd([[
-augroup dirchange
-  autocmd!
-  autocmd DirChanged * let &titlestring=v:event['cwd']
-augroup END
-]])
 -- set nohlsearch
 vim.opt.scrolloff = 8
 vim.opt.shortmess = vim.o.shortmess .. "c"
@@ -105,28 +82,50 @@ vim.opt.laststatus = 3
 
 -- Vim ruby
 -- set nocompatible      " We're running Vim, not Vi!
-vim.cmd("filetype on")        -- Enable filetype detection
+vim.cmd("filetype on") -- Enable filetype detection
 vim.cmd("filetype indent on") -- Enable filetype-specific indenting
 vim.cmd("filetype plugin on") -- Enable filetype-specific plugins
 
 function AddFrozenStringLiteralMagicComment()
-  local l = vim.fn.line(".")
-  local c = vim.fn.col(".")
-  vim.cmd("norm gg")
-  vim.cmd("norm O# frozen_string_literal: true")
-  vim.cmd("norm o")
-  vim.fn.cursor(l + 2, c)
+	local l = vim.fn.line(".")
+	local c = vim.fn.col(".")
+	vim.cmd("norm gg")
+	vim.cmd("norm O# frozen_string_literal: true")
+	vim.cmd("norm o")
+	vim.fn.cursor(l + 2, c)
 end
 
 -- auto cmds
+vim.cmd([[
+  augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+  augroup END
+]])
+
+vim.cmd([[
+  augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost * FormatWrite
+  augroup END
+]])
+
+vim.cmd([[
+augroup dirchange
+  autocmd!
+  autocmd DirChanged * let &titlestring=v:event['cwd']
+augroup END
+]])
+
 vim.cmd("autocmd TermOpen * setlocal nonu")
 vim.cmd(
-  "autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} set ft=ruby"
+	"autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} set ft=ruby"
 )
 vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
 vim.cmd("autocmd FileType ruby map <leader>rfs :call AddFrozenStringLiteralMagicComment()<CR>")
 vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async = true})")
-
+-- vim.cmd("autocmd BufWritePre * :normal gg=G")
 -- remaps
 -- let mapleader = " "
 vim.api.nvim_set_keymap("t", "<leader><Esc>", "<C-\\><C-n>", { noremap = true })
@@ -149,17 +148,17 @@ vim.api.nvim_set_keymap("n", "<C-s><C-h>", "<cmd>sp<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Telescope find_files prompt_prefix=🔍<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>fH",
-  "<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍🔍<CR>",
-  { noremap = true }
+	"n",
+	"<leader>fH",
+	"<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍🔍<CR>",
+	{ noremap = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>fl", "<cmd>Telescope live_grep<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>fg",
-  "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-  { noremap = true }
+	"n",
+	"<leader>fg",
+	"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+	{ noremap = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { noremap = true })
@@ -177,10 +176,10 @@ vim.api.nvim_set_keymap("n", "<leader>glb", "<cmd>Telescope git_bcommits<CR>", {
 vim.api.nvim_set_keymap("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>gpr", "<cmd>Telescope gh pull_request<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>gco",
-  "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>",
-  { noremap = true }
+	"n",
+	"<leader>gco",
+	"<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>",
+	{ noremap = true }
 )
 
 -- bufferline
@@ -269,4 +268,5 @@ vim.cmd("setlocal smartindent")
 vim.cmd("setlocal expandtab")
 vim.cmd("setlocal shiftwidth=2")
 vim.cmd("setlocal tabstop=2")
+vim.cmd("setlocal softtabstop=2")
 vim.cmd("setlocal softtabstop=2")
