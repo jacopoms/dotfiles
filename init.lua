@@ -1,29 +1,29 @@
 if vim.g.vscode then
-	-- VSCode extension
-	vim.g.mapleader = " "
+  -- VSCode extension
+  vim.g.mapleader = " "
 else
-	-- ordinary Neovim
-	require("plugins")
-	require("_key_bindings")
-	require("lsp")
-	require("treesitter")
-	require("completion")
-	require("buffer")
-	require("_formatter")
-	require("_gitsigns")
-	-- require("_lualine")
-	require("evil_lualine")
-	-- require("spaceline")
-	-- require("_feline")
-	require("telescope-nvim")
-	require("_tree")
-	require("_gitlinker")
-	require("_hover")
-	require("_neogen")
-	require("_neotest")
-	require("_todo_comments")
-	require("_colorschemes")
-	require("_which-key")
+  -- ordinary Neovim
+  require("plugins")
+  require("_key_bindings")
+  require("lsp")
+  require("treesitter")
+  require("completion")
+  require("buffer")
+  require("_formatter")
+  require("_gitsigns")
+  -- require("_lualine")
+  require("evil_lualine")
+  -- require("spaceline")
+  -- require("_feline")
+  require("telescope-nvim")
+  require("_tree")
+  require("_gitlinker")
+  require("_hover")
+  require("_neogen")
+  require("_neotest")
+  require("_todo_comments")
+  require("_colorschemes")
+  require("_which-key")
 end
 
 -- packer
@@ -82,18 +82,9 @@ vim.opt.laststatus = 3
 
 -- Vim ruby
 -- set nocompatible      " We're running Vim, not Vi!
-vim.cmd("filetype on") -- Enable filetype detection
+vim.cmd("filetype on")        -- Enable filetype detection
 vim.cmd("filetype indent on") -- Enable filetype-specific indenting
 vim.cmd("filetype plugin on") -- Enable filetype-specific plugins
-
-function AddFrozenStringLiteralMagicComment()
-	local l = vim.fn.line(".")
-	local c = vim.fn.col(".")
-	vim.cmd("norm gg")
-	vim.cmd("norm O# frozen_string_literal: true")
-	vim.cmd("norm o")
-	vim.fn.cursor(l + 2, c)
-end
 
 -- auto cmds
 vim.cmd([[
@@ -120,10 +111,9 @@ augroup END
 
 vim.cmd("autocmd TermOpen * setlocal nonu")
 vim.cmd(
-	"autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} set ft=ruby"
+  "autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} set ft=ruby"
 )
 vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
-vim.cmd("autocmd FileType ruby map <leader>rfs :call AddFrozenStringLiteralMagicComment()<CR>")
 vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async = true})")
 -- vim.cmd("autocmd BufWritePre * :normal gg=G")
 -- remaps
@@ -148,18 +138,25 @@ vim.api.nvim_set_keymap("n", "<C-s><C-h>", "<cmd>sp<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Telescope find_files prompt_prefix=🔍<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>fH",
-	"<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍🔍<CR>",
-	{ noremap = true }
+  "n",
+  "<leader>fH",
+  "<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍🔍<CR>",
+  { noremap = true }
 )
 vim.api.nvim_set_keymap("n", "<leader>fl", "<cmd>Telescope live_grep<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>fg",
-	"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-	{ noremap = true }
+  "n",
+  "<leader>fg",
+  "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+  { noremap = true }
 )
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fi",
+  "<cmd>lua require('telescope.builtin').live_grep({search_dirs={vim.fn.expand('%:p')}})<CR>",
+  { noremap = true }
+)
+
 vim.api.nvim_set_keymap("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { noremap = true })
@@ -176,10 +173,10 @@ vim.api.nvim_set_keymap("n", "<leader>glb", "<cmd>Telescope git_bcommits<CR>", {
 vim.api.nvim_set_keymap("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>gpr", "<cmd>Telescope gh pull_request<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
-	"n",
-	"<leader>gco",
-	"<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>",
-	{ noremap = true }
+  "n",
+  "<leader>gco",
+  "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>",
+  { noremap = true }
 )
 
 -- bufferline

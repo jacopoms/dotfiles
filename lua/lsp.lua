@@ -78,10 +78,16 @@ local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities)
 
--- local eslint_config L require("lspconfig.server_configurations.eslint")
+local eslint_config = require("lspconfig.server_configurations.eslint")
 
 lspconfig.eslint.setup({
-	-- cmd = { "yarn", "exec", unpack(eslint_config.default_config.cmd) }
+	cmd = { "yarn", "exec", unpack(eslint_config.default_config.cmd) },
+	on_attach = function(_client, bufnr)
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			buffer = bufnr,
+			command = "EslintFixAll",
+		})
+	end,
 })
 
 lspconfig.elixirls.setup({
