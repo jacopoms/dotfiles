@@ -35,16 +35,16 @@ local compare = require("cmp.config.compare")
 
 -- Setup copilot.lua
 
-require("copilot").setup({
-  suggestion = {
-    enabled = false,
-  },
-  panel = {
-    enabled = false,
-  },
-})
+-- require("copilot").setup({
+--   suggestion = {
+--     enabled = false,
+--   },
+--   panel = {
+--     enabled = false,
+--   },
+-- })
 
-require("copilot_cmp").setup()
+-- require("copilot_cmp").setup()
 
 cmp.setup({
   confirmation = { default_behaviour = cmp.ConfirmBehavior.Replace },
@@ -85,7 +85,7 @@ cmp.setup({
   sorting = {
     priority_weight = 2,
     comparators = {
-      require("copilot_cmp.comparators").prioritize,
+      -- require("copilot_cmp.comparators").prioritize,
       -- require("cmp_tabnine.compare"),
       compare.offset,
       compare.exact,
