@@ -28,8 +28,12 @@ return require("packer").startup(function()
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
 	use("mg979/vim-visual-multi")
-	use("famiu/nvim-reload")
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("neovim/nvim-lspconfig")
@@ -117,14 +121,24 @@ return require("packer").startup(function()
 		},
 	})
 
+	-- use({ "tbastos/vim-lua" })
 	use({ "lewis6991/hover.nvim" })
-	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb") -- open file on github
-	use("RRethy/nvim-treesitter-endwise")
-	use("machakann/vim-highlightedyank")
-	use("vim-ruby/vim-ruby")
-	use("kchmck/vim-coffee-script")
-	use("jlcrochet/vim-rbs")
+	use({ "tpope/vim-fugitive" })
+	use({ "tpope/vim-rhubarb" }) -- open file on github
+	use({ "RRethy/nvim-treesitter-endwise" })
+	use({ "machakann/vim-highlightedyank" })
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	})
+	use({ "vim-ruby/vim-ruby" })
+	use({ "kchmck/vim-coffee-script" })
+	use({ "jlcrochet/vim-rbs" })
 	use({
 		"ruifm/gitlinker.nvim",
 		requires = "nvim-lua/plenary.nvim",
@@ -136,8 +150,8 @@ return require("packer").startup(function()
 			require("git-conflict").setup()
 		end,
 	})
-	use("elixir-editors/vim-elixir")
-	use("lukas-reineke/indent-blankline.nvim")
+	use({ "elixir-editors/vim-elixir" })
+	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "simrat39/symbols-outline.nvim" })
 	use({
 		"windwp/nvim-spectre",
@@ -146,25 +160,21 @@ return require("packer").startup(function()
 		},
 	})
 	-- ' color schemes
-	use("navarasu/onedark.nvim")
-	use("projekt0n/github-nvim-theme")
-	use("lifepillar/vim-solarized8")
-	use("Mofiqul/dracula.nvim")
-	use("yorik1984/newpaper.nvim")
-	use("NLKNguyen/papercolor-theme")
-	use("luisiacc/gruvbox-baby")
+	use({ "navarasu/onedark.nvim" })
+	use({ "projekt0n/github-nvim-theme" })
+	use({ "lifepillar/vim-solarized8" })
+	use({ "Mofiqul/dracula.nvim" })
+	use({ "yorik1984/newpaper.nvim" })
+	use({ "NLKNguyen/papercolor-theme" })
+	use({ "luisiacc/gruvbox-baby" })
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
-	use("ryanoasis/vim-devicons")
-	use("yorik1984/lualine-theme.nvim")
+	use({ "ryanoasis/vim-devicons" })
+	use({ "yorik1984/lualine-theme.nvim" })
 	-- use({ "arkav/lualine-lsp-progress" })
-	use({
-		"freddiehaddad/feline.nvim",
-		requires = { "SmiteshP/nvim-navic" },
-	})
 	use({ "nvimdev/galaxyline.nvim" })
 	use({ "nvim-lua/lsp-status.nvim" })
 	use("cwebster2/github-coauthors.nvim")
@@ -175,7 +185,7 @@ return require("packer").startup(function()
 		end,
 	})
 	use({ "folke/todo-comments.nvim" })
-	use("vim-test/vim-test")
+	use({ "vim-test/vim-test" })
 	use({
 		"nvim-neotest/neotest",
 		requires = {
@@ -190,7 +200,7 @@ return require("packer").startup(function()
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
-	use("norcalli/nvim-colorizer.lua")
+	use({ "norcalli/nvim-colorizer.lua" })
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
