@@ -161,12 +161,10 @@ return require("packer").startup(function()
 	})
 	-- ' color schemes
 	use({ "navarasu/onedark.nvim" })
-	use({ "projekt0n/github-nvim-theme" })
 	use({ "lifepillar/vim-solarized8" })
-	use({ "Mofiqul/dracula.nvim" })
 	use({ "yorik1984/newpaper.nvim" })
 	use({ "NLKNguyen/papercolor-theme" })
-	use({ "luisiacc/gruvbox-baby" })
+	use({ "rebelot/kanagawa.nvim" })
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -175,9 +173,7 @@ return require("packer").startup(function()
 	use({ "ryanoasis/vim-devicons" })
 	use({ "yorik1984/lualine-theme.nvim" })
 	-- use({ "arkav/lualine-lsp-progress" })
-	use({ "nvimdev/galaxyline.nvim" })
 	use({ "nvim-lua/lsp-status.nvim" })
-	use("cwebster2/github-coauthors.nvim")
 	use({
 		"numToStr/Comment.nvim",
 		config = function()

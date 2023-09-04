@@ -170,12 +170,6 @@ vim.api.nvim_set_keymap("n", "<leader>gl", "<cmd>Telescope git_commits<CR>", { n
 vim.api.nvim_set_keymap("n", "<leader>glb", "<cmd>Telescope git_bcommits<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>gpr", "<cmd>Telescope gh pull_request<CR>", { noremap = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>gco",
-	"<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>",
-	{ noremap = true }
-)
 
 -- bufferline
 vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>bdelete<CR>", { noremap = true })
