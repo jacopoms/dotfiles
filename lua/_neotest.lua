@@ -21,7 +21,7 @@ neotest.setup({
 		skipped = "ﰸ",
 		unknown = "?",
 	},
-	require("neotest-vim-test")({ ignore_filetypes = { "ruby" } }),
+	-- require("neotest-vim-test")({ ignore_filetypes = { "ruby" } }),
 })
 
 local opts = { noremap = true, silent = true }
@@ -44,7 +44,7 @@ vim.cmd([[
 -- -- run nearest spec
 vim.keymap.set("n", "<space>ntn", ":NeotestNearest<CR>", opts)
 -- -- -- run all file
--- vim.keymap.set("n", "<space>nt", ":NeotestFile<CR>", opts)
+vim.keymap.set("n", "<space>nt", ":NeotestFile<CR>", opts)
 -- -- -- run all suite
 vim.keymap.set("n", "<space>ntt", ":Neotest<CR>", opts)
 -- attach float window
