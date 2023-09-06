@@ -64,7 +64,6 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldnestmax = 10
 vim.opt.foldenable = false
 vim.opt.foldlevel = 1
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.title = true
 -- set nohlsearch
 vim.opt.scrolloff = 8
