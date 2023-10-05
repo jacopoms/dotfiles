@@ -100,6 +100,7 @@ return require("packer").startup(function()
 	-- Tell which key
 	use({ "folke/which-key.nvim" })
 	-- use({ "ziontee113/syntax-tree-surfer" })
+	use({ "sindrets/diffview.nvim" })
 	use({
 		"akinsho/nvim-bufferline.lua",
 		tags = "*",
@@ -153,12 +154,6 @@ return require("packer").startup(function()
 	use({ "elixir-editors/vim-elixir" })
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "simrat39/symbols-outline.nvim" })
-	use({
-		"windwp/nvim-spectre",
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-	})
 	-- ' color schemes
 	use({ "navarasu/onedark.nvim" })
 	use({ "lifepillar/vim-solarized8" })
@@ -173,6 +168,7 @@ return require("packer").startup(function()
 	use({ "ryanoasis/vim-devicons" })
 	use({ "yorik1984/lualine-theme.nvim" })
 	-- use({ "arkav/lualine-lsp-progress" })
+	use({ "Bekaboo/deadcolumn.nvim" })
 	use({ "nvim-lua/lsp-status.nvim" })
 	use({
 		"numToStr/Comment.nvim",

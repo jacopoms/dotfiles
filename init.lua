@@ -132,7 +132,7 @@ vim.api.nvim_set_keymap("n", "<C-s><C-v>", "<cmd>vsp<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-s><C-h>", "<cmd>sp<CR>", { noremap = true })
 
 -- Telescope
-vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>fF", "<cmd>Telescope<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Telescope find_files prompt_prefix=🔍<CR>", { noremap = true })
 vim.api.nvim_set_keymap(
 	"n",
