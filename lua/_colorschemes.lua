@@ -8,12 +8,12 @@ require("newpaper").setup({
 	keywords = "bold,italic",
 	borders = true,
 	disable_background = false,
-	sidebars_contrast = { "NvimTree", "packer", "Neotest", "Spectre", "SymbolsOutline" },
+	sidebars_contrast = { "NvimTree", "packer", "Neotest", "SymbolsOutline" },
 })
 
-vim.cmd([[set background=dark]])
+-- vim.cmd([[set background=light]])
 vim.cmd([[set termguicolors]])
--- vim.cmd([[colorscheme  kanagawa-wave]])
+-- vim.cmd([[colorscheme  solarized8]])
 vim.cmd([[highlight GitSignsCurrentLineBlame guifg=#778899]])
-vim.cmd([[highlight ColorColumn ctermbg=16 guibg=#4E4E4E]])
+-- vim.cmd([[highlight ColorColumn ctermbg=lightgrey guibg=#bbc2cf]])
 require("colorizer").setup()

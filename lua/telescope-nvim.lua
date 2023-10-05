@@ -57,10 +57,10 @@ require("telescope").setup({
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 	},
 	pickers = {
-		find_files = {
-			theme = "ivy",
-			-- hidden = true
-		},
+		-- find_files = {
+		-- 	theme = "ivy",
+		-- 	-- hidden = true
+		-- },
 		buffers = {
 			show_all_buffers = true,
 			sort_lastused = true,
