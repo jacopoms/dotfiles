@@ -73,7 +73,6 @@ return require("packer").startup(function()
 
 	-- Github Copilot
 	-- use({ "github/copilot.vim" })
-	-- use({ "zbirenbaum/copilot.lua" })
 	use({
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
@@ -152,7 +151,12 @@ return require("packer").startup(function()
 		end,
 	})
 	use({ "elixir-editors/vim-elixir" })
-	use({ "lukas-reineke/indent-blankline.nvim" })
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("ibl").setup()
+		end,
+	})
 	use({ "simrat39/symbols-outline.nvim" })
 	-- ' color schemes
 	use({ "navarasu/onedark.nvim" })
@@ -168,7 +172,13 @@ return require("packer").startup(function()
 	use({ "ryanoasis/vim-devicons" })
 	use({ "yorik1984/lualine-theme.nvim" })
 	-- use({ "arkav/lualine-lsp-progress" })
-	use({ "Bekaboo/deadcolumn.nvim" })
+	use({
+		"Bekaboo/deadcolumn.nvim",
+		config = function()
+			local opts = { warning = { colorcode = "#444444" } }
+			require("deadcolumn").setup(opts)
+		end,
+	})
 	use({ "nvim-lua/lsp-status.nvim" })
 	use({
 		"numToStr/Comment.nvim",

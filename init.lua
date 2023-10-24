@@ -46,7 +46,7 @@ vim.opt.number = true
 vim.opt.ruler = true
 vim.opt.hidden = true
 vim.opt.textwidth = 100
-vim.opt.colorcolumn = "99"
+vim.opt.colorcolumn = "100"
 vim.opt.spelllang = "en"
 -- set noswapfile
 vim.opt.swapfile = false
