@@ -13,7 +13,7 @@ require("newpaper").setup({
 
 -- vim.cmd([[set background=light]])
 vim.cmd([[set termguicolors]])
--- vim.cmd([[colorscheme  solarized8]])
+-- vim.cmd([[colorscheme  spaceduck]])
 vim.cmd([[highlight GitSignsCurrentLineBlame guifg=#778899]])
 -- vim.cmd([[highlight ColorColumn ctermbg=lightgrey guibg=#444444]])
 require("colorizer").setup()

@@ -3,18 +3,6 @@ require("mason-lspconfig").setup()
 require("neodev").setup({
 	library = { plugins = { "neotest" }, types = true },
 })
-local lsp_status = require("lsp-status")
-lsp_status.register_progress()
-lsp_status.config({
-	current_function = false,
-	diagnostics = false,
-	indicator_errors = " ",
-	indicator_warnings = " ",
-	indicator_info = " ",
-	indicator_hint = " ",
-	indicator_ok = " Ok",
-})
-
 local lspconfig = require("lspconfig")
 local opts = { noremap = true, silent = true }
 -- vim.diagnostic.get({ bufnr = nil })
@@ -27,11 +15,9 @@ vim.keymap.set("n", "<space>ls", "<cmd>Telescope lsp_document_symbols<CR>", opts
 vim.keymap.set("n", "<space>lw", "<cmd>Telescope lsp_workspace_symbols<CR>", opts)
 
 -- vim.lsp.set_log_level("debug")
-
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	lsp_status.on_attach(client)
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -76,7 +62,6 @@ vim.diagnostic.config({
 local path_to_elixirls = vim.fn.expand("~/elixir-ls/release/language_server.sh")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities)
 
 local eslint_config = require("lspconfig.server_configurations.eslint")
 
@@ -161,6 +146,13 @@ lspconfig.lua_ls.setup({
 
 lspconfig.lua.setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig.ruby_ls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	cmd = { "ruby-lsp" },
 })
 
 require("mason-lspconfig").setup_handlers({
