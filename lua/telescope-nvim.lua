@@ -16,6 +16,7 @@ require("telescope").setup({
 			"--line-number",
 			"--column",
 			"--smart-case",
+			"--sort=path",
 		},
 		prompt_prefix = " ",
 		selection_caret = " ",
@@ -110,7 +111,7 @@ local telescope_builtin = require("telescope.builtin")
 
 M.find_files = function()
 	telescope_builtin.find_files({
-		find_command = { "rg", "--files", "--iglob", "!.git" },
+		find_command = { "rg", "--files", "--iglob", "!.git", "--color auto", "--sort", "path" },
 		previewer = true,
 	})
 end

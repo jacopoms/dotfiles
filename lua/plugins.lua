@@ -164,6 +164,7 @@ return require("packer").startup(function()
 	use({ "yorik1984/newpaper.nvim" })
 	use({ "NLKNguyen/papercolor-theme" })
 	use({ "rebelot/kanagawa.nvim" })
+	use({ "pineapplegiant/spaceduck" })
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
@@ -179,7 +180,7 @@ return require("packer").startup(function()
 			require("deadcolumn").setup(opts)
 		end,
 	})
-	use({ "nvim-lua/lsp-status.nvim" })
+	-- use({ "nvim-lua/lsp-status.nvim" })
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
