@@ -20,8 +20,8 @@ return {
 		})
 	end,
 	keys = {
-		{ { "K" }, { require("hover").hover }, { mode = "n" } },
-		{ { "gK" }, { require("hover").hover_select }, { mode = "n" } },
+		{ "K", require("hover").hover, mode = "n" },
+		{ "gK", require("hover").hover_select, mode = "n" },
 	},
 }
 

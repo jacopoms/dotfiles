@@ -11,8 +11,7 @@ return {
 			panel = {
 				enabled = false,
 			},
-			copilot_node_command = "/Users/jacopo/.asdf/installs/nodejs/20.5.0/bin/node",
+			copilot_node_command = "/Users/jghisolfi/.asdf/shims/node",
 		})
 	end,
 }
-

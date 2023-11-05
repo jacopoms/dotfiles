@@ -11,6 +11,8 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
 			"saadparwaiz1/cmp_luasnip",
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -156,6 +158,4 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
-	{ "L3MON4D3/LuaSnip" },
-	{ "rafamadriz/friendly-snippets" },
 }
