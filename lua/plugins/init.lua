@@ -21,10 +21,6 @@ return {
 	},
 	{ "folke/neodev.nvim" },
 
-	-- completion engine
-	{ "L3MON4D3/LuaSnip" },
-	{ "rafamadriz/friendly-snippets" },
-	-- auto complete
 	-- tabnine AI Assistant
 	-- {
 	--   "tzachar/cmp-tabnine",
@@ -55,7 +51,6 @@ return {
 	},
 
 	-- { "tbastos/vim-lua" },
-	{ "lewis6991/hover.nvim" },
 	{ "tpope/vim-fugitive" },
 	{ "tpope/vim-rhubarb" }, -- open file on github
 	{ "RRethy/nvim-treesitter-endwise" },
