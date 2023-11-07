@@ -30,14 +30,14 @@ return {
 	-- { "codota/tabnine-nvim", build = "./dl_binaries.sh" },
 
 	-- Github Copilot
-	-- { "github/copilot.vim" },
+	-- { "github/return copilot.vim" },
 	-- Tell which key
 	{ "folke/which-key.nvim" },
 	-- { "ziontee113/syntax-tree-surfer" },
 	{ "sindrets/diffview.nvim" },
 	{
 		"akinsho/nvim-bufferline.lua",
-		versions = "*",
+		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 	},
 	{
@@ -55,15 +55,6 @@ return {
 	{ "tpope/vim-rhubarb" }, -- open file on github
 	{ "RRethy/nvim-treesitter-endwise" },
 	{ "machakann/vim-highlightedyank" },
-	{
-		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end,
-	},
 	{ "vim-ruby/vim-ruby" },
 	{ "kchmck/vim-coffee-script" },
 	{ "jlcrochet/vim-rbs" },

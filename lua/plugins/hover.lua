@@ -1,5 +1,6 @@
 return {
 	"lewis6991/hover.nvim",
+	lazy = true,
 	config = function()
 		require("hover").setup({
 			init = function()
@@ -20,8 +21,20 @@ return {
 		})
 	end,
 	keys = {
-		{ "K", require("hover").hover, mode = "n" },
-		{ "gK", require("hover").hover_select, mode = "n" },
+		{
+			"K",
+			function()
+				require("hover").hover()
+			end,
+			mode = "n",
+		},
+		{
+			"gK",
+			function()
+				require("hover").hover_select()
+			end,
+			mode = "n",
+		},
 	},
 }
 
