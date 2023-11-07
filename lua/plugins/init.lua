@@ -1,18 +1,5 @@
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			{ "nvim-lua/popup.nvim" },
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-live-grep-args.nvim" },
-			{ "nvim-telescope/telescope-github.nvim" },
-			{ "nvim-telescope/telescope-media-files.nvim" },
-			{ "LinArcX/telescope-env.nvim" },
-		},
-	},
 	{ "mg979/vim-visual-multi" },
-	{ "nvim-telescope/telescope-file-browser.nvim" },
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "neovim/nvim-lspconfig" },
 	{
 		"williamboman/mason.nvim",
@@ -21,16 +8,6 @@ return {
 	},
 	{ "folke/neodev.nvim" },
 
-	-- tabnine AI Assistant
-	-- {
-	--   "tzachar/cmp-tabnine",
-	--   build = "./install.sh",
-	--   dependencies = "hrsh7th/nvim-cmp",
-	-- },
-	-- { "codota/tabnine-nvim", build = "./dl_binaries.sh" },
-
-	-- Github Copilot
-	-- { "github/return copilot.vim" },
 	-- Tell which key
 	{ "folke/which-key.nvim" },
 	-- { "ziontee113/syntax-tree-surfer" },
@@ -39,15 +16,6 @@ return {
 		"akinsho/nvim-bufferline.lua",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
-	},
-	{
-		"danymat/neogen",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"L3MON4D3/LuaSnip",
-		},
-		-- Uncomment next line if you want to follow only stable versions
-		version = "*",
 	},
 
 	-- { "tbastos/vim-lua" },
@@ -101,18 +69,7 @@ return {
 			require("Comment").setup()
 		end,
 	},
-	{ "folke/todo-comments.nvim" },
 	{ "vim-test/vim-test" },
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-			"olimorris/neotest-rspec",
-			"nvim-neotest/neotest-vim-test",
-		},
-	},
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()

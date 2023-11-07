@@ -1,4 +1,5 @@
 require("core")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -18,12 +19,7 @@ require("lazy").setup("plugins")
 
 require("lsp")
 require("buffer")
--- require("_lualine")
 require("evil_lualine")
-require("telescope-nvim")
--- require("_neogen")
-require("_neotest")
-require("_todo_comments")
 require("_which-key")
 
 require("key_bindings")

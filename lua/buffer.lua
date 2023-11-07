@@ -1,19 +1,3 @@
--- require("bufferline").setup({
---   options = {
---     view = "multiwindow",
---     show_close_icon = false,
---     show_buffer_close_icons = false,
---     diagnostics = "nvim_diagnostics",
---     diagnostics_indicator = function(count, level, _diagnostics_dict, _context)
---       local signs = { error = " ", warning = " ", hint = " ", info = " " }
---
---       -- print('level: ' .. level)
---       local icon = signs[level]
---       return " " .. icon .. count
---     end,
---   },
--- })
-
 local bufferline = require("bufferline")
 bufferline.setup({
 	options = {

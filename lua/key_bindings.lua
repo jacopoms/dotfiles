@@ -16,44 +16,6 @@ vim.api.nvim_set_keymap("n", "<C-s><C-v>", "<cmd>vsp<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-s><C-h>", "<cmd>sp<CR>", { noremap = true })
 
 -- Telescope
-vim.api.nvim_set_keymap("n", "<leader>fF", "<cmd>Telescope<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Telescope find_files prompt_prefix=🔍<CR>", { noremap = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>fH",
-	"<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍🔍<CR>",
-	{ noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>fl", "<cmd>Telescope live_grep<CR>", { noremap = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>fg",
-	"<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-	{ noremap = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>fi",
-	"<cmd>lua require('telescope.builtin').live_grep({search_dirs={vim.fn.expand('%:p')}})<CR>",
-	{ noremap = true }
-)
-
-vim.api.nvim_set_keymap("n", "<leader>bb", "<cmd>Telescope buffers<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>Telescope commands<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fq", "<cmd>Telescope quickfix<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>ft", "<cmd>Telescope tags<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fa", "<cmd>Telescope grep_string<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>fe", "<cmd>Telescope env<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>gf", "<cmd>Telescope git_files<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>Telescope git_status<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Telescope git_stash<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>gl", "<cmd>Telescope git_commits<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>glb", "<cmd>Telescope git_bcommits<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>gpr", "<cmd>Telescope gh pull_request<CR>", { noremap = true })
-
 -- bufferline
 vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>bdelete<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>Q", "<cmd>bdelete!<CR>", { noremap = true })
@@ -68,10 +30,6 @@ vim.api.nvim_set_keymap("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { noremap =
 -- update packages
 vim.api.nvim_set_keymap("n", "<C-u><S-u>", "<cmd>Lazy sync<CR>", { noremap = true })
 
--- format code
-vim.api.nvim_set_keymap("n", "<leader>f=", "<cmd>Format<CR>", { noremap = true })
-
--- Gitsigns
 vim.api.nvim_set_keymap("n", "<leader>hn", "<cmd>lua require('gitsigns').next_hunk()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>hp", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>hs", "<cmd>lua require('gitsigns').stage_hunk()<CR>", { noremap = true })
@@ -128,4 +86,3 @@ vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", { noremap = true })
 
 -- Remap Ctrl-q in insert mode to Esc
 vim.api.nvim_set_keymap("i", "<C-q>", "<Esc>", { noremap = true })
-
