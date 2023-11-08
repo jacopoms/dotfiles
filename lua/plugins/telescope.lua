@@ -54,9 +54,9 @@ return {
 							prompt_position = "top",
 						},
 					},
-					file_sorter = require("telescope.sorters").get_fzy_sorter(),
+					file_sorter = require("telescope.sorters").get_fzy_sorter,
 					file_ignore_patterns = {},
-					generic_sorter = require("telescope.sorters").get_fzy_sorter(),
+					generic_sorter = require("telescope.sorters").get_fzy_sorter,
 					winblend = 0,
 					border = true,
 					borderchars = {
@@ -75,14 +75,11 @@ return {
 				},
 				pickers = {
 					find_files = {
-						-- hidden = true
-						previewer = true,
+						find_command = { "rg", "--files", "--color=auto", "--sort=path", "--smart-case" },
 					},
 					buffers = {
 						show_all_buffers = true,
 						sort_lastused = true,
-						-- theme = "dropdown",
-						-- previewer = false,
 						mappings = {
 							i = {
 								["<c-d>"] = "delete_buffer",
@@ -114,7 +111,7 @@ return {
 		keys = {
 			{
 				"<leader>ff",
-				"<cmd>Telescope find_files<CR>",
+				"<cmd>Telescope find_files prompt_prefix=🔍<CR>",
 				noremap = true,
 			},
 			{ "<leader>ot", "<cmd>Telescope<CR>", noremap = true },

@@ -15,12 +15,6 @@ vim.api.nvim_set_keymap("n", "<C-s><C-v>", "<cmd>vsp<CR>", { noremap = true })
 -- split horizontally
 vim.api.nvim_set_keymap("n", "<C-s><C-h>", "<cmd>sp<CR>", { noremap = true })
 
--- Telescope
--- bufferline
-
--- DiffView
--- vim.api.nvim_set_keymap("n", "<leader>df", "<cmd>DiffviewFileHistory<CR>", { noremap = true })
-
 -- update packages
 vim.api.nvim_set_keymap("n", "<C-u><S-u>", "<cmd>Lazy sync<CR>", { noremap = true })
 
