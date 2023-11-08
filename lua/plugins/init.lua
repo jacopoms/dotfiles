@@ -31,18 +31,18 @@ return {
 	{ "jlcrochet/vim-rbs" },
 	{
 		"akinsho/git-conflict.nvim",
-		event = "BufEnter",
+		event = { "BufNewFile", "BufReadPre", "FileReadPre" },
 		version = "*",
 	},
 	{ "elixir-editors/vim-elixir" },
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufEnter",
+		event = { "BufNewFile", "BufReadPre", "FileReadPre" },
 	},
 	{
 		"simrat39/symbols-outline.nvim",
 		lazy = true,
-		event = "BufEnter",
+		event = { "BufNewFile", "BufReadPre", "FileReadPre" },
 		config = function()
 			require("symbols-outline").setup({
 				highlight_hovered_item = true,
@@ -83,11 +83,11 @@ return {
 	},
 	{
 		"numToStr/Comment.nvim",
-		event = "BufEnter",
+		event = { "BufNewFile", "BufReadPre", "FileReadPre" },
 	},
 	{
 		"vim-test/vim-test",
-		event = "BufEnter",
+		event = { "BufNewFile", "BufReadPre", "FileReadPre" },
 	},
 	{ "norcalli/nvim-colorizer.lua" },
 	{
