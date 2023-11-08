@@ -1,4 +1,4 @@
 plugin/
 undodir/
 coc-settings.json
-old_init.vim_old
+lazy-lock.json
