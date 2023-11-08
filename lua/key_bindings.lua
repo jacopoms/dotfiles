@@ -17,15 +17,9 @@ vim.api.nvim_set_keymap("n", "<C-s><C-h>", "<cmd>sp<CR>", { noremap = true })
 
 -- Telescope
 -- bufferline
-vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>bdelete<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>Q", "<cmd>bdelete!<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { noremap = true })
 
 -- DiffView
 -- vim.api.nvim_set_keymap("n", "<leader>df", "<cmd>DiffviewFileHistory<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dff", "<cmd>DiffviewFileHistory %<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { noremap = true })
 
 -- update packages
 vim.api.nvim_set_keymap("n", "<C-u><S-u>", "<cmd>Lazy sync<CR>", { noremap = true })
@@ -62,9 +56,6 @@ vim.api.nvim_set_keymap("n", "<leader>p", '"+p', { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>P", '"+P', { noremap = true })
 vim.api.nvim_set_keymap("v", "<leader>p", '"+p', { noremap = true })
 vim.api.nvim_set_keymap("v", "<leader>P", '"+P', { noremap = true })
-
--- SymbolsOutline plugin
-vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>SymbolsOutline<CR>", { noremap = true })
 
 -- Swap horizontally splits
 vim.api.nvim_set_keymap("n", "<C-w><S-h>", ":windo wincmd H<CR>", { noremap = true })

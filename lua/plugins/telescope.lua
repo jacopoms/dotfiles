@@ -1,24 +1,26 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = true,
+		lazy = false,
 		dependencies = {
 			{ "nvim-lua/popup.nvim" },
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 			{ "nvim-telescope/telescope-github.nvim" },
-			{ "nvim-telescope/telescope-media-files.nvim" },
 			{ "LinArcX/telescope-env.nvim" },
-			{ "nvim-telescope/telescope-file-browser.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 		config = function()
-			require("telescope").load_extension("media_files")
-			require("telescope").load_extension("file_browser")
-			require("telescope").load_extension("fzf")
-			require("telescope").load_extension("gh")
-			require("telescope").load_extension("live_grep_args")
-			require("telescope").load_extension("env")
+			local highlights = {
+				TelescopeBorder = { default = true, link = "TelescopeNormal" },
+				TelescopePromptBorder = { default = true, link = "TelescopeBorder" },
+				TelescopeResultsBorder = { default = true, link = "TelescopeBorder" },
+				TelescopePreviewBorder = { default = true, link = "TelescopeBorder" },
+			}
+
+			for k, v in pairs(highlights) do
+				vim.api.nvim_set_hl(0, k, v)
+			end
 
 			require("telescope").setup({
 				defaults = {
@@ -52,9 +54,9 @@ return {
 							prompt_position = "top",
 						},
 					},
-					file_sorter = require("telescope.sorters").get_fzy_sorter,
+					file_sorter = require("telescope.sorters").get_fzy_sorter(),
 					file_ignore_patterns = {},
-					generic_sorter = require("telescope.sorters").get_fzy_sorter,
+					generic_sorter = require("telescope.sorters").get_fzy_sorter(),
 					winblend = 0,
 					border = true,
 					borderchars = {
@@ -72,10 +74,10 @@ return {
 					buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 				},
 				pickers = {
-					-- find_files = {
-					-- 	theme = "ivy",
-					-- 	-- hidden = true
-					-- },
+					find_files = {
+						-- hidden = true
+						previewer = true,
+					},
 					buffers = {
 						show_all_buffers = true,
 						sort_lastused = true,
@@ -99,55 +101,23 @@ return {
 						case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 						-- the default case_mode is "smart_case"
 					},
-					media_files = {
-						filetypes = { "png", "webp", "jpg", "jpeg" },
-						find_cmd = "rg", -- find command (defaults to `fd`)
-					},
-					file_browser = {
-						theme = "ivy",
-						mappings = {
-							["i"] = {
-								-- your custom insert mode mappings
-							},
-							["n"] = {
-								-- your custom normal mode mappings
-							},
-						},
-					},
+					gh = {},
+					live_grep_args = {},
+					env = {},
 				},
 			})
-
-			local M = {}
-
-			local telescope_builtin = require("telescope.builtin")
-
-			M.find_files = function()
-				telescope_builtin.find_files({
-					find_command = { "rg", "--files", "--iglob", "!.git", "--color auto", "--sort", "path" },
-					previewer = true,
-				})
-			end
-
-			M.diagnostics = function()
-				telescope_builtin.diagnostics({
-					bufnr = nil,
-				})
-			end
-
-			local highlights = {
-				TelescopeBorder = { default = true, link = "TelescopeNormal" },
-				TelescopePromptBorder = { default = true, link = "TelescopeBorder" },
-				TelescopeResultsBorder = { default = true, link = "TelescopeBorder" },
-				TelescopePreviewBorder = { default = true, link = "TelescopeBorder" },
-			}
-
-			for k, v in pairs(highlights) do
-				vim.api.nvim_set_hl(0, k, v)
-			end
+			require("telescope").load_extension("fzf")
+			require("telescope").load_extension("gh")
+			require("telescope").load_extension("live_grep_args")
+			require("telescope").load_extension("env")
 		end,
 		keys = {
-			{ "<leader>fF", "<cmd>Telescope<CR>", noremap = true },
-			{ "<leader>f", "<cmd>Telescope find_files prompt_prefix=🔍<CR>", noremap = true },
+			{
+				"<leader>ff",
+				"<cmd>Telescope find_files<CR>",
+				noremap = true,
+			},
+			{ "<leader>ot", "<cmd>Telescope<CR>", noremap = true },
 			{
 				"<leader>fH",
 				"<cmd>Telescope find_files find_command=rg,--no-ignore,--hidden,--files prompt_prefix=🔍🔍<CR>",

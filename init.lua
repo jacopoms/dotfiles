@@ -18,7 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 require("lsp")
-require("buffer")
 require("evil_lualine")
 require("_which-key")
 

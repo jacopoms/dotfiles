@@ -1,8 +1,9 @@
 return {
-	{ "navarasu/onedark.nvim" },
-	{ "lifepillar/vim-solarized8" },
+	{ "navarasu/onedark.nvim", lazy = true },
+	{ "lifepillar/vim-solarized8", lazy = true },
 	{
 		"yorik1984/newpaper.nvim",
+		lazy = false,
 		config = function()
 			require("newpaper").setup({
 				style = "dark",
@@ -14,9 +15,9 @@ return {
 			})
 		end,
 	},
-	{ "NLKNguyen/papercolor-theme" },
-	{ "rebelot/kanagawa.nvim" },
-	{ "pineapplegiant/spaceduck" },
+	{ "NLKNguyen/papercolor-theme", lazy = true },
+	{ "rebelot/kanagawa.nvim", lazy = true },
+	{ "pineapplegiant/spaceduck", lazy = true },
 }
 -- onedark
 -- require("onedark").setup({

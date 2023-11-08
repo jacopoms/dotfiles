@@ -1,6 +1,6 @@
 return {
 	"mhartington/formatter.nvim",
-	lazy = false,
+	event = "BufWritePost",
 	config = function()
 		require("formatter").setup({
 			-- Enable or disable logging
@@ -47,7 +47,7 @@ return {
 			},
 		})
 	end,
-	cmd = "Format",
+	cmd = { "Format", "FormatWrite" },
 	keys = {
 		{ "<space>fm", "<cmd>Format<CR>", mode = "n" },
 		{ "<space>fmw", "<cmd>FormatWrite<CR>", mode = "n" },
