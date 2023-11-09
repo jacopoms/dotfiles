@@ -29,6 +29,7 @@ return {
         },
       },
       ruby_ls = {
+        mason = false,
         cmd = { "ruby-lsp" },
         formatter = "auto",
       },

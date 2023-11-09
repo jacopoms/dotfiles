@@ -2,7 +2,6 @@ return {
   "williamboman/mason.nvim",
   opts = {
     ensure_installed = {
-      "rubocop",
       "stylua",
       "shellcheck",
       "shfmt",

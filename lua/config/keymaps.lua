@@ -3,4 +3,4 @@
 -- Add any additional keymaps here
 
 -- Save with leader W
-vim.api.nvim_set_keymap("n", "<leader>w", ":w<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", ";w", ":w<CR>", { noremap = true })
