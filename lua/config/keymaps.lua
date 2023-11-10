@@ -4,3 +4,7 @@
 
 -- Save with leader W
 vim.api.nvim_set_keymap("n", ";w", ":w<CR>", { noremap = true })
+-- Search forward for word under the cursor
+vim.api.nvim_set_keymap("n", "<leader>h", "/<C-r><C-w><CR>", { noremap = true })
+-- Search backward for word under the cursor
+vim.api.nvim_set_keymap("n", "<leader>hh", "?<C-r><C-w><CR>", { noremap = true })
