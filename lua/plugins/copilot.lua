@@ -6,12 +6,6 @@
 -- * override the configuration of LazyVim plugins
 --
 return {
-  { import = "lazyvim.plugins.extras.ui.mini-animate" },
-  { import = "lazyvim.plugins.extras.coding.copilot" },
-  { import = "lazyvim.plugins.extras.editor.symbols-outline" },
-  { import = "lazyvim.plugins.extras.lang.typescript" },
-  { import = "lazyvim.plugins.extras.linting.eslint" },
-  { import = "lazyvim.plugins.extras.lang.json" },
 
   {
     "zbirenbaum/copilot.lua",
