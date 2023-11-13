@@ -19,7 +19,7 @@ return {
         help = true,
         ruby = true,
       },
-      copilot_node_command = "/Users/jacopo/.asdf/installs/nodejs/21.1.0/bin/node",
+      copilot_node_command = "/Users/jghisolfi/.asdf/installs/nodejs/21.1.0/bin/node",
     },
   },
 }
