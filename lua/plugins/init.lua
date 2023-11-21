@@ -82,12 +82,11 @@ return {
     },
   },
   -- Lualine
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
-  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+  -- },
   { "ryanoasis/vim-devicons" },
-  { "yorik1984/lualine-theme.nvim" },
   {
     "Bekaboo/deadcolumn.nvim",
     lazy = true,
