@@ -30,13 +30,13 @@ return {
       "yorik1984/lualine-theme.nvim",
     },
     opts = {
-      style = "dark",
-      lualine_style = "dark",
+      style = "light",
+      lualine_style = "light",
       lightness = 0,
       keywords = "bold,italic",
       borders = true,
       disable_background = false,
-      sidebars_contrast = { "NvimTree", "packer", "Neotest", "SymbolsOutline" },
+      sidebars_contrast = { "NvimTree", "Neotest", "SymbolsOutline" },
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
