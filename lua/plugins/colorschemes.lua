@@ -30,8 +30,8 @@ return {
       "yorik1984/lualine-theme.nvim",
     },
     opts = {
-      style = "light",
-      lualine_style = "light",
+      style = "dark",
+      lualine_style = "dark",
       lightness = 0,
       keywords = "bold,italic",
       borders = true,

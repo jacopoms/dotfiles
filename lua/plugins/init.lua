@@ -1,15 +1,15 @@
 return {
   { "mg979/vim-visual-multi" },
-  { "neovim/nvim-lspconfig" },
-  {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = "neovim/nvim-lspconfig",
-  },
-  { "folke/neodev.nvim" },
-
-  -- Tell which key
-  { "folke/which-key.nvim" },
+  -- { "neovim/nvim-lspconfig" },
+  -- {
+  --   "williamboman/mason.nvim",
+  --   "williamboman/mason-lspconfig.nvim",
+  --   dependencies = "neovim/nvim-lspconfig",
+  -- },
+  -- { "folke/neodev.nvim" },
+  --
+  -- -- Tell which key
+  -- { "folke/which-key.nvim" },
   -- { "ziontee113/syntax-tree-surfer" },
   {
     "sindrets/diffview.nvim",
@@ -47,7 +47,7 @@ return {
     event = { "BufNewFile", "BufReadPre", "FileReadPre" },
     version = "*",
   },
-  { "elixir-editors/vim-elixir" },
+  -- { "elixir-editors/vim-elixir" },
   {
     "lukas-reineke/indent-blankline.nvim",
     lazy = true,
@@ -106,5 +106,7 @@ return {
   { "norcalli/nvim-colorizer.lua" },
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = {}, -- this is equalent to setup({}) function
   },
 }

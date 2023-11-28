@@ -18,6 +18,19 @@ return {
 
     local luasnip = require("luasnip")
     local cmp = require("cmp")
+    -- If you want insert `(` after select function or method item
+    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+    opts.sources = {
+      { name = "copilot" },
+      { name = "nvim_lsp" },
+      { name = "nvim_lua" },
+      { name = "path" },
+      { name = "luasnip" },
+      { name = "emoji" },
+      { name = "buffer" },
+    }
 
     opts.mapping = vim.tbl_extend("force", opts.mapping, {
       ["<Tab>"] = cmp.mapping(function(fallback)
