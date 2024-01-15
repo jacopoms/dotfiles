@@ -9,3 +9,8 @@ opt.ruler = true
 opt.hidden = true
 opt.incsearch = true
 opt.title = true
+
+-- ater/ftplugin/typescript.vim
+opt.expandtab = true
+opt.tabstop = 4
+opt.shiftwidth = 4

@@ -3,6 +3,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    lazy = true,
     priority = 1000,
     keys = {
       { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
@@ -29,6 +30,7 @@ return {
     depedndencies = {
       "yorik1984/lualine-theme.nvim",
     },
+    lazy = true,
     opts = {
       style = "dark",
       lualine_style = "dark",
@@ -41,9 +43,25 @@ return {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
     },
+    keys = {
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
   },
-  { "ellisonleao/gruvbox.nvim" },
-  -- 0Configure LazyVim to load newpaper colorscheme
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = true,
+    keys = {
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
+  {
+    "romgrk/doom-one.vim",
+    lazy = true,
+    keys = {
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
+  -- Configure LazyVim to load catppuccin-latte colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
