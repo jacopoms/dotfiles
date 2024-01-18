@@ -61,7 +61,7 @@ return {
       { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
-  -- Configure LazyVim to load catppuccin-latte colorscheme
+  -- Configure LazyVim to load newpaper colorscheme
   {
     "LazyVim/LazyVim",
     opts = {

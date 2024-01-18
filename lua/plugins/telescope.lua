@@ -1,4 +1,6 @@
 local Util = require("lazyvim.util")
+local actions = require("telescope.actions")
+
 return {
   "telescope.nvim",
   dependencies = {
@@ -24,6 +26,7 @@ return {
   config = function()
     local lga = require("telescope-live-grep-args.actions")
     require("telescope").setup({
+      theme = "dropdown",
       defaults = {
         vimgrep_arguments = {
           "rg",
@@ -34,6 +37,8 @@ return {
           "--column",
           "--smart-case",
           "--sort=path",
+          "--hidden",
+          "--glob=!.git/",
         },
         layout_strategy = "horizontal",
         sorting_strategy = "ascending",
@@ -52,6 +57,16 @@ return {
           },
         },
         winblend = 0,
+        mappings = {
+          i = {
+            ["<Tab>"] = actions.move_selection_next,
+            ["<S-Tab>"] = actions.move_selection_previous,
+          },
+          n = {
+            ["<Tab>"] = actions.move_selection_next,
+            ["<S-Tab>"] = actions.move_selection_previous,
+          },
+        },
       },
       extensions = {
         live_grep_args = {
