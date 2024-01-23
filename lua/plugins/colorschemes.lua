@@ -20,7 +20,7 @@ return {
   {
     "navarasu/onedark.nvim",
     lazy = true,
-    opts = { style = "dark" },
+    opts = { style = "deep" },
     keys = {
       { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
@@ -32,8 +32,8 @@ return {
     },
     lazy = true,
     opts = {
-      style = "dark",
-      lualine_style = "dark",
+      style = "light",
+      lualine_style = "light",
       lightness = 0,
       keywords = "bold,italic",
       borders = true,
@@ -55,8 +55,43 @@ return {
     },
   },
   {
-    "romgrk/doom-one.vim",
+    "NTBBloodbath/doom-one.vim",
     lazy = true,
+    keys = {
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
+  {
+    "kepano/flexoki-neovim",
+    lazy = true,
+    name = "flexoki",
+    keys = {
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
+  {
+    "uloco/bluloco.nvim",
+    lazy = true,
+    priority = 1000,
+    dependencies = { "rktjmp/lush.nvim" },
+    keys = {
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
+  {
+    "kartikp10/noctis.nvim",
+    lazy = true,
+    priority = 1000,
+    dependencies = { "rktjmp/lush.nvim" },
+    keys = {
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
+  {
+    "dasupradyumna/midnight.nvim",
+    lazy = true,
+    priority = 1000,
+    dependencies = { "rktjmp/lush.nvim" },
     keys = {
       { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
@@ -65,7 +100,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "newpaper",
+      colorscheme = "bluloco",
     },
   },
 }
