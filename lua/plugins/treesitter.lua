@@ -13,6 +13,8 @@ return {
         "lua",
         "ruby",
         "elixir",
+        "javascript",
+        "typescript",
         "dockerfile",
         "css",
         "html",
