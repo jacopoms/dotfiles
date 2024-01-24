@@ -1,8 +1,14 @@
 return {
   {
+    "nvim-neotest/neotest-jest",
+  },
+  {
     "nvim-neotest/neotest",
+    ft = { "ruby", "typescript", "javascript" },
     dependecies = {
+      "nvim-neotest/neotest-jest",
       "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/neotest-plenary",
       "antoinemadec/FixCursorHold.nvim",
       "olimorris/neotest-rspec",
@@ -11,21 +17,10 @@ return {
       adapters = {
         "neotest-rspec",
         "neotest-plenary",
+        require("neotest-jest"),
       },
       icons = {
-        -- child_indent = "│",
-        -- child_prefix = "├",
-        -- collapsed = "─",
-        -- expanded = "╮",
-        -- failed = "✖",
-        -- final_child_indent = " ",
-        -- final_child_prefix = "╰",
-        -- non_collapsible = "─",
-        -- passed = "✔",
         running = "🗘",
-        -- running_animated = { "/", "|", "\\", "-", "/", "|", "\\", "-" },
-        -- skipped = "ﰸ",
-        -- unknown = "?",
       },
     },
     keys = {
