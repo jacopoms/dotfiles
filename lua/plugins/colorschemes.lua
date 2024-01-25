@@ -32,8 +32,8 @@ return {
     },
     lazy = true,
     opts = {
-      style = "light",
-      lualine_style = "light",
+      style = "dark",
+      lualine_style = "dark",
       lightness = 0,
       keywords = "bold,italic",
       borders = true,

@@ -1,41 +1,6 @@
 return {
   {
-    "nvim-neotest/neotest-jest",
-  },
-  {
-    "nvim-neotest/neotest",
-    ft = { "ruby", "typescript", "javascript" },
-    dependecies = {
-      "nvim-neotest/neotest-jest",
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-neotest/neotest-plenary",
-      "antoinemadec/FixCursorHold.nvim",
-      "olimorris/neotest-rspec",
-    },
-    opts = {
-      adapters = {
-        "neotest-rspec",
-        "neotest-plenary",
-        require("neotest-jest"),
-      },
-      icons = {
-        running = "🗘",
-      },
-    },
-    keys = {
-      {
-        "<leader>tw",
-        function()
-          require("neotest").watch(vim.fn.expand("%"))
-        end,
-        desc = "watch for changes",
-      },
-    },
-  },
-  {
     "vim-test/vim-test",
-    lazy = true,
     event = { "BufNewFile", "BufReadPre", "FileReadPre" },
     keys = {
       {
@@ -49,6 +14,43 @@ return {
         "<cmd>TestNearest<CR>",
         noremap = true,
         desc = "vim-test the neareset spec",
+      },
+    },
+  },
+  {
+    "nvim-neotest/neotest",
+    dependecies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "olimorris/neotest-rspec",
+      -- "vim-test/vim-test/",
+      -- "nvim-neotest/neotest-vim-test",
+      -- "zidhuss/neotest-minitest",
+      -- "nvim-neotest/neotest-jest",
+    },
+    opts = {
+      adapters = {
+        "neotest-rspec",
+        -- "neotest-jest",
+        -- "neotest-minitest",
+        -- require("neotest-vim-test")({ ignore_filetypes = { "ruby", "javascript", "typescript" } }),
+      },
+    },
+    keys = {
+      {
+        "<leader>tw",
+        function()
+          require("neotest").watch(vim.fn.expand("%"))
+        end,
+        desc = "watch for changes",
+      },
+      {
+        "<leader>ta",
+        function()
+          require("neotest").run.attach()
+        end,
+        desc = "Attach to the nearest test",
       },
     },
   },
