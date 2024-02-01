@@ -1,5 +1,14 @@
 return {
   {
+    "nvim-neotest/neotest-vim-test",
+  },
+  {
+    "zidhuss/neotest-minitest",
+  },
+  {
+    "nvim-neotest/neotest-jest",
+  },
+  {
     "vim-test/vim-test",
     event = { "BufNewFile", "BufReadPre", "FileReadPre" },
     keys = {
@@ -24,17 +33,17 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
       "olimorris/neotest-rspec",
-      -- "vim-test/vim-test/",
-      -- "nvim-neotest/neotest-vim-test",
-      -- "zidhuss/neotest-minitest",
-      -- "nvim-neotest/neotest-jest",
+      "vim-test/vim-test/",
+      "nvim-neotest/neotest-vim-test",
+      "zidhuss/neotest-minitest",
+      "nvim-neotest/neotest-jest",
     },
     opts = {
       adapters = {
         "neotest-rspec",
-        -- "neotest-jest",
-        -- "neotest-minitest",
-        -- require("neotest-vim-test")({ ignore_filetypes = { "ruby", "javascript", "typescript" } }),
+        "neotest-jest",
+        "neotest-minitest",
+        require("neotest-vim-test")({ ignore_filetypes = { "ruby", "javascript", "typescript" } }),
       },
     },
     keys = {
