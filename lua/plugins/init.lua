@@ -109,4 +109,13 @@ return {
     event = "InsertEnter",
     opts = {}, -- this is equalent to setup({}) function
   },
+  {
+    "nvim-neotest/neotest-vim-test",
+  },
+  {
+    "zidhuss/neotest-minitest",
+  },
+  {
+    "nvim-neotest/neotest-jest",
+  },
 }

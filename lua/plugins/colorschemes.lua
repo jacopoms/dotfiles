@@ -20,7 +20,7 @@ return {
   {
     "navarasu/onedark.nvim",
     lazy = true,
-    opts = { style = "deep" },
+    opts = { style = "dark" },
     keys = {
       { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
