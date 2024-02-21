@@ -72,6 +72,26 @@ return {
           },
         },
       },
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+        live_grep = {
+          hidden = true,
+        },
+        live_grep_args = {
+          hidden = true,
+        },
+        buffers = {
+          show_all_buffers = true,
+          sort_lastused = true,
+          mappings = {
+            i = {
+              ["<C-d>"] = "delete_buffer",
+            },
+          },
+        },
+      },
       extensions = {
         live_grep_args = {
           auto_quoting = true, -- enable/disable auto-quoting
