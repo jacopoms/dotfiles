@@ -44,6 +44,19 @@ return {
         formatter = "auto",
       },
       eslint = {},
+      elixirls = {
+        mason = false,
+        cmd = { "/Users/jacopo/.elixir-ls/release/language_server.sh" },
+        settings = {
+          elixirLS = {
+            dialyzerEnabled = false,
+            -- I also choose to turn off the auto dep fetching feature.
+            -- It often get's into a weird state that requires deleting
+            -- the .elixir_ls directory and restarting your editor.
+            fetchDeps = false,
+          },
+        },
+      },
     },
     setup = {
       eslint = function()
