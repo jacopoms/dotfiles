@@ -1,6 +1,12 @@
 return {
   {
+    "nvim-neotest/nvim-nio",
+  },
+  {
     "nvim-neotest/neotest-vim-test",
+    dependecies = {
+      "nvim-neotest/nvim-nio",
+    },
   },
   {
     "zidhuss/neotest-minitest",
@@ -34,6 +40,7 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "olimorris/neotest-rspec",
       "vim-test/vim-test/",
+      "nvim-neotest/nvim-nio",
       "nvim-neotest/neotest-vim-test",
       "zidhuss/neotest-minitest",
       "nvim-neotest/neotest-jest",
