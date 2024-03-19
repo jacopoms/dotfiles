@@ -96,6 +96,14 @@ return {
       { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = true,
+    priority = 1000,
+    keys = {
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
   -- Configure LazyVim to load newpaper colorscheme
   {
     "LazyVim/LazyVim",
