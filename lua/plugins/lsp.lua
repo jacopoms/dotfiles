@@ -19,12 +19,10 @@ return {
     diagnostics = {
       underline = true,
       update_in_insert = true,
-      severity_sort = true,
       virtual_text = false,
       float = {
         source = "always", -- Or "if_many"
       },
-      signs = true,
     },
     servers = {
       solargraph = {
