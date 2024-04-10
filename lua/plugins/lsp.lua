@@ -1,20 +1,5 @@
 return {
   "neovim/nvim-lspconfig",
-  -- init = function()
-  --   local keys = require("lazyvim.plugins.lsp.keymaps").get()
-  --   -- change keymaps
-  --   keys[#keys + 1] = {
-  --     "gd",
-  --     function()
-  --       require("telescope.builtin").lsp_definitions({
-  --         jump_type = "tab",
-  --         reuse_win = true,
-  --       })
-  --     end,
-  --     desc = "Goto Definition (new tab)",
-  --     has = "definition",
-  --   }
-  -- end,
   opts = {
     diagnostics = {
       underline = true,
@@ -27,7 +12,7 @@ return {
     servers = {
       solargraph = {
         mason = false,
-        cmd = { "solargraph", "stdio" },
+        cmd = { "bundle", "exec", "solargraph", "stdio" },
         filetypes = { "ruby", "rakefile" },
         init_options = {
           formatting = true,
@@ -51,11 +36,11 @@ return {
           },
         },
       },
-      ruby_ls = {
-        mason = false,
-        cmd = { "ruby-lsp" },
-        formatter = "auto",
-      },
+      -- ruby_ls = {
+      --   mason = false,
+      --   cmd = { "ruby-lsp" },
+      --   formatter = "auto",
+      -- },
       eslint = {},
       elixirls = {
         mason = false,
