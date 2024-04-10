@@ -121,5 +121,11 @@ return {
       noremap = true,
       desc = "File browser",
     },
+    {
+      "<leader>sf",
+      "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+      noremap = true,
+      desc = "Fuzzily search in current buffer",
+    },
   },
 }
