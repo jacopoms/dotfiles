@@ -18,6 +18,7 @@ return {
         markdown = true,
         help = true,
         ruby = true,
+        yaml = true,
       },
       copilot_node_command = vim.fn.expand("$HOME") .. "/.asdf/installs/nodejs/21.1.0/bin/node",
     },
