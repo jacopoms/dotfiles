@@ -6,7 +6,7 @@ return {
     lazy = true,
     priority = 1000,
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
@@ -14,7 +14,7 @@ return {
     lazy = true,
     opts = { style = "moon" },
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
@@ -22,7 +22,7 @@ return {
     lazy = true,
     opts = { style = "dark" },
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
@@ -44,21 +44,21 @@ return {
       },
     },
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
     "ellisonleao/gruvbox.nvim",
     lazy = true,
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
     "NTBBloodbath/doom-one.vim",
     lazy = true,
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
@@ -66,7 +66,7 @@ return {
     lazy = true,
     name = "flexoki",
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
@@ -75,7 +75,7 @@ return {
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
@@ -84,7 +84,7 @@ return {
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
@@ -93,7 +93,7 @@ return {
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   {
@@ -101,7 +101,7 @@ return {
     lazy = true,
     priority = 1000,
     keys = {
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
   -- Configure LazyVim to load newpaper colorscheme
