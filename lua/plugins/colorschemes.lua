@@ -104,11 +104,23 @@ return {
       { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     },
   },
+  {
+    "0xstepit/flow.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      fluo_color = "green",
+      aggressive_spell = true,
+    },
+    keys = {
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
   -- Configure LazyVim to load newpaper colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "bluloco",
+      colorscheme = "flow",
     },
   },
 }
