@@ -48,28 +48,6 @@ return {
     },
   },
   {
-    "ellisonleao/gruvbox.nvim",
-    lazy = true,
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
-  },
-  {
-    "NTBBloodbath/doom-one.vim",
-    lazy = true,
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
-  },
-  {
-    "kepano/flexoki-neovim",
-    lazy = true,
-    name = "flexoki",
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
-  },
-  {
     "uloco/bluloco.nvim",
     lazy = true,
     priority = 1000,
@@ -80,15 +58,6 @@ return {
   },
   {
     "kartikp10/noctis.nvim",
-    lazy = true,
-    priority = 1000,
-    dependencies = { "rktjmp/lush.nvim" },
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
-  },
-  {
-    "dasupradyumna/midnight.nvim",
     lazy = true,
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
@@ -109,8 +78,9 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
+      transparent = true,
       fluo_color = "green",
-      aggressive_spell = true,
+      aggressive_spell = false,
     },
     keys = {
       { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },

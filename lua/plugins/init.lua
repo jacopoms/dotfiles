@@ -1,16 +1,5 @@
 return {
   { "mg979/vim-visual-multi" },
-  -- { "neovim/nvim-lspconfig" },
-  -- {
-  --   "williamboman/mason.nvim",
-  --   "williamboman/mason-lspconfig.nvim",
-  --   dependencies = "neovim/nvim-lspconfig",
-  -- },
-  -- { "folke/neodev.nvim" },
-  --
-  -- -- Tell which key
-  -- { "folke/which-key.nvim" },
-  -- { "ziontee113/syntax-tree-surfer" },
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
@@ -20,33 +9,9 @@ return {
       { "<leader>dc", "<cmd>DiffviewClose<CR>", noremap = true },
     },
   },
-
-  -- { "tbastos/vim-lua" },
   { "tpope/vim-fugitive" },
   { "tpope/vim-rhubarb" }, -- open file on github
-  { "RRethy/nvim-treesitter-endwise" },
   { "machakann/vim-highlightedyank" },
-  {
-    "vim-ruby/vim-ruby",
-    lazy = true,
-    ft = { "ruby" },
-  },
-  {
-    "kchmck/vim-coffee-script",
-    lazy = true,
-    ft = { "ruby" },
-  },
-  {
-    "jlcrochet/vim-rbs",
-    lazy = true,
-    ft = { "ruby" },
-  },
-  {
-    "akinsho/git-conflict.nvim",
-    lazy = true,
-    event = { "BufNewFile", "BufReadPre", "FileReadPre" },
-    version = "*",
-  },
   -- { "elixir-editors/vim-elixir" },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -81,27 +46,11 @@ return {
       { "<leader>oo", "<cmd>SymbolsOutline<CR>", noremap = true },
     },
   },
-  -- Lualine
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
-  -- },
   { "ryanoasis/vim-devicons" },
-  {
-    "Bekaboo/deadcolumn.nvim",
-    lazy = true,
-    event = "BufWritePre",
-    opts = { warning = { colorcode = "#444444" } },
-  },
   {
     "numToStr/Comment.nvim",
     lazy = true,
     opts = {},
-  },
-  {
-    "vim-test/vim-test",
-    lazy = true,
-    event = { "BufNewFile", "BufReadPre", "FileReadPre" },
   },
   { "norcalli/nvim-colorizer.lua" },
   {
