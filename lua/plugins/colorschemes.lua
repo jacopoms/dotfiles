@@ -78,9 +78,9 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent = true,
+      -- transparent = true,
       fluo_color = "green",
-      aggressive_spell = false,
+      aggressive_spell = true,
     },
     keys = {
       { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },

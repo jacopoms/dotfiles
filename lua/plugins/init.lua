@@ -52,7 +52,11 @@ return {
     lazy = true,
     opts = {},
   },
-  { "norcalli/nvim-colorizer.lua" },
+  {
+    "norcalli/nvim-colorizer.lua",
+    lazy = false,
+    opts = {},
+  },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
