@@ -9,3 +9,4 @@ ln -s ${PWD}/wezterm.lua ~/.wezterm.lua
 ln -s ${PWD}/wezterm.lua ~/.wezterm.lua
 ln -s ${PWD}/gitignore_global ~/.gitignore_global
 ln -s ${PWD}/gitconfig ~/.gitconfig
+ln -s ${PWD}/p10k.zsh ~/.p10k.zsh
