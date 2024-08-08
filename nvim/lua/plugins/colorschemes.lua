@@ -66,6 +66,15 @@ return {
     },
   },
   {
+    "eldritch-theme/eldritch.nvim",
+    lazy = true,
+    priority = 1000,
+    keys = {
+      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    },
+  },
+
+  {
     "Mofiqul/vscode.nvim",
     lazy = true,
     priority = 1000,
@@ -90,7 +99,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "flow",
+      colorscheme = "eldritch",
     },
   },
 }
