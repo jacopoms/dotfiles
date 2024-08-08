@@ -1,7 +1,3 @@
-My customized version of LazyVim
+My dotfiles for my personal setup.
 
-# 💤 LazyVim
-
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
-
+Inspired by [Dotfiles](https://missing.csail.mit.edu/2019/dotfiles)
