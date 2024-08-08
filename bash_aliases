@@ -1,0 +1,99 @@
+# some more ls aliases
+alias ll='ls -alFGh'
+alias la='ls -AGh'
+alias l='ls -CFGh'
+
+# some color aliases for greps
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# color aliases for less and cat
+#alias cat='ccat'
+alias less='cless'
+
+alias find-here='grep -rnw . -e'
+alias find-file='find . -iname'
+
+## aliases for rails
+alias be='bundle exec'
+alias rc='bundle exec rake tmp:cache:clear'
+alias bi='bundle install'
+
+## aliases
+alias weg="killall ssh"
+alias showFiles="defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app"
+alias hideFiles="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
+alias refreshMenuBar="killall -KILL SystemUIServer"
+# alias hg='history | grep'
+
+### bind to rails server to 0.0.0.0
+alias r0000='be rails s -b 0.0.0.0'
+
+## wttr alias
+alias wttr='curl wttr.in/berlin'
+# alias chetempochefa='function weather() { curl wttr.in/$1; };weather'
+function weather() { curl wttr.in/"$1"; }
+
+## pretty print json rom curl
+# alias prtjson='function prettyJson() { curl $1 | python -m json.tool; }; prettyJson'
+function prettyJson() { curl "$1" | python -m json.tool; }
+
+## update brew and remove old packages
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+
+alias prep_commit='bundle exec reek . && rubocop -A && rspec'
+
+#aliases for docker
+alias dc='docker compose'
+alias dcd='docker compose -f docker-compose.yml -f docker-compose.development.yml'
+alias dct='docker compose -f docker-compose.yml -f docker-compose.test.yml'
+alias dck='docker compose -f docker-compose.yml -f docker-compose.kafka.yml'
+
+# aliases for aws marleyspoon
+alias ams='aws-vault exec marleyspoon-cx-staging'
+alias amp='aws-vault exec marleyspoon-cx-production'
+
+# alias for kubernetes
+alias k='kubectl'
+alias pkube='kubectl --kubeconfig=$HOME/.kube/cx-api-production.config'
+alias skube='kubectl --kubeconfig=$HOME/.kube/cx-api-staging.config'
+alias sk='skube'
+alias pk='pkube'
+alias pklogs='stern --kubeconfig=$HOME/.kube/cx-api-production.config --timestamps --color always'
+alias sklogs='stern --kubeconfig=$HOME/.kube/cx-api-staging.config --timestamps --color always'
+alias klogs='stern --kubeconfig=$HOME/.kube/config --timestamps --color always'
+
+alias sk9s='k9s --kubeconfig=$HOME/.kube/cx-api-staging.config'
+alias pk9s='k9s --kubeconfig=$HOME/.kube/cx-api-production.config'
+
+# alias helper for decoding base 64 encrypted strings
+function decode-base64() { echo "$1" | base64 --decode; }
+
+# update p10k from everywhere with updatep10k
+alias updatep10k="git -C $ZSH_CUSTOM/themes/powerlevel10k pull"
+
+# alias internetSongToMp3='youtube-dl --rm-cache-dir --extGract-audio --audio-quality 320K --audio-format mp3 $1'
+function internetSongToMp3() { youtube-dl --rm-cache-dir --extract-audio --audio-quality 320K --audio-format mp3 "$1"; }
+# alias internetSongToFlac1='youtube-dl --rm-cache-dir --extract-audio --audio-format flac $1'
+function internetSongToFlac1() { youtube-dl --rm-cache-dir --extract-audio --audio-format flac "$1"; }
+# alias internetSongToFlac9='youtube-dl --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac $1'
+function internetSongToFlac9() { youtube-dl --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac "$1"; }
+
+function explain() {
+    echo "$1"
+    gh copilot explain "$1"
+}
+
+function suggest() {
+    echo "$1"
+    gh copilot suggest "$1"
+}
+
+function gh-run-notifier() {
+    local param1=$1
+    local param2=${2:-Diocane}
+    echo "Running gh run watch with param1=$param1 and param2=$param2"
+    # Replace the command below with your desired command
+    gh run watch $param1 && terminal-notifier -title DIOCANE -sound default -message "$param2 done"
+}
