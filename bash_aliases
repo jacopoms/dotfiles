@@ -92,8 +92,8 @@ function suggest() {
 
 function gh-run-notifier() {
     local param1=$1
-    local param2=${2:-Diocane}
+    local param2=${2:-CI}
     echo "Running gh run watch with param1=$param1 and param2=$param2"
     # Replace the command below with your desired command
-    gh run watch $param1 && terminal-notifier -title DIOCANE -sound default -message "$param2 done"
+    gh run watch $param1 && terminal-notifier -title GH RUN FINISHED! -sound default -message "$param2 done"
 }
