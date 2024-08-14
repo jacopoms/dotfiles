@@ -38,13 +38,13 @@ config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
 config.window_background_opacity = 1.0
 config.window_padding = {
 	left = 3,
-	right = 3,
+	right = "1cell",
 	top = 3,
 	bottom = 3,
 }
 
-config.initial_cols = 200
-config.initial_rows = 150
+config.initial_cols = 300
+config.initial_rows = 120
 
 -- Tab Bar --
 
@@ -61,8 +61,9 @@ config.colors = {
 			fg_color = scheme_def.foreground,
 		},
 	},
+	scrollbar_thumb = "#adadad",
 }
--- config.enable_scroll_bar = true
+config.enable_scroll_bar = true
 -- config.hide_tab_bar_if_only_one_tab = true
 
 -- and finally, return the configuration to wezterm
