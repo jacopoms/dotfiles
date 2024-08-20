@@ -1,6 +1,15 @@
 local Util = require("lazyvim.util")
 local actions = require("telescope.actions")
+local telescopeConfig = require("telescope.config")
 
+-- Clone the default Telescope configuration
+local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+
+-- I want to search in hidden/dot files.
+table.insert(vimgrep_arguments, "--hidden")
+-- I don't want to search in the `.git` directory.
+table.insert(vimgrep_arguments, "--glob")
+table.insert(vimgrep_arguments, "!**/.git/*")
 return {
   "telescope.nvim",
   dependencies = {
@@ -34,15 +43,13 @@ return {
       defaults = {
         vimgrep_arguments = {
           "rg",
-          "--color=auto",
+          "--color=never",
           "--no-heading",
           "--with-filename",
           "--line-number",
           "--column",
           "--smart-case",
-          "--sort=path",
-          "--hidden",
-          "--glob=!.git/",
+          "--trim", -- add this value
         },
         layout_strategy = "horizontal",
         sorting_strategy = "ascending",
