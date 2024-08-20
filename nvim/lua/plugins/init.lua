@@ -62,7 +62,7 @@ return {
     event = "InsertEnter",
     opts = {}, -- this is equalent to setup({}) function
   },
-  {
-    "Pocco81/auto-save.nvim",
-  },
+  -- {
+  --   "Pocco81/auto-save.nvim",
+  -- },
 }
