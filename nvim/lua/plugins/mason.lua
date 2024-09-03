@@ -7,9 +7,11 @@ return {
       "shellcheck",
       "shfmt",
       "flake8",
+      "eslint-lsp",
+      "vtsls",
     },
     automatic_installation = {
-      false,
+      true,
     },
   },
 }
