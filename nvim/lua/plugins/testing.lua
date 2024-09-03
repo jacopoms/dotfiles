@@ -52,6 +52,10 @@ return {
         "neotest-jest",
         "neotest-minitest",
       },
+      output = {
+        open_on_run = true,
+        enter = true,
+      },
     },
     keys = {
       {
