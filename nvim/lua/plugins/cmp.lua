@@ -8,7 +8,6 @@ return {
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "lukas-reineke/cmp-rg",
   },
-  ---@param opts cmp.ConfigSchema
   opts = function(_, opts)
     table.insert(opts.sources, {
       { name = "copilot" },
