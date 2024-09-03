@@ -1,29 +1,29 @@
 local Util = require("lazyvim.util")
+
+-- Define keys once and reuse it
+local keys = {
+  { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+}
+
 return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = true,
     priority = 1000,
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
+    keys = keys,
   },
   {
     "folke/tokyonight.nvim",
     lazy = true,
     opts = { style = "moon" },
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
+    keys = keys,
   },
   {
     "navarasu/onedark.nvim",
     lazy = true,
     opts = { style = "dark" },
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
+    keys = keys,
   },
   {
     "yorik1984/newpaper.nvim",
@@ -43,57 +43,60 @@ return {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
     },
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
+    keys = keys,
   },
   {
     "uloco/bluloco.nvim",
     lazy = true,
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
+    keys = keys,
   },
   {
     "kartikp10/noctis.nvim",
     lazy = true,
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
+    keys = keys,
   },
   {
     "eldritch-theme/eldritch.nvim",
     lazy = true,
     priority = 1000,
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
+    keys = keys,
   },
-
   {
     "Mofiqul/vscode.nvim",
     lazy = true,
     priority = 1000,
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-    },
+    keys = keys,
   },
   {
     "0xstepit/flow.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {
       -- transparent = true,
       fluo_color = "green",
       aggressive_spell = true,
     },
-    keys = {
-      { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+    keys = keys,
+  },
+  {
+    "sontungexpt/witch",
+    lazy = true,
+    priority = 1000,
+    keys = keys,
+  },
+  {
+    "ribru17/bamboo.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {
+      style = "vulgaris",
+      transparent = true,
     },
+    keys = keys,
   },
   -- Configure LazyVim to load newpaper colorscheme
   {

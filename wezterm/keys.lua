@@ -25,7 +25,7 @@ function M.setup(config)
 		-- Move Tabs
 		{ mods = M.mod, key = ">", action = act.MoveTabRelative(1) },
 		{ mods = M.mod, key = "<", action = act.MoveTabRelative(-1) },
-		-- Acivate Tabs
+		-- Activate Tabs
 		{ mods = M.mod, key = "l", action = act({ ActivateTabRelative = 1 }) },
 		{ mods = M.mod, key = "h", action = act({ ActivateTabRelative = -1 }) },
 		{ mods = M.mod, key = "R", action = act.RotatePanes("Clockwise") },
