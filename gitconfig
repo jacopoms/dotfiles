@@ -1,67 +1,68 @@
 [alias]
-  lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-  lg3 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  quicklog = log --pretty=format:'%Cblue%h %Cred%cD %Creset%cn %Cgreen%s%Creset' --date-order --graph
-  plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
-  tlog = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
-  lg = !"git lg3"
-  rank = shortlog -sn --no-merges
-  freebase = pull --rebase
-  undo = reset --soft --keep HEAD^
-  unstage = restore --staged
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg3 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    quicklog = log --pretty=format:'%Cblue%h %Cred%cD %Creset%cn %Cgreen%s%Creset' --date-order --graph
+    plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+    tlog = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+    lg = !"git lg3"
+    rank = shortlog -sn --no-merges
+    freebase = pull --rebase
+    undo = reset --soft --keep HEAD^
+    unstage = restore --staged
   # Shortening aliases
-  st = status
-  g = grep
-  sl = stash list
-  sa = stash apply
-  sd = stash drop
-  sp = stash pop
-  co = checkout
-  cob = checkout -b
-  ap = add . -N -p
-  ci = commit -m
-  ca = commit -am
-  f = fetch -p
-  p = push
-  pf = push --force
-  pfl = push --force-with-lease
-  pl = pull
-  plm = pull origin master
-  br = branch
-  ba = branch -a
-  bd = branch -d
-  bD = branch -D
-  dc = diff --cached
-  gbn = rev-parse --abbrev-ref HEAD
+    st = status
+    g = grep
+    sl = stash list
+    sa = stash apply
+    sd = stash drop
+    sp = stash pop
+    co = checkout
+    cob = checkout -b
+    ap = add . -N -p
+    ci = commit -m
+    ca = commit -am
+    f = fetch -p
+    p = push
+    pf = push --force
+    pfl = push --force-with-lease
+    pl = pull
+    plm = pull origin master
+    br = branch
+    ba = branch -a
+    bd = branch -d
+    bD = branch -D
+    dc = diff --cached
+    gbn = rev-parse --abbrev-ref HEAD
   # Complex aliases
-  bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
-  sw = switch
-  loga = log --graph --decorate --name-status --all
-  swf = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git switch
+    bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+    sw = switch
+    loga = log --graph --decorate --name-status --all
+    swf = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git switch
+	mergefzf = "!f() { local branch=$(git branch --format=\"%(refname:short)\" | fzf); git merge --no-ff $branch -m \"$1\"; }; f"
 [user]
-  name = Jacopo Ghisolfi
-  email = jacopo.ghisolfi@marleyspoon.com
-  username = jacopoms
+    name = Jacopo Ghisolfi
+    email = jacopo.ghisolfi@marleyspoon.com
+    username = jacopoms
 [github]
-  user = jacopoms
+    user = jacopoms
 [core]
-  editor = nvim
-  excludesfile = /Users/jacopo/.gitignore_global
+    editor = nvim
+    excludesfile = /Users/jacopo/.gitignore_global
 [color]
-  status = auto
-  branch = auto
-  interactive = auto
-  diff = auto
-  ui = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    diff = auto
+    ui = auto
 [filter "lfs"]
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
 [hub]
-  protocol = https
+    protocol = https
 [pull]
-  rebase = true
+    rebase = true
 [push]
-  default = current
+    default = current
