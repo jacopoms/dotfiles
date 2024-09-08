@@ -91,9 +91,6 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 export PROJECTS_ROOT="$HOME/Projects"
 
 eval $(ssh-agent)
-## Ansible conf envs
-export ANSIBLE_VAULT_PASSWORD_FILE="$HOME/.vault-pass.txt"
-
 
 export DOCKER_COMPOSE_TIMEOUT=200
 export COMPOSE_HTTP_TIMEOUT=200
@@ -106,8 +103,10 @@ ctags=/usr/local/bin/ctags
 #eval "$(hub alias -s)"
 
 # K8s config
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
-complete -o default -F __start_kubectl k
+if [ -x /usr/local/bin/kubectl ]; then 
+    source <(kubectl completion zsh); 
+    complete -o default -F __start_kubectl k;
+fi
 ## FZF conf
 export FZF_DEFAULT_OPTS="
 --layout=reverse
