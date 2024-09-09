@@ -67,6 +67,7 @@ alias klogs='stern --kubeconfig=$HOME/.kube/config --timestamps --color always'
 alias sk9s='k9s --kubeconfig=$HOME/.kube/cx-api-staging.config'
 alias pk9s='k9s --kubeconfig=$HOME/.kube/cx-api-production.config'
 
+alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 # alias helper for decoding base 64 encrypted strings
 function decode-base64() { echo "$1" | base64 --decode; }
 
