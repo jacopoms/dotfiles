@@ -66,6 +66,7 @@ config.colors = {
 	},
 	scrollbar_thumb = "#adadad",
 }
+config.scrollback_lines = 35000
 config.enable_scroll_bar = true
 -- config.hide_tab_bar_if_only_one_tab = true
 
