@@ -11,6 +11,7 @@ return {
     },
     servers = {
       rubocop = {
+        mason = false,
         cmd = { "bundle", "exec", "rubocop" },
       },
       solargraph = {
@@ -39,11 +40,6 @@ return {
           },
         },
       },
-      -- ruby_ls = {
-      --   mason = false,
-      --   cmd = { "ruby-lsp" },
-      --   formatter = "auto",
-      -- },
       elixirls = {
         mason = false,
         cmd = { "/Users/jacopo/.elixir-ls/release/language_server.sh" },
