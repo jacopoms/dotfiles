@@ -16,3 +16,8 @@ vim.cmd([[
   let test#ruby#use_binstubs = 0
   let test#ruby#rspec#executable = "bundle exec rspec"
 ]])
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
