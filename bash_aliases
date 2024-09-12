@@ -1,7 +1,7 @@
 # some more ls aliases
-alias ll='ls -alFGh'
-alias la='ls -AGh'
-alias l='ls -CFGh'
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+
+alias ll='eza --color=always --long --git --icons=always'
 
 # some color aliases for greps
 alias grep='grep --color=auto'
@@ -26,9 +26,6 @@ alias showFiles="defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles="defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app"
 alias refreshMenuBar="killall -KILL SystemUIServer"
 # alias hg='history | grep'
-
-### bind to rails server to 0.0.0.0
-alias r0000='be rails s -b 0.0.0.0'
 
 ## wttr alias
 alias wttr='curl wttr.in/berlin'
@@ -68,6 +65,9 @@ alias sk9s='k9s --kubeconfig=$HOME/.kube/cx-api-staging.config'
 alias pk9s='k9s --kubeconfig=$HOME/.kube/cx-api-production.config'
 
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+
+alias cat='bat'
+alias cd="z"
 # alias helper for decoding base 64 encrypted strings
 function decode-base64() { echo "$1" | base64 --decode; }
 

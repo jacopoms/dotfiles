@@ -31,10 +31,10 @@ plugins=(
   # bundler
   git
   gitfast
-  autojump
+  # autojump
   colorize
   fzf
-  zsh-interactive-cd
+  # zsh-interactive-cd
   zsh-syntax-highlighting
   zsh-navigation-tools
   zsh-autosuggestions
@@ -108,24 +108,70 @@ if [ -x /usr/local/bin/kubectl ]; then
     complete -o default -F __start_kubectl k;
 fi
 ## FZF conf
-export FZF_DEFAULT_OPTS="
---layout=reverse
---info=inline
---height=80%
---multi
---preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
---color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
---prompt='∼ ' --pointer='▶' --marker='✓'
---bind '?:toggle-preview'
---bind 'ctrl-a:select-all'
---bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
---bind 'ctrl-e:execute(echo {+} | xargs -o nvim)'
-"
-export FZF_COMPLETION_TRIGGER='**'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-bindkey "ç" fzf-cd-widget
+# export FZF_DEFAULT_OPTS="
+# --layout=reverse
+# --info=inline
+# --height=80%
+# --multi
+# --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+# --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+# --prompt='∼ ' --pointer='▶' --marker='✓'
+# --bind '?:toggle-preview'
+# --bind 'ctrl-a:select-all'
+# --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+# --bind 'ctrl-e:execute(echo {+} | xargs -o nvim)'
+# "
+export FZF_COMPLETION_TRIGGER="@@"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
+
 export HISTTIMEFORMAT="%F %T "
+
+# bat config 
+export BAT_THEME=tokyonight_night
+
+# thefuck 
+# thefuck alias
+eval $(thefuck --alias)
+
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
 
 ## Env Variables for libffi library
 export LDFLAGS="-L/usr/local/opt/libffi/lib"
