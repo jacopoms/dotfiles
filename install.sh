@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# necessary packages for the terminal to work properly
+brew install fzf bat exa zoxide fd
+
 BASEDIR=$(dirname $0)
 cd $BASEDIR
 
