@@ -1,29 +1,26 @@
 return {
-  { "tpope/vim-rhubarb" }, -- open file on github
-  -- { "machakann/vim-highlightedyank" },
-  -- { "elixir-editors/vim-elixir" },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    lazy = true,
-    event = { "BufNewFile", "BufReadPre", "FileReadPre" },
+    'sindrets/diffview.nvim',
+    cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles' },
+    keys = {
+      { '<leader>dfo', '<cmd>DiffviewOpen<CR>', noremap = true },
+      { '<leader>dff', '<cmd>DiffviewFileHistory %<CR>', noremap = true },
+      { '<leader>dc', '<cmd>DiffviewClose<CR>', noremap = true },
+    },
   },
-  { "ryanoasis/vim-devicons" },
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-rhubarb' }, -- open file on github
+  { 'machakann/vim-highlightedyank' },
+  -- { "elixir-editors/vim-elixir" },
+  { 'ryanoasis/vim-devicons' },
   {
-    "numToStr/Comment.nvim",
+    'numToStr/Comment.nvim',
     lazy = true,
     opts = {},
   },
   {
-    "norcalli/nvim-colorizer.lua",
+    'norcalli/nvim-colorizer.lua',
     lazy = false,
     opts = {},
   },
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {}, -- this is equalent to setup({}) function
-  },
-  -- {
-  --   "Pocco81/auto-save.nvim",
-  -- },
 }

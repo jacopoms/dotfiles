@@ -1,76 +1,137 @@
 return {
   {
-    "vim-test/vim-test",
-    event = { "BufNewFile", "BufReadPre", "FileReadPre" },
+    'vim-test/vim-test',
+    event = { 'BufNewFile', 'BufReadPre', 'FileReadPre' },
     keys = {
       {
-        "<leader>tf",
-        "<cmd>TestFile<CR>",
+        '<leader>tf',
+        '<cmd>TestFile<CR>',
         noremap = true,
-        desc = "vim-test the file",
+        desc = 'vim-test the file',
       },
       {
-        "<leader>tn",
-        "<cmd>TestNearest<CR>",
+        '<leader>tn',
+        '<cmd>TestNearest<CR>',
         noremap = true,
-        desc = "vim-test the neareset spec",
+        desc = 'vim-test the neareset spec',
       },
     },
   },
   {
-    "antoinemadec/FixCursorHold.nvim",
-    "nvim-lua/plenary.nvim",
-    "nvim-neotest/neotest-jest",
-    "nvim-neotest/nvim-nio",
-    "nvim-treesitter/nvim-treesitter",
-    "olimorris/neotest-rspec",
-    "zidhuss/neotest-minitest",
+    'antoinemadec/FixCursorHold.nvim',
+    'nvim-lua/plenary.nvim',
+    'nvim-neotest/neotest-jest',
+    'nvim-neotest/nvim-nio',
+    'nvim-treesitter/nvim-treesitter',
+    'olimorris/neotest-rspec',
+    'zidhuss/neotest-minitest',
+    'nvim-neotest/neotest-vim-test',
   },
   {
-    "nvim-neotest/neotest",
+    'nvim-neotest/neotest',
     dependecies = {
-      "antoinemadec/FixCursorHold.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-neotest/neotest-jest",
-      "nvim-neotest/nvim-nio",
-      "nvim-treesitter/nvim-treesitter",
-      "olimorris/neotest-rspec",
-      "zidhuss/neotest-minitest",
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-neotest/neotest-jest',
+      'nvim-neotest/nvim-nio',
+      'nvim-treesitter/nvim-treesitter',
+      'olimorris/neotest-rspec',
+      'zidhuss/neotest-minitest',
+      'nvim-neotest/neotest-vim-test',
     },
-    opts = {
-      adapters = {
-        ["neotest-rspec"] = {
-          -- NOTE: By default neotest-rspec uses the system wide rspec gem instead of the one through bundler
-          rspec_cmd = function()
-            return vim.tbl_flatten({
-              "bundle",
-              "exec",
-              "rspec",
-            })
-          end,
+    config = function()
+      require('neotest').setup {
+        adapters = {
+          require 'neotest-rspec' {
+            -- NOTE: By default neotest-rspec uses the system wide rspec gem instead of the one through bundler
+            rspec_cmd = function()
+              return vim.tbl_flatten {
+                'bundle',
+                'exec',
+                'rspec',
+              }
+            end,
+          },
+          require 'neotest-jest',
+          require 'neotest-minitest',
+          require 'neotest-vim-test' { ignore_filetypes = { 'ruby', 'elixir' } },
         },
-        "neotest-jest",
-        "neotest-minitest",
-      },
-      output = {
-        open_on_run = true,
-        enter = true,
-      },
-    },
+        output = {
+          open_on_run = true,
+          enter = true,
+        },
+      }
+    end,
     keys = {
       {
-        "<leader>tw",
+        '<leader>tt',
         function()
-          require("neotest").watch(vim.fn.expand("%"))
+          require('neotest').run.run(vim.fn.expand '%')
         end,
-        desc = "watch for changes",
+        desc = 'Run File',
       },
       {
-        "<leader>ta",
+        '<leader>tT',
         function()
-          require("neotest").run.attach()
+          require('neotest').run.run(vim.uv.cwd())
         end,
-        desc = "Attach to the nearest test",
+        desc = 'Run All Test Files',
+      },
+      {
+        '<leader>tr',
+        function()
+          require('neotest').run.run()
+        end,
+        desc = 'Run Nearest',
+      },
+      {
+        '<leader>tl',
+        function()
+          require('neotest').run.run_last()
+        end,
+        desc = 'Run Last',
+      },
+      {
+        '<leader>ts',
+        function()
+          require('neotest').summary.toggle()
+        end,
+        desc = 'Toggle Summary',
+      },
+      {
+        '<leader>to',
+        function()
+          require('neotest').output.open { enter = true, auto_close = true }
+        end,
+        desc = 'Show Output',
+      },
+      {
+        '<leader>tO',
+        function()
+          require('neotest').output_panel.toggle()
+        end,
+        desc = 'Toggle Output Panel',
+      },
+      {
+        '<leader>tS',
+        function()
+          require('neotest').run.stop()
+        end,
+        desc = 'Stop',
+      },
+      {
+        '<leader>tw',
+        function()
+          require('neotest').watch.toggle(vim.fn.expand '%')
+        end,
+        desc = 'Toggle Watch',
+      },
+      {
+        '<leader>ta',
+        function()
+          require('neotest').run.attach()
+        end,
+        desc = 'Attach to the nearest test',
       },
     },
   },
