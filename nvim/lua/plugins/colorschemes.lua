@@ -53,19 +53,6 @@ return {
     keys = keys,
   },
   {
-    "kartikp10/noctis.nvim",
-    lazy = true,
-    priority = 1000,
-    dependencies = { "rktjmp/lush.nvim" },
-    keys = keys,
-  },
-  {
-    "eldritch-theme/eldritch.nvim",
-    lazy = true,
-    priority = 1000,
-    keys = keys,
-  },
-  {
     "Mofiqul/vscode.nvim",
     lazy = true,
     priority = 1000,
@@ -79,22 +66,6 @@ return {
       -- transparent = true,
       fluo_color = "green",
       aggressive_spell = true,
-    },
-    keys = keys,
-  },
-  {
-    "sontungexpt/witch",
-    lazy = true,
-    priority = 1000,
-    keys = keys,
-  },
-  {
-    "ribru17/bamboo.nvim",
-    lazy = true,
-    priority = 1000,
-    opts = {
-      style = "vulgaris",
-      transparent = true,
     },
     keys = keys,
   },
