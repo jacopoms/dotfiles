@@ -103,8 +103,8 @@ ctags=/usr/local/bin/ctags
 #eval "$(hub alias -s)"
 
 # K8s config
-if [ -x /usr/local/bin/kubectl ]; then 
-    source <(kubectl completion zsh); 
+if [ -x /usr/local/bin/kubectl ]; then
+    source <(kubectl completion zsh);
     complete -o default -F __start_kubectl k;
 fi
 ## FZF conf
@@ -162,10 +162,10 @@ _fzf_comprun() {
 
 export HISTTIMEFORMAT="%F %T "
 
-# bat config 
-export BAT_THEME=tokyonight_night
+# bat config
+export BAT_THEME=bluloco-dark
 
-# thefuck 
+# thefuck
 # thefuck alias
 eval $(thefuck --alias)
 

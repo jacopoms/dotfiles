@@ -40,6 +40,9 @@ return {
           },
         },
       },
+      ruby_lsp = {
+        mason = false,
+      },
       elixirls = {
         mason = false,
         cmd = { "/Users/jacopo/.elixir-ls/release/language_server.sh" },
