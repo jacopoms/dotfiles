@@ -38,6 +38,7 @@ function prettyJson() { curl "$1" | python -m json.tool; }
 
 ## update brew and remove old packages
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+alias portski='sudo port -v selfupdate && port outdated && sudo port upgrade outdated && sudo port uninstall inactive'
 
 alias prep_commit='bundle exec reek . && rubocop -A && rspec'
 
