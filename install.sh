@@ -1,17 +1,56 @@
 #!/usr/bin/env bash
 
-# necessary packages for the terminal to work properly
-brew install fzf bat exa zoxide fd
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" &>/dev/null
+}
 
-BASEDIR=$(dirname $0)
-cd $BASEDIR
+# Function to install packages
+install_packages() {
+    if command_exists brew; then
+        brew install fzf bat eza zoxide fd thefuck
+    elif command_exists port; then
+        sudo port install fzf bat eza zoxide fd thefuck
+    else
+        echo "Neither brew nor macports is installed. Please install one of them first."
+        exit 1
+    fi
+}
 
-ln -s ${PWD}/bashrc ~/.bashrc
-ln -s ${PWD}/bash_aliases ~/.bash_aliases
-ln -s ${PWD}/nvim ~/.config/nvim
-ln -s ${PWD}/zshrc ~/.zshrc
-ln -s ${PWD}/wezterm ~/.config/wezterm
-ln -s ${PWD}/gitignore_global ~/.gitignore_global
-ln -s ${PWD}/gitconfig ~/.gitconfig
-ln -s ${PWD}/p10k.zsh ~/.p10k.zsh
-ln -s ${PWD}/bat ~/.config/bat
+# Function to create symbolic links
+create_symlink() {
+    local target=$1
+    local link_name=$2
+
+    if [ -e "$link_name" ] && [ ! -L "$link_name" ]; then
+        ln -s "$target" "$link_name"
+        echo "Created symbolic link for $(basename "$link_name")"
+    else
+        echo "$(basename "$link_name") is already a symbolic link or does not exist"
+    fi
+}
+
+# Install necessary packages
+install_packages
+
+BASEDIR=$(dirname "$0")
+cd "$BASEDIR" || exit
+
+# HOME dotfiles
+dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh)
+
+if [ -n "${dotfiles[*]}" ]; then
+    for file in "${dotfiles[@]}"; do
+        create_symlink "${PWD}/${file}" "${HOME}/.${file}"
+    done
+fi
+
+# .config directories
+config_dirs=(nvim wezterm bat)
+config_basedir="${HOME}/.config"
+
+if [ -n "${config_dirs[*]}" ]; then
+    for dir in "${config_dirs[@]}"; do
+        create_symlink "${PWD}/${dir}" "${config_basedir}/${dir}"
+    done
+fi
