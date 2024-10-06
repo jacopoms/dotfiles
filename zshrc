@@ -164,7 +164,7 @@ _fzf_comprun() {
 export HISTTIMEFORMAT="%F %T "
 
 # bat config
-export BAT_THEME=bluloco-dark
+# export BAT_THEME=tokyonight_night
 
 # thefuck
 # thefuck alias
