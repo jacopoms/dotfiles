@@ -12,34 +12,34 @@ return {
     servers = {
       rubocop = {
         mason = false,
-        cmd = { "bundle", "exec", "rubocop" },
+        cmd = { "bundle", "exec", "rubocop", "--lsp" },
       },
-      solargraph = {
-        mason = false,
-        cmd = { "bundle", "exec", "solargraph", "stdio" },
-        filetypes = { "ruby", "rakefile" },
-        init_options = {
-          formatting = true,
-          diagnostic = true,
-        },
-        -- root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
-        settings = {
-          solargraph = {
-            commandPath = "~/.asdf/shims/solargraph",
-            autoformat = true,
-            completion = true,
-            diagnostic = true,
-            formatting = true,
-            folding = true,
-            references = true,
-            rename = true,
-            symbols = true,
-            flags = {
-              debounce_text_changes = 150,
-            },
-          },
-        },
-      },
+      -- solargraph = {
+      --   mason = false,
+      -- cmd = { "bundle", "exec", "solargraph", "stdio" },
+      -- filetypes = { "ruby", "rakefile" },
+      -- init_options = {
+      --   formatting = true,
+      --   diagnostic = true,
+      -- },
+      -- -- root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+      -- settings = {
+      --   solargraph = {
+      --     commandPath = "~/.asdf/shims/solargraph",
+      --     autoformat = true,
+      --     completion = true,
+      --     diagnostic = true,
+      --     formatting = true,
+      --     folding = true,
+      --     references = true,
+      --     rename = true,
+      --     symbols = true,
+      --     flags = {
+      --       debounce_text_changes = 150,
+      --     },
+      --   },
+      -- },
+      -- },
       ruby_lsp = {
         mason = false,
       },

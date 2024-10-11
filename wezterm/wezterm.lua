@@ -7,16 +7,22 @@ wezterm.log_info("reloading")
 
 require("keys").setup(config)
 -- The color scheme you want to use
-local scheme = "tokyonight_night"
+local scheme = "BlulocoDark"
 -- Obtain the definition of that color scheme
 local scheme_def = wezterm.color.get_builtin_schemes()[scheme]
 
 -- For example, changing the color scheme:
 config.color_scheme = scheme
 
--- Font configuration  -- Hack Nerd Font
-config.font = wezterm.font("Hack Nerd Font Mono", { bold = false, italic = false })
+-- Font configuration  -- Monaspice NR Nerd Font
 config.font_size = 12.5
+
+config.font = wezterm.font_with_fallback({
+	{ family = "FiraCode Nerd Font Mono", weight = "Regular" },
+	{ family = "MonaspiceNe Nerd Font", weight = "Regular" },
+	{ family = "Symbols Nerd Font" },
+	{ family = "Hack Nerd Font Mono", weight = "Regular" },
+})
 
 -- Window -
 config.window_frame = {
