@@ -31,10 +31,6 @@ return {
         end)
       end,
     },
-    {
-      "nvim-telescope/telescope-file-browser.nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
-    },
   },
   config = function()
     local lga = require("telescope-live-grep-args.actions")
@@ -81,7 +77,7 @@ return {
       },
       pickers = {
         find_files = {
-          hidden = true,
+          hidden = false,
         },
         live_grep = {
           hidden = true,
@@ -112,7 +108,6 @@ return {
         },
       },
     })
-    require("telescope").load_extension("file_browser")
   end,
   keys = {
     {
@@ -121,12 +116,6 @@ return {
         require("telescope").extensions.live_grep_args.live_grep_args()
       end,
       desc = "Search with live greps args",
-    },
-    {
-      "<leader>fl",
-      "<cmd>Telescope file_browser<CR>",
-      noremap = true,
-      desc = "File browser",
     },
     {
       "<leader>sf",

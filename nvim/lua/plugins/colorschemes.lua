@@ -54,9 +54,7 @@ return {
     lazy = true,
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
-    opts = {
-      transparent = true,
-    },
+    opts = {},
     keys = keys,
   },
   {
