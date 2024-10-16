@@ -7,22 +7,16 @@ local keys = {
 
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = true,
-    priority = 1000,
-    keys = keys,
-  },
-  {
     "folke/tokyonight.nvim",
     lazy = true,
     opts = { style = "moon" },
     keys = keys,
   },
   {
-    "navarasu/onedark.nvim",
+    -- "navarasu/onedark.nvim",
+    "olimorris/onedarkpro.nvim",
     lazy = true,
-    opts = { style = "dark" },
+    -- opts = { style = "dark" },
     keys = keys,
   },
   {
@@ -32,8 +26,8 @@ return {
     },
     lazy = true,
     opts = {
-      style = "dark",
-      lualine_style = "dark",
+      style = "light",
+      lualine_style = "light",
       lightness = 0.3,
       saturation = 0,
       -- greyscale = "lightness",
@@ -54,52 +48,8 @@ return {
     lazy = true,
     priority = 1000,
     dependencies = { "rktjmp/lush.nvim" },
-    opts = {},
-    keys = keys,
-  },
-  {
-    "kartikp10/noctis.nvim",
-    lazy = true,
-    priority = 1000,
-    dependencies = { "rktjmp/lush.nvim" },
-    keys = keys,
-  },
-  {
-    "eldritch-theme/eldritch.nvim",
-    lazy = true,
-    priority = 1000,
-    keys = keys,
-  },
-  {
-    "Mofiqul/vscode.nvim",
-    lazy = true,
-    priority = 1000,
-    keys = keys,
-  },
-  {
-    "0xstepit/flow.nvim",
-    lazy = true,
-    priority = 1000,
     opts = {
-      -- transparent = true,
-      fluo_color = "green",
-      aggressive_spell = true,
-    },
-    keys = keys,
-  },
-  {
-    "sontungexpt/witch",
-    lazy = true,
-    priority = 1000,
-    keys = keys,
-  },
-  {
-    "ribru17/bamboo.nvim",
-    lazy = true,
-    priority = 1000,
-    opts = {
-      style = "vulgaris",
-      transparent = true,
+      italics = true,
     },
     keys = keys,
   },
@@ -122,6 +72,12 @@ return {
       -- vim.g.material_style = "deep ocean"
       require("material.functions").change_style("deep ocean")
     end,
+    keys = keys,
+  },
+  {
+    "sekke276/dark_flat.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     keys = keys,
   },
   -- Configure LazyVim to load newpaper colorscheme
