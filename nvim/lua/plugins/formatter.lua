@@ -3,7 +3,6 @@ return {
   event = "BufWritePost",
   config = function()
     require("formatter").setup({
-      rocks = { enabled = false },
       -- Enable or disable logging
       logging = true,
       -- Set the log level

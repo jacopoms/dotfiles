@@ -44,10 +44,11 @@ return {
     keys = keys,
   },
   {
-    "uloco/bluloco.nvim",
+    -- "uloco/bluloco.nvim",
+    "mistweaverco/bluloco.nvim",
     lazy = true,
     priority = 1000,
-    dependencies = { "rktjmp/lush.nvim" },
+    -- dependencies = { "rktjmp/lush.nvim" },
     opts = {
       italics = true,
     },

@@ -12,7 +12,7 @@ return {
     servers = {
       rubocop = {
         mason = false,
-        cmd = { "bundle", "exec", "rubocop", "--lsp" },
+        cmd = { "bundle", "exec", "rubocop", "--server" },
       },
       -- solargraph = {
       --   mason = false,
