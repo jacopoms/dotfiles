@@ -7,7 +7,7 @@ wezterm.log_info("reloading")
 
 require("keys").setup(config)
 -- The color scheme you want to use
-local scheme = "BlulocoLight"
+local scheme = "BlulocoDark"
 -- Obtain the definition of that color scheme
 local scheme_def = wezterm.color.get_builtin_schemes()[scheme]
 
