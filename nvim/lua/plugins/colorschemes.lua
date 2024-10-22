@@ -68,10 +68,26 @@ return {
         lighter = true, -- Enable higher contrast text for lighter style
         darker = true, -- Enable higher contrast text for darker style
       },
+      plugins = {
+        "dashboard",
+        "gitsigns",
+        "indent-blankline",
+        "mini",
+        "neotest",
+        "neo-tree",
+        "noice",
+        "nvim-cmp",
+        "nvim-web-devicons",
+        "rainbow-delimiters",
+        "telescope",
+        "trouble",
+        "which-key",
+        "nvim-notify",
+      },
     },
     init = function()
       -- vim.g.material_style = "deep ocean"
-      require("material.functions").change_style("deep ocean")
+      require("material.functions").change_style("darker")
     end,
     keys = keys,
   },
@@ -85,7 +101,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "bluloco",
+      colorscheme = "material-darker",
     },
   },
 }
