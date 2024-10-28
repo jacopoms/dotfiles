@@ -23,6 +23,20 @@ return {
       end,
     },
     {
+      "danielfalk/smart-open.nvim",
+      branch = "0.2.x",
+      config = function()
+        Util.on_load("telescope.nvim", function()
+          require("telescope").load_extension("smart_open")
+        end)
+      end,
+      dependencies = {
+        "kkharji/sqlite.lua",
+        -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+        { "nvim-telescope/telescope-fzy-native.nvim" },
+      },
+    },
+    {
       "nvim-telescope/telescope-live-grep-args.nvim",
       version = "^1.0.0",
       config = function()
@@ -106,6 +120,9 @@ return {
             },
           },
         },
+        smart_open = {
+          show_scores = true,
+        },
       },
     })
   end,
@@ -122,6 +139,16 @@ return {
       "<cmd>Telescope current_buffer_fuzzy_find<CR>",
       noremap = true,
       desc = "Fuzzily search in current buffer",
+    },
+    {
+      "<leader><leader>",
+      function()
+        require("telescope").extensions.smart_open.smart_open({
+          cwd_only = true,
+          filename_first = false,
+        })
+      end,
+      desc = "Search with smart open",
     },
   },
 }
