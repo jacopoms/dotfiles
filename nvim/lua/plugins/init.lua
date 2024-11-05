@@ -23,6 +23,11 @@ return {
     event = "InsertEnter",
     opts = {}, -- this is equalent to setup({}) function
   },
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
   -- {
   --   "Pocco81/auto-save.nvim",
   -- },

@@ -25,6 +25,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "olimorris/neotest-rspec",
     "zidhuss/neotest-minitest",
+    "jfpedroza/neotest-elixir",
   },
   {
     "nvim-neotest/neotest",
@@ -36,6 +37,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
       "zidhuss/neotest-minitest",
+      "jfpedroza/neotest-elixir",
     },
     opts = {
       adapters = {
@@ -51,6 +53,7 @@ return {
         },
         "neotest-jest",
         "neotest-minitest",
+        "neotest-elixir",
       },
       output = {
         open_on_run = true,
