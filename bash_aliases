@@ -38,7 +38,7 @@ function prettyJson() { curl "$1" | python -m json.tool; }
 
 ## update brew and remove old packages
 alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
-alias portski='sudo port -v selfupdate && port outdated && sudo port upgrade outdated && sudo port uninstall inactive'
+alias portski='sudo port selfupdate && port outdated && sudo port upgrade outdated && sudo port uninstall inactive'
 
 alias prep_commit='bundle exec reek . && rubocop -A && rspec'
 
@@ -76,11 +76,11 @@ function decode-base64() { echo "$1" | base64 --decode; }
 alias updatep10k="git -C $ZSH_CUSTOM/themes/powerlevel10k pull"
 
 # alias internetSongToMp3='youtube-dl --rm-cache-dir --extGract-audio --audio-quality 320K --audio-format mp3 $1'
-function internetSongToMp3() { youtube-dl --rm-cache-dir --extract-audio --audio-quality 320K --audio-format mp3 "$1"; }
+function internetSongToMp3() { yt-dlp --rm-cache-dir --extract-audio --audio-quality 320K --audio-format mp3 "$1"; }
 # alias internetSongToFlac1='youtube-dl --rm-cache-dir --extract-audio --audio-format flac $1'
-function internetSongToFlac1() { youtube-dl --rm-cache-dir --extract-audio --audio-format flac "$1"; }
+function internetSongToFlac1() { yt-dlp --rm-cache-dir --extract-audio --audio-format flac "$1"; }
 # alias internetSongToFlac9='youtube-dl --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac $1'
-function internetSongToFlac9() { youtube-dl --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac "$1"; }
+function internetSongToFlac9() { yt-dlp --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac "$1"; }
 
 function explain() {
     echo "$1"
