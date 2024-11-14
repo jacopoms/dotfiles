@@ -37,18 +37,19 @@ config = {
 		inactive_titlebar_bg = "#333333",
 	},
 	window_decorations = "RESIZE",
-	window_background_opacity = 1.0,
+	window_background_opacity = 0.9,
 	window_padding = {
 		left = 3,
 		right = "1cell",
-		top = 3,
-		bottom = 3,
+		top = 1,
+		bottom = 1,
 	},
 	initial_cols = 300,
 	initial_rows = 120,
 
 	-- Tab bar configuration
 	use_fancy_tab_bar = true,
+	hide_tab_bar_if_only_one_tab = true,
 	colors = {
 		tab_bar = {
 			background = scheme_def.background,
