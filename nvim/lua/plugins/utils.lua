@@ -28,6 +28,10 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    "cappyzawa/trim.nvim",
+    opts = {},
+  },
   -- {
   --   "Pocco81/auto-save.nvim",
   -- },
