@@ -11,7 +11,7 @@ wezterm.log_info("reloading")
 
 -- Configuration options
 local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "BlulocoDark"
-local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
+local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.0
 
 -- Obtain the definition of the selected color scheme
 local scheme_def = wezterm.color.get_builtin_schemes()[scheme]
@@ -21,6 +21,7 @@ config = {
 	color_scheme = scheme,
 	font_size = font_size,
 	font = wezterm.font_with_fallback({
+		{ family = "MesloLGMDZ Nerd Font Mono", weight = "Regular" },
 		{ family = "FiraCode Nerd Font Mono", weight = "Regular" },
 		{ family = "Hack Nerd Font Mono", weight = "Regular" },
 		{ family = "Cascadia Code", weight = "Regular" },
@@ -33,22 +34,22 @@ config = {
 	window_frame = {
 		font = wezterm.font({ family = "Roboto", weight = "Bold" }),
 		font_size = 14.0,
-		active_titlebar_bg = scheme_def.background,
-		inactive_titlebar_bg = "#333333",
+		-- active_titlebar_bg = scheme_def.background,
+		-- inactive_titlebar_bg = "#333333",
 	},
 	window_decorations = "RESIZE",
 	window_background_opacity = 0.9,
 	window_padding = {
-		left = 3,
-		right = "1cell",
-		top = 1,
-		bottom = 1,
+		left = 2,
+		right = 2,
+		top = 2,
+		bottom = 2,
 	},
 	initial_cols = 300,
 	initial_rows = 120,
 
 	-- Tab bar configuration
-	use_fancy_tab_bar = true,
+	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
 	colors = {
 		tab_bar = {
@@ -58,7 +59,7 @@ config = {
 				fg_color = scheme_def.foreground,
 			},
 		},
-		scrollbar_thumb = "#adadad",
+		-- scrollbar_thumb = "#adadad",
 	},
 	scrollback_lines = 35000,
 	enable_scroll_bar = true,
