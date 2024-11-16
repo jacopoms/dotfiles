@@ -8,9 +8,9 @@ command_exists() {
 # Function to install packages
 install_packages() {
     if command_exists brew; then
-        brew install fzf bat eza zoxide fd thefuck tmux
+        brew install git fzf bat eza zoxide fd thefuck tmux
     elif command_exists port; then
-        sudo port install fzf bat eza zoxide fd thefuck tmux
+        sudo port install git fzf bat eza zoxide fd thefuck tmux
     else
         echo "Neither brew nor macports is installed. Please install one of them first."
         exit 1
@@ -37,7 +37,7 @@ BASEDIR=$(dirname "$0")
 cd "$BASEDIR" || exit
 
 # HOME dotfiles
-dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf)
+dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tmux)
 
 if [ -n "${dotfiles[*]}" ]; then
     for file in "${dotfiles[@]}"; do
@@ -54,3 +54,6 @@ if [ -n "${config_dirs[*]}" ]; then
         create_symlink "${PWD}/${dir}" "${config_basedir}/${dir}"
     done
 fi
+
+# install tmux pluing manager
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm

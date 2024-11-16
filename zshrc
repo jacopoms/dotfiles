@@ -4,6 +4,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 # export PATH=$HOME/nvim-osx64/bin:$PATH
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
 source $HOME/.env
@@ -43,7 +44,6 @@ plugins=(
   git-auto-fetch
   history-substring-search
   history
-  tmux
 )
 
 # omz theme
@@ -86,8 +86,6 @@ source ~/.bash_aliases
 
 export PATH="/usr/local/opt/postgresql@13/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@14/bin:$PATH"
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 export PROJECTS_ROOT="$HOME/Projects"
 
