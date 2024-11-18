@@ -34,8 +34,8 @@ config = {
 	window_frame = {
 		font = wezterm.font({ family = "Roboto", weight = "Bold" }),
 		font_size = 14.0,
-		-- active_titlebar_bg = scheme_def.background,
-		-- inactive_titlebar_bg = "#333333",
+		active_titlebar_bg = scheme_def.background,
+		inactive_titlebar_bg = "#333333",
 	},
 	window_decorations = "RESIZE",
 	window_background_opacity = 0.9,
@@ -49,22 +49,23 @@ config = {
 	initial_rows = 120,
 
 	-- Tab bar configuration
-	use_fancy_tab_bar = false,
-	hide_tab_bar_if_only_one_tab = true,
-	colors = {
-		tab_bar = {
-			background = scheme_def.background,
-			inactive_tab = {
-				bg_color = scheme_def.background,
-				fg_color = scheme_def.foreground,
-			},
-		},
-		-- scrollbar_thumb = "#adadad",
-	},
+	enable_tab_bar = true,
+	use_fancy_tab_bar = true,
 	scrollback_lines = 35000,
 	enable_scroll_bar = true,
 }
 
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+
+tabline.setup({
+	options = {
+		theme = "Tokyo Night",
+	},
+})
+
+tabline.apply_to_config(config)
+
 require("keys").setup(config)
+
 -- Return the configuration to wezterm
 return config
