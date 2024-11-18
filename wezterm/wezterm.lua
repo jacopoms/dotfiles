@@ -11,7 +11,7 @@ wezterm.log_info("reloading")
 
 -- Configuration options
 local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "BlulocoDark"
-local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.0
+local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
 -- Obtain the definition of the selected color scheme
 local scheme_def = wezterm.color.get_builtin_schemes()[scheme]
@@ -47,10 +47,10 @@ config = {
 	},
 	initial_cols = 300,
 	initial_rows = 120,
-
+	max_fps = 240,
 	-- Tab bar configuration
 	enable_tab_bar = true,
-	use_fancy_tab_bar = true,
+	use_fancy_tab_bar = false,
 	scrollback_lines = 35000,
 	enable_scroll_bar = true,
 }
