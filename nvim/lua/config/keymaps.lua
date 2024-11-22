@@ -8,8 +8,13 @@ vim.keymap.set("n", "<C-w><S-h>", ":windo wincmd H<CR>", { noremap = true })
 vim.keymap.set("n", "<C-w><S-k>", ":windo wincmd K<CR>", { noremap = true })
 
 -- remap escape jk
+vim.keymap.set("i", "<Esc>+j", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Esc>+j", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("i", "<Esc>+k", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Esc>+k", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "jk", "<Esc>", { noremap = true })
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
+vim.keymap.set("t", "<C-j><C-k>", "<C-\\><C-N>", { noremap = true })
 -- vim.keymap.del("i", "<A-j>")
 -- vim.keymap.del("i", "<A-k>")
 -- vim.keymap.del("n", "<A-j>")
