@@ -14,3 +14,7 @@ opt.title = true
 opt.expandtab = true
 opt.tabstop = 4
 opt.shiftwidth = 4
+opt.timeout = true
+opt.ttimeout = true
+opt.timeoutlen = 3000
+opt.timeoutlen = 100

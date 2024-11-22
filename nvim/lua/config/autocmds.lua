@@ -12,7 +12,7 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  let test#strategy = "neovim"
+  let test#strategy = "neovim_sticky"
   let test#ruby#use_binstubs = 0
   let test#ruby#rspec#executable = "bundle exec rspec"
 ]])
@@ -21,3 +21,9 @@ vim.cmd([[
 --   pattern = { "*" },
 --   command = [[%s/\s\+$//e]],
 -- })
+--
+vim.api.nvim_create_user_command("Cppath", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})

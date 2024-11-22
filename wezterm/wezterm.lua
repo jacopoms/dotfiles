@@ -38,7 +38,7 @@ config = {
 		inactive_titlebar_bg = "#333333",
 	},
 	window_decorations = "RESIZE",
-	window_background_opacity = 0.9,
+	window_background_opacity = 1,
 	window_padding = {
 		left = 2,
 		right = 2,

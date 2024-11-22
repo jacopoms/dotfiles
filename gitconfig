@@ -40,6 +40,9 @@
     loga = log --graph --decorate --name-status --all
     swf = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git switch
 	mergefzf = "!f() { local branch=$(git branch --format=\"%(refname:short)\" | fzf); git merge --no-ff $branch -m \"$1\"; }; f"
+	staash = stash --all
+	diffw = diff --word-diff
+	blameccc = blame -w -C -C -C
 [user]
     name = Jacopo Ghisolfi
     email = jacopo.ghisolfi@marleyspoon.com
@@ -68,3 +71,10 @@
     default = current
 [credential]
     helper = osxkeychain
+[rerere]
+	enabled = true
+	autoUpdate = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
