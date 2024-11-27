@@ -4,7 +4,6 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 # export PATH=$HOME/nvim-osx64/bin:$PATH
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
 source $HOME/.env

@@ -18,7 +18,7 @@ return {
       markdown = { "prettier" },
       graphql = { "prettier" },
       handlebars = { "prettier" },
-      ruby = { "rubocop", "solargraph" },
+      ruby = { "rubocop" },
     },
     formatters = {
       rubocop = {
