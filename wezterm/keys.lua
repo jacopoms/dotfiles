@@ -22,6 +22,7 @@ function M.setup(config)
 		{ mods = M.mod, key = "j", action = act.ScrollByPage(0.5) },
 		-- New Tab
 		{ mods = M.mod, key = "t", action = act.SpawnTab("CurrentPaneDomain") },
+		-- { mods = M.mod, key = "t", action = wezterm.action.SendString("\x02\x54") },
 		-- Move Tabs
 		{ mods = M.mod, key = ">", action = act.MoveTabRelative(1) },
 		{ mods = M.mod, key = "<", action = act.MoveTabRelative(-1) },
