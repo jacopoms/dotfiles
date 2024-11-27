@@ -106,7 +106,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "material-palenight",
+      colorscheme = "bluloco",
     },
   },
 }
