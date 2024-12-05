@@ -102,17 +102,11 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     keys = keys,
   },
-  {
-    "loctvl842/monokai-pro.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    keys = keys,
-  },
-  -- Configure LazyVim to load newpaper colorscheme
+  -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "monokai-pro-classic",
+      colorscheme = "tokyonight-storm",
     },
   },
 }
