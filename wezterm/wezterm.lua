@@ -10,7 +10,7 @@ end
 wezterm.log_info("reloading")
 
 -- Configuration options
-local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "BlulocoDark"
+local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "tokyonight"
 local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
 -- Obtain the definition of the selected color scheme
