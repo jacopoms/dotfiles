@@ -8,21 +8,17 @@ local keys = {
 return {
   {
     "folke/tokyonight.nvim",
-    lazy = true,
-    opts = { style = "moon" },
+    opts = { style = "storm" },
     keys = keys,
   },
   {
     -- "navarasu/onedark.nvim",
     "olimorris/onedarkpro.nvim",
-    lazy = true,
     -- opts = { style = "dark" },
     keys = keys,
   },
   {
     "maxmx03/solarized.nvim",
-    lazy = true,
-    priority = 1000,
   },
   {
     "yorik1984/newpaper.nvim",
@@ -31,17 +27,8 @@ return {
     },
     lazy = true,
     opts = {
-      style = "light",
-      lualine_style = "light",
-      lightness = 0.3,
-      saturation = 0,
-      -- greyscale = "lightness",
-      contrast_telescope = false,
-      contrast_float = false,
-      keywords = "bold,italic",
-      borders = true,
-      disable_background = true,
-      sidebars_contrast = { "NvimTree", "Neotest", "SymbolsOutline" },
+      style = "dark",
+      lualine_style = "dark",
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
@@ -51,8 +38,6 @@ return {
   {
     -- "uloco/bluloco.nvim",
     "mistweaverco/bluloco.nvim",
-    lazy = true,
-    priority = 1000,
     -- dependencies = { "rktjmp/lush.nvim" },
     opts = {
       italics = true,
@@ -61,8 +46,6 @@ return {
   },
   {
     "marko-cerovac/material.nvim",
-    lazy = true,
-    priority = 1000,
     opts = {
       contrast = {
         terminal = true, -- Enable contrast for the built-in terminal
@@ -76,7 +59,6 @@ return {
       plugins = {
         "dashboard",
         "gitsigns",
-        "indent-blankline",
         "mini",
         "neotest",
         "neo-tree",
@@ -84,7 +66,6 @@ return {
         "nvim-cmp",
         "nvim-web-devicons",
         "rainbow-delimiters",
-        "telescope",
         "trouble",
         "which-key",
         "nvim-notify",
@@ -92,14 +73,12 @@ return {
     },
     init = function()
       -- vim.g.material_style = "deep ocean"
-      require("material.functions").change_style("darker")
+      -- require("material.functions").change_style("darker")
     end,
     keys = keys,
   },
   {
     "sekke276/dark_flat.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
     keys = keys,
   },
   -- Configure LazyVim to load  colorscheme
