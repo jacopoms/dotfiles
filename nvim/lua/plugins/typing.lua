@@ -4,7 +4,9 @@ return {
     dependencies = {
       "nvzone/volt",
     },
+    cmd = "TyprStats",
     lazy = false,
+    opts = {},
   },
   {
     "NStefan002/speedtyper.nvim",
