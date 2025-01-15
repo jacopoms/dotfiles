@@ -2,11 +2,6 @@ return {
   { "tpope/vim-rhubarb" }, -- open file on github
   -- { "machakann/vim-highlightedyank" },
   -- { "elixir-editors/vim-elixir" },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    lazy = true,
-    event = { "BufNewFile", "BufReadPre", "FileReadPre" },
-  },
   { "ryanoasis/vim-devicons" },
   {
     "numToStr/Comment.nvim",
