@@ -10,7 +10,7 @@ end
 wezterm.log_info("reloading")
 
 -- Configuration options
-local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "tokyonight"
+local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Tokyo Night"
 local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
 -- Obtain the definition of the selected color scheme
@@ -31,28 +31,35 @@ config = {
 	automatically_reload_config = true,
 
 	-- Window configuration
-	-- window_frame = {
-	-- 	font = wezterm.font({ family = "Roboto", weight = "Bold" }),
-	-- 	font_size = 14.0,
-	-- 	active_titlebar_bg = scheme_def.background,
-	-- 	inactive_titlebar_bg = "#333333",
-	-- },
-	window_decorations = " RESIZE",
+	enable_tab_bar = true,
+	use_fancy_tab_bar = true,
+	hide_tab_bar_if_only_one_tab = true,
+	window_frame = {
+		font = wezterm.font({ family = "Roboto", weight = "Bold" }),
+		font_size = 14.0,
+		active_titlebar_bg = scheme_def.background,
+	},
+
+	window_decorations = "RESIZE",
 	window_background_opacity = 1,
 	window_padding = {
-		left = 6,
-		right = 6,
-		top = 8,
-		bottom = 8,
+		left = 10,
+		right = 10,
+		top = 5,
+		bottom = 5,
 	},
 	initial_cols = 300,
 	initial_rows = 120,
 	max_fps = 240,
 	-- Tab bar configuration
-	enable_tab_bar = false,
-	use_fancy_tab_bar = false,
 	scrollback_lines = 35000,
 	enable_scroll_bar = true,
+	colors = {
+		tab_bar = {
+			-- The color of the inactive tab bar edge/divider
+			inactive_tab_edge = "#FFFFFF",
+		},
+	},
 }
 
 -- local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
@@ -64,6 +71,8 @@ config = {
 -- })
 --
 -- tabline.apply_to_config(config)
+local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+bar.apply_to_config(config, { position = "top" })
 
 require("keys").setup(config)
 
