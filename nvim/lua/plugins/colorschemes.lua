@@ -1,21 +1,12 @@
-local Util = require("lazyvim.util")
-
--- Define keys once and reuse it
-local keys = {
-  { "<leader>uC", Util.pick("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
-}
-
 return {
   {
     "folke/tokyonight.nvim",
     opts = { style = "storm" },
-    keys = keys,
   },
   {
     -- "navarasu/onedark.nvim",
     "olimorris/onedarkpro.nvim",
     -- opts = { style = "dark" },
-    keys = keys,
   },
   {
     "maxmx03/solarized.nvim",
@@ -33,7 +24,6 @@ return {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
     },
-    keys = keys,
   },
   {
     -- "uloco/bluloco.nvim",
@@ -42,7 +32,6 @@ return {
     opts = {
       italics = true,
     },
-    keys = keys,
   },
   {
     "marko-cerovac/material.nvim",
@@ -75,17 +64,15 @@ return {
       -- vim.g.material_style = "deep ocean"
       -- require("material.functions").change_style("darker")
     end,
-    keys = keys,
   },
   {
     "sekke276/dark_flat.nvim",
-    keys = keys,
   },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight-storm",
+      colorscheme = "bluloco",
     },
   },
 }
