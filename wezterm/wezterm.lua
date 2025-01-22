@@ -21,6 +21,7 @@ config = {
 	color_scheme = scheme,
 	font_size = font_size,
 	font = wezterm.font_with_fallback({
+		{ family = "JetBrainsMono Nerd Font Mono", weight = "Regular" },
 		{ family = "MesloLGMDZ Nerd Font Mono", weight = "Regular" },
 		{ family = "Hack Nerd Font Mono", weight = "Regular" },
 		{ family = "FiraCode Nerd Font Mono", weight = "Regular" },

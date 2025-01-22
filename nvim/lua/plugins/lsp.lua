@@ -42,6 +42,9 @@ return {
       -- },
       ruby_lsp = {
         mason = false,
+        init_options = {
+          linters = { "rubocop", "reek" },
+        },
       },
       elixirls = {
         mason = false,

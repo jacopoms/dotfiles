@@ -12,3 +12,5 @@ doc/*
 api_docs.yaml
 
 .tool-versions
+
+.vscode/*
