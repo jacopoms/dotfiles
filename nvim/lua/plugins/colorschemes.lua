@@ -68,11 +68,14 @@ return {
   {
     "sekke276/dark_flat.nvim",
   },
+  {
+    "dhruvinsh/onecat",
+  },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "material-palenight",
     },
   },
 }

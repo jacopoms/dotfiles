@@ -11,10 +11,90 @@ opt.incsearch = true
 opt.title = true
 
 -- ater/ftplugin/typescript.vim
-opt.expandtab = true
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.timeout = true
-opt.ttimeout = true
-opt.timeoutlen = 3000
-opt.timeoutlen = 100
+-- opt.timeout = true
+-- opt.ttimeout = true
+-- opt.timeoutlen = 3000
+-- opt.timeoutlen = 100
+opt.mousemoveevent = true
+
+-- vim.lsp.inlay_hint.enable(false)
+--
+--
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- completion
+opt.completeopt = "menuone,noselect,noinsert"
+opt.pumheight = 10
+
+-- column
+opt.number = true
+opt.signcolumn = "yes"
+-- opt.statuscolumn = [[%!v:lua.require("util.ui").get_statuscolumn()]]
+
+-- timings
+opt.updatetime = 200
+opt.timeoutlen = 300
+
+-- editor
+opt.virtualedit = "block"
+opt.formatoptions = "jcroqlnt"
+opt.shiftwidth = 2
+opt.smartindent = true
+opt.tabstop = 2
+
+-- folds
+opt.fillchars = {
+  diff = "╱",
+  fold = " ",
+  foldclose = "",
+  foldopen = "",
+  eob = " ",
+}
+
+-- undo
+opt.undofile = true
+opt.undolevels = 10000
+
+-- mouse
+opt.mouse = "a"
+
+-- Show whitespace.
+opt.list = true
+opt.listchars = { tab = "  ↦" }
+
+-- Status line.
+opt.laststatus = 3
+opt.cmdheight = 1
+
+-- split
+opt.splitbelow = true
+opt.splitright = true
+opt.splitkeep = "screen"
+
+-- messages
+opt.shortmess:append({
+  w = true,
+  s = true,
+  I = true,
+})
+
+-- Git diff
+opt.diffopt:append({ "vertical,context:100,linematch:100" })
+
+-- cursor
+opt.cursorline = true
+
+-- GUI!?
+opt.termguicolors = true
+
+-- spell
+opt.spelllang = { "en" }
+opt.spelloptions:append("noplainbuffer")
+
+-- search
+opt.ignorecase = true
+opt.smartcase = true
+
+-- Markdown indentation
+vim.g.markdown_recommended_style = 0
