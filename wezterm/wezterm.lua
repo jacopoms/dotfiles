@@ -21,8 +21,8 @@ config = {
 	color_scheme = scheme,
 	font_size = font_size,
 	font = wezterm.font_with_fallback({
-		{ family = "JetBrainsMono Nerd Font Mono", weight = "Regular" },
 		{ family = "MesloLGMDZ Nerd Font Mono", weight = "Regular" },
+		{ family = "JetBrainsMono Nerd Font Mono", weight = "Regular" },
 		{ family = "Hack Nerd Font Mono", weight = "Regular" },
 		{ family = "FiraCode Nerd Font Mono", weight = "Regular" },
 		{ family = "MonaspiceNe Nerd Font", weight = "Regular" },
@@ -37,7 +37,7 @@ config = {
 	hide_tab_bar_if_only_one_tab = true,
 	window_frame = {
 		font = wezterm.font({ family = "Roboto", weight = "Bold" }),
-		font_size = 14.0,
+		font_size = 13.0,
 		active_titlebar_bg = scheme_def.background,
 	},
 
@@ -63,18 +63,18 @@ config = {
 	},
 }
 
--- local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
---
--- tabline.setup({
--- 	options = {
--- 		theme = "Tokyo Night",
--- 	},
--- })
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+
+tabline.setup({
+	options = {
+		theme = "Tokyo Night",
+	},
+})
 --
 -- tabline.apply_to_config(config)
-local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
-bar.apply_to_config(config, { position = "top" })
-
+-- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+-- bar.apply_to_config(config, { position = "top" })
+--
 require("keys").setup(config)
 
 -- Return the configuration to wezterm
