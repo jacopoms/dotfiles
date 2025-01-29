@@ -73,6 +73,7 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
+bindkey "^\t" autosuggest-accept
 
 # User configuration
 
