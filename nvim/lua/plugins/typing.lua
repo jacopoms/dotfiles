@@ -4,8 +4,7 @@ return {
     dependencies = {
       "nvzone/volt",
     },
-    cmd = "TyprStats",
-    lazy = false,
+    cmd = { "Typr", "TyprStats" },
     opts = {},
   },
   {
