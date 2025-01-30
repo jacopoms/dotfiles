@@ -1,4 +1,4 @@
-local wezterm = require("wezterm") --[[@as Wezterm]]
+local wezterm = require("wezterm") --[[@as WezTerm]]
 
 local act = wezterm.action
 local M = {}
@@ -13,11 +13,15 @@ M.smart_split = wezterm.action_callback(function(window, pane)
 	end
 end)
 
+---@class Config
+---@field disable_default_key_bindings boolean
+---@field keys table
+
 ---@param config Config
 function M.setup(config)
 	config.disable_default_key_bindings = true
 	config.keys = {
-		--Scrollback(
+		--Scrollback
 		{ mods = M.mod, key = "k", action = act.ScrollByPage(-0.5) },
 		{ mods = M.mod, key = "j", action = act.ScrollByPage(0.5) },
 		-- New Tab
