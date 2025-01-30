@@ -9,6 +9,21 @@ return {
     -- opts = { style = "dark" },
   },
   {
+    "navarasu/onedark.nvim",
+    -- opts = { style = "deep" },
+    config = function()
+      require("onedark").setup({
+        style = "deep",
+      })
+      require("onedark").load()
+    end,
+  },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "maxmx03/solarized.nvim",
   },
   {
@@ -75,7 +90,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "material-palenight",
+      colorscheme = "onedark",
     },
   },
 }
