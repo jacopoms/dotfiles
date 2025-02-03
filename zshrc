@@ -164,9 +164,6 @@ export HISTTIMEFORMAT="%F %T "
 # bat config
 # export BAT_THEME=tokyonight_night
 
-# thefuck
-# thefuck alias
-eval $(thefuck --alias)
 
 
 # ---- Zoxide (better cd) ----
