@@ -8,6 +8,9 @@ export PATH=$HOME/.local/bin:$PATH
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
 source $HOME/.env
 
+# For zsh (~/.zhsrc)
+source $(brew --prefix asdf)/libexec/asdf.sh
+
 # autocompletions
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
