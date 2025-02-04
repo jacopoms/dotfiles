@@ -37,7 +37,7 @@ BASEDIR=$(dirname "$0")
 cd "$BASEDIR" || exit
 
 # HOME dotfiles
-dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf)
+dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions)
 
 if [ -n "${dotfiles[*]}" ]; then
   for file in "${dotfiles[@]}"; do

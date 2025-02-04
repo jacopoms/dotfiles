@@ -10,8 +10,9 @@ end
 wezterm.log_info("reloading")
 
 -- Configuration options
-local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "OneHalfDark"
-local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 13.0
+-- local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "OneHalfDark"
+local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Solarized Light (Gogh)" -- "Solarized (light) (terminal.sexy)"
+local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.0
 
 -- Obtain the definition of the selected color scheme
 local scheme_def = wezterm.color.get_builtin_schemes()[scheme]
@@ -67,7 +68,7 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 
 tabline.setup({
 	options = {
-		theme = "Tokyo Night",
+		theme = scheme,
 	},
 })
 --

@@ -1,0 +1,6 @@
+elixir 1.14.0
+ruby 3.3.6 2.3.8
+nodejs 21.1.0 10.14.0 18.0.0
+erlang 25.0
+stern 1.32.0
+rust 1.66.1

@@ -4,27 +4,28 @@ return {
     opts = { style = "storm" },
   },
   {
-    -- "navarasu/onedark.nvim",
     "olimorris/onedarkpro.nvim",
-    -- opts = { style = "dark" },
+    opts = { style = "dark" },
   },
   {
     "navarasu/onedark.nvim",
-    -- opts = { style = "deep" },
-    config = function()
-      require("onedark").setup({
-        style = "deep",
-      })
-      require("onedark").load()
-    end,
-  },
-  {
-    "scottmckendry/cyberdream.nvim",
-    lazy = false,
-    priority = 1000,
+    opts = { style = "warm" },
+    -- config = function()
+    --   require("onedark").setup({
+    --     style = "warm",
+    --   })
+    --   require("onedark").load()
+    -- end,
   },
   {
     "maxmx03/solarized.nvim",
+    lazy = true,
+    priority = 1000,
+    ---@type solarized.config
+    opts = {},
+    init = function(_, opts)
+      vim.o.background = "light"
+    end,
   },
   {
     "yorik1984/newpaper.nvim",
@@ -33,8 +34,8 @@ return {
     },
     lazy = true,
     opts = {
-      style = "dark",
-      lualine_style = "dark",
+      style = "light",
+      lualine_style = "light",
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
@@ -80,17 +81,12 @@ return {
       -- require("material.functions").change_style("darker")
     end,
   },
-  {
-    "sekke276/dark_flat.nvim",
-  },
-  {
-    "dhruvinsh/onecat",
-  },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      -- colorscheme = "onedark",
+      colorscheme = "solarized",
     },
   },
 }
