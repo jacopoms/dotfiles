@@ -9,13 +9,13 @@ return {
   },
   {
     "navarasu/onedark.nvim",
-    opts = { style = "warm" },
-    -- config = function()
-    --   require("onedark").setup({
-    --     style = "warm",
-    --   })
-    --   require("onedark").load()
-    -- end,
+    -- opts = { style = "cool" },
+    config = function()
+      require("onedark").setup({
+        style = "cool",
+      })
+      require("onedark").load()
+    end,
   },
   {
     "maxmx03/solarized.nvim",
@@ -24,7 +24,7 @@ return {
     ---@type solarized.config
     opts = {},
     init = function(_, opts)
-      vim.o.background = "light"
+      -- vim.o.background = "light"
     end,
   },
   {
@@ -85,8 +85,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "onedark",
-      colorscheme = "solarized",
+      colorscheme = "onedark",
+      -- colorscheme = "solarized",
     },
   },
 }

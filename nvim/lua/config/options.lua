@@ -10,14 +10,8 @@ opt.hidden = true
 opt.incsearch = true
 opt.title = true
 
--- ater/ftplugin/typescript.vim
--- opt.timeout = true
--- opt.ttimeout = true
--- opt.timeoutlen = 3000
--- opt.timeoutlen = 100
 opt.mousemoveevent = true
 
--- vim.lsp.inlay_hint.enable(false)
 --
 --
 vim.g.mapleader = " "
@@ -30,7 +24,6 @@ opt.pumheight = 10
 -- column
 opt.number = true
 opt.signcolumn = "yes"
--- opt.statuscolumn = [[%!v:lua.require("util.ui").get_statuscolumn()]]
 
 -- timings
 opt.updatetime = 200
