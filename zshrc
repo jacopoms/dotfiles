@@ -4,12 +4,14 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export ASDF_DATA_DIR=$HOME/.asdf
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 # export PATH=$HOME/nvim-osx64/bin:$PATH
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
 source $HOME/.env
 
 # For zsh (~/.zhsrc)
-source $(brew --prefix asdf)/libexec/asdf.sh
+# source $(brew --prefix asdf)/libexec/asdf.sh
 
 # autocompletions
 if type brew &>/dev/null; then
@@ -76,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
-bindkey "^\t" autosuggest-accept
+bindkey "^[[Z" autosuggest-accept
 
 # User configuration
 
@@ -161,13 +163,10 @@ _fzf_comprun() {
   esac
 }
 
-
 export HISTTIMEFORMAT="%F %T "
 
 # bat config
 # export BAT_THEME=tokyonight_night
-
-
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
@@ -181,9 +180,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
-
 # cargo env
-
 . "$HOME/.cargo/env"
 
 source <(stern --completion=zsh)
