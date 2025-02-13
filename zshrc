@@ -43,11 +43,13 @@ plugins=(
   # zsh-interactive-cd
   zsh-syntax-highlighting
   zsh-navigation-tools
-  zsh-autosuggestions
   zsh-completions
   git-auto-fetch
   history-substring-search
   history
+  zsh-autosuggestions
+  kubectl
+  kubectx
 )
 
 # omz theme

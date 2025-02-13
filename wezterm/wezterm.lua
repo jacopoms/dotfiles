@@ -10,9 +10,9 @@ end
 wezterm.log_info("reloading")
 
 -- Configuration options
-local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "OneHalfDark"
+local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Orangish (terminal.sexy)" -- "One Light (Gogh)"
 -- local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Solarized Light (Gogh)" -- "Solarized (light) (terminal.sexy)"
-local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
+local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 13.5
 
 -- Obtain the definition of the selected color scheme
 local scheme_def = wezterm.color.get_builtin_schemes()[scheme]

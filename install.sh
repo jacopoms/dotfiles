@@ -8,9 +8,9 @@ command_exists() {
 # Function to install packages
 install_packages() {
   if command_exists brew; then
-    brew install git fzf bat eza zoxide fd tmux bash
+    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf
   elif command_exists port; then
-    sudo port install git fzf bat eza zoxide fd tmux bash
+    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf
   else
     echo "Neither brew nor macports is installed. Please install one of them first."
     exit 1
