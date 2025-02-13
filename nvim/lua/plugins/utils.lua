@@ -14,6 +14,27 @@ return {
     "cappyzawa/trim.nvim",
     opts = {},
   },
+  {
+    "kosayoda/nvim-lightbulb",
+    opts = {},
+  },
+  {
+    "amrbashir/nvim-docs-view",
+    lazy = true,
+    cmd = "DocsViewToggle",
+    opts = {
+      position = "right",
+      width = 60,
+    },
+    keys = {
+      {
+        "<leader>cg",
+        "<cmd>DocsViewToggle<CR>",
+        noremap = true,
+        desc = "Toggle docs view sidebar",
+      },
+    },
+  },
   -- {
   --   "Pocco81/auto-save.nvim",
   -- },

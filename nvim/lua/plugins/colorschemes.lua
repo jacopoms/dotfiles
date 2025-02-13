@@ -9,11 +9,10 @@ return {
   },
   {
     "navarasu/onedark.nvim",
-    -- opts = { style = "cool" },
-    config = function()
-      require("onedark").setup({
-        style = "cool",
-      })
+    lazy = true,
+    priority = 1000,
+    opts = { style = "cool" },
+    init = function()
       require("onedark").load()
     end,
   },
@@ -23,9 +22,6 @@ return {
     priority = 1000,
     ---@type solarized.config
     opts = {},
-    init = function(_, opts)
-      -- vim.o.background = "light"
-    end,
   },
   {
     "yorik1984/newpaper.nvim",
