@@ -51,7 +51,7 @@
     user = jacopoms
 [core]
     editor = nvim
-	excludesFile = /Users/jacopog/.gitignore_global
+    excludesFile = ~/.gitignore_global
 [color]
     status = auto
     branch = auto
@@ -79,4 +79,4 @@
 [branch]
 	sort = -committerdate
 [safe]
-	directory = /Users/jacopog/.oh-my-zsh
+	directory = ~/.oh-my-zsh
