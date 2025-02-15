@@ -2,6 +2,7 @@
 export PATH=$HOME/bin:/usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export ASDF_DATA_DIR=$HOME/.asdf
@@ -10,8 +11,7 @@ export PATH="$ASDF_DATA_DIR/shims:$PATH"
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
 source $HOME/.env
 
-# For zsh (~/.zhsrc)
-# source $(brew --prefix asdf)/libexec/asdf.sh
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # autocompletions
 if type brew &>/dev/null; then
@@ -23,8 +23,8 @@ if type brew &>/dev/null; then
   compinit
 fi
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jacopo/.oh-my-zsh"
-export FZF_BASE="/usr/local/bin/fzf"
+export ZSH="$HOME/.oh-my-zsh"
+export FZF_BASE="/opt/homebrew/bin/fzf"
 
 # auto updates fro omz
 zstyle ':omz:update' mode auto
@@ -34,13 +34,10 @@ zstyle ':omz:update' frequency 0
 plugins=(
   aliases
   asdf
-  # bundler
   git
   gitfast
-  # autojump
   colorize
   fzf
-  # zsh-interactive-cd
   zsh-syntax-highlighting
   zsh-navigation-tools
   zsh-completions
@@ -53,9 +50,6 @@ plugins=(
 )
 
 # omz theme
-# ZSH_THEME="spaceship"
-# ZSH_THEME="random"
-
 #### powerlevel10k settings
 ZSH_THEME="powerlevel10k/powerlevel10k"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -87,12 +81,8 @@ bindkey "^[[Z" autosuggest-accept
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-source $HOME/.zprofile
 
 source ~/.bash_aliases
-
-export PATH="/usr/local/opt/postgresql@13/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@14/bin:$PATH"
 
 export PROJECTS_ROOT="$HOME/Projects"
 
@@ -173,19 +163,12 @@ export HISTTIMEFORMAT="%F %T "
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 
-## Env Variables for libffi library
-export LDFLAGS="-L/usr/local/opt/libffi/lib"
-export CPPFLAGS="-I/usr/local/opt/libffi/include"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
-# cargo env
-. "$HOME/.cargo/env"
 
 source <(stern --completion=zsh)
-# eval "$(starship init zsh)"
 
 ulimit -n 10240
+eval "$(starship init zsh)"

@@ -22,12 +22,8 @@ create_symlink() {
   local target=$1
   local link_name=$2
 
-  if [ -e "$link_name" ] && [ ! -L "$link_name" ]; then
-    ln -s "$target" "$link_name"
-    echo "Created symbolic link for $(basename "$link_name")"
-  else
-    echo "$(basename "$link_name") is already a symbolic link or does not exist"
-  fi
+  ln -s "$target" "$link_name"
+  echo "Created symbolic link for $(basename "$link_name")"
 }
 
 # Install necessary packages
