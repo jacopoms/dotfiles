@@ -3,25 +3,40 @@ format = """\
 [󰀵 ](bg:#7DF9AA fg:#090c0c)\
 $directory\
 [](fg:#3B76F0 bg:#FCF392)\
+$git_state\
 $git_branch\
 $git_status\
 $git_metrics\
-[](fg:#FCF392 bg:#030B16)\r
+[](fg:#FCF392 bg:#030B16)
+$sudo\
 $character
 """
 
 right_format = """
+$aws\
+$kubernetes\
+$container\
 $ruby\
 $nodejs\
-$elixir
+$elixir\
+$stern\
+$time\
+$cmd_duration
 """
 
-# add_newline = true
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# Disable the blank line at the start of the prompt
+add_newline = false
 
 [directory]
 format = "[ ﱮ $path ]($style)"
 style = "fg:#E4E4E4 bg:#3B76F0"
 read_only = " 󰌾"
+
+[sudo]
+disabled = false
 
 [git_branch]
 format = '[ $symbol$branch(:$remote_branch) ]($style)'
@@ -38,6 +53,9 @@ added_style = "fg:#1C3A5E bg:#FCF392"
 deleted_style = "fg:bright-red bg:235"
 disabled = false
 
+[git_state]
+disabled = false
+
 [hg_branch]
 format = "[ $symbol$branch ]($style)"
 symbol = " "
@@ -45,6 +63,7 @@ symbol = " "
 [cmd_duration]
 format = "[  $duration ]($style)"
 style = "fg:bright-white bg:18"
+disabled = false
 
 [character]
 success_symbol = '[ ➜](bold green) '
@@ -58,6 +77,7 @@ format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
 
 [aws]
 symbol = "  "
+disabled = false
 
 [buf]
 symbol = " "
@@ -118,6 +138,9 @@ symbol = " "
 
 [kotlin]
 symbol = " "
+
+[kubernetes]
+disabled = false
 
 [lua]
 symbol = " "
