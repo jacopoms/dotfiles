@@ -2,7 +2,6 @@
 export PATH=$HOME/bin:/usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export ASDF_DATA_DIR=$HOME/.asdf
@@ -11,20 +10,22 @@ export PATH="$ASDF_DATA_DIR/shims:$PATH"
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
 source $HOME/.env
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # autocompletions
 if type brew &>/dev/null; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export FZF_BASE="/opt/homebrew/bin/fzf"
+  export PATH=/opt/homebrew/bin:$PATH
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   # append completions to fpath
   fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
   autoload -Uz compinit
   compinit
+else
+  export FZF_BASE="/opt/local/bin/fzf"
 fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export FZF_BASE="/opt/homebrew/bin/fzf"
 
 # auto updates fro omz
 zstyle ':omz:update' mode auto
@@ -33,7 +34,7 @@ zstyle ':omz:update' frequency 0
 # omz plugins
 plugins=(
   aliases
-  asdf
+  # asdf
   git
   gitfast
   colorize
