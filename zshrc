@@ -171,4 +171,5 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 source <(stern --completion=zsh)
 
 ulimit -n 10240
+
 eval "$(starship init zsh)"
