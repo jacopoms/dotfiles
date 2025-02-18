@@ -6,6 +6,7 @@ return {
   {
     "olimorris/onedarkpro.nvim",
     opts = { style = "dark" },
+    enabled = false,
   },
   {
     "navarasu/onedark.nvim",
@@ -77,12 +78,24 @@ return {
       -- require("material.functions").change_style("darker")
     end,
   },
+  { "projekt0n/github-nvim-theme", name = "github-theme" },
+  {
+    "sainnhe/everforest",
+    name = "everforest",
+    lazy = false,
+    priority = 1000,
+    init = function()
+      vim.g.everforest_background = "hard"
+      vim.g.everforest_better_performance = 1
+    end,
+  },
+
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "onedark",
-      -- colorscheme = "solarized",
+      -- colorscheme = "everforest",
     },
   },
 }
