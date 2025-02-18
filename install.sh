@@ -8,9 +8,9 @@ command_exists() {
 # Function to install packages
 install_packages() {
   if command_exists brew; then
-    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship
+    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship wezterm ghostty
   elif command_exists port; then
-    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship
+    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship ghostty
   else
     echo "Neither brew nor macports is installed. Please install one of them first."
     exit 1
@@ -43,7 +43,7 @@ if [ -n "${dotfiles[*]}" ]; then
 fi
 
 # .config directories
-config_dirs=(nvim wezterm bat)
+config_dirs=(nvim wezterm bat ghostty)
 config_basedir="${HOME}/.config"
 
 if [ -n "${config_dirs[*]}" ]; then
