@@ -4,18 +4,19 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
 export ASDF_DATA_DIR=$HOME/.asdf
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 # export PATH=$HOME/nvim-osx64/bin:$PATH
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
 source $HOME/.env
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # autocompletions
 if type brew &>/dev/null; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  export FZF_BASE="/opt/homebrew/bin/fzf"
-  export PATH=/opt/homebrew/bin:$PATH
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  export FZF_BASE="/opt/homebrew/bin/fzf"
   # append completions to fpath
   fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
