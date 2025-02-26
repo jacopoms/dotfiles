@@ -1,10 +1,10 @@
 # If you come from bash you might have to change your $PATH.
+export PATH=/opt/homebrew/bin:$PATH
 export PATH=$HOME/bin:/usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
 export ASDF_DATA_DIR=$HOME/.asdf
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 # export PATH=$HOME/nvim-osx64/bin:$PATH
@@ -48,6 +48,7 @@ plugins=(
   history
   zsh-autosuggestions
   kubectl
+  kubectl-autocomplete
   kubectx
 )
 

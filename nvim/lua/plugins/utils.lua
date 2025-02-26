@@ -35,6 +35,9 @@ return {
       },
     },
   },
+  {
+    "boltlessengineer/sense.nvim",
+  },
   -- {
   --   "Pocco81/auto-save.nvim",
   -- },
