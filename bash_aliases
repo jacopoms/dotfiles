@@ -3,6 +3,8 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 
 alias ll='eza --color=always --long --git --icons=always'
 
+alias la='ll -lAh'
+
 # some color aliases for greps
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -83,19 +85,19 @@ function internetSongToFlac1() { yt-dlp --rm-cache-dir --extract-audio --audio-f
 function internetSongToFlac9() { yt-dlp --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac "$1"; }
 
 function explain() {
-    echo "$1"
-    gh copilot explain "$1"
+  echo "$1"
+  gh copilot explain "$1"
 }
 
 function suggest() {
-    echo "$1"
-    gh copilot suggest "$1"
+  echo "$1"
+  gh copilot suggest "$1"
 }
 
 function gh-run-notifier() {
-    local param1=$1
-    local param2=${2:-CI}
-    echo "Running gh run watch with param1=$param1 and param2=$param2"
-    # Replace the command below with your desired command
-    gh run watch $param1 && terminal-notifier -title GH RUN FINISHED! -sound default -message "$param2 done"
+  local param1=$1
+  local param2=${2:-CI}
+  echo "Running gh run watch with param1=$param1 and param2=$param2"
+  # Replace the command below with your desired command
+  gh run watch $param1 && terminal-notifier -title GH RUN FINISHED! -sound default -message "$param2 done"
 }

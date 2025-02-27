@@ -42,10 +42,14 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 #
-theme = BlulocoDark
-# theme = BlulocoLight
+# theme = BlulocoDark
+theme = BlulocoLight
 # font-family = MesloLGLDZ Nerd Font
 
 # keybindings
 keybind = super+h=previous_tab
 keybind = super+l=next_tab
+keybind = super+shift+h=goto_split:right
+keybind = super+shift+j=goto_split:down
+keybind = super+shift+k=goto_split:up
+keybind = super+shift+l=goto_split:left
