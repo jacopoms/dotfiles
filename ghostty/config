@@ -43,7 +43,8 @@
 # resize-overlay-duration = 4s 200ms
 #
 # theme = BlulocoDark
-theme = BlulocoLight
+# theme = BlulocoLight
+theme = ayu_light
 # font-family = MesloLGLDZ Nerd Font
 
 # keybindings

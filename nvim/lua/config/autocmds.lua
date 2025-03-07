@@ -12,7 +12,7 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  let test#strategy = "neovim_sticky"
+  let test#strategy = "neovim"
   let test#ruby#use_binstubs = 0
   let test#ruby#rspec#executable = "bundle exec rspec"
 ]])

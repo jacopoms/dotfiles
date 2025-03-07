@@ -97,7 +97,9 @@ return {
         },
         ruby_lsp = {
           mason = false,
+          cmd = { vim.fn.expand("~/.asdf/shims/ruby-lsp") },
           init_options = {
+            formatters = { "rubocop" },
             linters = { "rubocop", "reek" },
           },
         },
