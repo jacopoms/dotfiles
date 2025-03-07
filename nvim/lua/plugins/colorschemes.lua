@@ -3,7 +3,7 @@ return {
     "navarasu/onedark.nvim",
     lazy = true,
     priority = 1000,
-    opts = { style = "light" },
+    opts = { style = "cool" },
     init = function()
       require("onedark").load()
     end,

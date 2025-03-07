@@ -1,5 +1,6 @@
 return {
   { "ryanoasis/vim-devicons" },
+  { "nvim-tree/nvim-web-devicons" },
   {
     "norcalli/nvim-colorizer.lua",
     lazy = false,
