@@ -10,7 +10,7 @@ end
 wezterm.log_info("reloading")
 
 -- Configuration options
-local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Orangish (terminal.sexy)" -- "One Light (Gogh)"
+local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Belge (terminal.sexy)" -- "One Light (Gogh)"
 -- local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Solarized Light (Gogh)" -- "Solarized (light) (terminal.sexy)"
 local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
@@ -22,13 +22,14 @@ config = {
 	color_scheme = scheme,
 	font_size = font_size,
 	font = wezterm.font_with_fallback({
-		{ family = "MesloLGMDZ Nerd Font Mono", weight = "Regular" },
-		{ family = "JetBrainsMono Nerd Font Mono", weight = "Regular" },
-		{ family = "FiraCode Nerd Font Mono", weight = "Regular" },
+		{ family = "JetBrainsMono Nerd Font", weight = "Regular" },
+		{ family = "JetBrains Mono", weight = "Regular" },
 		{ family = "Hack Nerd Font Mono", weight = "Regular" },
+		{ family = "MesloLGMDZ Nerd Font Mono", weight = "Regular" },
+		{ family = "FiraCode Nerd Font Mono", weight = "Regular" },
 		{ family = "MonaspiceNe Nerd Font", weight = "Regular" },
 		{ family = "Cascadia Code", weight = "Regular" },
-		{ family = "Symbols Nerd Font" },
+		"Symbols Nerd Font",
 	}),
 	automatically_reload_config = true,
 
