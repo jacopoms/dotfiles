@@ -103,19 +103,19 @@ return {
             linters = { "rubocop", "reek" },
           },
         },
-        elixirls = {
-          mason = false,
-          cmd = { "/Users/jacopo/.elixir-ls/release/language_server.sh" },
-          settings = {
-            elixirLS = {
-              dialyzerEnabled = false,
-              -- I also choose to turn off the auto dep fetching feature.
-              -- It often get's into a weird state that requires deleting
-              -- the .elixir_ls directory and restarting your editor.
-              fetchDeps = false,
-            },
-          },
-        },
+        -- elixirls = {
+        --   mason = false,
+        --   cmd = { vim.fn.expand("~/.asdf/shims/elixir") },
+        --   settings = {
+        --     elixirLS = {
+        --       dialyzerEnabled = false,
+        --       -- I also choose to turn off the auto dep fetching feature.
+        --       -- It often get's into a weird state that requires deleting
+        --       -- the .elixir_ls directory and restarting your editor.
+        --       fetchDeps = false,
+        --     },
+        --   },
+        -- },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
