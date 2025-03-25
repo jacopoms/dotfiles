@@ -5,7 +5,7 @@ return {
     priority = 1000,
     opts = { style = "cool" },
     init = function()
-      -- require("onedark").load()
+      require("onedark").load()
     end,
   },
   {
@@ -48,9 +48,6 @@ return {
     priority = 1000,
     lazy = true,
     opts = {},
-    init = function()
-      vim.opt.background = "light"
-    end,
   },
   {
     "neanias/everforest-nvim",
@@ -63,15 +60,12 @@ return {
       italics = true,
       disable_italic_comments = false,
     },
-    init = function()
-      vim.opt.background = "light"
-    end,
   },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "everforest",
+      colorscheme = "onedark",
     },
   },
 }
