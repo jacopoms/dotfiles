@@ -5,14 +5,13 @@ return {
     priority = 1000,
     opts = { style = "cool" },
     init = function()
-      require("onedark").load()
+      -- require("onedark").load()
     end,
   },
   {
     "maxmx03/solarized.nvim",
     lazy = true,
     priority = 1000,
-    ---@type solarized.config
     opts = {},
   },
   {
@@ -45,20 +44,34 @@ return {
     priority = 1000,
   },
   {
-    "sainnhe/everforest",
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    lazy = true,
+    opts = {},
+    init = function()
+      vim.opt.background = "light"
+    end,
+  },
+  {
+    "neanias/everforest-nvim",
     name = "everforest",
     lazy = true,
     priority = 1000,
+    opts = {
+      background = "medium",
+      transparent_background_level = 0,
+      italics = true,
+      disable_italic_comments = false,
+    },
     init = function()
-      vim.g.everforest_background = "hard"
-      vim.g.everforest_better_performance = 1
+      vim.opt.background = "light"
     end,
   },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "everforest",
     },
   },
 }

@@ -3,6 +3,7 @@ return {
   build = ":TSUpdate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-treesitter/nvim-treesitter-context",
   },
   config = function()
     local ts_config = require("nvim-treesitter.configs")
@@ -14,6 +15,13 @@ return {
         "dockerfile",
         "eex",
         "elixir",
+        "erlang",
+        "git_config",
+        "git_rebase",
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
+        "graphql",
         "heex",
         "html",
         "javascript",
@@ -25,6 +33,8 @@ return {
         "query",
         "regex",
         "ruby",
+        "sql",
+        "terraform",
         "tsx",
         "typescript",
         "vim",

@@ -42,9 +42,11 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 #
-theme = BlulocoDark
+# theme = BlulocoDark
+# theme = Dracula+
+theme = BlueDolphin
 # theme = BlulocoLight
-# theme = ayu_light
+# theme = AtomOneLight
 # font-family = MesloLGLDZ Nerd Font
 
 # keybindings
