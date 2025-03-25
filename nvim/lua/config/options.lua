@@ -12,6 +12,9 @@ opt.title = true
 
 opt.mousemoveevent = true
 
+-- opt.foldmethod = "syntax"
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 --
 --
 vim.g.mapleader = " "
