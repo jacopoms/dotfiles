@@ -43,8 +43,8 @@
 # resize-overlay-duration = 4s 200ms
 #
 # theme = BlulocoDark
-# theme = Dracula+
-theme = BlueDolphin
+theme = Dracula+
+# theme = BlueDolphin
 # theme = BlulocoLight
 # theme = AtomOneLight
 # font-family = MesloLGLDZ Nerd Font
