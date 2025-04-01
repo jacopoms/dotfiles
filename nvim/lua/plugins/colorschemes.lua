@@ -4,9 +4,9 @@ return {
     lazy = true,
     priority = 1000,
     opts = { style = "cool" },
-    init = function()
-      require("onedark").load()
-    end,
+    -- init = function()
+    --   require("onedark").load()
+    -- end,
   },
   {
     "maxmx03/solarized.nvim",
@@ -65,7 +65,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "everforest",
     },
   },
 }

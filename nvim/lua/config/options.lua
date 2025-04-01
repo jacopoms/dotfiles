@@ -47,7 +47,15 @@ opt.fillchars = {
   foldopen = "",
   eob = " ",
 }
+-- Nice and simple folding:
+opt.foldenable = true
 
+opt.foldlevel = 99
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = ""
+opt.foldcolumn = "0"
+opt.fillchars:append({ fold = " " })
 -- undo
 opt.undofile = true
 opt.undolevels = 10000
