@@ -4,9 +4,9 @@ return {
     lazy = true,
     priority = 1000,
     opts = { style = "cool" },
-    -- init = function()
-    --   require("onedark").load()
-    -- end,
+    init = function()
+      require("onedark").load()
+    end,
   },
   {
     "maxmx03/solarized.nvim",
@@ -25,6 +25,21 @@ return {
       lualine_style = "light",
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
+      },
+    },
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    branch = "main",
+    version = false,
+    priority = 1000,
+    opts = {
+      flavor = "macchiato", -- latte, frappe, macchiato, mocha
+      blink_cmp = true,
+      snacks = {
+        enabled = true,
+        indent_scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
       },
     },
   },
@@ -65,7 +80,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "everforest",
+      colorscheme = "catppuccin",
     },
   },
 }
