@@ -9,9 +9,18 @@ end
 
 wezterm.log_info("reloading")
 
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Catppuccin Macchiato"
+	else
+		return "Catppuccin Latte"
+	end
+end
+
+local appearance = wezterm.gui.get_appearance()
+
 -- Configuration options
-local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Belge (terminal.sexy)" -- "One Light (Gogh)"
--- local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or "Solarized Light (Gogh)" -- "Solarized (light) (terminal.sexy)"
+local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or scheme_for_appearance(appearance)
 local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
 -- Obtain the definition of the selected color scheme
