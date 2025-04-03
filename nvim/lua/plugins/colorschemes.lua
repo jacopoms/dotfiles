@@ -36,6 +36,7 @@ return {
     priority = 1000,
     opts = {
       flavor = "macchiato", -- latte, frappe, macchiato, mocha
+      neo_tree = true,
       blink_cmp = true,
       snacks = {
         enabled = true,
