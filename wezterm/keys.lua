@@ -38,6 +38,10 @@ function M.setup(config)
 		{ mods = M.mod, key = "w", action = act.CloseCurrentPane({ confirm = true }) },
 		-- show the pane selection mode, but have it swap the active and selected panes
 		{ mods = M.mod, key = "S", action = wezterm.action.PaneSelect({}) },
+		{ mods = M.mod, key = "H", action = wezterm.action.ActivatePaneDirection("Left") },
+		{ mods = M.mod, key = "L", action = wezterm.action.ActivatePaneDirection("Right") },
+		{ mods = M.mod, key = "J", action = wezterm.action.ActivatePaneDirection("Down") },
+		{ mods = M.mod, key = "K", action = wezterm.action.ActivatePaneDirection("Up") },
 		-- Splits
 		{ mods = M.mod, key = "Enter", action = M.smart_split },
 		{ mods = M.mod, key = "|", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
