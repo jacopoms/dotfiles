@@ -56,26 +56,24 @@ alias amp='aws-vault exec marleyspoon-cx-production'
 
 # alias for kubernetes
 alias k='kubectl'
-alias pkube='kubectl --kubeconfig=$HOME/.kube/cx-api-production.config'
-alias skube='kubectl --kubeconfig=$HOME/.kube/cx-api-staging.config'
+alias pkube='kubectl --kubeconfig=$HOME/.kube/culinary-production.config'
+alias skube='kubectl --kubeconfig=$HOME/.kube/culinary-staging.config'
 alias sk='skube'
 alias pk='pkube'
-alias pklogs='stern --kubeconfig=$HOME/.kube/cx-api-production.config --timestamps --color always'
-alias sklogs='stern --kubeconfig=$HOME/.kube/cx-api-staging.config --timestamps --color always'
+alias pklogs='stern --kubeconfig=$HOME/.kube/culinary-production.config --timestamps --color always'
+alias sklogs='stern --kubeconfig=$HOME/.kube/culinary-staging.config --timestamps --color always'
 alias klogs='stern --kubeconfig=$HOME/.kube/config --timestamps --color always'
 
-alias sk9s='k9s --kubeconfig=$HOME/.kube/cx-api-staging.config'
-alias pk9s='k9s --kubeconfig=$HOME/.kube/cx-api-production.config'
+alias pk9s='k9s --kubeconfig=$HOME/.kube/culinary-production.config'
+alias sk9s='k9s --kubeconfig=$HOME/.kube/culinary-staging.config'
 
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 
 alias cat='bat'
 alias cd="z"
+
 # alias helper for decoding base 64 encrypted strings
 function decode-base64() { echo "$1" | base64 --decode; }
-
-# update p10k from everywhere with updatep10k
-alias updatep10k="git -C $ZSH_CUSTOM/themes/powerlevel10k pull"
 
 # alias internetSongToMp3='youtube-dl --rm-cache-dir --extGract-audio --audio-quality 320K --audio-format mp3 $1'
 function internetSongToMp3() { yt-dlp --rm-cache-dir --extract-audio --audio-quality 320K --audio-format mp3 "$1"; }
@@ -99,5 +97,5 @@ function gh-run-notifier() {
   local param2=${2:-CI}
   echo "Running gh run watch with param1=$param1 and param2=$param2"
   # Replace the command below with your desired command
-  gh run watch $param1 && terminal-notifier -title GH RUN FINISHED! -sound default -message "$param2 done"
+  gh run watch "$param1" && terminal-notifier -title GH RUN FINISHED! -sound default -message "$param2 done"
 }

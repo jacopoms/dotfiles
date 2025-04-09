@@ -45,7 +45,7 @@
 # theme = BlulocoDark
 # theme = Dracula+
 # theme = BlueDolphin
-theme = catppuccin-latte
+theme = dark:catppuccin-macchiato,light:catppuccin-latte
 # theme = BlulocoLight
 # theme = AtomOneLight
 # font-family = MesloLGLDZ Nerd Font
