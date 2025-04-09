@@ -102,3 +102,6 @@ opt.smartcase = true
 
 -- Markdown indentation
 vim.g.markdown_recommended_style = 0
+
+-- Ruby
+vim.g.lazyvim_ruby_lsp = "solargraph"

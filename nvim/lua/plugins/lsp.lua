@@ -11,5 +11,10 @@ return {
       --   current_line = true,
       -- },
     },
+    servers = {
+      solargraph = {
+        cmd = { "bundle", "exec", "solargraph", "stdio" },
+      },
+    },
   },
 }
