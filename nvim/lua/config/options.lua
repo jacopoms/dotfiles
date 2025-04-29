@@ -105,3 +105,4 @@ vim.g.markdown_recommended_style = 0
 
 -- Ruby
 vim.g.lazyvim_ruby_lsp = "solargraph"
+vim.g.lazyvim_ruby_formatter = "rubocop"

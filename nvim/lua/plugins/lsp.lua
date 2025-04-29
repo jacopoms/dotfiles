@@ -13,6 +13,7 @@ return {
     },
     servers = {
       solargraph = {
+        mason = false,
         cmd = { "bundle", "exec", "solargraph", "stdio" },
       },
     },

@@ -34,7 +34,7 @@ function M.setup(config)
 		{ mods = M.mod, key = "l", action = act({ ActivateTabRelative = 1 }) },
 		{ mods = M.mod, key = "h", action = act({ ActivateTabRelative = -1 }) },
 		{ mods = M.mod, key = "R", action = act.RotatePanes("Clockwise") },
-		-- close current tabe
+		-- close current tab
 		{ mods = M.mod, key = "w", action = act.CloseCurrentPane({ confirm = true }) },
 		-- show the pane selection mode, but have it swap the active and selected panes
 		{ mods = M.mod, key = "S", action = wezterm.action.PaneSelect({}) },

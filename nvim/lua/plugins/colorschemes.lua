@@ -33,6 +33,7 @@ return {
     name = "catppuccin",
     branch = "main",
     version = false,
+    lazy = true,
     priority = 1000,
     opts = {
       flavor = "macchiato", -- latte, frappe, macchiato, mocha
@@ -81,7 +82,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin", -- "catppuccin-macchiato",
+      colorscheme = "onedark", -- catppuccin-macchiato",
     },
   },
 }
