@@ -14,7 +14,5 @@ return {
     opts.options.theme = "auto"
     opts.options.globalstatus = true
     opts.sections.lualine_b = { branch_opts }
-
-    table.insert(opts.sections.lualine_x, 1, { "copilot", show_colors = true })
   end,
 }

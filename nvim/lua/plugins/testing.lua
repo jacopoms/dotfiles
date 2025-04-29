@@ -18,7 +18,6 @@ return {
     },
   },
   {
-    "antoinemadec/FixCursorHold.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-neotest/neotest-jest",
     "nvim-neotest/nvim-nio",
@@ -30,7 +29,6 @@ return {
   {
     "nvim-neotest/neotest",
     dependecies = {
-      "antoinemadec/FixCursorHold.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-neotest/neotest-jest",
       "nvim-neotest/nvim-nio",

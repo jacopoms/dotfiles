@@ -61,7 +61,7 @@ format = "[ $symbol$branch ]($style)"
 symbol = " "
 
 [cmd_duration]
-format = "[  $duration ]($style)"
+format = "[  $duration ]($style)"
 style = "fg:bright-white bg:18"
 disabled = false
 
@@ -71,7 +71,7 @@ error_symbol = '[ ✗](#E84D44) '
 
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
+time_format = "%R"                                      # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
 
