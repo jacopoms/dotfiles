@@ -10,11 +10,11 @@ end
 wezterm.log_info("reloading")
 
 local function scheme_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return "Catppuccin Macchiato"
-	else
-		return "Catppuccin Latte"
-	end
+	-- if appearance:find("Dark") then
+	return "Catppuccin Macchiato"
+	-- else
+	-- return "Catppuccin Latte"
+	-- end
 end
 
 local appearance = wezterm.gui.get_appearance()
