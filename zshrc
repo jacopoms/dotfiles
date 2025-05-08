@@ -1,10 +1,10 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=$HOME/bin:/usr/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=/usr/bin:$PATH
 export ASDF_DATA_DIR=$HOME/.asdf
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
+export PATH=/opt/homebrew/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=/opt/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 # export PATH=$HOME/nvim-osx64/bin:$PATH
@@ -14,13 +14,15 @@ source $HOME/.env
 # autocompletions
 if type brew &>/dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(/usr/local/bin/brew shellenv)"
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  export FZF_BASE="/opt/homebrew/bin/fzf"
+  export FZF_BASE="$(brew --prefix)/bin/fzf"
   # append completions to fpath
   fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
   autoload -Uz compinit && compinit
 else
+  echo "not brew"
   . /opt/local/share/asdf/asdf.sh
   source /opt/local/share/fzf/shell/completion.zsh
   source /opt/local/share/fzf/shell/key-bindings.zsh
