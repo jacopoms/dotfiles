@@ -11,7 +11,7 @@ return {
     },
     opts = {
       keymap = {
-        preset = "super-tab",
+        preset = "enter",
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide", "fallback" },
 
