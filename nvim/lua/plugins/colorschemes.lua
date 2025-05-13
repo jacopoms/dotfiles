@@ -9,10 +9,13 @@ return {
     end,
   },
   {
-    "maxmx03/solarized.nvim",
+    "Tsuzat/NeoSolarized.nvim",
     lazy = true,
     priority = 1000,
-    opts = {},
+    opts = {
+      transparent = false,
+      style = "light",
+    },
   },
   {
     "yorik1984/newpaper.nvim",
@@ -77,6 +80,18 @@ return {
       italics = true,
       disable_italic_comments = false,
     },
+  },
+  {
+    "edmondburnett/leeward.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {
+      theme = "dark",
+    },
+    -- config = function()
+    --     require("leeward").setup()
+    --     require("leeward").load()
+    -- end
   },
   -- Configure LazyVim to load  colorscheme
   {
