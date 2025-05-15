@@ -1,7 +1,7 @@
 return {
   {
     "navarasu/onedark.nvim",
-    lazy = true,
+    lazy = false,
     priority = 1000,
     opts = { style = "cool" },
     init = function()
@@ -54,31 +54,7 @@ return {
     -- dependencies = { "rktjmp/lush.nvim" },
     opts = {
       italics = true,
-      theme = "light",
-    },
-  },
-  {
-    "projekt0n/github-nvim-theme",
-    name = "github-theme",
-    lazy = true,
-    priority = 1000,
-  },
-  {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    lazy = true,
-    opts = {},
-  },
-  {
-    "neanias/everforest-nvim",
-    name = "everforest",
-    lazy = true,
-    priority = 1000,
-    opts = {
-      background = "medium",
-      transparent_background_level = 0,
-      italics = true,
-      disable_italic_comments = false,
+      -- theme = "dark",
     },
   },
   {
