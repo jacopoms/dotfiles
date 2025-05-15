@@ -12,6 +12,7 @@ wezterm.log_info("reloading")
 local function scheme_for_appearance(appearance)
 	-- if appearance:find("Dark") then
 	return "Catppuccin Macchiato"
+	-- return "BlueDolphin"
 	-- else
 	-- return "Catppuccin Latte"
 	-- end
