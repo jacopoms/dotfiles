@@ -9,6 +9,10 @@ return {
     end,
   },
   {
+    "rmehri01/onenord.nvim",
+    priority = 1000,
+  },
+  {
     "Tsuzat/NeoSolarized.nvim",
     lazy = true,
     priority = 1000,
@@ -69,11 +73,20 @@ return {
     --     require("leeward").load()
     -- end
   },
+  -- lua/plugins/rose-pine.lua
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+  },
+  {
+    "tiagovla/tokyodark.nvim",
+    priority = 1000,
+  },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark", -- catppuccin-macchiato",
+      colorscheme = "tokyodark", -- catppuccin-macchiato",
     },
   },
 }
