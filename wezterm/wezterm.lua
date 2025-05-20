@@ -11,7 +11,8 @@ wezterm.log_info("reloading")
 
 local function scheme_for_appearance(appearance)
 	-- if appearance:find("Dark") then
-	return "Catppuccin Macchiato"
+	-- return "Catppuccin Macchiato"
+	return "tokyodark"
 	-- return "BlueDolphin"
 	-- else
 	-- return "Catppuccin Latte"
@@ -25,7 +26,7 @@ local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or scheme_for_appearance(appear
 local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
 -- Obtain the definition of the selected color scheme
-local scheme_def = wezterm.color.get_builtin_schemes()[scheme]
+local scheme_def = scheme -- wezterm.color.get_builtin_schemes()[scheme]
 
 config = {
 	-- General settings
@@ -78,9 +79,9 @@ config = {
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
 tabline.setup({
-	options = {
-		theme = scheme,
-	},
+	-- options = {
+	-- 	theme = scheme,
+	-- },
 })
 --
 -- tabline.apply_to_config(config)
