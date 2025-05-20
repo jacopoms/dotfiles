@@ -38,6 +38,12 @@ return {
   {
     "boltlessengineer/sense.nvim",
   },
+  {
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {},
+  },
   -- {
   --   "Pocco81/auto-save.nvim",
   -- },
