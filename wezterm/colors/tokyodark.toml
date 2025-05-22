@@ -5,9 +5,9 @@ foreground = "#a0a8cd"
 background = "#11121d"
 cursor_bg = "#a0a8cd"
 cursor_border = "#a0a8cd"
-cursor_fg = "#11121d"
-selection_bg = "#11121d"
-selection_fg = "#a0a8cd"
+cursor_fg = " #f38ba8"
+selection_fg = "#11121d"
+selection_bg = "#a0a8cd"
 
 ansi = [
   "#06080a",
