@@ -44,7 +44,8 @@
 #
 # theme = BlulocoDark
 # theme = Dracula+
-theme = BlueDolphin
+# theme = BlueDolphin
+theme = tokyodark
 # theme = dark:catppuccin-macchiato,light:catppuccin-latte
 # theme = catppuccin-macchiato
 # theme = BlulocoLight
