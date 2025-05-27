@@ -51,7 +51,8 @@ theme = tokyodark
 # theme = BlulocoLight
 # theme = AtomOneLight
 # font-family = MesloLGLDZ Nerd Font
-
+window-decoration = none
+macos-titlebar-style = hidden
 # keybindings
 keybind = super+h=previous_tab
 keybind = super+l=next_tab
