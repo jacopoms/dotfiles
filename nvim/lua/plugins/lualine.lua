@@ -2,7 +2,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    { "AndreM222/copilot-lualine" },
+    -- { "AndreM222/copilot-lualine" },
     { "dokwork/lualine-ex" },
     { "nvim-lua/plenary.nvim" },
     { "kyazdani42/nvim-web-devicons" },

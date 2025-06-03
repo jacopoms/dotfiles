@@ -1,13 +1,8 @@
 return {
   {
-    "giuxtaposition/blink-cmp-copilot",
-    enabled = false,
-  },
-  {
     "saghen/blink.cmp",
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
-      "fang2hou/blink-copilot",
     },
     opts = {
       keymap = {
@@ -47,9 +42,6 @@ return {
           "ripgrep",
         },
         providers = {
-          copilot = {
-            module = "blink-copilot",
-          },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
