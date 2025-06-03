@@ -28,8 +28,11 @@ return {
     },
     lazy = true,
     opts = {
-      style = "light",
-      lualine_style = "light",
+      style = "dark",
+      lualine_style = "dark",
+      lightness = -0.1,
+      saturation = 0.4,
+      delim_rainbow_bold = true,
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
@@ -86,7 +89,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyodark", -- catppuccin-macchiato",
+      colorscheme = "bluloco", -- catppuccin-macchiato",
     },
   },
 }
