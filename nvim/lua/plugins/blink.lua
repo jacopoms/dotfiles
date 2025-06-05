@@ -40,8 +40,14 @@ return {
           "snippets",
           "buffer",
           "ripgrep",
+          "codecompanion",
         },
         providers = {
+          codecompanion = {
+            name = "CodeCompanion",
+            module = "codecompanion.providers.completion.blink",
+            enabled = true,
+          },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",

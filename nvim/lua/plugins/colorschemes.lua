@@ -82,14 +82,23 @@ return {
     name = "rose-pine",
   },
   {
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
+  },
+  {
     "tiagovla/tokyodark.nvim",
+    priority = 1000,
+  },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
     priority = 1000,
   },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "bluloco", -- catppuccin-macchiato",
+      colorscheme = "kanagawa-wave", -- catppuccin-macchiato",
     },
   },
 }
