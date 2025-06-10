@@ -41,17 +41,19 @@ return {
       sources = {
         default = {
           "lsp",
+          "copilot",
+          "codecompanion",
           "path",
           "snippets",
           "buffer",
           "ripgrep",
-          "codecompanion",
         },
         providers = {
           codecompanion = {
             name = "CodeCompanion",
             module = "codecompanion.providers.completion.blink",
             enabled = true,
+          },
           copilot = {
             module = "blink-copilot",
           },
