@@ -14,9 +14,6 @@ return {
               default = "gemini-2.0-flash",
             },
           },
-          env = {
-            api_key = "AIzaSyCZyQ_mh76MYcWJwj-3O35uXQGN-IwCcSk",
-          },
         })
       end,
     },

@@ -16,3 +16,5 @@ api_docs.yaml
 .vscode/*
 
 .env.test
+
+.cache_ggshield
