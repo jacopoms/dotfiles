@@ -28,11 +28,8 @@ return {
     },
     lazy = true,
     opts = {
-      style = "dark",
-      lualine_style = "dark",
-      lightness = -0.1,
-      saturation = 0.4,
-      delim_rainbow_bold = true,
+      style = "light",
+      lualine_style = "light",
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
