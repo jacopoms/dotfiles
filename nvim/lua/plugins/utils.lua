@@ -45,9 +45,13 @@ return {
     "m4xshen/hardtime.nvim",
     lazy = false,
     dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {},
+    opts = {
+      restricted_keys = {
+        ["h"] = { "x" },
+        ["j"] = { "x" },
+        ["k"] = { "x" },
+        ["l"] = { "x" },
+      },
+    },
   },
-  -- {
-  --   "Pocco81/auto-save.nvim",
-  -- },
 }
