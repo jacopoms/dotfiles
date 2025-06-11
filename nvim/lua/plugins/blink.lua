@@ -35,12 +35,12 @@ return {
       },
       sources = {
         default = {
-          "lsp",
           "codecompanion",
-          "path",
-          "snippets",
+          "lsp",
           "buffer",
           "ripgrep",
+          "path",
+          "snippets",
         },
         providers = {
           codecompanion = {
