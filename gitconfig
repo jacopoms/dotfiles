@@ -69,7 +69,7 @@
 [pull]
     rebase = true
 [push]
-    default = current
+	default = current
 [credential]
     helper = osxkeychain
 [rerere]

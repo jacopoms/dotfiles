@@ -3,6 +3,7 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
+      "olimorris/codecompanion.nvim",
     },
     opts = {
       keymap = {
@@ -32,6 +33,18 @@ return {
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
         ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+      },
+      completion = {
+        menu = {
+          border = "rounded",
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 0,
+          window = {
+            border = "rounded",
+          },
+        },
       },
       sources = {
         default = {
