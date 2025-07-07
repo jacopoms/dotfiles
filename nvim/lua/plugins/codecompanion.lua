@@ -20,9 +20,16 @@ return {
     strategies = {
       chat = {
         adapter = "gemini",
+
+        opts = {
+          completion_provider = "blink", -- blink|cmp|coc|default
+        },
       },
       inline = {
         adapter = "gemini",
+        opts = {
+          completion_provider = "blink", -- blink|cmp|coc|default
+        },
       },
       cmd = {
         adapter = "gemini",
@@ -32,7 +39,7 @@ return {
   keys = {
     { "<leader>acc", "<cmd>CodeCompanionActions<cr>", desc = "Code Companion Actions", mode = { "n", "v" } },
     { "<leader>act", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Tgggle Code Companion", mode = { "n", "v" } },
-    { "<leader>aca", "<cmd>CodeCompanionChat Add<cr>", desc = "Add to Code Companion chat", mode = { "v", "ga" } },
+    { "<leader>aca", "<cmd>CodeCompanionChat Add<cr>", desc = "Add to Code Companion chat", mode = { "v" } },
     { "<leader>aci", "<cmd>CodeCompanionInlineAssist<cr>", desc = "Inline AI Assist", mode = { "i", "n" } },
   },
 }
