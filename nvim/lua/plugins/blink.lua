@@ -3,7 +3,7 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
-      "olimorris/codecompanion.nvim",
+      "Kaiser-Yang/blink-cmp-avante",
     },
     opts = {
       keymap = {
@@ -48,7 +48,7 @@ return {
       },
       sources = {
         default = {
-          "codecompanion",
+          "avante",
           "lsp",
           "buffer",
           "ripgrep",
@@ -56,10 +56,9 @@ return {
           "snippets",
         },
         providers = {
-          codecompanion = {
-            name = "CodeCompanion",
-            module = "codecompanion.providers.completion.blink",
-            enabled = true,
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
           },
           ripgrep = {
             module = "blink-ripgrep",
