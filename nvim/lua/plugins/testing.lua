@@ -25,6 +25,7 @@ return {
     "olimorris/neotest-rspec",
     "zidhuss/neotest-minitest",
     "jfpedroza/neotest-elixir",
+    "antoinemadec/FixCursorHold.nvim",
   },
   {
     "nvim-neotest/neotest",
@@ -36,6 +37,7 @@ return {
       "olimorris/neotest-rspec",
       "zidhuss/neotest-minitest",
       "jfpedroza/neotest-elixir",
+      "antoinemadec/FixCursorHold.nvim",
     },
     opts = {
       adapters = {
@@ -57,14 +59,32 @@ return {
         open_on_run = true,
         enter = true,
       },
+      diagnostic = {
+        enabled = true,
+      },
+      log_level = vim.log.levels.TRACE,
     },
     keys = {
       {
-        "<leader>tw",
+        "<leader>twf",
         function()
-          require("neotest").watch(vim.fn.expand("%"))
+          require("neotest").watch.toggle({ vim.fn.expand("%") })
         end,
-        desc = "watch for changes",
+        desc = "Neotest: watch for file changes",
+      },
+      {
+        "<LocalLeader>twn",
+        function()
+          require("neotest").watch.toggle()
+        end,
+        desc = "Neotest: Watch nearest test",
+      },
+      {
+        "<LocalLeader>twa",
+        function()
+          require("neotest").watch.stop()
+        end,
+        desc = "Neotest: Stop watching",
       },
       {
         "<leader>ta",
