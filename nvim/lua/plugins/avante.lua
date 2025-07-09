@@ -12,7 +12,15 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = "gemini",
+    -- auto_suggestions_provider = "copilot",
+    provider = "ollama",
+    providers = {
+      ollama = {
+        debug = true,
+        endpoint = "http://localhost:11434",
+        model = "qwen2.5-coder:3b",
+      },
+    },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -20,11 +28,12 @@ return {
     --- The below dependencies are optional,
     "echasnovski/mini.pick", -- for file_selector provider mini.pick
     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-    -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "ibhagwan/fzf-lua", -- for file_selector provider fzf
     "stevearc/dressing.nvim", -- for input provider dressing
     "folke/snacks.nvim", -- for input provider snacks
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
