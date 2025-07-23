@@ -69,8 +69,8 @@ alias sk9s='k9s --kubeconfig=$HOME/.kube/culinary-staging.config'
 
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 
-alias cat='bat'
-alias cd="z"
+# alias cat='bat'
+# alias cd="z"
 
 # alias helper for decoding base 64 encrypted strings
 function decode-base64() { echo "$1" | base64 --decode; }
