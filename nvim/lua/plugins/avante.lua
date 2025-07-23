@@ -12,31 +12,23 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    auto_suggestions_provider = "gemini",
-    provider = "ollama",
+    provider = "gemini",
     providers = {
       ollama = {
         debug = true,
         endpoint = "http://localhost:11434",
-        model = "qwen2.5-coder:0.5b",
-        extra_request_body = {
-          options = {
-            temperature = 0.75,
-            num_ctx = 20480,
-            -- keep_alive = "5m",
-          },
-        },
+        model = "gemma3n:e2b",
       },
     },
-    -- provider = "ollamalocal",
+    -- provider = "dockermodel",
     -- providers = {
-    --   ollamalocal = {
+    --   dockermodel = {
     --     __inherited_from = "openai",
     --     api_key_name = "",
-    --     endpoint = "http://localhost:11434/v1",
-    --     model = "qwen2.5:7b",
+    --     endpoint = "http://localhost:12434/",
+    --     model = "ai/gemma3n:latest",
     --     mode = "legacy",
-    --     disable_tools = true, -- Open-source models often do not support tools.
+    --     -- disable_tools = true, -- Open-source models often do not support tools.
     --   },
     -- },
     system_prompt = function()
