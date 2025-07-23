@@ -50,10 +50,10 @@ return {
         default = {
           "codecompanion",
           "lsp",
-          "buffer",
           "ripgrep",
           "path",
           "snippets",
+          "buffer",
         },
         providers = {
           codecompanion = {

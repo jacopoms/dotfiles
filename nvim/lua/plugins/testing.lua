@@ -56,8 +56,12 @@ return {
         "neotest-elixir",
       },
       output = {
+        enabled = true,
         open_on_run = true,
-        enter = true,
+      },
+      output_panel = {
+        enabled = true,
+        open = "botright split | resize 15",
       },
       diagnostic = {
         enabled = true,
