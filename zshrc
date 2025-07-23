@@ -116,20 +116,6 @@ if [ -x /usr/local/bin/kubectl ]; then
     complete -o default -F __start_kubectl k;
 fi
 ## FZF conf
-
-# export FZF_DEFAULT_OPTS="
-# --layout=reverse
-# --info=inline
-# --height=80%
-# --multi
-# --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
-# --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
-# --prompt='∼ ' --pointer='▶' --marker='✓'
-# --bind '?:toggle-preview'
-# --bind 'ctrl-a:select-all'
-# --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
-# --bind 'ctrl-e:execute(echo {+} | xargs -o nvim)'
-# "
 export FZF_COMPLETION_TRIGGER="@@"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 
