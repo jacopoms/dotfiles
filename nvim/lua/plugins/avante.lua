@@ -14,6 +14,10 @@ return {
     -- for example
     provider = "gemini",
     providers = {
+      gemini = {
+        disable_tools = false,
+        model = "gemini-2.5-pro",
+      },
       ollama = {
         debug = true,
         endpoint = "http://localhost:11434",
