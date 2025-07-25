@@ -1,4 +1,5 @@
 -- local Lazyvim = require("lazyvim")
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
@@ -10,8 +11,10 @@ return {
   event = "VeryLazy",
   opts = function(_, opts)
     local branch_opts = { "ex.git.branch", max_length = 24, icon = "", crop = { side = "right" } }
+    local lualine_codecompanion = require("utils.lualine_codecompanion")
     opts.options.theme = "auto"
     opts.options.globalstatus = true
     opts.sections.lualine_b = { branch_opts }
+    table.insert(opts.sections.lualine_x, lualine_codecompanion)
   end,
 }
