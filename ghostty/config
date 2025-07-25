@@ -51,7 +51,7 @@ theme = tokyodark
 # theme = kanagawa-wave
 # theme = BlulocoLight
 # theme = AtomOneLight
-font-family = MesloLGLDZ Nerd Font
+#font-family = MesloLGLDZ Nerd Font
 window-decoration = none
 macos-titlebar-style = hidden
 # keybindings
