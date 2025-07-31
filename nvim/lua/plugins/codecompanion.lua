@@ -23,6 +23,16 @@ return {
         opts = {
           completion_provider = "blink", -- blink|cmp|coc|default
         },
+        keymaps = {
+          completion = {
+            modes = {
+              n = "<C-+>",
+              i = "<C-+>",
+            },
+            index = 1,
+            description = "Completion Menu",
+          },
+        },
       },
       inline = {
         adapter = "gemini",
