@@ -2,9 +2,7 @@ return {
   "yetone/avante.nvim",
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   -- ⚠️ must add this setting! ! !
-  build = function()
-    return "make"
-  end,
+  build = "make",
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   ---@module 'avante'
@@ -12,29 +10,32 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = "gemini",
+    provider = "ollama",
     providers = {
       gemini = {
         disable_tools = false,
         model = "gemini-2.5-pro",
       },
       ollama = {
-        debug = true,
         endpoint = "http://localhost:11434",
-        model = "gemma3n:e2b",
+        model = "gpt-oss:latest",
       },
     },
-    -- provider = "dockermodel",
-    -- providers = {
-    --   dockermodel = {
-    --     __inherited_from = "openai",
-    --     api_key_name = "",
-    --     endpoint = "http://localhost:12434/",
-    --     model = "ai/gemma3n:latest",
-    --     mode = "legacy",
-    --     -- disable_tools = true, -- Open-source models often do not support tools.
-    --   },
-    -- },
+    windows = {
+      edit = { border = "rounded" },
+      ask = {
+        floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+        start_insert = true, -- Start insert mode when opening the ask window
+        border = "rounded",
+      },
+    },
+    behaviour = {
+      auto_focus_sidebar = true,
+      auto_suggestions = false, -- Experimental stage
+      auto_suggestions_respect_ignore = false,
+      use_cwd_as_project_root = true,
+      enable_cursor_planning_mode = true,
+    },
     system_prompt = function()
       local hub = require("mcphub").get_hub_instance()
       return hub and hub:get_active_servers_prompt() or ""
@@ -52,7 +53,6 @@ return {
     --- The below dependencies are optional,
     "echasnovski/mini.pick", -- for file_selector provider mini.pick
     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
     "ibhagwan/fzf-lua", -- for file_selector provider fzf
     "stevearc/dressing.nvim", -- for input provider dressing
     "folke/snacks.nvim", -- for input provider snacks
