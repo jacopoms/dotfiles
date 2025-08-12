@@ -16,10 +16,22 @@ return {
           },
         })
       end,
+      ollama = function()
+        return require("codecompanion.adapters").extend("ollama", {
+          schema = {
+            model = {
+              default = "gpt-oss:latest",
+            },
+            think = {
+              default = true,
+            },
+          },
+        })
+      end,
     },
     strategies = {
       chat = {
-        adapter = "gemini",
+        adapter = "ollama",
         opts = {
           completion_provider = "blink", -- blink|cmp|coc|default
         },
@@ -35,13 +47,13 @@ return {
         },
       },
       inline = {
-        adapter = "gemini",
+        adapter = "ollama",
         opts = {
           completion_provider = "blink", -- blink|cmp|coc|default
         },
       },
       cmd = {
-        adapter = "gemini",
+        adapter = "ollama",
       },
     },
   },
