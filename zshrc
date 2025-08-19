@@ -3,9 +3,13 @@ export PATH=$HOME/bin:$PATH
 export PATH=/usr/bin:$PATH
 export ASDF_DATA_DIR=$HOME/.asdf
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
+ if [ "$APPLE_CHIP" = true ]; then
+    export PATH=/opt/homebrew/bin:$PATH
+    export PATH=/opt/homebrew/sbin:$PATH
+  else
+    export PATH=/usr/local/bin:$PATH
+    export PATH=/usr/local/sbin:$PATH
+  fi
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.atuin/bin:$PATH
 # export PATH=$HOME/nvim-osx64/bin:$PATH
@@ -14,8 +18,11 @@ source $HOME/.env
 
 # autocompletions
 if type brew &>/dev/null; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  eval "$(/usr/local/bin/brew shellenv)"
+    if [ "$APPLE_CHIP" = true ]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+      eval "$(/usr/local/bin/brew shellenv)"
+    fi
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   export FZF_BASE="$(brew --prefix)/bin/fzf"
   # append completions to fpath
@@ -96,7 +103,6 @@ export LC_ALL=en_US.UTF-8
 
 source ~/.bash_aliases
 
-export PROJECTS_ROOT="$HOME/Projects"
 
 eval $(ssh-agent)
 
@@ -161,16 +167,13 @@ export HISTTIMEFORMAT="%F %T "
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-
 
 source <(stern --completion=zsh)
 
 ulimit -n 10240
 
 eval "$(starship init zsh)"
+
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/jacopog/.docker/completions $fpath)
 autoload -Uz compinit

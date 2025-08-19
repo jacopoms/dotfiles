@@ -6,6 +6,8 @@ return {
       "olimorris/codecompanion.nvim",
       "ravitemer/mcphub.nvim",
     },
+    lazy = false,
+    version = "*",
     opts = {
       keymap = {
         preset = "enter",
@@ -49,22 +51,22 @@ return {
       },
       sources = {
         default = {
-          "codecompanion",
           "lsp",
-          "buffer",
-          "path",
-          "snippets",
           "ripgrep",
+          "path",
+          "buffer",
+          "codecompanion",
+          "snippets",
         },
         per_filetype = {
           codecompanion = { "codecompanion" },
         },
         providers = {
-          codecompanion = {
-            name = "CodeCompanion",
-            module = "codecompanion.providers.completion.blink",
-            enabled = true,
-          },
+          -- codecompanion = {
+          --   name = "CodeCompanion",
+          --   module = "codecompanion.providers.completion.blink",
+          --   enabled = true,
+          -- },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
