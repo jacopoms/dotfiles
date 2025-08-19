@@ -16,7 +16,9 @@ return {
   },
   {
     "kosayoda/nvim-lightbulb",
-    opts = {},
+    opts = {
+      autocmd = { enabled = true },
+    },
   },
   {
     "amrbashir/nvim-docs-view",
@@ -34,9 +36,6 @@ return {
         desc = "Toggle docs view sidebar",
       },
     },
-  },
-  {
-    "boltlessengineer/sense.nvim",
   },
   {
     "m4xshen/hardtime.nvim",
