@@ -1,27 +1,43 @@
--- Autocmds are automatically loaded on the VeryLazy event
+-- Autocmds are automatically loaded on the VeryLazy event-- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
---
 
-vim.cmd([[
-  augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-  augroup END
-]])
+local augroup = vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 
-vim.cmd([[
-  let test#strategy = "neovim"
-  let test#ruby#use_binstubs = 0
-  let test#ruby#rspec#executable = "bundle exec rspec"
-]])
+-- Toggle relative line numbers when entering a buffer, window, or leaving insert mode
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
+  group = augroup,
+  pattern = "*",
+  callback = function()
+    if vim.wo.nu and vim.fn.mode() ~= "i" then
+      vim.wo.rnu = true
+    end
+  end,
+})
 
--- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
---   pattern = { "*" },
---   command = [[%s/\s\+$//e]],
--- })
---
+-- Disable relative numbers when leaving a buffer, window, or entering insert mode
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
+  group = augroup,
+  pattern = "*",
+  callback = function()
+    if vim.wo.nu then
+      vim.wo.rnu = false
+    end
+  end,
+})
+
+-- Remove trailing whitespace before writing a buffer
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  command = "%s/\\s\\+$//e",
+})
+
+-- Test settings
+vim.g["test#strategy"] = "neovim"
+vim.g["test#ruby#use_binstubs"] = 0
+vim.g["test#ruby#rspec#executable"] = "bundle exec rspec"
+
+-- User command to copy the current file path to the clipboard
 vim.api.nvim_create_user_command("Cppath", function()
   local path = vim.fn.expand("%:p")
   vim.fn.setreg("+", path)
