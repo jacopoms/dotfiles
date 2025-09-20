@@ -27,8 +27,8 @@ return {
       end,
     },
     strategies = {
-      chat = { adapter = "ollama" },
-      inline = { adapter = "ollama" },
+      chat = { adapter = "gemini" },
+      inline = { adapter = "copilot" },
       cmd = { adapter = "gemini" },
     },
     opts = {

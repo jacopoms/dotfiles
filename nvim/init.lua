@@ -1,3 +1,5 @@
+-- Hello World
+
 -- Neovim configuration entry point
 -- Ordinary Neovim
 -- bootstrap lazy.nvim, LazyVim and your plugins

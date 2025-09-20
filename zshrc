@@ -1,3 +1,4 @@
+source $HOME/.env
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$PATH
 export PATH=/usr/bin:$PATH
@@ -14,7 +15,6 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.atuin/bin:$PATH
 # export PATH=$HOME/nvim-osx64/bin:$PATH
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
-source $HOME/.env
 
 # autocompletions
 if type brew &>/dev/null; then
