@@ -23,13 +23,9 @@ return {
   },
   {
     "yorik1984/newpaper.nvim",
-    depedndencies = {
-      "yorik1984/lualine-theme.nvim",
-    },
     lazy = true,
     opts = {
-      style = "light",
-      lualine_style = "light",
+      style = "dark",
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
