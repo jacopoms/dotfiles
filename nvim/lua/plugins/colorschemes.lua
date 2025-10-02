@@ -25,7 +25,7 @@ return {
     "yorik1984/newpaper.nvim",
     lazy = true,
     opts = {
-      style = "dark",
+      style = "light",
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },
@@ -91,7 +91,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight", -- catppuccin-macchiato",
+      colorscheme = "tokyonight-storm", -- catppuccin-macchiato",
     },
   },
 }
