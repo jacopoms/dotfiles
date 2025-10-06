@@ -3,7 +3,6 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
-      "olimorris/codecompanion.nvim",
       "ravitemer/mcphub.nvim",
     },
     lazy = false,
@@ -55,18 +54,9 @@ return {
           "ripgrep",
           "path",
           "buffer",
-          "codecompanion",
           "snippets",
         },
-        per_filetype = {
-          codecompanion = { "codecompanion" },
-        },
         providers = {
-          -- codecompanion = {
-          --   name = "CodeCompanion",
-          --   module = "codecompanion.providers.completion.blink",
-          --   enabled = true,
-          -- },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
@@ -74,16 +64,6 @@ return {
             opts = {
               debug = true,
             },
-          },
-        },
-      },
-      extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            make_vars = true,
-            make_slash_commands = true,
-            show_result_in_chat = true,
           },
         },
       },

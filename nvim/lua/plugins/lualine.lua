@@ -6,7 +6,6 @@ return {
     { "dokwork/lualine-ex" },
     { "nvim-lua/plenary.nvim" },
     { "kyazdani42/nvim-web-devicons" },
-    { "franco-ruggeri/codecompanion-lualine.nvim" },
   },
   optional = true,
   event = "VeryLazy",
@@ -18,9 +17,5 @@ return {
     opts.options.globalstatus = true
     table.insert(opts.sections.lualine_c, { "navic", color_correction = "dynamic" })
     opts.sections.lualine_b = { branch_opts }
-    table.insert(opts.sections.lualine_x, {
-      "codecompanion",
-      icon = "🤖 ",
-    })
   end,
 }
