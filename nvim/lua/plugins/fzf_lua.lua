@@ -1,6 +1,14 @@
 return {
   "ibhagwan/fzf-lua",
   dependencies = { "nvim-treesitter/nvim-treesitter-context" },
+  opts = {
+    keymap = {
+      fzf = {
+        -- use cltr-q to select all items and convert to quickfix list
+        ["ctrl-q"] = "select-all+accept",
+      },
+    },
+  },
   keys = {
     {
       "<leader>sf",

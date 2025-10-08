@@ -45,10 +45,11 @@
 # theme = BlulocoDark
 # theme = Dracula+
 # theme = BlueDolphin
-theme = Tokyonight Storm
+# theme = Tokyonight Storm
 # theme = dark:catppuccin-macchiato,light:catppuccin-latte
 # theme = Catppuccin Latte
 # theme = kanagawa-wave
+theme = Github Dark
 # theme = BlulocoLight
 # theme = Atom One Light
 # font-family = MesloLGLDZ Nerd Font
