@@ -4,6 +4,7 @@ return {
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
       "ravitemer/mcphub.nvim",
+      "Kaiser-Yang/blink-cmp-avante",
     },
     lazy = false,
     version = "*",
@@ -51,12 +52,14 @@ return {
       sources = {
         default = {
           "lsp",
+          "avante",
           "ripgrep",
           "path",
           "buffer",
           "snippets",
         },
         providers = {
+          avante = { module = "blink-cmp-avante", name = "Avante" },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
