@@ -16,6 +16,10 @@ return {
         mason = false,
         cmd = { "bundle", "exec", "solargraph", "stdio" },
       },
+      rubocop = {
+        mason = false,
+        cmd = { "bundle", "exec", "rubocop", "--lsp" },
+      },
     },
   },
 }
