@@ -3,8 +3,6 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
-      "olimorris/codecompanion.nvim",
-      "ravitemer/mcphub.nvim",
     },
     lazy = false,
     version = "*",
@@ -15,14 +13,13 @@ return {
         ["<C-e>"] = { "hide", "fallback" },
 
         ["<Tab>"] = {
-          function(cmp)
-            if cmp.snippet_active() then
-              return cmp.accept()
-            else
-              return cmp.select_and_accept()
-            end
-          end,
           "snippet_forward",
+          function() -- sidekick next edit suggestion
+            return require("sidekick").nes_jump_or_apply()
+          end,
+          function() -- if you are using Neovim's native inline completions
+            return vim.lsp.inline_completion.get()
+          end,
           "fallback",
         },
         ["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -55,18 +52,9 @@ return {
           "ripgrep",
           "path",
           "buffer",
-          "codecompanion",
           "snippets",
         },
-        per_filetype = {
-          codecompanion = { "codecompanion" },
-        },
         providers = {
-          -- codecompanion = {
-          --   name = "CodeCompanion",
-          --   module = "codecompanion.providers.completion.blink",
-          --   enabled = true,
-          -- },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
@@ -74,16 +62,6 @@ return {
             opts = {
               debug = true,
             },
-          },
-        },
-      },
-      extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            make_vars = true,
-            make_slash_commands = true,
-            show_result_in_chat = true,
           },
         },
       },
