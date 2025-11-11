@@ -22,37 +22,35 @@ return {
     local branch_opts = { "ex.git.branch", max_length = 24, icon = " ", crop = { side = "right" } }
     opts.sections.lualine_b = { branch_opts }
     table.insert(opts.sections.lualine_c, { "navic", color_correction = "dynamic" })
-
-    -- CLI session status
-    table.insert(opts.sections.lualine_y, 2, {
+    -- Copilot status
+    table.insert(opts.sections.lualine_c, {
       function()
-        local ok, status = pcall(require("sidekick.status").cli)
-        if ok and status then
-          local cli_status = status()
-          return "  " .. (#cli_status > 1 and #cli_status or "")
+        return " "
+      end,
+      color = function()
+        local status = require("sidekick.status").get()
+        if status then
+          return status.kind == "Error" and "DiagnosticError" or status.busy and "DiagnosticWarn" or "Special"
         end
-        return ""
       end,
       cond = function()
-        local ok, status = pcall(require("sidekick.status").cli)
-        if ok and status then
-          return #status() > 0
-        end
-        return false
+        local status = require("sidekick.status")
+        return status.get() ~= nil
+      end,
+    })
+
+    -- CLI session status
+    table.insert(opts.sections.lualine_x, 2, {
+      function()
+        local status = require("sidekick.status").cli()
+        return " " .. (#status > 1 and #status or "")
+      end,
+      cond = function()
+        return #require("sidekick.status").cli() > 0
       end,
       color = function()
         return "Special"
       end,
-      -- function()
-      --   local status = require("sidekick.status").cli()
-      --   return " " .. (#status > 1 and #status or "")
-      -- end,
-      -- cond = function()
-      --   return #require("sidekick.status").cli() > 0
-      -- end,
-      -- color = function()
-      --   return { fg = Snacks.util.color("Special") }
-      -- end,
     })
   end,
 }
