@@ -18,3 +18,5 @@ api_docs.yaml
 .env.test
 
 .cache_ggshield
+
+.aider*
