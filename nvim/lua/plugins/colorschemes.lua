@@ -25,7 +25,7 @@ return {
     "yorik1984/newpaper.nvim",
     lazy = true,
     opts = {
-      style = "light",
+      style = "dark",
       custom_highlights = {
         GitSignsCurrentLineBlame = { fg = "#778899" },
       },

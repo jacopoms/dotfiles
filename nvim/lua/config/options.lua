@@ -107,3 +107,6 @@ vim.g.markdown_recommended_style = 0
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 -- vim.g.lazyvim_ruby_lsp = "solargraph"
 vim.g.lazyvim_ruby_formatter = "rubocop"
+
+-- Sidekick
+vim.g.sidekick_nes = false
