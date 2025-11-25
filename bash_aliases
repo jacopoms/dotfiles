@@ -47,6 +47,7 @@ alias prep_commit='bundle exec reek . && rubocop -A && rspec'
 #aliases for docker
 alias dc='docker compose'
 alias dcd='docker compose -f docker-compose.yml -f docker-compose.development.yml'
+alias dc-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml"
 alias dct='docker compose -f docker-compose.yml -f docker-compose.test.yml'
 alias dck='docker compose -f docker-compose.yml -f docker-compose.kafka.yml'
 

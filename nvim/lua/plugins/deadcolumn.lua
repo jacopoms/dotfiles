@@ -1,6 +1,6 @@
 return {
   "Bekaboo/deadcolumn.nvim",
   lazy = true,
-  event = "BufWritePre",
+  -- event = "BufWritePre",
   opts = { warning = { colorcode = "#444444" } },
 }
