@@ -183,3 +183,6 @@ compinit
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh --disable-up-arrow)"
+
+# Added by Antigravity
+export PATH="/Users/jacopog/.antigravity/antigravity/bin:$PATH"

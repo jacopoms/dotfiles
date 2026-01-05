@@ -19,3 +19,5 @@ api_docs.yaml
 
 .cache_ggshield
 .aider*
+
+.cursor/*
