@@ -3,8 +3,8 @@
 -- Add any additional options here
 local opt = vim.opt
 
-opt.textwidth = 100
-opt.colorcolumn = "100"
+opt.textwidth = 120
+opt.colorcolumn = "120"
 opt.ruler = true
 opt.hidden = true
 opt.incsearch = true
@@ -109,4 +109,6 @@ vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
 
 -- Sidekick
-vim.g.sidekick_nes = false
+vim.g.sidekick_nes = true
+
+vim.lsp.enable("copilot")

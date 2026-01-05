@@ -38,6 +38,7 @@ return {
       "zidhuss/neotest-minitest",
       "jfpedroza/neotest-elixir",
       "antoinemadec/FixCursorHold.nvim",
+      "thenbe/neotest-playwright",
     },
     opts = {
       adapters = {
