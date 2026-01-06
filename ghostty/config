@@ -51,7 +51,7 @@ theme = Tokyonight Storm
 # theme = kanagawa-wave
 # theme = BlulocoLight
 # theme = Atom One Light
-# font-family = MesloLGLDZ Nerd Font
+font-family = JetBrainsMono Nerd Font
 # window-decoration = none
 macos-titlebar-style = tabs
 
