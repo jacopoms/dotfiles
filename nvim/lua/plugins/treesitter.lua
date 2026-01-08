@@ -23,6 +23,7 @@ return {
       "gitignore",
       "graphql",
       "heex",
+      "helm",
       "html",
       "javascript",
       "json",
