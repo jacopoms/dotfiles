@@ -103,6 +103,8 @@ opt.smartcase = true
 -- Markdown indentation
 vim.g.markdown_recommended_style = 0
 
+-- Prettier
+vim.g.lazyvim_prettier_needs_config = false
 -- Ruby
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 -- vim.g.lazyvim_ruby_lsp = "solargraph"
