@@ -3,7 +3,7 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "mikavilpas/blink-ripgrep.nvim",
-      { "folke/sidekick.nvim" },
+      "folke/sidekick.nvim",
     },
     lazy = false,
     version = "*",
