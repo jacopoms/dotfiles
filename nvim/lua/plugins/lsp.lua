@@ -24,6 +24,10 @@ return {
         mason = false,
         cmd = { vim.fn.expand("~/.asdf/shims/ruby-lsp") },
       },
+      copilot = {
+        enabled = true,
+        mason = false,
+      },
     },
   },
 }
