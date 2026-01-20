@@ -60,6 +60,9 @@ macos-titlebar-style = tabs
 mouse-hide-while-typing = true
 # mouse-scroll-multiplier = 1
 
+# Alt/Option key configuration
+macos-option-as-alt = true
+
 # Window
 window-padding-y = 2,0
 window-padding-balance = true

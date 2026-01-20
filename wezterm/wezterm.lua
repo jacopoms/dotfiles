@@ -74,6 +74,10 @@ config = {
 			inactive_tab_edge = "#FFFFFF",
 		},
 	},
+
+	-- Alt/Option key configuration for macOS
+	send_composed_key_when_left_alt_is_pressed = false,
+	send_composed_key_when_right_alt_is_pressed = false,
 }
 
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
