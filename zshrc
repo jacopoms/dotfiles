@@ -1,18 +1,19 @@
+eval "$(~/.local/bin/agent shell-integration zsh)"
 source $HOME/.env
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$PATH
-export PATH=/usr/bin:$PATH
 export ASDF_DATA_DIR=$HOME/.asdf
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
-export PATH=/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.atuin/bin:$PATH
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.atuin/bin
  if [ "$APPLE_CHIP" = true ]; then
-    export PATH=/opt/homebrew/bin:$PATH
-    export PATH=/opt/homebrew/sbin:$PATH
+    export PATH=$PATH:/opt/homebrew/bin
+    export PATH=$PATH:/opt/homebrew/sbin
   else
-    export PATH=/usr/local/bin:$PATH
-    export PATH=/usr/local/sbin:$PATH
+    export PATH=$PATH:/usr/local/bin
+    export PATH=$PATH:/usr/local/sbin
   fi
 # export PATH=$HOME/nvim-osx64/bin:$PATH
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH

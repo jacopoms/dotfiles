@@ -83,16 +83,6 @@ function internetSongToFlac1() { yt-dlp --rm-cache-dir --extract-audio --audio-f
 # alias internetSongToFlac9='youtube-dl --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac $1'
 function internetSongToFlac9() { yt-dlp --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac "$1"; }
 
-function explain() {
-  echo "$1"
-  gh copilot explain "$1"
-}
-
-function suggest() {
-  echo "$1"
-  gh copilot suggest "$1"
-}
-
 function gh-run-notifier() {
   local param1=$1
   local param2=${2:-CI}
@@ -100,3 +90,4 @@ function gh-run-notifier() {
   # Replace the command below with your desired command
   gh run watch "$param1" && terminal-notifier -title GH RUN FINISHED! -sound default -message "$param2 done"
 }
+alias ca='cursor-agent'
