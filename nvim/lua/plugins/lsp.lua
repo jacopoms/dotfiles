@@ -13,6 +13,9 @@ return {
         -- },
       },
       servers = {
+        copilot = {
+          enable = true,
+        },
         solargraph = {
           mason = false,
           cmd = { "bundle", "exec", "solargraph", "stdio" },
