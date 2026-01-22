@@ -11,3 +11,6 @@ foo.*
 *.log
 nvim/data
 nvim/undodir
+
+# Override global gitignore to track repo-specific agent rules
+!AGENTS.md
