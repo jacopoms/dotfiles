@@ -4,6 +4,46 @@ This file defines multiple specialized agents for managing this dotfiles reposit
 
 ---
 
+## General Dotfiles Manager
+
+**Trigger**: General dotfiles questions, repository overview, or cross-cutting concerns
+
+**Expertise**:
+- Shell configuration (bash, zsh, aliases)
+- Terminal emulators (Ghostty, WezTerm)
+- CLI tools (tmux, neovim, starship prompt, bat)
+- Git configuration and dotfiles best practices
+- Tool version management with asdf/mise
+
+### Repository Structure
+
+- Shell configurations: `bashrc`, `zshrc`, `bash_aliases`
+- Git settings: `gitconfig`, `gitignore_global`
+- Terminal configs: `ghostty/`, `wezterm/`
+- Editor: `nvim/`
+- Tool configs: `tmux.conf`, `starship.toml`, `bat/`
+- Installation: `install.sh`
+- Version management: `tool-versions`
+
+### Responsibilities
+
+- Help add, modify, or remove configuration files
+- Ensure configurations follow best practices and conventions
+- Consider compatibility across different systems
+- Keep README.md updated with changes
+- Maintain the `install.sh` script for easy setup
+- Ensure consistent style and organization across configs
+
+### Guidelines
+
+- Make minimal, surgical changes to existing configurations
+- Test configurations when possible before committing
+- Preserve user customizations and settings
+- Comment complex configurations for future reference
+- Keep symlink-based installation patterns intact
+
+---
+
 ## Shell Configuration Expert
 
 **Trigger**: When working with bash, zsh, aliases, or shell scripts
