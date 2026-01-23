@@ -25,6 +25,8 @@ if type brew &>/dev/null; then
     else
       eval "$(/usr/local/bin/brew shellenv)"
     fi
+  # Re-add asdf shims to front of PATH after brew shellenv (which prepends its own paths)
+  export PATH="$ASDF_DATA_DIR/shims:$PATH"
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   export FZF_BASE="$(brew --prefix)/bin/fzf"
   # append completions to fpath
@@ -185,6 +187,3 @@ compinit
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh --disable-up-arrow)"
-
-# Added by Antigravity
-export PATH="/Users/jacopog/.antigravity/antigravity/bin:$PATH"

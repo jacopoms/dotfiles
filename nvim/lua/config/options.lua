@@ -113,4 +113,4 @@ vim.g.lazyvim_ruby_formatter = "rubocop"
 -- Sidekick
 vim.g.sidekick_nes = true
 
-vim.lsp.enable("copilot")
+-- vim.lsp.enable("copilot")
