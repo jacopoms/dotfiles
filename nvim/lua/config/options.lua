@@ -3,8 +3,8 @@
 -- Add any additional options here
 local opt = vim.opt
 
-opt.textwidth = 120
-opt.colorcolumn = "120"
+opt.textwidth = 100
+opt.colorcolumn = "100"
 opt.ruler = true
 opt.hidden = true
 opt.incsearch = true
