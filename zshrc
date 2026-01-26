@@ -2,12 +2,13 @@ eval "$(~/.local/bin/agent shell-integration zsh)"
 source $HOME/.env
 # If you come from bash you might have to change your $PATH.
 export ASDF_DATA_DIR=$HOME/.asdf
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.atuin/bin
+# Added by Antigravity
+export PATH="/Users/jacopog/.antigravity/antigravity/bin:$PATH"
  if [ "$APPLE_CHIP" = true ]; then
     export PATH=$PATH:/opt/homebrew/bin
     export PATH=$PATH:/opt/homebrew/sbin
@@ -17,7 +18,6 @@ export PATH=$PATH:$HOME/.atuin/bin
   fi
 # export PATH=$HOME/nvim-osx64/bin:$PATH
 # export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
-
 # autocompletions
 if type brew &>/dev/null; then
     if [ "$APPLE_CHIP" = true ]; then
@@ -43,6 +43,8 @@ else
 # initialise completions with ZSH's compinit
   autoload -Uz compinit && compinit
 fi
+
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -185,6 +187,3 @@ compinit
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh --disable-up-arrow)"
-
-# Added by Antigravity
-export PATH="/Users/jacopog/.antigravity/antigravity/bin:$PATH"
