@@ -33,7 +33,7 @@ BASEDIR=$(dirname "$0")
 cd "$BASEDIR" || exit
 
 # HOME dotfiles
-dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions)
+dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions zsh_plugins.txt)
 
 if [ -n "${dotfiles[*]}" ]; then
   for file in "${dotfiles[@]}"; do
@@ -54,4 +54,10 @@ fi
 # install tmux pluing manager
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+fi
+
+# install antidote plugin manager for zsh
+if [ ! -d "$HOME/.antidote" ]; then
+  echo "Installing antidote..."
+  git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 fi
