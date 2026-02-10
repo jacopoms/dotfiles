@@ -45,14 +45,17 @@
 # theme = BlulocoDark
 # theme = Dracula+
 # theme = BlueDolphin
-theme = Tokyonight Storm
+theme = dark:TokyoNight Storm,light:TokyoNight Day
 # theme = dark:catppuccin-macchiato,light:catppuccin-latte
 # theme = Catppuccin Latte
 # theme = kanagawa-lotus
 # theme = Tinacious Design Light
 # theme = BlulocoLight
 # theme = Atom One Light
-font-family = JetBrainsMono Nerd Font
+# font-family = FiraCode Nerd Font Mono
+font-family = Caskaydia Cove Nerd Font
+
+font-size = 13.5
 # window-decoration = none
 macos-titlebar-style = tabs
 
