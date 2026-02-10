@@ -45,7 +45,8 @@
 # theme = BlulocoDark
 # theme = Dracula+
 # theme = BlueDolphin
-theme = dark:TokyoNight Storm,light:TokyoNight Day
+# theme = dark:TokyoNight Storm,light:TokyoNight Day
+theme = TokyoNight Storm
 # theme = dark:catppuccin-macchiato,light:catppuccin-latte
 # theme = Catppuccin Latte
 # theme = kanagawa-lotus
