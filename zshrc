@@ -1,188 +1,193 @@
-eval "$(~/.local/bin/agent shell-integration zsh)"
-source $HOME/.env
-# If you come from bash you might have to change your $PATH.
-export ASDF_DATA_DIR=$HOME/.asdf
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:/usr/bin
-export PATH=$PATH:/bin
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.atuin/bin
-# Added by Antigravity
-export PATH="/Users/jacopog/.antigravity/antigravity/bin:$PATH"
- if [ "$APPLE_CHIP" = true ]; then
-    export PATH=$PATH:/opt/homebrew/bin
-    export PATH=$PATH:/opt/homebrew/sbin
-  else
-    export PATH=$PATH:/usr/local/bin
-    export PATH=$PATH:/usr/local/sbin
-  fi
-# export PATH=$HOME/nvim-osx64/bin:$PATH
-# export PATH=$HOME/.asdf/installs/rust/1.66.1/bin:$PATH
-# autocompletions
-if type brew &>/dev/null; then
-    if [ "$APPLE_CHIP" = true ]; then
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    else
-      eval "$(/usr/local/bin/brew shellenv)"
-    fi
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  export FZF_BASE="$(brew --prefix)/bin/fzf"
-  # append completions to fpath
-  fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-  autoload -Uz compinit && compinit
-else
-  echo "not brew"
-  . /opt/local/share/asdf/asdf.sh
-  source /opt/local/share/fzf/shell/completion.zsh
-  source /opt/local/share/fzf/shell/key-bindings.zsh
+# ============================================================================
+# Modern Zsh Configuration - Optimized for Performance
+# ============================================================================
 
-  export FZF_BASE="/opt/local/bin/fzf"
-  # append completions to fpath
-  fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-# initialise completions with ZSH's compinit
-  autoload -Uz compinit && compinit
-fi
+# ----------------------------------------------------------------------------
+# Early Initialization (must be first)
+# ----------------------------------------------------------------------------
+[[ -f "$HOME/.env" ]] && source "$HOME/.env"
+[[ -x "$HOME/.local/bin/agent" ]] && eval "$(~/.local/bin/agent shell-integration zsh)"
 
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# auto updates fro omz
-zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 0
-
-# omz plugins
-plugins=(
-  aliases
-  # asdf
-  git
-  gitfast
-  colorize
-  fzf
-  zsh-syntax-highlighting
-  zsh-navigation-tools
-  zsh-completions
-  git-auto-fetch
-  history-substring-search
-  history
-  zsh-autosuggestions
-  kubectl
-  kubectl-autocomplete
-  kubectx
-)
-
-# omz theme
-#### powerlevel10k settings
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-source $ZSH/oh-my-zsh.sh
-
-bindkey "^[[A" history-substring-search-up
-bindkey "^[[B" history-substring-search-down
-bindkey "^[[Z" autosuggest-accept
-
-# User configuration
-
+# ----------------------------------------------------------------------------
+# Environment Variables - Consolidated
+# ----------------------------------------------------------------------------
+export ASDF_DATA_DIR="$HOME/.asdf"
+export EDITOR=nvim
+export VISUAL="$EDITOR"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-
-source ~/.bash_aliases
-
-
-eval $(ssh-agent)
-
+# Docker settings
 export DOCKER_COMPOSE_TIMEOUT=200
 export COMPOSE_HTTP_TIMEOUT=200
-export EDITOR=nvim
-export VISUAL="$EDITOR"
 
-ctags=/usr/local/bin/ctags
+# Increase file descriptor limit
+ulimit -n 10240
 
-# git configuration
-#eval "$(hub alias -s)"
+# ----------------------------------------------------------------------------
+# PATH Configuration - Optimized order (most specific first)
+# ----------------------------------------------------------------------------
+path=(
+  "$HOME/.local/bin"
+  "$HOME/.atuin/bin"
+  "$HOME/.antigravity/antigravity/bin"
+  "$ASDF_DATA_DIR/shims"
+  "$HOME/bin"
+  $path  # Keep existing PATH entries
+)
 
-# K8s config
-if [ -x /usr/local/bin/kubectl ]; then
-    source <(kubectl completion zsh);
-    complete -o default -F __start_kubectl k;
+# Conditional PATH additions
+if [[ "$APPLE_CHIP" == true ]]; then
+  path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
+else
+  path=(/usr/local/bin /usr/local/sbin $path)
 fi
-## FZF conf
+
+# Remove duplicates and non-existent directories
+typeset -U path
+path=($^path(N-/))
+
+# ----------------------------------------------------------------------------
+# Homebrew & Package Manager Setup
+# ----------------------------------------------------------------------------
+if (( $+commands[brew] )); then
+  if [[ "$APPLE_CHIP" == true ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+
+  # FZF setup
+  export FZF_BASE="$(brew --prefix)/bin/fzf"
+
+  # Completion paths
+  fpath=(
+    "$(brew --prefix)/share/zsh/site-functions"
+    "${ASDF_DIR}/completions"
+    $fpath
+  )
+else
+  # MacPorts fallback
+  [[ -f /opt/local/share/asdf/asdf.sh ]] && . /opt/local/share/asdf/asdf.sh
+  [[ -f /opt/local/share/fzf/shell/completion.zsh ]] && source /opt/local/share/fzf/shell/completion.zsh
+  [[ -f /opt/local/share/fzf/shell/key-bindings.zsh ]] && source /opt/local/share/fzf/shell/key-bindings.zsh
+
+  export FZF_BASE="/opt/local/bin/fzf"
+  fpath=("${ASDF_DATA_DIR:-$HOME/.asdf}/completions" $fpath)
+fi
+
+# ----------------------------------------------------------------------------
+# History Configuration
+# ----------------------------------------------------------------------------
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+# History options
+setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries
+setopt INC_APPEND_HISTORY     # Write to history immediately
+setopt SHARE_HISTORY          # Share history between sessions
+setopt HIST_IGNORE_SPACE      # Ignore commands starting with space
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
+
+# ----------------------------------------------------------------------------
+# Antidote Plugin Manager
+# ----------------------------------------------------------------------------
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+
+# Set ZSH variable for oh-my-zsh plugins
+export ZSH="$(antidote path ohmyzsh/ohmyzsh)"
+
+# Load plugins (generates static file if needed)
+antidote load
+
+# ----------------------------------------------------------------------------
+# Completion System
+# ----------------------------------------------------------------------------
+# Add Docker completions to fpath
+fpath=("$HOME/.docker/completions" $fpath)
+
+# Initialize completion system
+autoload -Uz compinit
+
+# Speed up compinit by only checking once a day
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+# ----------------------------------------------------------------------------
+# Key Bindings
+# ----------------------------------------------------------------------------
+# History substring search
+bindkey "^[[A" history-substring-search-up      # Up arrow
+bindkey "^[[B" history-substring-search-down    # Down arrow
+
+# Autosuggestions
+bindkey "^[[Z" autosuggest-accept               # Shift+Tab
+
+# ----------------------------------------------------------------------------
+# FZF Configuration
+# ----------------------------------------------------------------------------
 export FZF_COMPLETION_TRIGGER="@@"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
-
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
+
+# FZF preview configurations
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+export FZF_CTRL_T_OPTS="--preview 'if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi'"
+
+# Custom FZF functions
 _fzf_compgen_path() {
   fd --hidden --exclude .git . "$1"
 }
 
-# Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
 _fzf_comprun() {
   local command=$1
   shift
 
   case "$command" in
     cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
     ssh)          fzf --preview 'dig {}'                   "$@" ;;
     *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
   esac
 }
 
-export HISTTIMEFORMAT="%F %T "
+# ----------------------------------------------------------------------------
+# External Tool Integrations
+# ----------------------------------------------------------------------------
+# Zoxide (smart cd)
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
-# bat config
-# export BAT_THEME=tokyonight_night
+# Starship prompt (fast Rust-based)
+(( $+commands[starship] )) && eval "$(starship init zsh)"
 
-# ---- Zoxide (better cd) ----
-eval "$(zoxide init zsh)"
+# Atuin (shell history sync)
+if [[ -f "$HOME/.atuin/bin/env" ]]; then
+  . "$HOME/.atuin/bin/env"
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
 
+# Stern (Kubernetes log viewer)
+(( $+commands[stern] )) && source <(stern --completion=zsh)
 
-source <(stern --completion=zsh)
+# Kubectl completion (only if installed)
+if (( $+commands[kubectl] )); then
+  source <(kubectl completion zsh)
+  complete -o default -F __start_kubectl k
+fi
 
-ulimit -n 10240
+# SSH agent
+eval "$(ssh-agent -s)" &>/dev/null
 
-eval "$(starship init zsh)"
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/jacopog/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-
-. "$HOME/.atuin/bin/env"
-
-eval "$(atuin init zsh --disable-up-arrow)"
+# ----------------------------------------------------------------------------
+# Aliases & Custom Functions
+# ----------------------------------------------------------------------------
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
