@@ -167,7 +167,10 @@ _fzf_comprun() {
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
 # Starship prompt (fast Rust-based)
-(( $+commands[starship] )) && eval "$(starship init zsh)"
+# (( $+commands[starship] )) && eval "$(starship init zsh)"
+
+# Oh My Posh
+(( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config ~/.omp-theme.json)"
 
 # Atuin (shell history sync)
 if [[ -f "$HOME/.atuin/bin/env" ]]; then
