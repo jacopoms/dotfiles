@@ -94,15 +94,38 @@
           "background": "p:blue",
           "type": "status",
           "style": "diamond",
-          "background_templates": [
-            "{{ if gt .Code 0 }}p:red{{ end }}"
-          ]
+          "background_templates": ["{{ if gt .Code 0 }}p:red{{ end }}"]
         }
       ]
     },
     {
       "type": "rprompt",
       "segments": [
+        {
+          "type": "docker",
+          "style": "plain",
+          "foreground": "#0B59E7",
+          "background": "transparent",
+          "template": "  {{ .Context }} "
+        },
+        {
+          "type": "kubectl",
+          "style": "plain",
+          "foreground": "p:blue",
+          "background": "transparent",
+          "template": " 󱃾 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
+        },
+        {
+          "options": {
+            "display_mode": "context",
+            "fetch_version": true
+          },
+          "foreground": "p:white",
+          "background": "transparent",
+          "type": "lua",
+          "style": "plain",
+          "template": "  {{ .Full }} "
+        },
         {
           "options": {
             "display_mode": "context",
@@ -182,6 +205,20 @@
           "background": "transparent",
           "type": "time",
           "style": "plain"
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b2",
+          "invert_powerline": true,
+          "foreground": "#ffffff",
+          "background": "#8800dd",
+          "template": " \uf252 {{ .FormattedMs }} ",
+          "options": {
+            "threshold": 500,
+            "style": "austin",
+            "always_enabled": true
+          }
         }
       ]
     },
@@ -212,9 +249,7 @@
       "background": "p:orange",
       "type": "aws",
       "style": "diamond",
-      "tips": [
-        "aws"
-      ]
+      "tips": ["aws"]
     },
     {
       "options": {
@@ -227,9 +262,7 @@
       "background": "p:blue",
       "type": "az",
       "style": "diamond",
-      "tips": [
-        "az"
-      ]
+      "tips": ["az"]
     }
   ],
   "version": 4,

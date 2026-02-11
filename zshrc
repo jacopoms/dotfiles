@@ -30,8 +30,7 @@ ulimit -n 10240
 path=(
   "$HOME/.local/bin"
   "$HOME/.atuin/bin"
-  "$HOME/.antigravity/antigravity/bin"
-  "$ASDF_DATA_DIR/shims"
+  # "$HOME/.antigravity/antigravity/bin"
   "$HOME/bin"
   $path  # Keep existing PATH entries
 )
@@ -75,6 +74,13 @@ else
   export FZF_BASE="/opt/local/bin/fzf"
   fpath=("${ASDF_DATA_DIR:-$HOME/.asdf}/completions" $fpath)
 fi
+
+# ----------------------------------------------------------------------------
+# ASDF Shims - Must be AFTER Homebrew to ensure highest priority
+# ----------------------------------------------------------------------------
+# Prepend asdf shims to PATH to override all other executables (including Homebrew)
+path=("$ASDF_DATA_DIR/shims" $path)
+typeset -U path  # Remove any duplicates
 
 # ----------------------------------------------------------------------------
 # History Configuration
@@ -171,7 +177,7 @@ _fzf_comprun() {
 
 # Oh My Posh
 (( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config ~/.omp-theme.json)"
-
+# (( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config atomic)"
 # Atuin (shell history sync)
 if [[ -f "$HOME/.atuin/bin/env" ]]; then
   . "$HOME/.atuin/bin/env"
