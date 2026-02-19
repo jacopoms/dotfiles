@@ -56,9 +56,10 @@ theme = TokyoNight Storm
 # font-family = FiraCode Nerd Font Mono
 font-family = Caskaydia Cove Nerd Font
 
-font-size = 13.5
-# window-decoration = none
-macos-titlebar-style = tabs
+font-size = 13.2
+window-decoration = none
+# native | transparent | hidden | tabs
+macos-titlebar-style = hidden
 
 # Mouse
 mouse-hide-while-typing = true
@@ -70,6 +71,7 @@ macos-option-as-alt = true
 # Window
 window-padding-y = 2,0
 window-padding-balance = true
+maximize = true
 
 # Other
 copy-on-select = clipboard
