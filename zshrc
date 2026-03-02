@@ -176,8 +176,9 @@ _fzf_comprun() {
 # (( $+commands[starship] )) && eval "$(starship init zsh)"
 
 # Oh My Posh
-(( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config ~/.omp-theme.json)"
-# (( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config atomic)"
+(( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config ~/dotfiles/myjan.omp.json)"
+# (( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config tokyo)"
+
 # Atuin (shell history sync)
 if [[ -f "$HOME/.atuin/bin/env" ]]; then
   . "$HOME/.atuin/bin/env"
