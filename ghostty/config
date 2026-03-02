@@ -46,6 +46,7 @@
 # theme = Dracula+
 # theme = BlueDolphin
 # theme = dark:TokyoNight Storm,light:TokyoNight Day
+# theme = Horizon Bright
 theme = TokyoNight Storm
 # theme = dark:catppuccin-macchiato,light:catppuccin-latte
 # theme = Catppuccin Latte
@@ -57,9 +58,10 @@ theme = TokyoNight Storm
 font-family = Caskaydia Cove Nerd Font
 
 font-size = 13.2
-window-decoration = none
+# auto | none, false | client | server
+window-decoration = auto
 # native | transparent | hidden | tabs
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
 
 # Mouse
 mouse-hide-while-typing = true
