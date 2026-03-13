@@ -9,16 +9,12 @@ return {
     end,
   },
   {
-    "rmehri01/onenord.nvim",
-    priority = 1000,
-  },
-  {
     "Tsuzat/NeoSolarized.nvim",
     lazy = true,
     priority = 1000,
     opts = {
       transparent = false,
-      style = "light",
+      -- style = "light",
     },
   },
   {
@@ -49,12 +45,23 @@ return {
     },
   },
   {
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    opts = {
+      dim_inactive = true,
+      -- hide_end_of_buffer = false, -- Hide the '~' character at the end of the buffer for a cleaner look
+      hide_nc_statusline = false, -- Override the underline style for non-active statuslines
+    },
+  },
+  {
     -- "uloco/bluloco.nvim",
     "mistweaverco/bluloco.nvim",
     -- dependencies = { "rktjmp/lush.nvim" },
     opts = {
       italics = true,
-      -- theme = "dark",
+      theme = "dark",
     },
   },
   {
@@ -91,7 +98,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight-storm", -- catppuccin-macchiato",
+      colorscheme = "github_dark_tritanopia", -- rose-pine-dawn, tokyonight-storm
     },
   },
 }

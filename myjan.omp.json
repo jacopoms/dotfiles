@@ -5,13 +5,6 @@
     "foreground": "p:black",
     "background": "transparent"
   },
-  "transient_prompt": {
-    "template": "<#c386f1,transparent>\ue0b6</><#ffffff,#c386f1> \uea83  {{ .Folder }} </><#c386f1,transparent>\ue0b0</> ",
-    "foreground": "transparent",
-    "background": "transparent",
-    "type": "session",
-    "style": "plain"
-  },
   "upgrade": {
     "source": "cdn",
     "interval": "168h",
