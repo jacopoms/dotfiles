@@ -20,13 +20,18 @@ api_docs.yaml
 .cache_ggshield
 .aider*
 
-.cursor/*
 
 script/release
 
 # AI Agent Instructions
+.cursor/*
+
 .github/copilot-instructions.md
 .github/instructions/
+.github/features/
+
+.agents/
+
 AGENTS.md
 CLAUDE.md
 GEMINI.md

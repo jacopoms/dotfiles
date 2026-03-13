@@ -48,7 +48,7 @@
 # theme = dark:TokyoNight Storm,light:TokyoNight Day
 # theme = Horizon Bright
 theme = TokyoNight Storm
-# theme = dark:catppuccin-macchiato,light:catppuccin-latte
+# theme = dark:TokyoNight Storm,light:Iterm2 Solarized Light
 # theme = Catppuccin Latte
 # theme = kanagawa-lotus
 # theme = Tinacious Design Light
@@ -59,9 +59,9 @@ font-family = Caskaydia Cove Nerd Font
 
 font-size = 13.2
 # auto | none, false | client | server
-window-decoration = auto
+# window-decoration = false
 # native | transparent | hidden | tabs
-macos-titlebar-style = transparent
+# macos-titlebar-style = hidden
 
 # Mouse
 mouse-hide-while-typing = true
