@@ -94,11 +94,17 @@ return {
     lazy = false,
     priority = 1000,
   },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "github_dark_tritanopia", -- rose-pine-dawn, tokyonight-storm
+      colorscheme = "github_light_tritanopia", -- rose-pine-dawn, tokyonight-storm
     },
   },
 }
