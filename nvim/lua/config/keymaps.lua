@@ -1,6 +1,10 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+
+-- <C-a> is captured by tmux (prefix key), remap increment to <C-q>
+vim.keymap.set({ "n", "v" }, "<C-q>", "<C-a>", { noremap = true, desc = "Increment" })
+
 -- Swap horizontally splits
 vim.keymap.set("n", "<C-w><S-h>", ":windo wincmd H<CR>", { noremap = true })
 -- Swap vertically splits
