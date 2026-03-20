@@ -9,30 +9,36 @@ end
 
 wezterm.log_info("reloading")
 
-local function scheme_for_appearance(appearance)
-	-- if appearance:find("Dark") then
-	-- return "Catppuccin Macchiato"
-	return "tokyodark"
-	-- return "BlueDolphin"
-	-- else
-	-- return "Catppuccin Latte"
-	-- end
-end
-
 local appearance = wezterm.gui.get_appearance()
+
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Tokyo Night Storm"
+	else
+		return "Solarized Light (Gogh)"
+	end
+end
 
 -- Configuration options
 local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or scheme_for_appearance(appearance)
-local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
+local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 13.2
 
 -- Obtain the definition of the selected color scheme
-local scheme_def = scheme -- wezterm.color.get_builtin_schemes()[scheme]
+local builtin_schemes = wezterm.color.get_builtin_schemes()
+local scheme_def = builtin_schemes[scheme]
+local titlebar_bg = (scheme_def and scheme_def.background) or "#24283b"
+-- print a line here in the shell to see the value of scheme
+
+local log_line = string.format("Selected color scheme: %s, titlebar background: %s", scheme, titlebar_bg)
+
+wezterm.log_info(log_line)
 
 config = {
 	-- General settings
 	color_scheme = scheme,
 	font_size = font_size,
 	font = wezterm.font_with_fallback({
+		{ family = "CaskaydiaCove Nerd Font", weight = "Regular" },
 		{ family = "JetBrainsMono Nerd Font", weight = "Regular" },
 		{ family = "JetBrains Mono", weight = "Regular" },
 		{ family = "Hack Nerd Font Mono", weight = "Regular" },
@@ -52,6 +58,7 @@ config = {
 		font = wezterm.font({ family = "Roboto", weight = "Bold" }),
 		font_size = 13.0,
 		active_titlebar_bg = scheme_def.background,
+		inactive_titlebar_bg = scheme_def.background,
 	},
 
 	window_decorations = "RESIZE",
@@ -70,8 +77,30 @@ config = {
 	enable_scroll_bar = true,
 	colors = {
 		tab_bar = {
-			-- The color of the inactive tab bar edge/divider
-			inactive_tab_edge = "#FFFFFF",
+			background = scheme_def.background,
+			inactive_tab_edge = scheme_def.ansi and scheme_def.ansi[1] or "#333333",
+			active_tab = {
+				bg_color = scheme_def.background,
+				fg_color = scheme_def.foreground,
+			},
+			inactive_tab = {
+				bg_color = wezterm.color.parse(scheme_def.background):darken(0.5),
+				fg_color = scheme_def.ansi and scheme_def.ansi[8] or "#808080",
+			},
+			inactive_tab_hover = {
+				bg_color = wezterm.color.parse(scheme_def.background):lighten(0.05),
+				fg_color = scheme_def.foreground,
+				italic = true,
+			},
+			new_tab = {
+				bg_color = scheme_def.background,
+				fg_color = scheme_def.foreground,
+			},
+			new_tab_hover = {
+				bg_color = wezterm.color.parse(scheme_def.background):lighten(0.05),
+				fg_color = scheme_def.foreground,
+				italic = true,
+			},
 		},
 	},
 
@@ -80,17 +109,6 @@ config = {
 	send_composed_key_when_right_alt_is_pressed = false,
 }
 
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
-
-tabline.setup({
-	-- options = {
-	-- 	theme = scheme,
-	-- },
-})
---
--- tabline.apply_to_config(config)
--- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
--- bar.apply_to_config(config, { position = "top" })
 --
 require("keys").setup(config)
 
