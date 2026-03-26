@@ -168,6 +168,21 @@ return {
 - Provide meaningful error messages via `vim.notify`
 - Use `assert()` for preconditions
 
+### Keymap Conflict Checking
+
+When adding or modifying keymaps, **always audit all of the following locations** before assigning any key:
+
+1. **`~/.config/nvim/lua/config/keymaps.lua`** — custom global keymaps
+2. **`~/.config/nvim/lua/plugins/`** — per-plugin `keys = {}` specs
+3. **`~/.local/share/nvim/lazy/LazyVim/lua/lazyvim/config/keymaps.lua`** — LazyVim default keymaps
+4. **`~/.local/share/nvim/lazy/LazyVim/lua/lazyvim/plugins/editor.lua`** — gitsigns, which-key groups, and other editor plugin keymaps
+5. **`~/.local/share/nvim/lazy/LazyVim/lua/lazyvim/plugins/extras/`** — keymaps added by enabled LazyVim extras (cross-reference against `lazyvim.json` to know which extras are active)
+
+Check the enabled extras in `~/.config/nvim/lazyvim.json` and grep the corresponding extra files for any `keys` definitions that might claim the desired key.
+
+For git keymaps specifically, `<leader>g*` slots already taken include:
+`gg`, `gG`, `gb`, `gB`, `gY`, `gf`, `gl`, `gL`, `gd`, `gD`, `gi`, `gI`, `gp`, `gP`, `gh*` (full hunk subgroup).
+
 ### Guidelines
 
 - Follow modern Neovim conventions (Lua over VimScript)

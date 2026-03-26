@@ -6,7 +6,12 @@
 # Early Initialization (must be first)
 # ----------------------------------------------------------------------------
 [[ -f "$HOME/.env" ]] && source "$HOME/.env"
-[[ -x "$HOME/.local/bin/agent" ]] && eval "$(~/.local/bin/agent shell-integration zsh)"
+# Cursor agent shell-integration hooks zsh so failed commands (even typos like `adsdsa`)
+# surface a "press enter to fix" UI that often ignores Enter; it affects every non-zero exit.
+# Opt in when a Cursor build fixes it: put `export CURSOR_SHELL_INTEGRATION=1` in ~/.env
+if [[ -x "$HOME/.local/bin/agent" ]]; then
+  eval "$(~/.local/bin/agent shell-integration zsh)"
+fi
 
 # ----------------------------------------------------------------------------
 # Environment Variables - Consolidated

@@ -32,7 +32,6 @@ script/release
 
 .agents/
 
-AGENTS.md
 CLAUDE.md
 GEMINI.md
 
