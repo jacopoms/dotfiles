@@ -2,8 +2,8 @@ return {
   {
     "navarasu/onedark.nvim",
     lazy = false,
-    priority = 1000,
-    opts = { style = "cool" },
+    priority = 1000, -- make sure to load this before all the other start plugins
+    opts = { style = "light" },
     init = function()
       require("onedark").load()
     end,
@@ -61,7 +61,7 @@ return {
     -- dependencies = { "rktjmp/lush.nvim" },
     opts = {
       italics = true,
-      theme = "dark",
+      theme = "light",
     },
   },
   {
@@ -104,7 +104,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "newpaper", -- rose-pine-dawn, tokyonight-storm
+      colorscheme = "onedark", -- rose-pine-dawn, tokyonight-storm
     },
   },
 }
