@@ -36,3 +36,9 @@ CLAUDE.md
 GEMINI.md
 
 docs/features/
+
+.claude/
+
+.specify/
+
+specs/
