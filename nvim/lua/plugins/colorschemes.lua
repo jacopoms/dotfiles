@@ -47,7 +47,7 @@ return {
   {
     "projekt0n/github-nvim-theme",
     name = "github-theme",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = true, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     opts = {
       dim_inactive = true,
@@ -59,6 +59,7 @@ return {
     -- "uloco/bluloco.nvim",
     "mistweaverco/bluloco.nvim",
     -- dependencies = { "rktjmp/lush.nvim" },
+    lazy = true,
     opts = {
       italics = true,
       theme = "light",
@@ -79,24 +80,27 @@ return {
   -- lua/plugins/rose-pine.lua
   {
     "rose-pine/neovim",
+    lazy = true,
     name = "rose-pine",
   },
   {
     "rebelot/kanagawa.nvim",
+    lazy = true,
     priority = 1000,
   },
   {
     "tiagovla/tokyodark.nvim",
+    lazy = true,
     priority = 1000,
   },
   {
     "scottmckendry/cyberdream.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
   },
   {
     "craftzdog/solarized-osaka.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {},
   },

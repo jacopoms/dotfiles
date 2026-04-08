@@ -2,6 +2,13 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+vim.keymap.set(
+  "n",
+  "<leader>s*",
+  ":%s/\\<<C-r><C-w>\\>//g<Left><Left>",
+  { desc = "Substitute word under cursor (buffer)" }
+)
+
 -- <C-a> is captured by tmux (prefix key), remap increment to <C-q>
 vim.keymap.set({ "n", "v" }, "<C-q>", "<C-a>", { noremap = true, desc = "Increment" })
 
