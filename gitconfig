@@ -54,6 +54,7 @@
 [core]
     editor = nvim
     excludesFile = ~/.gitignore_global
+	pager = delta
 [color]
     status = auto
     branch = auto
@@ -82,3 +83,10 @@
 	sort = -committerdate
 [safe]
 	directory = ~/.oh-my-zsh
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = false
+[merge]
+	conflictStyle = zdiff3

@@ -3,10 +3,21 @@ return {
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
-    opts = { style = "light" },
-    init = function()
-      require("onedark").load()
-    end,
+    opts = {
+      style = "light",
+      transparent = true,
+      -- Snacks picker list: default links this group to `Visual` (deep bg3 #2a324a).
+      -- colors = {
+      --   snacks_picker_cursor = "#3d5070",
+      -- },
+      -- highlights = {
+      --   SnacksPickerListCursorLine = { bg = "$snacks_picker_cursor" },
+      -- },
+    },
+    -- config = function(_, opts)
+    --   require("onedark").setup(opts)
+    --   require("onedark").load()
+    -- end,
   },
   {
     "Tsuzat/NeoSolarized.nvim",
