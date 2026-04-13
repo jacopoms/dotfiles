@@ -4,20 +4,27 @@ return {
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
     opts = {
-      style = "light",
+      style = "cool", -- dark, darker, cool, deep, warm, warmer
       transparent = true,
       -- Snacks picker list: default links this group to `Visual` (deep bg3 #2a324a).
-      -- colors = {
-      --   snacks_picker_cursor = "#3d5070",
-      -- },
-      -- highlights = {
-      --   SnacksPickerListCursorLine = { bg = "$snacks_picker_cursor" },
-      -- },
+      colors = {
+        snacks_picker_cursor = "#3d5070",
+      },
+      highlights = {
+        SnacksPickerListCursorLine = { bg = "$snacks_picker_cursor" },
+        FloatBorder = { bg = "$bg1" },
+        NormalFloat = { bg = "$bg1" },
+        NeoTreeEndOfBuffer = { bg = "$bg_d" },
+        NeoTreeNormal = { bg = "$bg_d" },
+        NeoTreeNormalNC = { bg = "$bg_d" },
+        NeoTreeVertSplit = { bg = "$bg_d" },
+        NeoTreeWinSeparator = { bg = "$bg_d" },
+      },
     },
-    -- config = function(_, opts)
-    --   require("onedark").setup(opts)
-    --   require("onedark").load()
-    -- end,
+    config = function(_, opts)
+      require("onedark").setup(opts)
+      require("onedark").load()
+    end,
   },
   {
     "Tsuzat/NeoSolarized.nvim",

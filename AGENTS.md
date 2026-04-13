@@ -146,6 +146,15 @@ This file defines multiple specialized agents for managing this dotfiles reposit
 
 ### Plugin Configuration Patterns
 
+Plugin specifications should follow the lazy.nvim format, with clear separation of options and configuration logic. Use
+`opts` for plugin options and `config` for setup logic. Lazy-load plugins when possible using events, commands, or
+filetypes.
+
+Plugin locations:
+
+- ~/.local/share/nvim/lazy/ for installed plugins
+  ~/.local/state/nvim/lazy/ for plugins logs
+
 **Standard lazy.nvim spec structure:**
 
 ```lua
