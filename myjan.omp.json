@@ -1,5 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "transient_prompt": {
+    "template": "<#ff479c>\uea83 {{ .Folder }}</> <p:yellow>\u276f</> ",
+    "foreground": "p:white",
+    "background": "transparent"
+  },
   "secondary_prompt": {
     "template": "<p:yellow,transparent>\ue0b6</><,p:yellow> > </><p:yellow,transparent>\ue0b0</> ",
     "foreground": "p:black",
