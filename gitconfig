@@ -90,3 +90,5 @@
 	dark = false
 [merge]
 	conflictStyle = zdiff3
+[advice]
+	skippedCherryPicks = false

@@ -20,25 +20,23 @@ api_docs.yaml
 .cache_ggshield
 .aider*
 
-
 script/release
+
+kubernetes/manual-jobs/
 
 # AI Agent Instructions
 .cursor/*
-
 .github/copilot-instructions.md
 .github/instructions/
 .github/features/
-
 .agents/
-
 CLAUDE.md
 GEMINI.md
-
 docs/features/
-
 .claude/
-
 .specify/
-
 specs/
+.cursorrules
+
+# Added by code-review-graph
+.code-review-graph/

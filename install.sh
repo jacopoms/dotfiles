@@ -8,9 +8,9 @@ command_exists() {
 # Function to install packages
 install_packages() {
   if command_exists brew; then
-    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship wezterm ghostty atuin
+    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship wezterm ghostty atuin git-delta oh-my-posh
   elif command_exists port; then
-    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship ghostty atuin
+    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship ghostty atuin git-delta oh-my-posh
   else
     echo "Neither brew nor macports is installed. Please install one of them first."
     exit 1
@@ -33,7 +33,7 @@ BASEDIR=$(dirname "$0")
 cd "$BASEDIR" || exit
 
 # HOME dotfiles
-dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions zsh_plugins.txt omp-theme.json)
+dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions zsh_plugins.txt myjan.omp.json)
 
 if [ -n "${dotfiles[*]}" ]; then
   for file in "${dotfiles[@]}"; do
