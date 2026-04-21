@@ -203,46 +203,26 @@
           "style": "plain"
         },
         {
-          "options": {
-            "paused_icon": "\uf04c ",
-            "playing_icon": "\uf04b "
-          },
-          "template": " \uf167 {{ .Icon }}{{ if ne .Status \"stopped\" }}{{ .Artist }} - {{ .Track }}{{ end }} ",
-          "foreground": "#111111",
-          "powerline_symbol": "\ue0b2",
-          "background": "#1BD760",
-          "type": "ytm",
-          "style": "powerline",
-          "invert_powerline": true
+          "type": "docker",
+          "style": "plain",
+          "foreground": "#0B59E7",
+          "background": "transparent",
+          "template": "  {{ .Context }} "
         },
         {
-          "options": {
-            "charged_icon": "\ue22f ",
-            "charging_icon": "\ue234 ",
-            "discharging_icon": "\ue231 "
-          },
-          "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}\uf295 ",
+          "background": "#316ce4",
           "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b2",
-          "background": "#f36943",
-          "type": "battery",
-          "style": "powerline",
-          "background_templates": [
-            "{{if eq \"Charging\" .State.String}}#40c4ff{{end}}",
-            "{{if eq \"Discharging\" .State.String}}#ff5722{{end}}",
-            "{{if eq \"Full\" .State.String}}#4caf50{{end}}"
-          ],
-          "invert_powerline": true
-        },
-        {
-          "leading_diamond": "\ue0b2",
-          "trailing_diamond": "\ue0b4",
-          "template": " {{ .CurrentDate | date .Format }} ",
-          "foreground": "#111111",
-          "background": "#2e9599",
-          "type": "time",
+          "leading_diamond": "\ue0b6",
           "style": "diamond",
-          "invert_powerline": true
+          "template": "󱃾 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}",
+          "trailing_diamond": "\ue0b4",
+          "type": "kubectl",
+          "options": {
+            "context_aliases": {
+              "arn:aws:eks:eu-west-1:455694277770:cluster/production-cluster": "production",
+              "arn:aws:eks:eu-west-1:173255974584:cluster/staging-cluster": "staging"
+            }
+          }
         }
       ]
     },

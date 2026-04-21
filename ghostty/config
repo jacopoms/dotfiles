@@ -47,9 +47,10 @@
 # theme = BlueDolphin
 # theme = dark:TokyoNight Storm,light:TokyoNight Day
 # theme = Horizon Bright
-theme = TokyoNight Storm
+# theme = TokyoNight Storm
 # theme = dark:TokyoNight Storm,light:onedarkpro_onelight
 # theme = dark:solarized_osaka_dark,light:solarized_osaka_light
+theme = Iterm2 Solarized Light
 # theme = Catppuccin Latte
 # theme = kanagawa-lotus
 # theme = Tinacious Design Light

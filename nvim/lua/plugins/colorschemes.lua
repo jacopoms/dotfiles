@@ -4,11 +4,11 @@ return {
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
     opts = {
-      style = "cool", -- dark, darker, cool, deep, warm, warmer
+      style = "light", -- dark, darker, cool, deep, warm, warmer
       transparent = true,
-      -- Snacks picker list: default links this group to `Visual` (deep bg3 #2a324a).
+      -- Snacks picker list: default links this group to `Visual` (deep bg3 #ffffff).
       colors = {
-        snacks_picker_cursor = "#3d5070",
+        snacks_picker_cursor = "#dddddd",
       },
       highlights = {
         SnacksPickerListCursorLine = { bg = "$snacks_picker_cursor" },
@@ -32,7 +32,7 @@ return {
     priority = 1000,
     opts = {
       transparent = false,
-      -- style = "light",
+      style = "light",
     },
   },
   {
@@ -120,7 +120,9 @@ return {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     priority = 1000,
-    opts = {},
+    opts = {
+      transparent = false,
+    },
   },
   -- Configure LazyVim to load  colorscheme
   {

@@ -206,3 +206,8 @@ eval "$(ssh-agent -s)" &>/dev/null
 # Aliases & Custom Functions
 # ----------------------------------------------------------------------------
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/jacopog/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
