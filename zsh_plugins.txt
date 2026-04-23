@@ -42,3 +42,6 @@ wfxr/forgit
 
 # Git auto-fetch (standalone implementation)
 MenkeTechnologies/zsh-git-acp
+
+# atuin
+atuinsh/atuin
