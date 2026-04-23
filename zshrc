@@ -14,6 +14,15 @@ if [[ -x "$HOME/.local/bin/agent" ]]; then
 fi
 
 # ----------------------------------------------------------------------------
+# Architecture Detection
+# ----------------------------------------------------------------------------
+if [[ "$(uname -m)" == "arm64" ]]; then
+  HOMEBREW_PREFIX="/opt/homebrew"
+else
+  HOMEBREW_PREFIX="/usr/local"
+fi
+
+# ----------------------------------------------------------------------------
 # Environment Variables - Consolidated
 # ----------------------------------------------------------------------------
 export ASDF_DATA_DIR="$HOME/.asdf"
@@ -40,12 +49,8 @@ path=(
   $path  # Keep existing PATH entries
 )
 
-# Conditional PATH additions
-if [[ "$APPLE_CHIP" == true ]]; then
-  path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
-else
-  path=(/usr/local/bin /usr/local/sbin $path)
-fi
+# Homebrew PATH (arch-specific prefix set above)
+path=("$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin" $path)
 
 # Remove duplicates and non-existent directories
 typeset -U path
@@ -54,12 +59,8 @@ path=($^path(N-/))
 # ----------------------------------------------------------------------------
 # Homebrew & Package Manager Setup
 # ----------------------------------------------------------------------------
-if (( $+commands[brew] )); then
-  if [[ "$APPLE_CHIP" == true ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  else
-    eval "$(/usr/local/bin/brew shellenv)"
-  fi
+if [[ -x "$HOMEBREW_PREFIX/bin/brew" ]]; then
+  eval "$("$HOMEBREW_PREFIX/bin/brew" shellenv)"
 
   # FZF setup
   export FZF_BASE="$(brew --prefix)/bin/fzf"
@@ -188,6 +189,8 @@ _fzf_comprun() {
 if [[ -f "$HOME/.atuin/bin/env" ]]; then
   . "$HOME/.atuin/bin/env"
   eval "$(atuin init zsh --disable-up-arrow)"
+elif (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
 # Stern (Kubernetes log viewer)
@@ -206,8 +209,4 @@ eval "$(ssh-agent -s)" &>/dev/null
 # Aliases & Custom Functions
 # ----------------------------------------------------------------------------
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/jacopog/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+
