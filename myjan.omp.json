@@ -35,7 +35,8 @@
           "options": {
             "folder_separator_icon": " \ue0b1 ",
             "home_icon": "~",
-            "style": "folder"
+            "max_depth": 3,
+            "style": "letter"
           },
           "template": " \uea83  {{ .Path }} ",
           "foreground": "#ffffff",
