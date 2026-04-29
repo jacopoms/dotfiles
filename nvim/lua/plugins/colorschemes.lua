@@ -21,10 +21,10 @@ return {
         NeoTreeWinSeparator = { bg = "$bg_d" },
       },
     },
-    config = function(_, opts)
-      require("onedark").setup(opts)
-      require("onedark").load()
-    end,
+    -- config = function(_, opts)
+    --   require("onedark").setup(opts)
+    --   require("onedark").load()
+    -- end,
   },
   {
     "Tsuzat/NeoSolarized.nvim",
