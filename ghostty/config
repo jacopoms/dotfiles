@@ -73,13 +73,13 @@ mouse-hide-while-typing = true
 macos-option-as-alt = true
 
 # Window
-# window-padding-y = 2,0
-# window-padding-balance = true
+window-padding-y = 2,0
+window-padding-balance = true
 maximize = true
 # auto | none, false | client | server
-# window-decoration = false
+window-decoration = none
 # native | transparent | hidden | tabs
-# macos-titlebar-style = hidden
+macos-titlebar-style = hidden
 background-opacity = 0.95
 scrollbar = system
 
