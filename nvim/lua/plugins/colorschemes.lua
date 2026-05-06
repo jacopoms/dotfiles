@@ -4,7 +4,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent_bg = false,
+      transparent_bg = true,
       italic_comment = true,
     },
   },
