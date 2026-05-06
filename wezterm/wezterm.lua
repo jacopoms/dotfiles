@@ -17,7 +17,7 @@ end
 
 -- Configuration options
 local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or scheme_for_appearance(appearance)
-local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 13.2
+local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
 -- Obtain the definition of the selected color scheme
 local builtin_schemes = wezterm.color.get_builtin_schemes()
@@ -44,6 +44,8 @@ config = {
 		{ family = "Cascadia Code", weight = "Regular" },
 		"Symbols Nerd Font",
 	}),
+	-- Simulate font thickening (closest WezTerm equivalent to Ghostty's font-thicken)
+	bold_brightens_ansi_colors = "BrightAndBold",
 	automatically_reload_config = true,
 
 	-- Window configuration
@@ -58,16 +60,18 @@ config = {
 	},
 
 	window_decorations = "RESIZE",
-	window_background_opacity = 1,
+	window_background_opacity = 0.95,
 	window_padding = {
-		left = 10,
-		right = 10,
-		top = 5,
-		bottom = 5,
+		left = 5,
+		right = 5,
+		top = 2,
+		bottom = 0,
 	},
 	initial_cols = 300,
 	initial_rows = 120,
 	max_fps = 240,
+	-- Mouse
+	hide_mouse_cursor_when_typing = true,
 	-- Tab bar configuration
 	scrollback_lines = 35000,
 	enable_scroll_bar = true,
@@ -105,8 +109,17 @@ config = {
 	send_composed_key_when_right_alt_is_pressed = false,
 }
 
---
 require("keys").setup(config)
+
+-- Copy on select (like Ghostty's copy-on-select = clipboard)
+-- Extend mouse bindings to copy to clipboard on mouse release after selection
+config.mouse_bindings = {
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "NONE",
+		action = wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor("Clipboard"),
+	},
+}
 
 -- Return the configuration to wezterm
 return config
