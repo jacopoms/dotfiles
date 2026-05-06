@@ -1,22 +1,22 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#769ff0 fg:#a3aed2)\
+[░▒▓](#6272a4)\
+[  ](bg:#6272a4 fg:#282a36)\
+[](bg:#bd93f9 fg:#6272a4)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
+[](fg:#bd93f9 bg:#44475a)\
 $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
-[](fg:#212736 bg:#1d2230)\
-[ ](fg:#1d2230)\
+[](fg:#44475a bg:#282a36)\
+[ ](fg:#282a36)\
 \n$sudo\
 $character"""
 
 right_format = """
-(fg:#394260 bg:#212736)\
+(fg:#44475a bg:#44475a)\
 $aws\
 $kubernetes\
 $container\
@@ -28,7 +28,7 @@ $time\
 $cmd_duration
 """
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:#f8f8f2 bg:#bd93f9"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -41,17 +41,17 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:#44475a"
+format = '[[ $symbol $branch ](fg:#bd93f9 bg:#44475a)]($style)'
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:#44475a"
+format = '[[($all_status$ahead_behind )](fg:#bd93f9 bg:#44475a)]($style)'
 
 [git_metrics]
 format = "([+$added]($added_style))[]($added_style)"
-added_style = "fg:#769ff0 bg:#394260"
-deleted_style = "fg:bright-red bg:235"
+added_style = "fg:#bd93f9 bg:#44475a"
+deleted_style = "fg:#ff5555 bg:#44475a"
 disabled = false
 
 [git_state]
@@ -60,12 +60,12 @@ disabled = false
 [time]
 disabled = false
 time_format = "%R"                                      # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+style = "bg:#282a36"
+format = '[[  $time ](fg:#6272a4 bg:#282a36)]($style)'
 
 [cmd_duration]
 format = "[  $duration ]($style)"
-style = "fg:bright-white bg:18"
+style = "fg:#f8f8f2 bg:#44475a"
 disabled = false
 
 [aws]

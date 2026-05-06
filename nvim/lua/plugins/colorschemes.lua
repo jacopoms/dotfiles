@@ -1,5 +1,14 @@
 return {
   {
+    "Mofiqul/dracula.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_bg = false,
+      italic_comment = true,
+    },
+  },
+  {
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -128,7 +137,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark", -- rose-pine-dawn, tokyonight-storm
+      colorscheme = "dracula", -- rose-pine-dawn, tokyonight-storm, onedark
     },
   },
 }

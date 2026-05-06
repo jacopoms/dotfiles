@@ -50,7 +50,7 @@
 # theme = TokyoNight Storm
 # theme = dark:TokyoNight Storm,light:onedarkpro_onelight
 # theme = dark:solarized_osaka_dark,light:solarized_osaka_light
-theme = Iterm2 Solarized Light
+theme = Dracula+
 # theme = Catppuccin Latte
 # theme = kanagawa-lotus
 # theme = Tinacious Design Light
