@@ -12,11 +12,7 @@ wezterm.log_info("reloading")
 local appearance = wezterm.gui.get_appearance()
 
 local function scheme_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return "Tokyo Night Storm"
-	else
-		return "Solarized Light (Gogh)"
-	end
+	return "Dracula"
 end
 
 -- Configuration options
