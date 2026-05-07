@@ -62,10 +62,10 @@ config = {
 	window_decorations = "RESIZE",
 	window_background_opacity = 0.95,
 	window_padding = {
-		left = 5,
-		right = 5,
-		top = 2,
-		bottom = 0,
+		left = 7,
+		right = 7,
+		top = 10,
+		bottom = 5,
 	},
 	initial_cols = 300,
 	initial_rows = 120,
@@ -76,6 +76,9 @@ config = {
 	scrollback_lines = 35000,
 	enable_scroll_bar = true,
 	colors = {
+		-- Highlight for active search match (cmd+f) and selected text
+		selection_fg = "#000000",
+		selection_bg = "#FFD700",
 		tab_bar = {
 			background = scheme_def.background,
 			inactive_tab_edge = scheme_def.ansi and scheme_def.ansi[1] or "#333333",
@@ -120,6 +123,20 @@ config.mouse_bindings = {
 		action = wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor("Clipboard"),
 	},
 }
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+
+tabline.setup({
+	options = {
+		-- Optional: Customize the tabline appearance
+		theme = "Dracula",
+	},
+	-- tabline_bg_color = scheme_def.background,
+	-- tabline_fg_color = scheme_def.foreground,
+	-- active_tab_bg_color = scheme_def.ansi and scheme_def.ansi[1] or "#333333",
+	-- active_tab_fg_color = scheme_def.foreground,
+	-- inactive_tab_bg_color = wezterm.color.parse(scheme_def.background):darken(0.5),
+	-- inactive_tab_fg_color = scheme_def.ansi and scheme_def.ansi[8] or "#808080",
+})
 
 -- Return the configuration to wezterm
 return config
