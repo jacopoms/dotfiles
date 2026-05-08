@@ -25,10 +25,10 @@
         {
           "leading_diamond": "\ue0b6",
           "trailing_diamond": "\ue0b0",
-          "template": " {{ .UserName }} ",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
           "foreground": "#f8f8f2",
           "background": "#bd93f9",
-          "type": "session",
+          "type": "os",
           "style": "diamond"
         },
         {
@@ -194,9 +194,7 @@
           "invert_powerline": true,
           "foreground": "#ffffff",
           "background": "#50fa7b",
-          "background_templates": [
-            "{{ if gt .Code 0 }}#ff5555{{ end }}"
-          ],
+          "background_templates": ["{{ if gt .Code 0 }}#ff5555{{ end }}"],
           "template": " \ue23a {{ if gt .Code 0 }}{{ reason .Code }}{{ end }} "
         },
         {
@@ -207,15 +205,6 @@
           "foreground": "#f8f8f2",
           "background": "#6272a4",
           "template": " \uf489 {{ .Name }} "
-        },
-        {
-          "type": "docker",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b2",
-          "invert_powerline": true,
-          "foreground": "#ffffff",
-          "background": "#1D63ED",
-          "template": " \uf308 {{ .Context }} "
         },
         {
           "type": "kubectl",
@@ -261,9 +250,7 @@
       "background": "p:orange",
       "type": "aws",
       "style": "diamond",
-      "tips": [
-        "aws"
-      ]
+      "tips": ["aws"]
     },
     {
       "options": {
@@ -276,9 +263,7 @@
       "background": "p:blue",
       "type": "az",
       "style": "diamond",
-      "tips": [
-        "az"
-      ]
+      "tips": ["az"]
     }
   ],
   "version": 4,
