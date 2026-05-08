@@ -89,11 +89,30 @@ shell-integration-features = cursor,sudo,title,ssh-env
 quit-after-last-window-closed = true
 
 # keybindings
+# Scrollback
+keybind = super+j=scroll_page_fractional:0.5
+keybind = super+k=scroll_page_fractional:-0.5
+# Tabs
+keybind = super+t=new_tab
 keybind = super+h=previous_tab
 keybind = super+l=next_tab
+keybind = super+shift+period=move_tab:1
+keybind = super+shift+comma=move_tab:-1
+# Splits - navigate
+keybind = super+shift+h=goto_split:left
 keybind = super+shift+l=goto_split:right
 keybind = super+shift+j=goto_split:down
 keybind = super+shift+k=goto_split:up
-keybind = super+shift+h=goto_split:left
-keybind = super+j=scroll_page_down
-keybind = super+k=scroll_page_up
+# Splits - create
+keybind = super+enter=new_split:auto
+keybind = super+shift+backslash=new_split:right
+keybind = super+shift+minus=new_split:down
+# Close
+keybind = super+w=close_surface
+# Font size
+keybind = super+zero=reset_font_size
+keybind = super+shift+nine=decrease_font_size:1
+keybind = super+shift+zero=increase_font_size:1
+# Clipboard
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
