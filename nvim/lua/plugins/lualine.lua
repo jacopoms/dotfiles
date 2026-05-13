@@ -18,7 +18,11 @@ return {
     opts.sections.lualine_c = opts.sections.lualine_c or {}
     opts.sections.lualine_y = opts.sections.lualine_y or {}
 
-    local branch_opts = { "ex.git.branch", max_length = 24, icon = " ", crop = { side = "right" } }
+    local colors = {
+      changed = { fg = "orange" },
+      committed = { fg = "pink" },
+    }
+    local branch_opts = { "ex.git.branch", max_length = 24, icon = " ", crop = { side = "right" }, colors = colors }
     opts.sections.lualine_b = { branch_opts }
     table.insert(opts.sections.lualine_c, { "navic", color_correction = "dynamic" })
   end,
