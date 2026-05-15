@@ -196,30 +196,6 @@
           "background": "#50fa7b",
           "background_templates": ["{{ if gt .Code 0 }}#ff5555{{ end }}"],
           "template": " \ue23a {{ if gt .Code 0 }}{{ reason .Code }}{{ end }} "
-        },
-        {
-          "type": "shell",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b2",
-          "invert_powerline": true,
-          "foreground": "#f8f8f2",
-          "background": "#6272a4",
-          "template": " \uf489 {{ .Name }} "
-        },
-        {
-          "type": "kubectl",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b2",
-          "invert_powerline": true,
-          "foreground": "#ffffff",
-          "background": "#316ce4",
-          "template": " \udb84\udcfe {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} ",
-          "options": {
-            "context_aliases": {
-              "arn:aws:eks:eu-west-1:455694277770:cluster/production-cluster": "production",
-              "arn:aws:eks:eu-west-1:173255974584:cluster/staging-cluster": "staging"
-            }
-          }
         }
       ]
     },
