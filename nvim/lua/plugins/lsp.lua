@@ -22,7 +22,7 @@ return {
       },
       ruby_lsp = {
         mason = false,
-        cmd = { vim.fn.expand("~/.asdf/shims/ruby-lsp") },
+        cmd = { "ruby-lsp" },
       },
       copilot = {
         enabled = true,

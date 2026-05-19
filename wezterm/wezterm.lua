@@ -31,6 +31,9 @@ wezterm.log_info(log_line)
 
 config = {
 	-- General settings
+	-- Rendering frontend: "WebGpu" (default on macOS), "OpenGL", "Software"
+	front_end = "Software",
+	term = "xterm-256color",
 	color_scheme = scheme,
 	font_size = font_size,
 	font = wezterm.font_with_fallback({
@@ -60,21 +63,18 @@ config = {
 	},
 
 	window_decorations = "RESIZE",
-	window_background_opacity = 0.95,
+	window_background_opacity = 1.0,
 	window_padding = {
 		left = 7,
 		right = 7,
 		top = 10,
 		bottom = 5,
 	},
-	initial_cols = 300,
-	initial_rows = 120,
-	max_fps = 240,
+	max_fps = 120,
 	-- Mouse
 	hide_mouse_cursor_when_typing = true,
 	-- Tab bar configuration
 	scrollback_lines = 35000,
-	enable_scroll_bar = true,
 	colors = {
 		-- Highlight for active search match (cmd+f) and selected text
 		selection_fg = "#000000",
