@@ -9,8 +9,35 @@
 # Cursor agent shell-integration hooks zsh so failed commands (even typos like `adsdsa`)
 # surface a "press enter to fix" UI that often ignores Enter; it affects every non-zero exit.
 # Opt in when a Cursor build fixes it: put `export CURSOR_SHELL_INTEGRATION=1` in ~/.env
-if [[ -x "$HOME/.local/bin/agent" ]]; then
-  eval "$(~/.local/bin/agent shell-integration zsh)"
+# if [[ -x "$HOME/.local/bin/agent" ]]; then
+#   eval "$(~/.local/bin/agent shell-integration zsh)"
+# fi
+
+# Disable terminal-specific shell integration inside tmux — these inject escape
+# sequences that conflict with tmux's own terminal management and cause pane
+# rendering artifacts (visual overlap between vertical panes).
+if [[ -n "$TMUX" ]]; then
+  # Ghostty: prevent shell integration OSC sequences from leaking into tmux
+  unset GHOSTTY_RESOURCES_DIR
+  unset GHOSTTY_SHELL_INTEGRATION_NO_SUDO
+
+  # Prevent oh-my-posh / zsh plugins from using terminal-specific cursor/OSC features
+  unset TERM_PROGRAM
+
+  # WezTerm: unset pane/socket vars so programs don't think they're in a WezTerm pane
+  # (new tmux panes inherit these from the parent shell, but they're meaningless inside tmux)
+  unset WEZTERM_PANE
+  unset WEZTERM_UNIX_SOCKET
+  unset WEZTERM_EXECUTABLE
+  export WEZTERM_SHELL_SKIP_ALL=1
+
+  # Disable OMZ's auto window-title feature — termsupport.zsh sends OSC 0/1/2 sequences
+  # that WezTerm processes even from inside tmux, potentially desyncing its cursor state
+  export DISABLE_AUTO_TITLE=true
+
+  # Disable zsh's PROMPT_SP option — it uses cursor-positioning sequences before each
+  # prompt to preserve partial lines, which can confuse tmux/WezTerm terminal state
+  unsetopt PROMPT_SP
 fi
 
 # ----------------------------------------------------------------------------
@@ -209,4 +236,3 @@ eval "$(ssh-agent -s)" &>/dev/null
 # Aliases & Custom Functions
 # ----------------------------------------------------------------------------
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
-
