@@ -28,6 +28,23 @@ This file defines multiple specialized agents for managing this dotfiles reposit
 - Installation: `install.sh`
 - Version management: `tool-versions`
 
+### Installation Model (understand before editing)
+
+There is no build or test suite — "running" a change means sourcing/reloading the relevant program's config. Files live in the repo and are **symlinked** into `$HOME` and `$HOME/.config` by `install.sh`, which is the source of truth for how files map to their live locations:
+
+- Home dotfiles are symlinked as `~/.<name>` — e.g. `zshrc` → `~/.zshrc`, `gitconfig` → `~/.gitconfig`, `myjan.omp.json` → `~/.myjan.omp.json`. Note the repo files have **no leading dot**; the dot is added at the symlink.
+- `.config` directories (`nvim`, `wezterm`, `bat`, `ghostty`) are symlinked as `~/.config/<name>`.
+- `starship.toml` → `~/.config/starship.toml`.
+
+Because everything is symlinked, editing a file in this repo immediately affects the live environment. To apply changes: `source ~/.zshrc` (shell), reload tmux with `<prefix> r` / `tmux source ~/.tmux.conf`, or restart the terminal emulator. Neovim picks up Lua changes on restart.
+
+### Common Commands
+
+- Install missing tools + create symlinks: `./install.sh` (uses Homebrew or MacPorts)
+- Update zsh plugins: `antidote update` (plugins declared in `zsh_plugins.txt`)
+- Format Lua: `stylua nvim/` (config in `nvim/stylua.toml` — 2 spaces, 120 col)
+- Neovim plugin lockfile is `nvim/lazy-lock.json`; update via `:Lazy update` inside nvim.
+
 ### Responsibilities
 
 - Help add, modify, or remove configuration files
@@ -102,6 +119,16 @@ This file defines multiple specialized agents for managing this dotfiles reposit
 - Neovim API (`vim.api`, `vim.fn`, `vim.treesitter`, `vim.loop`)
 - Performance optimization and lazy-loading
 - LuaLS annotations for type checking
+
+### Configuration Structure
+
+LazyVim-based, Lua, managed by lazy.nvim:
+
+- `nvim/init.lua` → bootstraps `lua/config/lazy.lua`
+- `nvim/lua/config/` — `options.lua`, `keymaps.lua`, `autocmds.lua`, `lazy.lua`
+- `nvim/lua/plugins/` — one file per plugin/spec, each returning a lazy.nvim spec table
+- `nvim/lazyvim.json` — the enabled LazyVim **extras** (languages, editor features). This is the fastest way to see what languages/tooling are active before adding a plugin.
+- `nvim/lua/plugins/disabled.lua` — plugins explicitly turned off
 
 ### Lua Coding Conventions
 
@@ -257,6 +284,8 @@ For git keymaps specifically, `<leader>g*` slots already taken include:
 - Idempotent installation scripts
 - Error handling and rollback
 - Cross-platform compatibility
+
+**Current state**: `install.sh` uses plain `ln -s` and does **not** remove existing files first — it is **not** idempotent (re-running it errors on already-linked files). Adding a new dotfile means adding it to the `dotfiles` or `config_dirs` array in `install.sh`.
 
 **Guidelines**:
 
