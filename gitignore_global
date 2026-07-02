@@ -41,6 +41,14 @@ docs/features/
 .specify/
 specs/
 .cursorrules
+.gemini/
+.kiro/
+.github/code-review-graph.instruction.md
+.mcp.json
+.opencode.json
+.windsurfrules
 
 # Added by code-review-graph
 .code-review-graph/
+QODER.md
+.qoder/
