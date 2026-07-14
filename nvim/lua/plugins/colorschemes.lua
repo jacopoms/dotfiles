@@ -133,6 +133,16 @@ return {
       transparent = false,
     },
   },
+  {
+    "maxmx03/fluoromachine.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      glow = false,
+      theme = "fluoromachine",
+      transparent = true,
+    },
+  },
   -- Configure LazyVim to load  colorscheme
   {
     "LazyVim/LazyVim",
