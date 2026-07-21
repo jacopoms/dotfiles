@@ -21,7 +21,6 @@ zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zdharma-continuum/fast-syntax-highlighting kind:defer
 psprint/zsh-navigation-tools
-wfxr/forgit
 
 # Completions
 # mattmc3/ez-compinit
