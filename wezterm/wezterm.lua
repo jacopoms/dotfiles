@@ -37,10 +37,10 @@ config = {
 	color_scheme = scheme,
 	font_size = font_size,
 	font = wezterm.font_with_fallback({
-		{ family = "CaskaydiaCove Nerd Font", weight = "Regular" },
 		{ family = "JetBrainsMono Nerd Font", weight = "Regular" },
-		{ family = "JetBrains Mono", weight = "Regular" },
 		{ family = "Hack Nerd Font Mono", weight = "Regular" },
+		{ family = "CaskaydiaCove Nerd Font", weight = "Regular" },
+		{ family = "JetBrains Mono", weight = "Regular" },
 		{ family = "MesloLGMDZ Nerd Font Mono", weight = "Regular" },
 		{ family = "FiraCode Nerd Font Mono", weight = "Regular" },
 		{ family = "MonaspiceNe Nerd Font", weight = "Regular" },
@@ -63,7 +63,8 @@ config = {
 	},
 
 	window_decorations = "RESIZE",
-	window_background_opacity = 1.0,
+	window_background_opacity = 0.9,
+	macos_window_background_blur = 5,
 	window_padding = {
 		left = 7,
 		right = 7,

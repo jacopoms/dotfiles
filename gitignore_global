@@ -33,6 +33,7 @@ kubernetes/manual-jobs/
 .github/features/
 .agents/
 CLAUDE.md
+CLAUDE.local.md
 GEMINI.md
 AGENTS.md
 AGENT.md
@@ -52,3 +53,4 @@ specs/
 .code-review-graph/
 QODER.md
 .qoder/
+.playwright-mcp/
