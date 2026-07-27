@@ -35,18 +35,22 @@ config = {
 	front_end = "Software",
 	term = "xterm-256color",
 	color_scheme = scheme,
-	font_size = font_size,
 	font = wezterm.font_with_fallback({
-		{ family = "JetBrainsMono Nerd Font", weight = "Regular" },
-		{ family = "Hack Nerd Font Mono", weight = "Regular" },
 		{ family = "CaskaydiaCove Nerd Font", weight = "Regular" },
-		{ family = "JetBrains Mono", weight = "Regular" },
-		{ family = "MesloLGMDZ Nerd Font Mono", weight = "Regular" },
-		{ family = "FiraCode Nerd Font Mono", weight = "Regular" },
-		{ family = "MonaspiceNe Nerd Font", weight = "Regular" },
-		{ family = "Cascadia Code", weight = "Regular" },
-		"Symbols Nerd Font",
+		-- { family = "Cascadia Code", weight = "Regular" },
+		-- { family = "JetBrains Mono", weight = "Regular" },
+		-- { family = "MesloLGMDZ Nerd Font Mono", weight = "Regular" },
+		-- { family = "FiraCode Nerd Font Mono", weight = "Regular" },
+		-- { family = "Hack Nerd Font Mono", weight = "Regular" },
+		-- { family = "JetBrainsMono Nerd Font", weight = "Regular" },
+		-- { family = "MonaspiceNe Nerd Font", weight = "Regular" },
+		-- Scale the bundled Nerd Font Icons
+		{
+			family = "Symbols Nerd Font",
+			scale = 1.05, -- Adjust this value to make icons bigger or smaller
+		},
 	}),
+	font_size = font_size,
 	-- Simulate font thickening (closest WezTerm equivalent to Ghostty's font-thicken)
 	bold_brightens_ansi_colors = "BrightAndBold",
 	automatically_reload_config = true,
@@ -112,6 +116,12 @@ config = {
 	send_composed_key_when_left_alt_is_pressed = false,
 	send_composed_key_when_right_alt_is_pressed = false,
 }
+
+-- Open maximized on startup
+wezterm.on("gui-startup", function(cmd)
+	local _, _, window = wezterm.mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
+end)
 
 require("keys").setup(config)
 
