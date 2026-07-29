@@ -79,7 +79,7 @@ maximize = true
 # auto | none, false | client | server
 window-decoration = auto
 # native | transparent | hidden | tabs
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 background-opacity = 0.95
 scrollbar = system
 
