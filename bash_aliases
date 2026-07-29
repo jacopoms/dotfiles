@@ -15,7 +15,11 @@ alias egrep='egrep --color=auto'
 alias less='cless'
 
 alias find-here='grep -rnw . -e'
-alias find-file='find . -iname'
+alias find-file='find . -type f -iname'
+
+function ff() {
+  find . -type f -iname "*$1*"
+}
 
 ## aliases for rails
 alias be='bundle exec'
