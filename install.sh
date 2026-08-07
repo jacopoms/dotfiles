@@ -9,6 +9,8 @@ command_exists() {
 install_packages() {
   if command_exists brew; then
     brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship wezterm ghostty atuin git-delta oh-my-posh
+    # Maccy provides system clipboard history (menu bar app, no CLI/tmux-fzf integration)
+    brew install --cask maccy
   elif command_exists port; then
     sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship ghostty atuin git-delta oh-my-posh
   else

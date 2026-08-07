@@ -173,7 +173,7 @@ export FZF_COMPLETION_TRIGGER="@@"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--style full"
+export FZF_DEFAULT_OPTS="--style full --layout=reverse"
 
 # FZF preview configurations
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
