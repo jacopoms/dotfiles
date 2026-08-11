@@ -238,3 +238,10 @@ eval "$(ssh-agent -s)" &>/dev/null
 # Aliases & Custom Functions
 # ----------------------------------------------------------------------------
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+
+# bun completions
+[ -s "/Users/jacopog/.bun/_bun" ] && source "/Users/jacopog/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
