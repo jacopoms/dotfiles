@@ -22,9 +22,17 @@ end
 local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or scheme_for_appearance(appearance)
 local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
--- Obtain the definition of the selected color scheme
+-- Obtain the definition of the selected color scheme. get_builtin_schemes()
+-- only knows wezterm's bundled schemes, not the custom ones loaded from
+-- colors/*.toml, so fall back to loading the local file for those.
 local builtin_schemes = wezterm.color.get_builtin_schemes()
 local scheme_def = builtin_schemes[scheme]
+if not scheme_def then
+	local ok, custom = pcall(wezterm.color.load_scheme, wezterm.config_dir .. "/colors/" .. scheme .. ".toml")
+	if ok then
+		scheme_def = custom
+	end
+end
 local titlebar_bg = (scheme_def and scheme_def.background) or "#24283b"
 -- print a line here in the shell to see the value of scheme
 

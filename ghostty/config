@@ -58,7 +58,7 @@ theme = dark:Dracula,light:onedarkpro_onelight
 
 # Font
 # font-family = FiraCode Nerd Font Mono
-font-family = Caskaydia Cove Nerd Font
+font-family = CaskaydiaCove Nerd Font
 font-size = 12.5
 font-thicken=true
 font-thicken-strength=1
