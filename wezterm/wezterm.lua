@@ -11,7 +11,10 @@ wezterm.log_info("reloading")
 
 local appearance = wezterm.gui.get_appearance()
 
-local function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appear)
+	if appear:find("Light") then
+		return "onedarkpro_onelight"
+	end
 	return "Dracula"
 end
 

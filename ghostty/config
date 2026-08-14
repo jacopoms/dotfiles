@@ -49,8 +49,7 @@
 # theme = Horizon Bright
 # theme = TokyoNight Storm
 # theme = dark:TokyoNight Storm,light:onedarkpro_onelight
-# theme = dark:solarized_osaka_dark,light:solarized_osaka_light
-theme = Dracula
+theme = dark:Dracula,light:onedarkpro_onelight
 # theme = Catppuccin Latte
 # theme = kanagawa-lotus
 # theme = Tinacious Design Light
