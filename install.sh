@@ -35,7 +35,7 @@ BASEDIR=$(dirname "$0")
 cd "$BASEDIR" || exit
 
 # HOME dotfiles
-dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions zsh_plugins.txt myjan.omp.json)
+dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions zsh_plugins.txt myjan.omp.json myjan-onelight.omp.json theme.zsh)
 
 if [ -n "${dotfiles[*]}" ]; then
   for file in "${dotfiles[@]}"; do
@@ -53,6 +53,12 @@ if [ -n "${config_dirs[*]}" ]; then
     create_symlink "${PWD}/${dir}" "${config_basedir}/${dir}"
   done
 fi
+
+# ~/bin scripts (theme-mode, theme-apply-tmux.sh — used by zshrc/tmux.conf)
+mkdir -p "${HOME}/bin"
+for script in bin/*; do
+  create_symlink "${PWD}/${script}" "${HOME}/${script}"
+done
 # install tmux plugin manager
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm

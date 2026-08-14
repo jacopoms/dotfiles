@@ -170,7 +170,7 @@ bindkey "^[[Z" autosuggest-accept               # Shift+Tab
 # FZF Configuration
 # ----------------------------------------------------------------------------
 export FZF_COMPLETION_TRIGGER="@@"
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix auto --exclude .git"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS="--style full --layout=reverse"
@@ -202,6 +202,11 @@ _fzf_comprun() {
 }
 
 # ----------------------------------------------------------------------------
+# Theme (Dracula dark / Solarized Osaka light, follows macOS appearance)
+# ----------------------------------------------------------------------------
+source ~/dotfiles/theme.zsh
+
+# ----------------------------------------------------------------------------
 # External Tool Integrations
 # ----------------------------------------------------------------------------
 # Zoxide (smart cd)
@@ -211,7 +216,7 @@ _fzf_comprun() {
 # (( $+commands[starship] )) && eval "$(starship init zsh)"
 
 # Oh My Posh
-(( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config ~/dotfiles/myjan.omp.json)"
+(( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config "$OMP_CONFIG")"
 # (( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config tokyo)"
 
 # Atuin (shell history sync)

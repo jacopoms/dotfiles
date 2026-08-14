@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Resolves the active color-theme mode: prints "light" or "dark".
+# Priority: $THEME env var (light|dark) > macOS system appearance > dark.
+mode="${THEME:-auto}"
+
+if [ "$mode" != "light" ] && [ "$mode" != "dark" ]; then
+  if defaults read -g AppleInterfaceStyle >/dev/null 2>&1; then
+    mode="dark"
+  else
+    mode="light"
+  fi
+fi
+
+echo "$mode"

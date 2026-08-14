@@ -9,31 +9,11 @@ return {
     },
   },
   {
-    "navarasu/onedark.nvim",
+    "olimorris/onedarkpro.nvim",
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
-    opts = {
-      style = "light", -- dark, darker, cool, deep, warm, warmer
-      transparent = true,
-      -- Snacks picker list: default links this group to `Visual` (deep bg3 #ffffff).
-      colors = {
-        snacks_picker_cursor = "#dddddd",
-      },
-      highlights = {
-        SnacksPickerListCursorLine = { bg = "$snacks_picker_cursor" },
-        FloatBorder = { bg = "$bg1" },
-        NormalFloat = { bg = "$bg1" },
-        NeoTreeEndOfBuffer = { bg = "$bg_d" },
-        NeoTreeNormal = { bg = "$bg_d" },
-        NeoTreeNormalNC = { bg = "$bg_d" },
-        NeoTreeVertSplit = { bg = "$bg_d" },
-        NeoTreeWinSeparator = { bg = "$bg_d" },
-      },
-    },
-    -- config = function(_, opts)
-    --   require("onedark").setup(opts)
-    --   require("onedark").load()
-    -- end,
+    -- colorscheme names it registers: onedark, onelight, onedark_vivid, onedark_dark, vaporwave
+    -- (which one loads is picked below via LazyVim.opts.colorscheme)
   },
   {
     "Tsuzat/NeoSolarized.nvim",
@@ -144,10 +124,11 @@ return {
     },
   },
   -- Configure LazyVim to load  colorscheme
+  -- Follows $THEME_MODE (exported by theme.zsh: Dracula dark / onedarkpro "onelight" light)
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "dracula", -- rose-pine-dawn, tokyonight-storm, onedark
+      colorscheme = (vim.env.THEME_MODE == "light") and "onelight" or "dracula",
     },
   },
 }
