@@ -132,6 +132,15 @@ setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks
 # ----------------------------------------------------------------------------
 # Antidote Plugin Manager
 # ----------------------------------------------------------------------------
+# oh-my-zsh's git.zsh and kubectx.plugin.zsh both do `local _style` at the
+# top level of the sourced file. Antidote's static bundle sources every
+# plugin in the same top-level scope, so kubectx's re-declaration of an
+# already-local `_style` triggers zsh's "typeset with existing local prints
+# it" behavior, spamming "_style=no" on every new shell. Called via
+# post:_omz_unset_style_leak (see zsh_plugins.txt) right after git/gitfast
+# load, before kubectx gets a chance to collide with it.
+_omz_unset_style_leak() { unset _style }
+
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
 # Set ZSH variable for oh-my-zsh plugins
