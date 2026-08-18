@@ -95,3 +95,13 @@ function gh-run-notifier() {
   gh run watch "$param1" && terminal-notifier -title GH RUN FINISHED! -sound default -message "$param2 done"
 }
 alias ca='cursor-agent'
+
+function ksc() {
+  local context=$(kubectl config get-contexts -o name | fzf -m)
+
+  if [[ -n $context ]]; then
+    kubectl config use "$context"
+  else
+    echo "No context selected."
+  fi
+}
