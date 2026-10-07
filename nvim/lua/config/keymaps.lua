@@ -21,3 +21,9 @@ vim.keymap.set("n", "jk", "<Esc>", { noremap = true })
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
 vim.keymap.set("t", "jk", "<Esc>", { noremap = true })
 vim.keymap.set("t", "<C-j><C-k>", "<C-\\><C-N>", { noremap = true })
+vim.keymap.set(
+  "n",
+  "<leader>gE",
+  ":Neotree git_status git_base=origin/main<CR>",
+  { noremap = true, desc = "Git PR explorer" }
+)
