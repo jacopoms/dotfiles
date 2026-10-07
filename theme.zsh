@@ -66,6 +66,7 @@ theme() {
 
   [[ -n "$TMUX" ]] && "$HOME/bin/theme-apply-tmux.sh"
   "$HOME/bin/theme-apply-k9s.sh" 2>/dev/null
+  "$HOME/bin/theme-apply-terminals.sh" "$1" 2>/dev/null
 
-  echo "Theme set to $THEME_MODE (mode: ${1}). Ghostty follows macOS appearance directly (no manual override); open a new nvim/wezterm/k9s window to pick up the change there."
+  echo "Theme set to $THEME_MODE (mode: ${1}). Ghostty and wezterm reload live; open a new nvim/k9s window to pick up the change there."
 }
