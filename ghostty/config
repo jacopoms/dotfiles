@@ -50,6 +50,10 @@
 # theme = TokyoNight Storm
 # theme = dark:TokyoNight Storm,light:onedarkpro_onelight
 theme = dark:Dracula,light:onedarkpro_onelight
+# Override written by `theme light|dark` (bin/theme-apply-terminals.sh); empty
+# in auto mode so the line above (macOS appearance) applies. Includes are
+# always applied after the main file, so this overrides `theme` above.
+config-file = ?~/.local/state/theme/ghostty
 # theme = Catppuccin Latte
 # theme = kanagawa-lotus
 # theme = Tinacious Design Light

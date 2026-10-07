@@ -19,7 +19,36 @@ local function scheme_for_appearance(appear)
 end
 
 -- Configuration options
-local scheme = os.getenv("WEZTERM_COLOR_SCHEME") or scheme_for_appearance(appearance)
+-- `theme light|dark|auto` writes ~/.local/state/theme/mode (bin/theme-apply-terminals.sh).
+-- Watching the file makes wezterm reload live; "auto"/missing falls through.
+local mode_file = (os.getenv("HOME") or "") .. "/.local/state/theme/mode"
+wezterm.add_to_config_reload_watch_list(mode_file)
+
+-- Returns "light"|"dark"|"auto", or nil when the file is missing/unreadable.
+local function read_mode()
+	local f = io.open(mode_file, "r")
+	if not f then
+		return nil
+	end
+	local mode = f:read("*l")
+	f:close()
+	return mode
+end
+
+local function pick_scheme()
+	local mode = read_mode()
+	if mode == "light" then
+		return "onedarkpro_onelight"
+	elseif mode == "dark" then
+		return "Dracula"
+	elseif mode == "auto" then
+		-- Explicit auto: ignore any stale WEZTERM_COLOR_SCHEME inherited at launch.
+		return scheme_for_appearance(appearance)
+	end
+	return os.getenv("WEZTERM_COLOR_SCHEME") or scheme_for_appearance(appearance)
+end
+
+local scheme = pick_scheme()
 local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 12.5
 
 -- Obtain the definition of the selected color scheme. get_builtin_schemes()
