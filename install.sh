@@ -19,10 +19,20 @@ install_packages() {
   fi
 }
 
-# Function to create symbolic links
+# Function to create symbolic links (idempotent: replaces existing symlinks,
+# skips real files/dirs so user data is never overwritten)
 create_symlink() {
   local target=$1
   local link_name=$2
+
+  mkdir -p "$(dirname "$link_name")"
+
+  if [ -L "$link_name" ]; then
+    rm "$link_name"
+  elif [ -e "$link_name" ]; then
+    echo "Skipping $(basename "$link_name"): $link_name exists and is not a symlink"
+    return 0
+  fi
 
   ln -s "$target" "$link_name"
   echo "Created symbolic link for $(basename "$link_name")"
@@ -58,6 +68,29 @@ if [ -n "${config_dirs[*]}" ]; then
   for dir in "${config_dirs[@]}"; do
     create_symlink "${PWD}/${dir}" "${config_basedir}/${dir}"
   done
+fi
+
+# opencode plugin dependencies (node_modules is not committed)
+if [ -f "${PWD}/opencode/package.json" ]; then
+  if command_exists npm; then
+    (cd "${PWD}/opencode" && npm install)
+  else
+    echo "npm not found — install nodejs (see tool-versions) and re-run to set up opencode dependencies"
+  fi
+fi
+
+# pull the local models referenced in opencode/opencode.jsonc
+if command_exists ollama; then
+  if ollama list &>/dev/null; then
+    for model in "llama3.2:latest" "dagbs/qwen2.5-coder-1.5b-instruct-abliterated:q4_k_m"; do
+      if ! ollama list 2>/dev/null | awk 'NR > 1 { print $1 }' | grep -qx "$model"; then
+        echo "Pulling ollama model: $model"
+        ollama pull "$model"
+      fi
+    done
+  else
+    echo "ollama server not reachable — run 'ollama serve' and pull the models from opencode/opencode.jsonc manually"
+  fi
 fi
 
 # ~/bin scripts (theme-mode, theme-apply-tmux.sh — used by zshrc/tmux.conf)
