@@ -8,11 +8,11 @@ command_exists() {
 # Function to install packages
 install_packages() {
   if command_exists brew; then
-    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship wezterm ghostty atuin git-delta oh-my-posh
+    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship wezterm ghostty atuin git-delta oh-my-posh ollama
     # Maccy provides system clipboard history (menu bar app, no CLI/tmux-fzf integration)
     brew install --cask maccy
   elif command_exists port; then
-    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship ghostty atuin git-delta oh-my-posh
+    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship ghostty atuin git-delta oh-my-posh ollama
   else
     echo "Neither brew nor macports is installed. Please install one of them first."
     exit 1
@@ -30,6 +30,12 @@ create_symlink() {
 
 # Install necessary packages
 install_packages
+
+# opencode uses local models via ollama (see opencode/opencode.jsonc) — make sure it's available
+if ! command_exists ollama; then
+  echo "Warning: ollama is not installed. opencode's local models will not work."
+  echo "Install it with 'brew install ollama' or 'sudo port install ollama'."
+fi
 
 BASEDIR=$(dirname "$0")
 cd "$BASEDIR" || exit
