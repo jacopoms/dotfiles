@@ -45,7 +45,7 @@ if [ -n "${dotfiles[*]}" ]; then
 fi
 
 # .config directories
-config_dirs=(nvim wezterm bat ghostty)
+config_dirs=(nvim wezterm bat ghostty opencode)
 config_basedir="${HOME}/.config"
 
 if [ -n "${config_dirs[*]}" ]; then
