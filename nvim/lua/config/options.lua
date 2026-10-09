@@ -111,4 +111,4 @@ vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
 
 -- Sidekick
-vim.g.sidekick_nes = true
+vim.g.sidekick_nes = false
