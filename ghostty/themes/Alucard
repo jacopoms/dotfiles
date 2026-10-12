@@ -1,0 +1,24 @@
+# Colors - https://github.com/jaljoue/dracula-alucard.nvim
+
+palette = 0=#1f1f1f
+palette = 1=#cb3a2a
+palette = 2=#14710a
+palette = 3=#846e15
+palette = 4=#644ac9
+palette = 5=#a3144d
+palette = 6=#036a96
+palette = 7=#4a4a4a
+palette = 8=#6c664b
+palette = 9=#e85b4f
+palette = 10=#3a9b2d
+palette = 11=#a58b1a
+palette = 12=#8a6fe0
+palette = 13=#c43f6e
+palette = 14=#1a8fbf
+palette = 15=#ffffff
+background = #fffbeb
+foreground = #1f1f1f
+cursor-color = #644ac9
+cursor-text = #fffbeb
+selection-background = #cfcfde
+selection-foreground = #1f1f1f

@@ -9,6 +9,15 @@ return {
     },
   },
   {
+    "jaljoue/dracula-alucard.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_bg = false,
+      italic_comment = true,
+    },
+  },
+  {
     "olimorris/onedarkpro.nvim",
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -128,7 +137,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = (vim.env.THEME_MODE == "light") and "catppuccin-latte" or "dracula",
+      colorscheme = (vim.env.THEME_MODE == "light") and "dracula-alucard" or "dracula",
     },
   },
 }
