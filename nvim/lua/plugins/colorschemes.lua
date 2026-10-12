@@ -137,7 +137,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = (vim.env.THEME_MODE == "light") and "dracula-alucard" or "dracula",
+      colorscheme = (vim.env.THEME_MODE == "light") and "catppuccin-latte" or "dracula",
     },
   },
 }
