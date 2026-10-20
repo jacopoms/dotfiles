@@ -1,3 +1,4 @@
 node_modules/
 bun.lock
 opencode-notifier-state.json
+service.json

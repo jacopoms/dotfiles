@@ -1,9 +1,12 @@
 return {
   "tris203/precognition.nvim",
   event = "VeryLazy",
+  opts = {
+    startVisible = false,
+  },
   keys = {
     {
-      "<leader>ue",
+      "<leader>uE",
       function()
         if require("precognition").toggle() then
           vim.notify("precognition on")
@@ -12,7 +15,15 @@ return {
         end
       end,
       mode = "n",
-      desc = "enable Precognition",
+      desc = "Toggle Precognition",
+    },
+    {
+      "<leader>ue",
+      function()
+        require("precognition").peek()
+      end,
+      mode = "n",
+      desc = "Peek Precognition hints",
     },
   },
 }
