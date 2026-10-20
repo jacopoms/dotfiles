@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-# Theme switching: Dracula (dark) / One Dark Pro "onelight" (light)
+# Theme switching: Dracula (dark) / Alucard (light)
 #
 # Contract: $THEME = "light" | "dark" | unset/"auto" (follows macOS appearance).
 # `bin/theme-mode` is the single source of truth for resolving that into
@@ -17,7 +17,7 @@ fi
 # Only force wezterm's scheme when the user explicitly overrode $THEME;
 # leave it unset in "auto" mode so wezterm's own appearance watcher decides.
 if [[ "$THEME" == "light" ]]; then
-  export WEZTERM_COLOR_SCHEME="onedarkpro_onelight"
+  export WEZTERM_COLOR_SCHEME="Alucard"
 elif [[ "$THEME" == "dark" ]]; then
   export WEZTERM_COLOR_SCHEME="Dracula"
 else

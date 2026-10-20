@@ -13,7 +13,7 @@ local appearance = wezterm.gui.get_appearance()
 
 local function scheme_for_appearance(appear)
 	if appear:find("Light") then
-		return "onedarkpro_onelight"
+		return "Alucard"
 	end
 	return "Dracula"
 end
@@ -38,7 +38,7 @@ end
 local function pick_scheme()
 	local mode = read_mode()
 	if mode == "light" then
-		return "onedarkpro_onelight"
+		return "Alucard"
 	elseif mode == "dark" then
 		return "Dracula"
 	elseif mode == "auto" then
@@ -121,9 +121,10 @@ config = {
 	-- Tab bar configuration
 	scrollback_lines = 35000,
 	colors = {
-		-- Highlight for active search match (cmd+f) and selected text
-		selection_fg = "#000000",
-		selection_bg = "#FFD700",
+		-- Highlight for active search match (cmd+f) and selected text.
+		-- Alucard keeps the Ghostty selection colors; other schemes stay gold.
+		selection_fg = (scheme == "Alucard" and scheme_def and scheme_def.selection_fg) or "#000000",
+		selection_bg = (scheme == "Alucard" and scheme_def and scheme_def.selection_bg) or "#FFD700",
 		tab_bar = {
 			background = scheme_def.background,
 			inactive_tab_edge = scheme_def.ansi and scheme_def.ansi[1] or "#333333",

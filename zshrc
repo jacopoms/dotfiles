@@ -275,4 +275,4 @@ compinit
 # opencode
 export PATH=/Users/jacopo/.opencode/bin:$PATH
 
-eval "$(opencode completion zsh)"
+eval "$(opencode --completions zsh)"

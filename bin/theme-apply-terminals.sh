@@ -26,7 +26,7 @@ write_state() {
 
 # ghostty file first, mode last: wezterm's watcher fires on `mode`.
 case "$mode" in
-  light) write_state ghostty $'theme = onedarkpro_onelight\n' ;;
+  light) write_state ghostty $'theme = Alucard\n' ;;
   dark) write_state ghostty $'theme = Dracula\n' ;;
   auto) write_state ghostty '' ;;
 esac
