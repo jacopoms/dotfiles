@@ -2,15 +2,22 @@
   "$schema": "https://opencode.ai/v2/cli.json",
   "theme": {
     "name": "system",
-    "mode": "light"
+    "mode": "system"
   },
   "diffs": {
     "wrap": "word"
   },
   "session": {
-    "sidebar": "hide",
+    "sidebar": "auto",
     "scrollbar": false,
-    "thinking": "hide"
+    "thinking": "show",
+    "image_preview": true
   },
-  "animations": true
+  "animations": true,
+  "tabs": {
+    "indicators": "status"
+  },
+  "debug": {
+    "devtools": true
+  }
 }
