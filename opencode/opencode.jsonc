@@ -28,7 +28,7 @@
         "{env:OC_MODEL_REVIEWER}": {
           "name": "Reviewer (OC_MODEL_REVIEWER)",
           "tool_call": true,
-          "limit": { "context": 65536, "output": 8192 },
+          "limit": { "context": 32768, "output": 8192 },
         },
         "{env:OC_MODEL_THINKER}": {
           "name": "Thinker (OC_MODEL_THINKER)",
