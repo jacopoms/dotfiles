@@ -69,6 +69,7 @@
         },
         {
           "options": {
+            "display_mode": "always",
             "fetch_version": true
           },
           "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",

@@ -116,6 +116,18 @@ elif [[ "$PACKAGE_MANAGER" == "homebrew" ]]; then
 fi
 
 # ----------------------------------------------------------------------------
+# Ruby build flags for MacPorts (ruby-build / asdf-ruby)
+# ----------------------------------------------------------------------------
+# Ensures future `asdf install ruby X` links against /opt/local, not
+# stale Homebrew /usr/local/opt paths.
+if [[ "$PACKAGE_MANAGER" == "macports" ]]; then
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/local --with-readline-dir=/opt/local --with-yaml-dir=/opt/local --with-zlib-dir=/opt/local"
+  export CPPFLAGS="-I/opt/local/include"
+  export LDFLAGS="-L/opt/local/lib -Wl,-headerpad_max_install_names"
+  export PKG_CONFIG_PATH="/opt/local/lib/pkgconfig:/opt/local/share/pkgconfig"
+fi
+
+# ----------------------------------------------------------------------------
 # ASDF Shims - Must be AFTER Homebrew to ensure highest priority
 # ----------------------------------------------------------------------------
 # Prepend asdf shims to PATH to override all other executables (including Homebrew)
@@ -272,7 +284,5 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
-# opencode
-export PATH=/Users/jacopo/.opencode/bin:$PATH
 
 eval "$(opencode --completions zsh)"
