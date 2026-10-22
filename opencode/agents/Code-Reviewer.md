@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: Use proactively after code changes are made to review quality and security of the diff. Runs `rtk git diff` to see changed files and reviews only those files. Invoke before committing or opening a PR, or whenever the user asks for a review of recent changes.
-model: ollama/llama3.2:latest
+# model is set in opencode.jsonc (agents."Code-Reviewer".model -> OC_MODEL_REVIEWER)
 mode: subagent
 permission:
   edit: deny

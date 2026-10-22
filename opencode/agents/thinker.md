@@ -1,8 +1,8 @@
 ---
 name: thinker
 description: Use when stuck after 2 tries, for algorithmic bugs, or tradeoff decisions. Read-only code reasoner, no tools.
+# model is set in opencode.jsonc (agents.thinker.model -> OC_MODEL_THINKER)
 mode: subagent
-model: ollama/llama3.2:latest
 temperature: 0.6
 permission:
   edit: deny

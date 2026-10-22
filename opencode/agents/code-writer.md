@@ -1,7 +1,7 @@
 ---
 name: code-writer
 description: Use proactively when writing or modifying implementation code — new features, refactors, bug fixes — in Ruby/Rails backends or React/TypeScript frontends. Invoke this agent to produce the actual code changes once the approach is agreed; do not use it for planning, architecture debate, or code review (use the Plan or code-reviewer agents for those).
-model: ollama/llama3.2:latest
+# model is set in opencode.jsonc (agents."code-writer".model -> OC_MODEL_CODER)
 mode: subagent
 temperature: 0.1
 ---

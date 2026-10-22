@@ -1,7 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "ollama/llama3.2:latest",
-  "small_model": "ollama/dagbs/qwen2.5-coder-1.5b-instruct-abliterated:q4_k_m",
+
+  // Model ids are env-substituted so the same dotfiles work on every machine.
+  // Values live outside the repo, in ~/.env (sourced by zshrc) - see MODELS.md.
+  // `{env:VAR}` only works in this config file, not in agents/*.md frontmatter,
+  // and is evaluated by the background service, so run `opencode service restart`
+  // after changing the values.
+  "model": "ollama/{env:OC_MODEL_CODER}",
+  "small_model": "ollama/{env:OC_MODEL_SMALL}",
   "disabled_providers": ["amazon-bedrock"],
   "provider": {
     "ollama": {
@@ -9,21 +15,41 @@
       "name": "Ollama (local)",
       "options": {
         "baseURL": "http://localhost:11434/v1",
-        "apiKey": "not-needed"
+        "apiKey": "not-needed",
       },
       "models": {
-        "llama3.2:latest": {
-          "name": "llama3.2",
+        // Keys are substituted too (before the JSON is parsed), so the same
+        // entry tracks whatever model id the env var holds.
+        "{env:OC_MODEL_CODER}": {
+          "name": "Coder (OC_MODEL_CODER)",
           "tool_call": true,
-          "limit": { "context": 32768, "output": 4096 },
+          "limit": { "context": 32768, "output": 8192 },
         },
-        "dagbs/qwen2.5-coder-1.5b-instruct-abliterated:q4_k_m": {
-          "name": "qwen2.5-coder-1.5b (abliterated)",
+        "{env:OC_MODEL_REVIEWER}": {
+          "name": "Reviewer (OC_MODEL_REVIEWER)",
           "tool_call": true,
-          "limit": { "context": 32768, "output": 4096 },
+          "limit": { "context": 65536, "output": 8192 },
+        },
+        "{env:OC_MODEL_THINKER}": {
+          "name": "Thinker (OC_MODEL_THINKER)",
+          "tool_call": true,
+          "limit": { "context": 32768, "output": 8192 },
+        },
+        "{env:OC_MODEL_SMALL}": {
+          "name": "Small (OC_MODEL_SMALL)",
+          "tool_call": true,
+          "limit": { "context": 16384, "output": 2048 },
         },
       },
     },
+  },
+  // Agent ids are derived from the file name, so `Code-Reviewer` keeps its capital C.
+  // A `model:` in the agent's frontmatter would win over these - that's why the
+  // frontmatter no longer sets one.
+  "agents": {
+    "code-writer": { "model": "ollama/{env:OC_MODEL_CODER}" },
+    "Code-Reviewer": { "model": "ollama/{env:OC_MODEL_REVIEWER}" },
+    "thinker": { "model": "ollama/{env:OC_MODEL_THINKER}" },
   },
   "plugin": ["@mohak34/opencode-notifier"],
 }
