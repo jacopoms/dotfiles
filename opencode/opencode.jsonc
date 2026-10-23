@@ -3,53 +3,64 @@
 
   // Model ids are env-substituted so the same dotfiles work on every machine.
   // Values live outside the repo, in ~/.env (sourced by zshrc) - see MODELS.md.
-  // `{env:VAR}` only works in this config file, not in agents/*.md frontmatter,
-  // and is evaluated by the background service, so run `opencode service restart`
-  // after changing the values.
-  "model": "ollama/{env:OC_MODEL_CODER}",
-  "small_model": "ollama/{env:OC_MODEL_SMALL}",
-  "disabled_providers": ["amazon-bedrock"],
-  "provider": {
+  // `{env:VAR}` is resolved by the background service, so run
+  // `opencode service restart` after changing the values.
+  "model": "ollama/{env:OC_MODEL_MAIN}",
+
+  // V2 replacement for the retired `disabled_providers` field.
+  "policies": [
+    {
+      "action": "provider.use",
+      "resource": "amazon-bedrock",
+      "effect": "deny",
+    },
+  ],
+
+  "providers": {
     "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama (local)",
-      "options": {
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
         "baseURL": "http://localhost:11434/v1",
         "apiKey": "not-needed",
       },
       "models": {
         // Keys are substituted too (before the JSON is parsed), so the same
         // entry tracks whatever model id the env var holds.
+        // No `capabilities` here on purpose: V2 reads tool/vision support from
+        // Ollama's own metadata. Hardcoding `tool_call` (V1) used to force
+        // image input on text-only models and broke requests.
+        // No `limit` overrides either: discovery reports each model's real
+        // window, and two env vars pointing at the same model would collide -
+        // the last entry's limit would silently win for every role.
         "{env:OC_MODEL_CODER}": {
           "name": "Coder (OC_MODEL_CODER)",
-          "tool_call": true,
-          "limit": { "context": 32768, "output": 8192 },
         },
         "{env:OC_MODEL_REVIEWER}": {
           "name": "Reviewer (OC_MODEL_REVIEWER)",
-          "tool_call": true,
-          "limit": { "context": 32768, "output": 8192 },
         },
         "{env:OC_MODEL_THINKER}": {
           "name": "Thinker (OC_MODEL_THINKER)",
-          "tool_call": true,
-          "limit": { "context": 32768, "output": 8192 },
         },
         "{env:OC_MODEL_SMALL}": {
-          "name": "Small (OC_MODEL_SMALL)",
-          "tool_call": true,
-          "limit": { "context": 16384, "output": 2048 },
+          "name": "Titles (OC_MODEL_SMALL)",
+        },
+        "{env:OC_MODEL_MAIN}": {
+          "name": "Main Model(OC_MODEL_MAIN)",
         },
       },
     },
   },
-  // Agent ids are derived from the file name, so `Code-Reviewer` keeps its capital C.
-  // A `model:` in the agent's frontmatter would win over these - that's why the
-  // frontmatter no longer sets one.
+
+  // Agent ids are derived from the file name, so `code-reviewer` matches agents/code-reviewer.md.
+  // A `model:` in the agent's frontmatter would win over these.
   "agents": {
     "code-writer": { "model": "ollama/{env:OC_MODEL_CODER}" },
-    "Code-Reviewer": { "model": "ollama/{env:OC_MODEL_REVIEWER}" },
+    "code-reviewer": { "model": "ollama/{env:OC_MODEL_REVIEWER}" },
     "thinker": { "model": "ollama/{env:OC_MODEL_THINKER}" },
+    // Hidden maintenance agents; this replaces the retired top-level `small_model`.
+    "title": { "model": "ollama/{env:OC_MODEL_SMALL}" },
+    "summary": { "model": "ollama/{env:OC_MODEL_SMALL}" },
   },
-  "plugin": ["@mohak34/opencode-notifier"],
+  "plugins": ["@mohak34/opencode-notifier"],
 }

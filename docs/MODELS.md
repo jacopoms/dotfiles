@@ -1,6 +1,6 @@
 # Local models (Ollama) — what to pull and how it's wired
 
-Machine profile this is tuned for: **MacBook Pro 14" M4 (A3112), 32 GB unified RAM, 10-core GPU**.
+Reference machine (§1–§4 are tuned for it): **MacBook Pro 14" M4 (A3112), 32 GB unified RAM, 10-core GPU**.
 macOS caps GPU-wired memory at roughly 2/3 of RAM (~21 GB) by default, and the OS + editors + browsers
 eat ~10 GB, so **keep the resident model ≤ 18 GB** and run one model at a time. On this chip dense
 models are memory-bandwidth bound (~5–7 tok/s at 27B Q4) while MoE models with 2–3 B active
@@ -9,33 +9,39 @@ parameters run 4–6× faster — that is why the picks below mix both.
 `opencode.jsonc` no longer hardcodes model ids: it references env vars (`{env:OC_MODEL_*}`) so the same
 dotfiles work on every machine. Values live in **`~/.env`** (sourced by `zshrc`, outside the repo).
 
+There are **two machine profiles** in this document: §1–§4 are the 32 GB M4 above, **§5 is the 2019 Intel
+MacBook Pro** (16 GB, CPU-only Ollama — the models are a different, much smaller set), and **§6 is the
+rebuild checklist** to follow on any machine you have not set up before.
+
 ---
 
 ## 1. Pull these
 
-Run in any order; total on disk ≈ 48 GB.
+Run in any order; the three required models total **≈ 42 GB** on disk (≈ 62 GB if you take both optional
+pulls). Nothing is shared between machines — the Intel Mac pulls its own, much smaller set (§5).
 
 | Model | Size | Used for | Why |
 |---|---|---|---|
-| Tiel-Coder-35B-A3B (`UD-IQ4_XS`) | 17.7 GB | `OC_MODEL_CODER` | MoE 35B/**3B active** → ~20–30 tok/s here, SWE-bench-Live 12/25 (level with Opus 4.6 medium), smallest KV of any 4-bit tier |
-| Dirk = Qwen3.8-27B (`UD-Q4_K_M`) | 16.5 GB | `OC_MODEL_REVIEWER`, `OC_MODEL_THINKER` | best local quality (15/25 SWE-bench-Live) and the terse "Sharp" template makes it ~2.7× faster in wall-clock than stock Qwen3.8 |
-| Mellum2.1-12B-A2.5B-Thinking (`Q4_K_M`) | 8.1 GB | lighter reviewer / fallback writer | JetBrains coding model, LiveCodeBench 82.0, SWE-bench Verified 47.0, 2.5B active → 40+ tok/s |
-| LFM2.5-8B-A1B | 5.2 GB | `OC_MODEL_SMALL` | purpose-built for fast, reliable tool calling on consumer hardware; replaces the abliterated 1.5B |
+| Tiel-Coder-35B-A3B (`UD-IQ4_XS`) | 17.7 GB | `OC_MODEL_MAIN` + `OC_MODEL_CODER` | MoE 35B/**3B active**, measured 12–17 tok/s. One GGUF for both roles, so delegating to the coder costs no model swap |
+| Mellum2.1-12B-A2.5B-Thinking (`Q4_K_M`) | 8.1 GB | `OC_MODEL_REVIEWER` | JetBrains coding model, LiveCodeBench 82.0, SWE-bench Verified 47.0, measured 26–30 tok/s — the fastest critic that still knows code |
+| Dirk = Qwen3.8-27B (`UD-Q4_K_M`) | 16.5 GB | `OC_MODEL_THINKER` | best local quality (15/25 SWE-bench-Live) but measured **2.6–2.8 tok/s**: keep it for the rarely used `thinker`, not for every review |
+| LFM2.5-8B-A1B | 5.2 GB | *(no role on the M4)*; optional faster coder on the Intel Mac (§5.1) | purpose-built for fast, reliable tool calling. Installed here, but §2 explains why the M4 does not use it as `OC_MODEL_SMALL`; on the laptop it is the throughput option |
 
 ```bash
 # 1. main coder (MoE, fast). Close Chrome/Brave and use :UD-Q4_K_XL (22.4 GB) instead if you want the extra head-room.
 ollama pull hf.co/peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF:UD-IQ4_XS
 
-# 2. reviewer + thinker (dense 27B, highest quality here)
+# 2. thinker (dense 27B, highest quality here — but only ~2.7 tok/s)
 ollama pull hf.co/peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF:UD-Q4_K_M
 
-# 3. fast fallback
+# 3. reviewer (fast enough to iterate with)
 ollama pull hf.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M
 
-# 4. small/fast model for titles, summaries, quick subagent work
+# 4. small/fast model (OPTIONAL here — see §2; on the laptop it is the speed-over-quality
+#    coder alternative, §5.1)
 ollama pull lfm2.5:8b
 
-# optional fast all-rounder (2B active, beats Qwen3.6-35B-A3B on agentic/tool-use)
+# optional fast all-rounder on this machine (15 GB; too big for the Intel Mac)
 ollama pull lfm2.5:24b
 ```
 
@@ -55,38 +61,46 @@ Notes
   ```
 - Two caps that will not fit and will thrash the machine: `qwen3-coder-next` (52 GB minimum) and
   `glm-5.3-flash` / `qwen3.8-flash-next` / `deepseek-v4.1-flash` (100B+ MoE).
+- Dead weight to delete: `hf.co/unsloth/Qwen2.5-Coder-7B-Instruct-GGUF:latest` (4.7 GB) is still installed
+  here and no role points at it — it is the model from gotcha 5, so `ollama rm` it instead of keeping it.
 
 ---
 
 ## 2. Model selection env vars → `~/.env`
 
 Bare model ids, **no `ollama/` prefix** — the config adds it. Add these to `~/.env` (machine-local, so
-each Mac can point at the quants it actually has):
+each Mac can point at the quants it actually has). This block is the **M4 / 32 GB** one; the Intel Mac's
+block is §5.2.
 
 ```bash
 # ~/.env — OpenCode model selection
 
-# --- works today, with your current pulls ---
-export OC_MODEL_CODER="hf.co/unsloth/Qwen2.5-Coder-7B-Instruct-GGUF:latest"
-export OC_MODEL_REVIEWER="llama3.2:latest"
-export OC_MODEL_THINKER="llama3.2:latest"
-export OC_MODEL_SMALL="dagbs/qwen2.5-coder-1.5b-instruct-abliterated:q4_k_m"
-
-# --- replace with these once section 1 has finished ---
-# export OC_MODEL_CODER="hf.co/peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF:UD-IQ4_XS"
-# export OC_MODEL_REVIEWER="hf.co/peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF:UD-Q4_K_M"
-# export OC_MODEL_THINKER="$OC_MODEL_REVIEWER"
-# export OC_MODEL_SMALL="lfm2.5:8b"        # or "$OC_MODEL_CODER" to avoid a model swap - see below
+# main + code-writer share one GGUF: delegating costs no model swap.
+export OC_MODEL_CODER="hf.co/peculiar-ragdoll/Tiel-Coder-35B-A3B-GGUF:UD-IQ4_XS"
+# separate var on purpose: point the primary agent somewhere else without
+# touching the code-writer.
+export OC_MODEL_MAIN="$OC_MODEL_CODER"
+# critic roles: fast reviewer, deep thinker. Give them different ids, or the
+# providers.ollama.models entries collide after env substitution.
+export OC_MODEL_REVIEWER="hf.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M"
+export OC_MODEL_THINKER="hf.co/peculiar-ragdoll/Dirk-Qwen3.8-27B-GGUF:UD-Q4_K_M"
+# titles/summaries: reuse the coder so a new session does not evict the big model.
+export OC_MODEL_SMALL="$OC_MODEL_CODER"
 ```
 
 | Var | Consumed by |
 |---|---|
-| `OC_MODEL_CODER` | root `model` (default) + `agents.code-writer` |
-| `OC_MODEL_REVIEWER` | `agents."Code-Reviewer"` |
+| `OC_MODEL_MAIN` | root `model` — the primary agent's default |
+| `OC_MODEL_CODER` | `agents.code-writer` |
+| `OC_MODEL_REVIEWER` | `agents.code-reviewer` |
 | `OC_MODEL_THINKER` | `agents.thinker` |
-| `OC_MODEL_SMALL` | `small_model` (titles/summaries) |
+| `OC_MODEL_SMALL` | `agents.title` + `agents.summary` (replaces the retired `small_model`) |
 
-Two gotchas, both verified against `opencode` v2.1.2:
+`MAIN` and `CODER` normally hold the same id — they are separate so you can diverge them. When they do hold
+the same id, the two entries in `providers.ollama.models` collapse into one and the later `name` wins in the
+model picker; harmless as long as neither entry carries a `limit` (see the warning below).
+
+Five gotchas, all verified against `opencode` v2.1.3:
 
 1. `{env:...}` is substituted only in `opencode.jsonc` — **not** in `agents/*.md` frontmatter. That is why
    the model lines were removed from the three agent files and now live under `agents` in the config.
@@ -97,15 +111,31 @@ Two gotchas, both verified against `opencode` v2.1.2:
 
 ```bash
 opencode service status     # sanity check
-opencode service restart    # picks up the new env
+opencode service restart    # picks up the new env (from a shell that sourced ~/.env)
 opencode debug agents       # each agent must show a resolved model id, e.g. {"providerID":"ollama","model":"..."}
 ```
 
+3. `agents/*.md` is read when the **service starts**, not when the file changes. Editing frontmatter
+   (models, permissions, prompt) needs a restart; editing `opencode.jsonc` reloads live.
+4. In markdown frontmatter, the documented V2 `permissions:` list is **ignored** by 2.1.3 — it parsed to no
+   rules at all, silently removing `code-reviewer`'s edit deny. The legacy `permission:` map is what
+   actually applies, so the agent files keep using it until that is fixed upstream.
+5. A model can answer fine and still be unable to *emit tool calls*. `qwen2.5-coder:7b` returns the call as
+   fenced JSON text through Ollama's OpenAI-compatible endpoint instead of a `tool_calls` array, so the
+   subagent never launches and the parent just prints JSON. Discovery still reports `tools=true` — do one
+   real subagent run after any model change; smaller models are the likeliest to regress here.
+
+> Do **not** put `limit` overrides in `providers.ollama.models`. The map is keyed by the resolved model id,
+> so two env vars pointing at the same model collapse into one entry and the *last* entry's limits win for
+> every role — e.g. `OC_MODEL_SMALL="$OC_MODEL_CODER"` would cap the main model at the small model's
+> context and output. Discovery from Ollama already reports the correct window; leave it alone.
+
 ### When is `OC_MODEL_SMALL` actually used?
 
-Only by the hidden `title` agent — session titles, nothing else. Confirmed three ways: `small_model` is translated
-straight into `agents.title.model` in the binary, the title prompt asks for a single line ≤50 characters with no tools,
-and this machine's own log shows `agent=title small=true` exactly once per session (43 calls / 43 sessions) while
+Only by the hidden `title` agent — session titles, nothing else. Confirmed three ways: the retired
+`small_model` is translated straight into `agents.title.model` in the binary (which is why the config now
+sets `agents.title` and `agents.summary` explicitly), the title prompt asks for a single line ≤50 characters
+with no tools, and this machine's own log shows `agent=title small=true` exactly once per session (43 calls / 43 sessions) while
 `agent=build`, `agent=plan` and `agent=compaction` are all `small=false`. Compaction summarization uses the **session**
 model — there is no separate compaction model.
 
@@ -117,13 +147,20 @@ session). Two ways out:
 - Keep a dedicated small model only if you also raise `OLLAMA_MAX_LOADED_MODELS` — but LFM2.5-8B (5.2 GB) + Tiel
   (17.7 GB) = 23 GB is already too tight next to macOS on 32 GB, so this is not recommended here.
 
+Measured swap cost on this machine: a cold 17 GB load is ~17 s with a warm page cache, but 95–177 s once macOS
+has evicted the weights. Every distinct model in the loop is a potential stall in *both* directions (it evicts
+the parent model too), which is why the main agent and `code-writer` deliberately share one GGUF.
+
+One more: thinking models need output head-room. Mellum spends ~400 characters of reasoning before emitting a
+tool call; with a 256-token cap it produced no call at all. Leave its output limit at the discovered value.
+
 ---
 
-## 3. Ollama runtime tuning
+## 3. Ollama runtime tuning (M4 / 32 GB)
 
 Ollama runs as a **launchd service** here (`~/Library/LaunchAgents/sh.brew.ollama.plist`), not from your
-shell — so `export`s in `zshrc` do not reach it. It already sets flash attention + q8_0 KV cache; add the
-memory/concurrency limits and a context size:
+shell — so `export`s in `zshrc` do not reach it. The plist now sets flash attention, q8_0 KV cache, and the
+memory/concurrency limits below:
 
 ```xml
 <!-- ~/Library/LaunchAgents/sh.brew.ollama.plist -> EnvironmentVariables -->
@@ -153,24 +190,24 @@ Optional, if you keep hitting the GPU memory ceiling while a big model is loaded
 
 ---
 
-## 4. Verifying speed on this machine
+## 4. Verifying speed (M4)
 
 ```bash
 ollama ps                      # loaded model, size, context, CPU/GPU split
 ollama run <model> --verbose   # prints eval rate (tok/s) after the reply
 ```
 
-Rough expectations on an M4 / 32 GB: Tiel-IQ4_XS ≈ 20–30 tok/s, Dirk-Q4_K_M ≈ 5–7 tok/s (but far fewer
-tokens per answer than stock Qwen3.8), Mellum-Q4_K_M ≈ 35–45 tok/s, LFM2.5-8B ≈ 40+ tok/s. If a model
-drops to single digits and `ollama ps` shows a CPU/GPU split, it did not fit — step down one quant
-(`UD-Q3_K_XL`, `UD-IQ4_XS`) before touching anything else.
+Rough expectations on an M4 / 32 GB, measured here with §3 applied: Tiel-IQ4_XS ≈ 12–17 tok/s, Mellum-Q4_K_M
+≈ 26–30 tok/s, LFM2.5-24B ≈ 24–31 tok/s, Dirk-Q4_K_M ≈ 2.6–2.8 tok/s (dense 27B — fine for `thinker`, too
+slow for a review per change). If a model drops to single digits and `ollama ps` shows a CPU/GPU split, it did
+not fit — step down one quant (`UD-Q3_K_XL`, `UD-IQ4_XS`) before touching anything else.
 
-> Sections 1–4 target the **M4 / 32 GB** machine. For the 2019 Intel MacBook Pro, use section 5 instead:
-> the models above do not fit and would swap.
+> Sections 1–4 target the **M4 / 32 GB** machine. Section 5 is the **2019 Intel MacBook Pro**: the models
+> above do not fit there and would swap.
 
 ---
 
-## 5. MacBook Pro 13" 2019 (Intel i5-8279U, 16 GB) — A1989, this machine
+## 5. MacBook Pro 13" 2019 (Intel i5-8279U, 16 GB) — A1989
 
 **Model identifier** `MacBookPro15,2` · **macOS** 15.8.1 Sequoia (last Intel release)
 
@@ -233,9 +270,11 @@ printf 'FROM %s/models/ornith/Ornith-1.5-9B-Q4_K_M.gguf\nPARAMETER num_ctx 32768
 ollama create ornith-9b:q4km -f /tmp/ornith.Modelfile   # then set OC_MODEL_REVIEWER="ornith-9b:q4km"
 ```
 
-**Do not pull on this machine:** Tiel-Coder-35B (17.7 GB), Dirk/Qwen3.8-27B (16.5 GB), `lfm2.5:24b` (14 GB),
+**Do not pull on this machine:** Tiel-Coder-35B (17.7 GB), Dirk/Qwen3.8-27B (16.5 GB), `lfm2.5:24b` (15 GB),
 `gemma4:12b` (7 GB but ~2 tok/s), `mellum2-12B` (8 GB — fits only with everything else closed, and Ornith beats
-it), anything 27B+. They either exceed the 16 GB budget, swap to SSD (1 tok/s or worse), or both.
+it), anything 27B+. They either exceed the 16 GB budget, swap to SSD (1 tok/s or worse), or both. The same goes
+for `qwen2.5-coder:7b`: it fits, but it cannot emit structured tool calls (gotcha 5 in §2), so subagents never
+launch.
 
 ### 5.2 Env vars
 
@@ -246,9 +285,11 @@ Two separate places — don't mix them up:
 ```bash
 # --- this MacBook Pro (2019, 16 GB) ---
 export OC_MODEL_CODER="qwen3.5:4b-q4_K_M"
+# separate var on purpose: the primary agent can diverge without touching code-writer.
+export OC_MODEL_MAIN="$OC_MODEL_CODER"
 export OC_MODEL_REVIEWER="hf.co/ornith-ai/Ornith-1.5-9B-GGUF:Q4_K_M"
 export OC_MODEL_THINKER="$OC_MODEL_REVIEWER"
-export OC_MODEL_SMALL="$OC_MODEL_CODER"   # avoid a 5 GB reload just to title a session
+export OC_MODEL_SMALL="$OC_MODEL_CODER"   # avoid a 5.8 GB reload just to title a session
 
 # swap in the faster MoE coder when you favour throughput over code quality:
 # export OC_MODEL_CODER="lfm2.5:8b-a1b-q4_K_M"
@@ -275,15 +316,17 @@ OLLAMA_FLASH_ATTENTION=1      # supported on the CPU backend too
 OLLAMA_KV_CACHE_TYPE=q8_0     # halves KV memory; requires FLASH_ATTENTION=1
 OLLAMA_MAX_LOADED_MODELS=1    # one model resident on 16 GB
 OLLAMA_NUM_PARALLEL=1         # one request at a time -> biggest usable context
-OLLAMA_CONTEXT_LENGTH=32768   # matches opencode.jsonc's coder limit
+OLLAMA_CONTEXT_LENGTH=32768   # the real ceiling: 256K would blow the 16 GB budget
 OLLAMA_KEEP_ALIVE=30m         # keeps the KV prefix cache warm between agent runs
 ```
 
 Two consequences worth knowing:
 
-1. `OLLAMA_CONTEXT_LENGTH` is the **real** ceiling. `opencode.jsonc` advertises 65536 for `OC_MODEL_REVIEWER`;
-   with a 32K runtime that is a lie, and OpenCode will not compact before overflowing. Either set it to `32768` in
-   `opencode/opencode.jsonc` on this machine, or raise the runtime to `65536` and accept ~2–3 GB of extra KV.
+1. `OLLAMA_CONTEXT_LENGTH` is the **only** ceiling now that the config carries no `limit` overrides (§2). Keep it
+   at 32768 on this machine: Qwen3.5 and Ornith advertise 256K, but the KV cache would not fit in 16 GB. If
+   OpenCode ever reports a larger window than the daemon serves, lower this value — do **not** reintroduce a
+   `limit` in `opencode.jsonc`, where `MAIN`/`CODER`/`SMALL` (and here `REVIEWER`/`THINKER`) share one id and the
+   entries collapse into a single one.
 2. Threads: Ollama defaults to the logical CPU count (8) on this box. This is a 4C/8T chip and SMT usually *hurts*
    llama.cpp. If generation feels slower than the numbers above, pin 4 threads on the models you use:
 
@@ -316,3 +359,40 @@ Expect roughly: **Qwen3.5-4B ≈ 7–9 tok/s**, **Ornith-9B ≈ 3–4 tok/s**, *
 **LFM2.5-8B-A1B ≈ 12–15 tok/s** decode. If a dense 4B drops below ~4 tok/s, check `ollama ps` for a CPU/GPU
 split (should not happen — there is no GPU) or memory pressure in Activity Monitor; if the 9B swaps, close apps
 rather than lowering the quant (Q3 on a 9B costs more quality than it buys in speed).
+
+---
+
+## 6. Rebuilding on a fresh machine
+
+Everything reproducible is in the repo; everything machine-specific is in `~/.env`, which is **not** in the
+repo. So a new machine is always three steps:
+
+```bash
+# 1. repo + symlinks (~/.config/opencode -> <repo>/opencode, ~/.zshrc, ...)
+git clone https://github.com/jacopoms/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./install.sh
+
+# 2. recreate ~/.env for THIS machine: §2 (M4) or §5.2 (Intel).
+#    Only the OC_MODEL_* lines + your API keys; it is not versioned on purpose.
+$EDITOR ~/.env
+
+# 3. pull the models that ~/.env now references, then start the services
+./install.sh              # re-run: it reads ~/.env and pulls whatever is missing
+opencode service restart
+```
+
+On the Intel machine the Ollama side is a MacPorts **daemon**, so it is reloaded separately
+(`sudo port unload ollama && sudo port load ollama`, §5.3) *before* the OpenCode restart.
+
+`zshrc` sources `~/.env` in every new shell, so `echo $OC_MODEL_MAIN` must print an id **before** that
+restart. The background service does not read your shell: `{env:...}` is resolved inside that long-running
+process, so a service started before `~/.env` existed resolves every `OC_MODEL_*` to `""`, the model refs
+are dropped, and agents silently fall back to the session model.
+
+```bash
+opencode debug agents   # every agent must show providerID=ollama + a concrete model id
+ollama ps               # the model you expect, with its CPU/GPU split
+```
+
+Then do one real subagent run (ask `code-reviewer` to read a file). That is the only check that catches a
+model which *answers* fine but cannot emit structured tool calls.
+

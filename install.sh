@@ -8,11 +8,11 @@ command_exists() {
 # Function to install packages
 install_packages() {
   if command_exists brew; then
-    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship wezterm ghostty atuin git-delta oh-my-posh ollama
+    brew install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship wezterm ghostty atuin git-delta oh-my-posh ollama opencode
     # Maccy provides system clipboard history (menu bar app, no CLI/tmux-fzf integration)
     brew install --cask maccy
   elif command_exists port; then
-    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship ghostty atuin git-delta oh-my-posh ollama
+    sudo port install git fzf bat eza zoxide fd rg tmux bash neovim asdf starship ghostty atuin git-delta oh-my-posh ollama opencode
   else
     echo "Neither brew nor macports is installed. Please install one of them first."
     exit 1
@@ -76,20 +76,6 @@ if [ -f "${PWD}/opencode/package.json" ]; then
     (cd "${PWD}/opencode" && npm install)
   else
     echo "npm not found — install nodejs (see tool-versions) and re-run to set up opencode dependencies"
-  fi
-fi
-
-# pull the local models referenced in opencode/opencode.jsonc
-if command_exists ollama; then
-  if ollama list &>/dev/null; then
-    for model in "llama3.2:latest" "dagbs/qwen2.5-coder-1.5b-instruct-abliterated:q4_k_m"; do
-      if ! ollama list 2>/dev/null | awk 'NR > 1 { print $1 }' | grep -qx "$model"; then
-        echo "Pulling ollama model: $model"
-        ollama pull "$model"
-      fi
-    done
-  else
-    echo "ollama server not reachable — run 'ollama serve' and pull the models from opencode/opencode.jsonc manually"
   fi
 fi
 

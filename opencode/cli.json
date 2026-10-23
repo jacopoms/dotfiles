@@ -18,6 +18,8 @@
     "indicators": "status"
   },
   "debug": {
-    "devtools": true
+    "devtools": true,
+    "timing": true,
+    "turn_tokens": "verbose"
   }
 }
