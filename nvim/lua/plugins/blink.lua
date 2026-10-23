@@ -40,20 +40,20 @@ return {
         default = {
           -- "ai",
           "lsp",
-          "ripgrep",
+          -- "ripgrep",
           "path",
           "buffer",
           "snippets",
         },
         providers = {
-          ripgrep = {
-            module = "blink-ripgrep",
-            name = "Ripgrep",
-            enabled = true,
-            opts = {
-              debug = true,
-            },
-          },
+          -- ripgrep = {
+          --   module = "blink-ripgrep",
+          --   name = "Ripgrep",
+          --   enabled = true,
+          --   opts = {
+          --     debug = true,
+          --   },
+          -- },
           -- ai = {
           --   name = "AI",
           --   module = "blink-ai",

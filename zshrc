@@ -70,7 +70,6 @@ ulimit -n 10240
 # ----------------------------------------------------------------------------
 path=(
   "$HOME/.local/bin"
-  "$HOME/.atuin/bin"
   # "$HOME/.antigravity/antigravity/bin"
   "$HOME/bin"
   $path  # Keep existing PATH entries
@@ -247,14 +246,6 @@ source ~/dotfiles/theme.zsh
 (( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config "$OMP_CONFIG")"
 # (( $+commands[oh-my-posh])) && eval "$(oh-my-posh init zsh --config tokyo)"
 
-# Atuin (shell history sync)
-if [[ -f "$HOME/.atuin/bin/env" ]]; then
-  . "$HOME/.atuin/bin/env"
-  eval "$(atuin init zsh --disable-up-arrow)"
-elif (( $+commands[atuin] )); then
-  eval "$(atuin init zsh --disable-up-arrow)"
-fi
-
 # Stern (Kubernetes log viewer)
 (( $+commands[stern] )) && source <(stern --completion=zsh)
 
@@ -286,3 +277,13 @@ compinit
 
 
 eval "$(opencode --completions zsh)"
+
+# Atuin (shell history sync) — load last so keybindings win over plugins/completions.
+# Note: `atuin ai inline --hook` runs AI once; it does NOT install shell bindkeys.
+# The `?` bindkey is only emitted when `atuin config get ai.enabled` is true.
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow)"
+  if whence -w self-atuin-ai-question-mark &>/dev/null; then
+    bindkey '?' self-atuin-ai-question-mark
+  fi
+fi
