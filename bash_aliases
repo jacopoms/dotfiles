@@ -157,14 +157,3 @@ function ksc() {
     echo "No context selected."
   fi
 }
-
-# Update system packages: MacPorts or Homebrew
-function update_all_brews() {
-  if [[ $PACKAGE_MANAGER == "macports" ]]; then
-    echo "==> MacPorts"
-    sudo port selfupdate && sudo port upgrade outdated
-    return
-  fi
-  echo "==> Homebrew"
-  brew update && brew upgrade && brew cleanup
-}
