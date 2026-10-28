@@ -88,12 +88,64 @@ function internetSongToFlac1() { yt-dlp --rm-cache-dir --extract-audio --audio-f
 function internetSongToFlac9() { yt-dlp --rm-cache-dir --extract-audio --audio-quality 9 --audio-format flac "$1"; }
 
 function gh-run-notifier() {
-  local param1=$1
-  local param2=${2:-CI}
-  echo "Running gh run watch with param1=$param1 and param2=$param2"
-  # Replace the command below with your desired command
-  gh run watch "$param1" && terminal-notifier -title GH RUN FINISHED! -sound default -message "$param2 done"
+  local selection run_id workflow_name head_branch gh_status conclusion display_title url repo
+  local runs status_label gh_repo
+
+  gh_repo=${GH_REPO:-}
+  if [[ -z $gh_repo ]]; then
+    gh_repo=$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null) || true
+  fi
+  if [[ -z $gh_repo ]]; then
+    echo "Could not determine GitHub repo. cd into a git checkout or set GH_REPO." >&2
+    return 1
+  fi
+
+  runs=$(
+    gh run list -R "$gh_repo" --limit 100 \
+      --json databaseId,workflowName,headBranch,status,conclusion,displayTitle,url,updatedAt \
+      -q '[.[] | select(.status == "in_progress" or .status == "queued" or .status == "waiting" or .status == "pending" or .status == "requested")] | sort_by(.updatedAt) | reverse | .[0:10][] | [.databaseId, .workflowName, .headBranch, .status, (.conclusion // "-"), .displayTitle, .url] | @tsv' 2>&1
+  ) || {
+    echo "$runs" >&2
+    return 1
+  }
+
+  if [[ -z $runs ]]; then
+    echo "No active workflow runs (in progress, queued, waiting, pending, requested) in $gh_repo."
+    return 0
+  fi
+
+  selection=$(
+    echo "$runs" \
+      | fzf --delimiter=$'\t' --with-nth=2,3,4,6 --accept-nth=1,2,3,4,5,6,7 --prompt="GH run ($gh_repo)> "
+  )
+
+  if [[ -z $selection ]]; then
+    echo "No run selected."
+    return 1
+  fi
+
+  IFS=$'\t' read -r run_id workflow_name head_branch gh_status conclusion display_title url <<< "$selection"
+
+  if [[ -z $run_id ]]; then
+    echo "Could not parse run id."
+    return 1
+  fi
+
+  repo=$(printf '%s\n' "$url" | sed -n 's|.*/\([^/]*/[^/]*\)/actions/runs/.*|\1|p')
+  if [[ -z $repo ]]; then
+    repo=$gh_repo
+  fi
+
+  status_label=$gh_status
+  if [[ -n $conclusion && $conclusion != "-" ]]; then
+    status_label="$gh_status ($conclusion)"
+  fi
+
+  echo "Watching GitHub run $run_id ($head_branch) in $repo [$status_label]..."
+  gh run watch "$run_id" -R "$repo" &&
+    alerter --title "$workflow_name on Github FINISHED" --sound default --message "Run $status_label: $display_title on branch: $head_branch"
 }
+
 alias ca='cursor-agent'
 
 function ksc() {
