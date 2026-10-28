@@ -82,6 +82,12 @@ elif [[ "$PACKAGE_MANAGER" == "homebrew" ]]; then
   path=("$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin" $path)
 fi
 
+# zerobrew: keep it behind Homebrew so brew-installed tools always win
+if [[ -n "$ZEROBREW_PREFIX" ]]; then
+  path=(${path:#$ZEROBREW_BIN} ${path:#$ZEROBREW_PREFIX/bin} ${path:#$ZEROBREW_PREFIX/sbin})
+  path=("${path[1]}" "$ZEROBREW_BIN" "$ZEROBREW_PREFIX/bin" "$ZEROBREW_PREFIX/sbin" "${path[@]:1}")
+fi
+
 # Remove duplicates and non-existent directories
 typeset -U path
 path=($^path(N-/))
