@@ -158,7 +158,7 @@ function ksc() {
   fi
 }
 
-# Update system packages: MacPorts, or Homebrew + zerobrew (each manager only touches its own prefix)
+# Update system packages: MacPorts or Homebrew
 function update_all_brews() {
   if [[ $PACKAGE_MANAGER == "macports" ]]; then
     echo "==> MacPorts"
@@ -167,8 +167,4 @@ function update_all_brews() {
   fi
   echo "==> Homebrew"
   brew update && brew upgrade && brew cleanup
-  if command -v zb >/dev/null; then
-    echo "==> zerobrew"
-    zb update && zb upgrade && zb gc
-  fi
 }
