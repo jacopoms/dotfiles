@@ -43,7 +43,26 @@ function weather() { curl wttr.in/"$1"; }
 function prettyJson() { curl "$1" | python -m json.tool; }
 
 ## update brew and remove old packages
-alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+## brewski [-n] [-d]: -n only lists outdated packages, -d also runs brew doctor
+function brewski() {
+  local dry_run=0 doctor=0 opt
+  OPTIND=1
+  while getopts "nd" opt; do
+    case $opt in
+      n) dry_run=1 ;;
+      d) doctor=1 ;;
+      *) echo "usage: brewski [-n] [-d]"; return 1 ;;
+    esac
+  done
+
+  brew update || return
+  echo "==> Outdated"
+  brew outdated
+  ((dry_run)) && return
+
+  brew upgrade && brew cleanup
+  ((doctor)) && brew doctor
+}
 alias portski='sudo port selfupdate && port outdated && sudo port upgrade outdated && sudo port clean --all installed; sudo port reclaim'
 
 alias prep_commit='bundle exec reek . && rubocop -A && rspec'
