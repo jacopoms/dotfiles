@@ -15,7 +15,8 @@
   },
   "animations": true,
   "tabs": {
-    "indicators": "status"
+    "indicators": "status",
+    "mode": "on"
   },
   "debug": {
     "devtools": true,
