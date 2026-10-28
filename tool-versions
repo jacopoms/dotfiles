@@ -3,7 +3,7 @@ elixir 1.14.5
 nodejs 23.10.0
 erlang 26.0
 stern 1.32.0
-rust 1.66.1
+rust 1.99.1
 python 3.12.0 3.14.0
 yarn 1.22.22
 lua 5.4.8

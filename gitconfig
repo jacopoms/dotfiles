@@ -23,11 +23,12 @@
     ci = commit -m
     ca = commit -am
     f = fetch -p
-    p = push
+    p = push -u
     pf = push --force
     pfl = push --force-with-lease
-    pl = pull
-    plm = pull origin master
+    pl = pull origin
+    plmaster = pull origin master
+    plmain = pull origin main
     br = branch
     ba = branch -a
     bd = branch -d
@@ -54,7 +55,7 @@
 [core]
     editor = nvim
     excludesFile = ~/.gitignore_global
-	pager = delta
+    pager = delta
 [color]
     status = auto
     branch = auto

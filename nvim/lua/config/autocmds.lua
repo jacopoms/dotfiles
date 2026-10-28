@@ -2,6 +2,13 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+-- Dotfiles repo uses `gitconfig` (no leading dot); Neovim only knows `.gitconfig` by default.
+vim.filetype.add({
+  filename = {
+    gitconfig = "gitconfig",
+  },
+})
+
 local augroup = vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 
 -- Toggle relative line numbers when entering a buffer, window, or leaving insert mode
