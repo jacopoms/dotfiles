@@ -43,15 +43,16 @@ function weather() { curl wttr.in/"$1"; }
 function prettyJson() { curl "$1" | python -m json.tool; }
 
 ## update brew and remove old packages
-## brewski [-n] [-d]: -n only lists outdated packages, -d also runs brew doctor
+## brewski [-n] [-d] [-g]: -n only lists outdated packages, -d also runs brew doctor; -g runs greedy upgrade
 function brewski() {
-  local dry_run=0 doctor=0 opt
+  local dry_run=0 doctor=0 greedy=0 opt
   OPTIND=1
-  while getopts "nd" opt; do
+  while getopts "ndg" opt; do
     case $opt in
       n) dry_run=1 ;;
       d) doctor=1 ;;
-      *) echo "usage: brewski [-n] [-d]"; return 1 ;;
+      g) greedy=1 ;;
+      *) echo "usage: brewski [-n] [-d] [-g]"; return 1 ;;
     esac
   done
 
@@ -62,6 +63,9 @@ function brewski() {
 
   brew upgrade && brew cleanup
   ((doctor)) && brew doctor
+
+  brew upgrade --greedy
+  ((greedy)) && return
 }
 alias portski='sudo port selfupdate && port outdated && sudo port upgrade outdated && sudo port clean --all installed; sudo port reclaim'
 
@@ -72,6 +76,7 @@ alias dc='docker compose'
 alias dcd='docker compose -f docker-compose.yml -f docker-compose.development.yml'
 alias dc-dev="docker compose -f docker-compose.yml -f docker-compose.dev.yml"
 alias dct='docker compose -f docker-compose.yml -f docker-compose.test.yml'
+alias dc-test='docker compose -f docker-compose.yml -f docker-compose.test.yml'
 alias dck='docker compose -f docker-compose.yml -f docker-compose.kafka.yml'
 
 # aliases for aws marleyspoon
