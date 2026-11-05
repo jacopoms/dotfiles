@@ -7,9 +7,6 @@ return {
       },
       update_in_insert = true,
       virtual_text = false,
-      -- virtual_lines = {
-      --   current_line = true,
-      -- },
     },
     servers = {
       solargraph = {
@@ -22,11 +19,37 @@ return {
       },
       ruby_lsp = {
         mason = false,
-        cmd = { "ruby-lsp" },
+        cmd = function(dispatchers, config)
+          local cmd = { "ruby-lsp" }
+          local root = config.root_dir
+          if root and vim.uv.fs_stat(root .. "/Gemfile") and vim.fn.executable("bundle") == 1 then
+            cmd = { "bundle", "exec", "ruby-lsp" }
+          end
+          return vim.lsp.rpc.start(
+            cmd,
+            dispatchers,
+            config and config.root_dir and { cwd = config.cmd_cwd or config.root_dir }
+          )
+        end,
+      },
+      eslint = {
+        mason = false,
+        settings = {
+          workingDirectories = { mode = "auto" },
+        },
       },
       copilot = {
         enabled = true,
         mason = false,
+      },
+      -- LazyVim's vtsls extra sets autoUseWorkspaceTsdk = true; do not pin tsserver.path to
+      -- vim.fn.getcwd() — that breaks when Neovim's cwd differs from the package.json root.
+      vtsls = {
+        settings = {
+          vtsls = {
+            autoUseWorkspaceTsdk = true,
+          },
+        },
       },
     },
   },
