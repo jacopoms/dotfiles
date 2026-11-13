@@ -25,7 +25,7 @@ else
 fi
 
 if [[ "$THEME_MODE" == "light" ]]; then
-  export OMP_CONFIG="$HOME/dotfiles/myjan-onelight.omp.json"
+  export OMP_CONFIG="$HOME/dotfiles/myjan-latte.omp.json"
 else
   export OMP_CONFIG="$HOME/dotfiles/myjan.omp.json"
 fi

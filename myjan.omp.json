@@ -1,8 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "white": "#cdd6f4",
+    "black": "#11111b",
+    "yellow": "#f9e2af",
+    "orange": "#fab387",
+    "blue": "#89b4fa"
+  },
   "transient_prompt": {
-    "template": "<#ff79c6>\uea83 {{ .Folder }}</> <p:yellow>\u276f</> ",
-    "right_template": "{{ if .Executed }}<#6272a4>\ueba2 {{ .Segments.Executiontime.FormattedMs }}</>{{ end }}",
+    "template": "<#f5c2e7>\uea83 {{ .Folder }}</> <p:yellow>\u276f</> ",
+    "right_template": "{{ if .Executed }}<#6c7086>\ueba2 {{ .Segments.Executiontime.FormattedMs }}</>{{ end }}",
     "foreground": "p:white",
     "background": "transparent"
   },
@@ -27,8 +34,8 @@
           "leading_diamond": "\ue0b6",
           "trailing_diamond": "\ue0b0",
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
-          "foreground": "#f8f8f2",
-          "background": "#bd93f9",
+          "foreground": "#11111b",
+          "background": "#cba6f7",
           "type": "os",
           "style": "diamond"
         },
@@ -40,9 +47,9 @@
             "style": "letter"
           },
           "template": " \uea83  {{ .Path }} ",
-          "foreground": "#f8f8f2",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#ff79c6",
+          "background": "#f5c2e7",
           "type": "path",
           "style": "powerline"
         },
@@ -55,16 +62,16 @@
           "leading_diamond": "\ue0b6",
           "trailing_diamond": "\ue0b4",
           "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
-          "foreground": "#282a36",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#f1fa8c",
+          "background": "#f9e2af",
           "type": "git",
           "style": "powerline",
           "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
-            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
-            "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#fab387{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f38ba8{{ end }}",
+            "{{ if gt .Ahead 0 }}#b4befe{{ end }}",
+            "{{ if gt .Behind 0 }}#b4befe{{ end }}"
           ]
         },
         {
@@ -73,9 +80,9 @@
             "fetch_version": true
           },
           "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
-          "foreground": "#ffffff",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#6CA35E",
+          "background": "#a6e3a1",
           "type": "node",
           "style": "powerline"
         },
@@ -84,9 +91,9 @@
             "fetch_version": true
           },
           "template": " \ue626 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
-          "foreground": "#111111",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#8ED1F7",
+          "background": "#74c7ec",
           "type": "go",
           "style": "powerline"
         },
@@ -96,8 +103,8 @@
             "fetch_version": true
           },
           "template": " \ue624 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
-          "foreground": "#111111",
-          "background": "#a074c4",
+          "foreground": "#11111b",
+          "background": "#b4befe",
           "powerline_symbol": "\ue0b0",
           "type": "elixir",
           "style": "powerline"
@@ -107,9 +114,9 @@
             "fetch_version": true
           },
           "template": " \ue624 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
-          "foreground": "#111111",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#4063D8",
+          "background": "#89b4fa",
           "type": "julia",
           "style": "powerline"
         },
@@ -119,9 +126,9 @@
             "fetch_virtual_env": false
           },
           "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
-          "foreground": "#111111",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#FFDE57",
+          "background": "#f9e2af",
           "type": "python",
           "style": "powerline"
         },
@@ -131,9 +138,9 @@
             "fetch_version": true
           },
           "template": " \ue791 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
-          "foreground": "#ffffff",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#AE1401",
+          "background": "#f38ba8",
           "type": "ruby",
           "style": "powerline"
         },
@@ -143,9 +150,9 @@
             "fetch_version": false
           },
           "template": " \uf0e7{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
-          "foreground": "#ffffff",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#FEAC19",
+          "background": "#fab387",
           "type": "azfunc",
           "style": "powerline"
         },
@@ -154,20 +161,20 @@
             "display_default": false
           },
           "template": " \ue7ad {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} ",
-          "foreground": "#ffffff",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
           "type": "aws",
           "style": "powerline",
           "background_templates": [
-            "{{if contains \"default\" .Profile}}#FFA400{{end}}",
-            "{{if contains \"jan\" .Profile}}#f1184c{{end}}"
+            "{{if contains \"default\" .Profile}}#fab387{{end}}",
+            "{{if contains \"jan\" .Profile}}#eba0ac{{end}}"
           ]
         },
         {
           "template": " \uf0ad ",
-          "foreground": "#111111",
+          "foreground": "#11111b",
           "powerline_symbol": "\ue0b0",
-          "background": "#ffff66",
+          "background": "#f5e0dc",
           "type": "root",
           "style": "powerline"
         }
@@ -182,9 +189,9 @@
           },
           "type": "executiontime",
           "style": "plain",
-          "foreground": "#111111",
-          "background": "#f8f8f2",
-          "template": "<#f8f8f2,transparent>\ue0b6</> \ueba2 {{ .FormattedMs }} <transparent,#f8f8f2>\ue0b2</>"
+          "foreground": "#11111b",
+          "background": "#cdd6f4",
+          "template": "<#cdd6f4,transparent>\ue0b6</> \ueba2 {{ .FormattedMs }} <transparent,#cdd6f4>\ue0b2</>"
         },
         {
           "options": {
@@ -194,9 +201,9 @@
           "style": "powerline",
           "powerline_symbol": "\ue0b2",
           "invert_powerline": true,
-          "foreground": "#ffffff",
-          "background": "#50fa7b",
-          "background_templates": ["{{ if gt .Code 0 }}#ff5555{{ end }}"],
+          "foreground": "#11111b",
+          "background": "#a6e3a1",
+          "background_templates": ["{{ if gt .Code 0 }}#f38ba8{{ end }}"],
           "template": " \ue23a {{ if gt .Code 0 }}{{ reason .Code }}{{ end }} "
         }
       ]
@@ -224,7 +231,7 @@
       "leading_diamond": "\ue0b0",
       "trailing_diamond": "\ue0b4",
       "template": " \ue7ad {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} ",
-      "foreground": "p:white",
+      "foreground": "p:black",
       "background": "p:orange",
       "type": "aws",
       "style": "diamond",
@@ -237,7 +244,7 @@
       "leading_diamond": "\ue0b0",
       "trailing_diamond": "\ue0b4",
       "template": " \uebd8 {{ .Name }} ",
-      "foreground": "p:white",
+      "foreground": "p:black",
       "background": "p:blue",
       "type": "az",
       "style": "diamond",

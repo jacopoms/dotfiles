@@ -51,7 +51,7 @@ BASEDIR=$(dirname "$0")
 cd "$BASEDIR" || exit
 
 # HOME dotfiles
-dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions zsh_plugins.txt myjan.omp.json myjan-onelight.omp.json theme.zsh)
+dotfiles=(bashrc bash_aliases zshrc gitignore_global gitconfig p10k.zsh tmux.conf tool-versions zsh_plugins.txt myjan.omp.json myjan-latte.omp.json theme.zsh)
 
 if [ -n "${dotfiles[*]}" ]; then
   for file in "${dotfiles[@]}"; do
