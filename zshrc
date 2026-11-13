@@ -229,7 +229,7 @@ _fzf_comprun() {
 }
 
 # ----------------------------------------------------------------------------
-# Theme (Dracula dark / Solarized Osaka light, follows macOS appearance)
+# Theme (Catppuccin Mocha dark / Latte light, follows macOS appearance)
 # ----------------------------------------------------------------------------
 source ~/dotfiles/theme.zsh
 

@@ -2,14 +2,12 @@
 # Applies the resolved theme mode to the running tmux-powerkit status bar.
 mode="$("$HOME/bin/theme-mode" 2>/dev/null || echo dark)"
 
-# tmux-powerkit ships no "onedark" light variant (only src/themes/onedark/dark.sh
-# exists), so "github" is used as the closest built-in light theme available.
 if [ "$mode" = "light" ]; then
-  tmux set -g @powerkit_theme 'everforest'
-  tmux set -g @powerkit_theme_variant 'light'
+  tmux set -g @powerkit_theme 'catppuccin'
+  tmux set -g @powerkit_theme_variant 'latte'
 else
-  tmux set -g @powerkit_theme 'dracula'
-  tmux set -g @powerkit_theme_variant 'dark'
+  tmux set -g @powerkit_theme 'catppuccin'
+  tmux set -g @powerkit_theme_variant 'mocha'
 fi
 
 # If a session is already running, force powerkit to reload live instead of

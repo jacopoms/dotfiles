@@ -8,8 +8,12 @@ config="$HOME/.k9s/config.yaml"
 [ -f "$config" ] || exit 0
 command -v yq >/dev/null 2>&1 || exit 0
 
+# Skins are versioned in the repo (k9s/skins/); make sure k9s can find them.
+mkdir -p "$HOME/.k9s/skins"
+cp -n "$HOME/dotfiles/k9s/skins/"*.yaml "$HOME/.k9s/skins/" 2>/dev/null
+
 if [ "$mode" = "light" ]; then
-  yq e -i '.k9s.ui.skin = "onelight"' "$config"
+  yq e -i '.k9s.ui.skin = "catppuccin-latte"' "$config"
 else
-  yq e -i '.k9s.ui.skin = "dracula"' "$config"
+  yq e -i '.k9s.ui.skin = "catppuccin-mocha"' "$config"
 fi

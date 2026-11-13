@@ -3,8 +3,8 @@
 # run `bat --help` to get a list of all possible configuration options.
 
 # Highlighting theme is set via $BAT_THEME (exported by theme.zsh, switches
-# between Dracula and OneHalfLight with system appearance).
-#--theme="Dracula"
+# between Catppuccin Mocha and Latte with system appearance).
+#--theme="Catppuccin Mocha"
 
 # Enable this to use italic text on the terminal. This is not supported on all
 # terminal emulators (like tmux, by default):

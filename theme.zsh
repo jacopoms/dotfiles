@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-# Theme switching: Dracula (dark) / Alucard (light)
+# Theme switching: Catppuccin Mocha (dark) / Latte (light)
 #
 # Contract: $THEME = "light" | "dark" | unset/"auto" (follows macOS appearance).
 # `bin/theme-mode` is the single source of truth for resolving that into
@@ -9,17 +9,17 @@
 export THEME_MODE="$("$HOME/bin/theme-mode" 2>/dev/null || echo dark)"
 
 if [[ "$THEME_MODE" == "light" ]]; then
-  export BAT_THEME="OneHalfLight"
+  export BAT_THEME="Catppuccin Latte"
 else
-  export BAT_THEME="Dracula"
+  export BAT_THEME="Catppuccin Mocha"
 fi
 
 # Only force wezterm's scheme when the user explicitly overrode $THEME;
 # leave it unset in "auto" mode so wezterm's own appearance watcher decides.
 if [[ "$THEME" == "light" ]]; then
-  export WEZTERM_COLOR_SCHEME="Alucard"
+  export WEZTERM_COLOR_SCHEME="Catppuccin Latte"
 elif [[ "$THEME" == "dark" ]]; then
-  export WEZTERM_COLOR_SCHEME="Dracula"
+  export WEZTERM_COLOR_SCHEME="Catppuccin Mocha"
 else
   unset WEZTERM_COLOR_SCHEME
 fi
@@ -59,9 +59,9 @@ theme() {
 
   export THEME_MODE="$("$HOME/bin/theme-mode")"
   if [[ "$THEME_MODE" == "light" ]]; then
-    export BAT_THEME="OneHalfLight"
+    export BAT_THEME="Catppuccin Latte"
   else
-    export BAT_THEME="Dracula"
+    export BAT_THEME="Catppuccin Mocha"
   fi
 
   [[ -n "$TMUX" ]] && "$HOME/bin/theme-apply-tmux.sh"

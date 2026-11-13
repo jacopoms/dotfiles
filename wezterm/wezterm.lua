@@ -13,9 +13,9 @@ local appearance = wezterm.gui.get_appearance()
 
 local function scheme_for_appearance(appear)
 	if appear:find("Light") then
-		return "Alucard"
+		return "Catppuccin Latte"
 	end
-	return "Dracula"
+	return "Catppuccin Mocha"
 end
 
 -- Configuration options
@@ -38,9 +38,9 @@ end
 local function pick_scheme()
 	local mode = read_mode()
 	if mode == "light" then
-		return "Alucard"
+		return "Catppuccin Latte"
 	elseif mode == "dark" then
-		return "Dracula"
+		return "Catppuccin Mocha"
 	elseif mode == "auto" then
 		-- Explicit auto: ignore any stale WEZTERM_COLOR_SCHEME inherited at launch.
 		return scheme_for_appearance(appearance)
@@ -123,8 +123,8 @@ config = {
 	colors = {
 		-- Highlight for active search match (cmd+f) and selected text.
 		-- Alucard keeps the Ghostty selection colors; other schemes stay gold.
-		selection_fg = (scheme == "Alucard" and scheme_def and scheme_def.selection_fg) or "#000000",
-		selection_bg = (scheme == "Alucard" and scheme_def and scheme_def.selection_bg) or "#FFD700",
+		selection_fg = (scheme == "Catppuccin Latte" and scheme_def and scheme_def.selection_fg) or "#000000",
+		selection_bg = (scheme == "Catppuccin Latte" and scheme_def and scheme_def.selection_bg) or "#FFD700",
 		tab_bar = {
 			background = scheme_def.background,
 			inactive_tab_edge = scheme_def.ansi and scheme_def.ansi[1] or "#333333",
@@ -180,7 +180,7 @@ local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabl
 tabline.setup({
 	options = {
 		-- Optional: Customize the tabline appearance
-		theme = "Dracula",
+		theme = "Catppuccin Mocha",
 	},
 	-- tabline_bg_color = scheme_def.background,
 	-- tabline_fg_color = scheme_def.foreground,
