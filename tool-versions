@@ -1,6 +1,6 @@
 ruby 4.0.10
 elixir 1.14.5
-nodejs 23.10.0
+nodejs 25.4.0
 erlang 26.0
 stern 1.32.0
 rust 1.99.1

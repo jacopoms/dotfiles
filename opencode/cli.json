@@ -8,7 +8,7 @@
     "wrap": "word"
   },
   "session": {
-    "sidebar": "auto",
+    "sidebar": "hide",
     "scrollbar": false,
     "thinking": "show",
     "image_preview": true

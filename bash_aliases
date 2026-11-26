@@ -67,7 +67,7 @@ function brewski() {
   brew upgrade --greedy
   ((greedy)) && return
 }
-alias portski='sudo port selfupdate && port outdated && sudo port upgrade outdated && sudo port clean --all installed; sudo port reclaim'
+alias portski='sudo port sync && port outdated && sudo port upgrade outdated && sudo port clean --all installed; sudo port reclaim'
 
 alias prep_commit='bundle exec reek . && rubocop -A && rspec'
 
